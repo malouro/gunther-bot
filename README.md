@@ -1,4 +1,4 @@
-![](https://stardewcommunitywiki.com/mediawiki/images/3/3d/Gunther.png)
+<div style="text-align: center;"><img src="https://stardewcommunitywiki.com/mediawiki/images/3/3d/Gunther.png"></img></div>
 
 # Gunther
 
