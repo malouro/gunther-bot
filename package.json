@@ -1,0 +1,15 @@
+{
+  "name": "gunther-bot",
+  "version": "0.1.0",
+  "description": "Stardew Valley Discord Bot",
+  "repository": "https://github.com/malouro/gunther-bot.git",
+  "author": "Mike A. Louro <mike.a.louro@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  },
+  "scripts": {
+    "start": "ts-node ./src/index.ts"
+  }
+}
