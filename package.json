@@ -12,8 +12,7 @@
     "node-fetch": "^2.6.1"
   },
   "scripts": {
-    "start": "node ./src/index.ts",
-    "scan": "ts-node ./data/scanHtml",
+    "start": "ts-node ./src/index",
     "build:data": "ts-node ./data/build",
     "lint": "eslint ."
   },

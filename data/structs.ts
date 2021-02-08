@@ -1,6 +1,14 @@
+export type CharacterData = {
+  name: string,
+  wiki: string,
+  birthday: string,
+  bestGifts: Array<string>,
+  canMarry: boolean
+}
+
 export const CharacterList = [
   'Alex',
-  'Elliot',
+  'Elliott',
   'Harvey',
   'Sam',
   'Sebastian',

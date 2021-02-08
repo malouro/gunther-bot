@@ -1,11 +1,12 @@
 import cheerio from 'cheerio'
 import { getWikiUrl } from '../utils'
+import { CharacterData } from './structs'
 
 /**
  * Generate a character data object based on fetched Wiki HTML
  * @param {string} html HTML content as string
  */
-export function getCharacterData(html: string): Record<string, unknown> {
+export function getCharacterData(html: string): CharacterData {
   const $ = cheerio.load(html)
   const characterName = $('h1').text().trim()
 
@@ -23,14 +24,17 @@ export function getCharacterData(html: string): Record<string, unknown> {
       .next(infoBoxDetail)
   }
 
+  const gifts = []
+
+  $(getInfoBoxData('Best Gifts'))
+      .find('a')
+      .each((_, gift) => gifts.push($(gift).text().toString().trim()))
+
   return {
     name: characterName,
     wiki: getWikiUrl(characterName),
     birthday: getInfoBoxData('Birthday').text().trim(),
-    bestGifts: $(getInfoBoxData('Best Gifts'))
-      .find('a')
-      .map((_, gift) => $(gift).text().trim())
-      .toArray(),
+    bestGifts: gifts,
     canMarry: Boolean(getInfoBoxData('Marriage').text().trim().toLowerCase() === 'yes')
   }
 }
