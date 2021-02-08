@@ -3,26 +3,13 @@ import fs from 'fs'
 import path from 'path'
 import { getCharacterData } from './dataFetcher'
 import { getWikiUrl } from '../utils'
-import { CharacterList } from './structs'
-
-if (process.env.NODE_ENV === 'test') {
-  // Test data
-  console.log(
-    getCharacterData(
-      fs.readFileSync(
-        path.resolve(__dirname,`./test_structures/${process.env.NPC}.txt`),
-        'utf-8'
-      )
-    )
-  )
-}
-
-type CharacterName = typeof CharacterList[number]
+import { CharacterList, CharacterName } from './structs'
 
 function buildCharacters(characters?: Array<CharacterName> | typeof CharacterList): void {
   if (!characters) {
     characters = CharacterList
   }
+
   characters.forEach((character) => {
     fetch(getWikiUrl(character))
     .then(async content => {
@@ -39,4 +26,16 @@ function buildCharacters(characters?: Array<CharacterName> | typeof CharacterLis
   })
 }
 
-buildCharacters()
+if (process.env.NODE_ENV === 'test') {
+  // Test data
+  console.log(
+    getCharacterData(
+      fs.readFileSync(
+        path.resolve(__dirname,`./test_structures/${process.env.NPC}.txt`),
+        'utf-8'
+      )
+    )
+  )
+} else {
+  buildCharacters()
+}

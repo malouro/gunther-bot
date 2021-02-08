@@ -34,3 +34,5 @@ export const CharacterList = [
   'Willy',
   'Wizard',
 ] as const
+
+export type CharacterName = typeof CharacterList[number]
