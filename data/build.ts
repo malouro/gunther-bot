@@ -17,7 +17,7 @@ export async function buildCharacters(characters?: Array<CharacterName> | typeof
     const data = await characterWiki.text()
     const characterData = getCharacterData(data)
 
-    exports += `import ${characterData.name} from './${characterData.name}.json'\nexport {${characterData.name}}\n`
+    exports += `import ${characterData.name} from './${characterData.name}.json'\nexport { ${characterData.name} }\n`
 
     fs.writeFileSync(
       path.resolve(__dirname, `./characters/${character}.json`),
