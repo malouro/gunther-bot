@@ -1,3 +1,5 @@
+/* WARNING: This file is auto-generated at build time. Do not edit manually. */
+
 import Alex from './Alex.json'
 export {Alex}
 import Elliott from './Elliott.json'

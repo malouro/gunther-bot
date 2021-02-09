@@ -1,0 +1,2 @@
+# Stardew Valley JSON Data
+

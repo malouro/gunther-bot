@@ -1,11 +1,11 @@
 import fetch from 'node-fetch'
 import fs from 'fs'
 import path from 'path'
-import { getCharacterData } from './dataFetcher'
+import { getCharacterData } from './dataParser'
 import { getWikiUrl } from '../utils'
 import { CharacterList, CharacterName } from './structs'
 
-async function buildCharacters(characters?: Array<CharacterName> | typeof CharacterList): Promise<void> {
+export async function buildCharacters(characters?: Array<CharacterName> | typeof CharacterList): Promise<void> {
   if (!characters) {
     characters = CharacterList
   }
@@ -27,7 +27,7 @@ async function buildCharacters(characters?: Array<CharacterName> | typeof Charac
 
   fs.writeFileSync(
     path.resolve(__dirname, './characters/index.ts'),
-    exports
+    '/* WARNING: This file is auto-generated at build time. Do not edit manually. */\n\n' + exports
   )
 }
 
@@ -36,7 +36,7 @@ if (process.env.NODE_ENV === 'test') {
   console.log(
     getCharacterData(
       fs.readFileSync(
-        path.resolve(__dirname,`./test_structures/${process.env.NPC}.txt`),
+        path.resolve(__dirname,`./test_fixtures/${process.env.NPC || 'Marnie'}.txt`),
         'utf-8'
       )
     )

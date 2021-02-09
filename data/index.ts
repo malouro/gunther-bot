@@ -1,2 +1,2 @@
-/** Entry point to import all JSON data */
+/* Entry point for all JSON data */
 export * as characters from './characters'

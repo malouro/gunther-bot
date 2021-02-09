@@ -38,4 +38,3 @@ export function getCharacterData(html: string): CharacterData {
     canMarry: Boolean(getInfoBoxData('Marriage').text().trim().toLowerCase() === 'yes')
   }
 }
-

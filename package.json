@@ -14,7 +14,8 @@
   "scripts": {
     "start": "ts-node ./src/index",
     "build:data": "ts-node ./data/build",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "spell-check": "npx cspell *.ts"
   },
   "devDependencies": {
     "@types/node": "^14.14.25",
