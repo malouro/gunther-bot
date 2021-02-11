@@ -1,20 +1,24 @@
 import { Client } from 'discord.js-commando'
+import commands from './commands'
+import argTypes from './argTypes'
 import dotenv from 'dotenv'
 
 dotenv.config()
 
 const Gunther = new Client({
-  owner: process.env.OWNER,
-  commandPrefix: process.env.COMMAND_PREFIX,
+	owner: process.env.OWNER.split(','),
+	commandPrefix: process.env.COMMAND_PREFIX,
 })
 
 Gunther.registry
-  .registerGroups([
-    ['info', 'Commands that fetch information'],
-    ['meta', 'Commands related to the bot itself']
-  ])
-  .registerCommands([
-    /* commands go here */
-  ])
+	.registerDefaultTypes()
+	.registerTypes(argTypes)
+	.registerGroups([
+		['stardew', 'Stardew Valley'],
+		['meta', 'Meta-info']
+	])
+	.registerDefaultGroups()
+	.registerDefaultCommands()
+	.registerCommands(commands)
 
 Gunther.login(process.env.TOKEN)
