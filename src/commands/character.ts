@@ -37,7 +37,7 @@ export default class CharacterCommand extends Command {
 		message: CommandoMessage,
 		args: args
 	): Promise<Message> {
-		const { name: characterName, avatar, birthday, bestGifts, wiki, canMarry } = args.character
+		const { name: characterName, avatar, birthday, bestGifts, wiki } = args.character
 		const embed = new MessageEmbed()
 			.setTitle(characterName)
 			.setURL(wiki)

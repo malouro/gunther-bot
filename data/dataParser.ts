@@ -11,7 +11,9 @@ export function getCharacterData(html: string): SDVCharacterData {
 	const characterName = $('h1').text().trim()
 
 	// Common selectors
+	/* cspell: disable-next-line */
 	const infoBoxSection = '#infoboxsection'
+	/* cspell: disable-next-line */
 	const infoBoxDetail = '#infoboxdetail'
 
 	/**
