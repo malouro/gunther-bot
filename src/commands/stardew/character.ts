@@ -1,6 +1,6 @@
 import { Message, MessageEmbed } from 'discord.js'
 import { Command, CommandInfo, CommandoClient, CommandoMessage } from 'discord.js-commando'
-import { SDVCharacterData } from '../../data/structs'
+import { SDVCharacterData } from '../../../data/structs'
 
 const COMMAND_NAME = 'character-info'
 
@@ -14,7 +14,9 @@ export const info: CommandInfo = {
 		'Returns back information on the character. ',
 		'This includes their birthday, favorite gifts, etc.'
 	].join(''),
-	examples: [`${COMMAND_NAME} abigail`],
+	examples: [
+		`\`${COMMAND_NAME} abigail\``
+	],
 	args: [
 		{
 			key: 'character',
@@ -24,7 +26,7 @@ export const info: CommandInfo = {
 	]
 }
 
-interface args {
+interface runArgs {
 	character: SDVCharacterData
 }
 
@@ -35,14 +37,15 @@ export default class CharacterCommand extends Command {
 
 	async run(
 		message: CommandoMessage,
-		args: args
+		args: runArgs
 	): Promise<Message> {
-		const { name: characterName, avatar, birthday, bestGifts, wiki } = args.character
+		const { name: characterName, avatar, birthday, bestGifts, canMarry, wiki } = args.character
 		const embed = new MessageEmbed()
 			.setTitle(characterName)
 			.setURL(wiki)
 			.setThumbnail(avatar)
 			.setDescription(`Wiki information on ${characterName}`)
+			.addField('Marriage?', `**${canMarry ? 'Yes' : 'No'}**`)
 			.addField('Birthday', birthday)
 			.addField('Best Gifts', bestGifts)
 

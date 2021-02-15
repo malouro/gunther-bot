@@ -1,5 +1,8 @@
-import character from './character'
+import groups from './groups'
+export { groups }
+
+import CharacterCommand from './stardew/character'
 
 export default [
-	character
+	CharacterCommand
 ]

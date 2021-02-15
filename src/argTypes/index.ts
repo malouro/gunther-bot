@@ -1,5 +1,5 @@
-import characterName from './characterName'
+import CharacterArgType from './character'
 
 export default [
-	characterName
+	CharacterArgType
 ]
