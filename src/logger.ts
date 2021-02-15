@@ -10,7 +10,7 @@ import { AbstractConfigSetLevels, AbstractConfigSetColors } from 'winston/lib/wi
  * @todo Make this a config somewhere
  */
 const TIMESTAMP_ENABLED = true
-const LEVEL_ICON_ENABLED = false
+const LOG_LEVEL_ICON_ENABLED = false
 
 type AbstractConfigLogIcons = {
 	[key: string]: string;
@@ -18,8 +18,8 @@ type AbstractConfigLogIcons = {
 
 export const logIcons: AbstractConfigLogIcons = {
 	error: '❌',
-	warn: '⚠',
-	info: 'ℹ',
+	warn:  '⚠',
+	info:  'ℹ',
 	debug: '🧪'
 }
 
@@ -39,7 +39,7 @@ export const logFormatting = format.printf(
 		`${TIMESTAMP_ENABLED
 			? `(${logTimestamp}) `
 			: ''
-		}${LEVEL_ICON_ENABLED
+		}${LOG_LEVEL_ICON_ENABLED
 			? getIconForLogLevel(level)
 			: level
 		} - ${message}`
