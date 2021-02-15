@@ -35,7 +35,7 @@ const yargv = yargs(process.argv.slice(2))
 
 const { b: buildType, t: inTestMode } = yargv
 
-const autoGenWarning = '/* WARNING: This file is auto-generated at build time. Do not edit manually. */'
+const autoGenWarning = '/* WARNING: This file and its subsequent imports are auto-generated at build time. Do not edit manually. */'
 
 export async function buildCharacters(characters: ReadonlyArray<SDVCharacterName> = SDVCharacterList): Promise<void> {
 	if (inTestMode) {
