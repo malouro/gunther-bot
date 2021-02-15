@@ -2,10 +2,13 @@
     "version": "0.1",
     "language": "en",
     "words": [
+        "calendartable",
         "krobus",
         "marnie",
         "maru",
+        "printf",
         "stardew",
-        "structs"
+        "structs",
+        "yargv"
     ]
 }
