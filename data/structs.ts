@@ -1,3 +1,6 @@
+// ------------------------------------------------------------
+// Characters
+
 export type SDVCharacterData = {
 	name: string,
 	avatar: string,
@@ -6,7 +9,6 @@ export type SDVCharacterData = {
 	canMarry: boolean,
 	wiki: string,
 }
-
 export const SDVCharacterList = [
 	'Alex',
 	'Elliott',
@@ -43,5 +45,38 @@ export const SDVCharacterList = [
 	'Willy',
 	'Wizard',
 ]
-
 export type SDVCharacterName = typeof SDVCharacterList[number]
+
+// ------------------------------------------------------------
+// Calendar
+
+export type Event = string
+export type DayOfWeek = 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday'
+export const daysOfWeek: ReadonlyArray<DayOfWeek> = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+export type DayOfSeason =
+	'1'  | '2'  | '3'  | '4'  | '5'  | '6'  | '7'  |
+	'8'  | '9'  | '10' | '11' | '12' | '13' | '14' |
+	'15' | '16' | '17' | '18' | '19' | '20' | '21' |
+	'22' | '23' | '24' | '25' | '26' | '27' | '28'
+export const daysOfSeason: ReadonlyArray<DayOfSeason> = [
+	'1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28'
+]
+export type Season = 'Spring' | 'Summer' | 'Fall' | 'Winter'
+export const seasons: ReadonlyArray<Season> = ['Spring', 'Summer', 'Fall', 'Winter']
+
+export type SDVDate = {
+	season: Season,
+	day: DayOfSeason,
+	dayOfWeek: DayOfWeek
+}
+export type SDVCalendarDay = {
+	date: SDVDate
+	birthdays: Array<SDVCharacterName>
+	events: Array<Event>
+}
+export type SDVCalendarSeason = {
+	[key in DayOfSeason]?: SDVCalendarDay
+}
+export type SDVCalendarData = {
+	[key in Season]?: SDVCalendarSeason
+}

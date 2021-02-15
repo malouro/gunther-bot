@@ -1,15 +1,32 @@
 import { SDVCharacterName } from '../data/structs'
 
+export const baseWikiUrl = 'https://stardewcommunitywiki.com'
+
 /**
  * Get a URL to the Wiki for a given search term
  * @param term Search term to get URL for
  */
 export function getWikiUrl(term: string): string {
-	return `https://stardewcommunitywiki.com/${term}`
+	return `${baseWikiUrl}/${term}`
 }
 
+/**
+ * Returns a URL to a character's avatar
+ * @param imgSrc `src` attribute on the <img>
+ */
 export function getAvatarUrl(imgSrc: string): string {
-	return `https://stardewcommunitywiki.com${imgSrc[0] === '/' ? imgSrc : '/' + imgSrc}`
+	return `${baseWikiUrl}${imgSrc[0] === '/' ? imgSrc : '/' + imgSrc}`
+}
+
+/**
+ * Given zero-indexed values for the week and day of the week,
+ * return another zero-indexed value for which day of the season it is.
+ * @param week Week of the season [0-3]
+ * @param dayOfWeek Day of the week [0-6]
+ * @returns dayOfSeason - (ie: the {15}th of Spring) (( zero-indexed ))
+ */
+export function getDayOfSeason(week: number, dayOfWeek: number): number {
+	return (week * 7) + (dayOfWeek)
 }
 
 /**
