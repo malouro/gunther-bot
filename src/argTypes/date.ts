@@ -7,7 +7,22 @@ export default class DateArgType extends ArgumentType {
 	}
 
 	parse(val: string): SDVDate | Season {
-		let season = [...seasons, ...seasonShorthands].find(possibleSeason => val.startsWith(possibleSeason))
+		let season = [
+			...seasons,
+			...seasonShorthands
+		].find(
+			(possibleSeason) => val
+				.toLocaleLowerCase()
+				.startsWith(possibleSeason.toLocaleLowerCase())
+		)
+		let inferredDay = val
+			.toLocaleLowerCase()
+			.replace(season.toLocaleLowerCase(), '')
+			.trim()
+		
+		if (/\s+/.test(inferredDay)) {
+			inferredDay = inferredDay.split(/\s+/)[0]
+		}
 
 		switch (season) {
 			case 'sp':
@@ -28,13 +43,14 @@ export default class DateArgType extends ArgumentType {
 				break
 		}
 
-		const inferredDay = val.slice(val.indexOf(season) + season.length - 1, val.length)
+		const day = inferredDay && daysOfSeason[parseInt(inferredDay) - 1]
 
-		if (!inferredDay || !Number.isNaN(inferredDay)) {
-			return season
+		if (!day) {
+			return {
+				season,
+				day: null
+			}
 		}
-
-		const day = daysOfSeason[parseInt(inferredDay) - 1]
 
 		return {
 			season,
@@ -44,8 +60,16 @@ export default class DateArgType extends ArgumentType {
 
 	validate(val: string | typeof seasons[number] | typeof seasonShorthands[number]): boolean {
 		return (
-			seasons.some(season => val.startsWith(season)) ||
-			seasonShorthands.some(shorthand => val.startsWith(shorthand))
+			seasons.some((season) =>
+				val
+					.toLocaleLowerCase()
+					.startsWith(season.toLocaleLowerCase())
+			) ||
+			seasonShorthands.some((shorthand) =>
+				val
+					.toLocaleLowerCase()
+					.startsWith(shorthand)
+			)
 		)
 	}
 }
