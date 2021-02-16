@@ -1,6 +1,10 @@
 import { ArgumentType, CommandoClient } from 'discord.js-commando'
 import { Characters } from '../../data'
-import { SDVCharacterData, SDVCharacterName, SDVCharacterList } from '../../data/structs'
+import {
+	SDVCharacterData,
+	SDVCharacterName,
+	SDVCharacterList,
+} from '../../data/structs'
 import { formatCharacterName } from '../../utils'
 
 export default class CharacterArgType extends ArgumentType {

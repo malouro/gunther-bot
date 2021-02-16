@@ -8,10 +8,14 @@ import { getWikiUrl } from '../utils'
 import { SDVCharacterList, SDVCharacterName } from './structs'
 
 type BuildTypes = 'characters' | 'calendar' | 'all'
-const buildTypeChoices: ReadonlyArray<BuildTypes> = ['characters', 'calendar', 'all']
+const buildTypeChoices: ReadonlyArray<BuildTypes> = [
+	'characters',
+	'calendar',
+	'all',
+]
 export interface BuildArguments {
 	[x: string]: unknown
-	b: BuildTypes,
+	b: BuildTypes
 	t: boolean
 	_: string[]
 	$0: string
@@ -20,22 +24,23 @@ export interface BuildArguments {
 const yargv = yargs(process.argv.slice(2))
 	.usage('Usage: $0 <command> [options]')
 	.option('b', {
-		description: 'What type of data do you want to build/generate? (default: all)',
+		description:
+			'What type of data do you want to build/generate? (default: all)',
 		choices: buildTypeChoices,
-		alias: ['build-type', 'buildType']
+		alias: ['build-type', 'buildType'],
 	})
 	.option('t', {
 		description: 'Execute a dry-run of the build against test data',
 		type: 'boolean',
-		alias: ['test', 'dry-run']
+		alias: ['test', 'dry-run'],
 	})
 	.help('h')
-	.alias('h', 'help')
-	.argv
+	.alias('h', 'help').argv
 
 const { b: buildType, t: inTestMode } = yargv
 
-const autoGenWarning = '/*\
+const autoGenWarning =
+	'/*\
 WARNING: This file and its subsequent imports are auto-generated at build time.\
 Do not edit manually.\
 */'
@@ -47,7 +52,7 @@ export async function buildCharacters(
 		return console.log(
 			getCharacterData(
 				fs.readFileSync(
-					path.resolve(__dirname,'./test_fixtures/Marnie.txt'),
+					path.resolve(__dirname, './test_fixtures/Marnie.txt'),
 					'utf-8'
 				)
 			)

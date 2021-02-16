@@ -41,15 +41,17 @@ export function getCharacterData(html: string): SDVCharacterData {
 	const imageSrc = $(`img[alt="${characterName}.png"]`).attr('src')
 
 	$(getInfoBoxData('Best Gifts'))
-			.find('a')
-			.each((_, gift) => gifts.push($(gift).text().toString().trim()))
+		.find('a')
+		.each((_, gift) => gifts.push($(gift).text().toString().trim()))
 
 	return {
 		name: characterName,
 		avatar: getAvatarUrl(imageSrc),
 		birthday: getInfoBoxData('Birthday').text().trim(),
 		bestGifts: gifts,
-		canMarry: Boolean(getInfoBoxData('Marriage').text().trim().toLowerCase() === 'yes'),
+		canMarry: Boolean(
+			getInfoBoxData('Marriage').text().trim().toLowerCase() === 'yes'
+		),
 		wiki: getWikiUrl(characterName),
 	}
 }
@@ -71,7 +73,7 @@ export function getCalendarData(html: string): SDVCalendarData {
 		const date: SDVDate = {
 			season,
 			dayOfWeek: daysOfWeek[dayOfWeekIndex],
-			day: daysOfSeason[getDayOfSeason(week, dayOfWeekIndex)]
+			day: daysOfSeason[getDayOfSeason(week, dayOfWeekIndex)],
 		}
 		const birthdays = []
 		const events = []
@@ -92,16 +94,21 @@ export function getCalendarData(html: string): SDVCalendarData {
 		return {
 			date,
 			birthdays,
-			events
+			events,
 		}
 	}
-	
+
 	function buildSeason(season: Season): SDVCalendarSeason {
 		const builtSeason: SDVCalendarSeason = {}
 		const days: Array<SDVCalendarDay> = []
 
-		const seasonSection = seasonSelector(season).parent().nextUntil(calendarSection)
-		const tableRows = seasonSection.find('tr').map((_, row) => $(row)).get()
+		const seasonSection = seasonSelector(season)
+			.parent()
+			.nextUntil(calendarSection)
+		const tableRows = seasonSection
+			.find('tr')
+			.map((_, row) => $(row))
+			.get()
 
 		tableRows.forEach((row, week) => {
 			$(row)
@@ -110,7 +117,7 @@ export function getCalendarData(html: string): SDVCalendarData {
 				.get()
 				.forEach((dateCell, dayOfWeekIndex) => {
 					days.push(buildDay(season, week, dayOfWeekIndex, dateCell))
-			})
+				})
 		})
 
 		for (let i = 0; i < 28; i++) {

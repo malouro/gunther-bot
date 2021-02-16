@@ -13,18 +13,16 @@ export const info: CommandInfo = {
 	description: 'Fetches info on a character',
 	details: [
 		'Returns back information on the character. ',
-		'This includes their birthday, favorite gifts, etc.'
+		'This includes their birthday, favorite gifts, etc.',
 	].join(''),
-	examples: [
-		`\`${COMMAND_NAME} abigail\``
-	],
+	examples: [`\`${COMMAND_NAME} abigail\``],
 	args: [
 		{
 			key: 'character',
 			prompt: 'Which character would you like to fetch info on?',
-			type: 'sdv-character'
-		}
-	]
+			type: 'sdv-character',
+		},
+	],
 }
 
 export default class CharacterCommand extends Command {
@@ -36,7 +34,14 @@ export default class CharacterCommand extends Command {
 		message: CommandoMessage,
 		args: { character: SDVCharacterData }
 	): Promise<Message> {
-		const { name: characterName, avatar, birthday, bestGifts, canMarry, wiki } = args.character
+		const {
+			name: characterName,
+			avatar,
+			birthday,
+			bestGifts,
+			canMarry,
+			wiki,
+		} = args.character
 		const embed = new MessageEmbed()
 			.setTitle(characterName)
 			.setURL(wiki)

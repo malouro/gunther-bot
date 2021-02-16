@@ -1,5 +1,3 @@
 import ready from './ready'
 
-export {
-	ready
-}
+export { ready }

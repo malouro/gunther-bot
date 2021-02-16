@@ -15,18 +15,16 @@ export const info: CommandInfo = {
 	description: 'Fetches info from the calendar',
 	details: [
 		'This can return back information related to either a specific day, or a specific season. ',
-		'This includes upcoming birthdays and events.'
+		'This includes upcoming birthdays and events.',
 	].join(''),
-	examples: [
-		`\`${COMMAND_NAME} summer 15\``
-	],
+	examples: [`\`${COMMAND_NAME} summer 15\``],
 	args: [
 		{
 			key: 'date',
 			prompt: 'What date on the calendar are you curious about?',
-			type: 'sdv-date'
-		}
-	]
+			type: 'sdv-date',
+		},
+	],
 }
 
 export default class CalendarCommand extends Command {
@@ -55,11 +53,10 @@ export default class CalendarCommand extends Command {
 			embed
 				.setTitle(`${season} ${day}`)
 				.setURL(seasonUrl)
-				.setDescription(`Overview for **${season} ${day}**. This is a **${weekday}**.`)
-				.addField(
-					'Events',
-					events.length > 0 ? events.join('\n') : 'No events'
+				.setDescription(
+					`Overview for **${season} ${day}**. This is a **${weekday}**.`
 				)
+				.addField('Events', events.length > 0 ? events.join('\n') : 'No events')
 				.addField(
 					'Birthdays',
 					birthdays.length > 0 ? birthdays.join('\n') : 'No birthdays'

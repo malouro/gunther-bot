@@ -1,5 +1,11 @@
 import { ArgumentType, CommandoClient } from 'discord.js-commando'
-import { daysOfSeason, SDVDate, Season, seasons, seasonShorthands } from '../../data/structs'
+import {
+	daysOfSeason,
+	SDVDate,
+	Season,
+	seasons,
+	seasonShorthands,
+} from '../../data/structs'
 
 export default class DateArgType extends ArgumentType {
 	constructor(client: CommandoClient) {
@@ -7,26 +13,21 @@ export default class DateArgType extends ArgumentType {
 	}
 
 	parse(val: string): SDVDate | Season {
-		let season = [
-			...seasons,
-			...seasonShorthands
-		].find(
-			(possibleSeason) => val
-				.toLocaleLowerCase()
-				.startsWith(possibleSeason.toLocaleLowerCase())
+		let season = [...seasons, ...seasonShorthands].find(possibleSeason =>
+			val.toLocaleLowerCase().startsWith(possibleSeason.toLocaleLowerCase())
 		)
 		let inferredDay = val
 			.toLocaleLowerCase()
 			.replace(season.toLocaleLowerCase(), '')
 			.trim()
-		
+
 		if (/\s+/.test(inferredDay)) {
 			inferredDay = inferredDay.split(/\s+/)[0]
 		}
 
 		switch (season) {
 			case 'sp':
-				season ='Spring'
+				season = 'Spring'
 				break
 			case 'su':
 				season = 'Summer'
@@ -48,27 +49,25 @@ export default class DateArgType extends ArgumentType {
 		if (!day) {
 			return {
 				season,
-				day: null
+				day: null,
 			}
 		}
 
 		return {
 			season,
-			day
+			day,
 		}
 	}
 
-	validate(val: string | typeof seasons[number] | typeof seasonShorthands[number]): boolean {
+	validate(
+		val: string | typeof seasons[number] | typeof seasonShorthands[number]
+	): boolean {
 		return (
-			seasons.some((season) =>
-				val
-					.toLocaleLowerCase()
-					.startsWith(season.toLocaleLowerCase())
+			seasons.some(season =>
+				val.toLocaleLowerCase().startsWith(season.toLocaleLowerCase())
 			) ||
-			seasonShorthands.some((shorthand) =>
-				val
-					.toLocaleLowerCase()
-					.startsWith(shorthand)
+			seasonShorthands.some(shorthand =>
+				val.toLocaleLowerCase().startsWith(shorthand)
 			)
 		)
 	}

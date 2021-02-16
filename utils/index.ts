@@ -1,4 +1,9 @@
-import { DayOfSeason, DayOfWeek, daysOfWeek, SDVCharacterName } from '../data/structs'
+import {
+	DayOfSeason,
+	DayOfWeek,
+	daysOfWeek,
+	SDVCharacterName,
+} from '../data/structs'
 
 export const baseWikiUrl = 'https://stardewcommunitywiki.com'
 
@@ -26,7 +31,7 @@ export function getAvatarUrl(imgSrc: string): string {
  * @returns dayOfSeason - (ie: the {15}th of Spring) (( zero-indexed ))
  */
 export function getDayOfSeason(week: number, dayOfWeek: number): number {
-	return (week * 7) + (dayOfWeek)
+	return week * 7 + dayOfWeek
 }
 
 /**
@@ -42,5 +47,7 @@ export function getWeekday(day: DayOfSeason): DayOfWeek {
  * @param name String of the character's name to format properly
  */
 export function formatCharacterName(name: string): SDVCharacterName {
-	return `${name.charAt(0).toLocaleUpperCase()}${name.slice(1).toLocaleLowerCase()}`
+	return `${name.charAt(0).toLocaleUpperCase()}${name
+		.slice(1)
+		.toLocaleLowerCase()}`
 }
