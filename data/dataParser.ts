@@ -6,7 +6,6 @@ import {
 	SDVCalendarSeason,
 	SDVCharacterList,
 	SDVDate,
-	DayOfSeason,
 	Season,
 	daysOfWeek,
 	daysOfSeason,
@@ -62,7 +61,12 @@ export function getCalendarData(html: string): SDVCalendarData {
 	const seasonSelector = (season: Season) => $(`#${season}`)
 	const calendarSection = '#calendartable'
 
-	function buildDay(season: Season, week: number, dayOfWeekIndex: number, dateCell): SDVCalendarDay {
+	function buildDay(
+		season: Season,
+		week: number,
+		dayOfWeekIndex: number,
+		dateCell
+	): SDVCalendarDay {
 		let innerText = $(dateCell).text()
 		const date: SDVDate = {
 			season,
