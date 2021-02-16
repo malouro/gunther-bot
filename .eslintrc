@@ -1,23 +1,33 @@
 {
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "env": {
-    "node": true,
-    "mocha": true
-  },
-  "plugins": [
-    "@typescript-eslint"
-  ],
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
-  "rules": {
-    "semi": ["error", "never"],
-    "quotes": ["error", "single", { "avoidEscape": true }],
-    "space-before-blocks": "error",
-    "space-in-parens": "error",
-    "object-curly-spacing": ["error", "always", { "objectsInObjects": false }]
-  }
+	"root": true,
+	"parser": "@typescript-eslint/parser",
+	"env": {
+		"node": true,
+		"mocha": true
+	},
+	"plugins": [
+		"@typescript-eslint"
+	],
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended",
+		"prettier",
+		"prettier/@typescript-eslint"
+	],
+	"rules": {
+		"semi": ["error", "never"],
+		"quotes": ["error", "single", { "avoidEscape": true }],
+
+		"max-len": ["error", {
+			"code": 100,
+			"ignoreStrings": true,
+			"ignoreTemplateLiterals": true,
+			"ignoreRegExpLiterals": true
+		}],
+
+		"space-before-blocks": "error",
+		"space-in-parens": "error",
+		"object-curly-spacing": ["error", "always", { "objectsInObjects": false }]
+	}
 }

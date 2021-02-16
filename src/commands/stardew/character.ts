@@ -1,6 +1,7 @@
 import { Message, MessageEmbed } from 'discord.js'
-import { Command, CommandInfo, CommandoClient, CommandoMessage } from 'discord.js-commando'
+import { Command, CommandInfo, CommandoMessage } from 'discord.js-commando'
 import { SDVCharacterData } from '../../../data/structs'
+import GuntherClient from '../../client'
 
 const COMMAND_NAME = 'character-info'
 
@@ -26,18 +27,14 @@ export const info: CommandInfo = {
 	]
 }
 
-interface runArgs {
-	character: SDVCharacterData
-}
-
 export default class CharacterCommand extends Command {
-	constructor(client: CommandoClient) {
+	constructor(client: GuntherClient) {
 		super(client, info)
 	}
 
 	async run(
 		message: CommandoMessage,
-		args: runArgs
+		args: { character: SDVCharacterData }
 	): Promise<Message> {
 		const { name: characterName, avatar, birthday, bestGifts, canMarry, wiki } = args.character
 		const embed = new MessageEmbed()

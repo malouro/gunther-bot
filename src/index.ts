@@ -14,10 +14,10 @@ const Gunther = new GuntherClient({
 
 Gunther.registry
 	.registerDefaultTypes()
-	.registerTypes(argTypes)
-	.registerGroups(groups)
 	.registerDefaultGroups()
 	.registerDefaultCommands()
+	.registerTypes(argTypes)
+	.registerGroups(groups)
 	.registerCommands(commands)
 
 Gunther.on('ready', () => events.ready(Gunther))

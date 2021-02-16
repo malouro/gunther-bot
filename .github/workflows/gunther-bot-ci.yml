@@ -26,5 +26,5 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: yarn install
     - run: yarn lint
-    - run: yarn spell-check
+    - run: yarn check:spell
     - run: yarn test
