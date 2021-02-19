@@ -5,7 +5,7 @@ import path from 'path'
 import yargs from 'yargs'
 import { getCharacterData, getCalendarData } from './dataParser'
 import { getWikiUrl } from '../utils'
-import { SDVCharacterList, SDVCharacterName } from './structs'
+import { SDVCharacterList, SDVCharacterName } from './structure'
 
 type BuildTypes = 'characters' | 'calendar' | 'all'
 const buildTypeChoices: ReadonlyArray<BuildTypes> = [

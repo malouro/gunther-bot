@@ -5,7 +5,7 @@ import {
 	Season,
 	seasons,
 	seasonShorthands,
-} from '../../data/structs'
+} from '../../data/structure'
 
 export default class DateArgType extends ArgumentType {
 	constructor(client: CommandoClient) {

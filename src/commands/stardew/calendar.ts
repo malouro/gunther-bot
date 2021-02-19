@@ -1,7 +1,7 @@
 import { Message, MessageEmbed } from 'discord.js'
 import { Command, CommandInfo, CommandoMessage } from 'discord.js-commando'
 import { Calendar } from '../../../data'
-import { Event, SDVCharacterName, SDVDate } from '../../../data/structs'
+import { Event, SDVCharacterName, SDVDate } from '../../../data/structure'
 import { getWeekday, getWikiUrl } from '../../../utils'
 import GuntherClient from '../../client'
 

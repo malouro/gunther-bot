@@ -4,7 +4,7 @@ import {
 	SDVCharacterData,
 	SDVCharacterName,
 	SDVCharacterList,
-} from '../../data/structs'
+} from '../../data/structure'
 import { formatCharacterName } from '../../utils'
 
 export default class CharacterArgType extends ArgumentType {

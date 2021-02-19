@@ -1,6 +1,6 @@
 import { Message, MessageEmbed } from 'discord.js'
 import { Command, CommandInfo, CommandoMessage } from 'discord.js-commando'
-import { SDVCharacterData } from '../../../data/structs'
+import { SDVCharacterData } from '../../../data/structure'
 import GuntherClient from '../../client'
 
 const COMMAND_NAME = 'character-info'

@@ -3,7 +3,7 @@ import {
 	DayOfWeek,
 	daysOfWeek,
 	SDVCharacterName,
-} from '../data/structs'
+} from '../data/structure'
 
 export const baseWikiUrl = 'https://stardewcommunitywiki.com'
 

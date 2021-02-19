@@ -11,7 +11,7 @@ import {
 	daysOfSeason,
 	SDVCalendarDay,
 	seasons,
-} from './structs'
+} from './structure'
 
 /**
  * Generate a character data object based on fetched Wiki HTML
