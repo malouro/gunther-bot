@@ -1,4 +1,4 @@
-import { ArgumentType, CommandoClient } from 'discord.js-commando'
+import { ArgumentType } from 'discord.js-commando'
 import { Characters } from '../../data'
 import {
 	SDVCharacterData,
@@ -6,9 +6,10 @@ import {
 	SDVCharacterList,
 } from '../../data/structure'
 import { formatCharacterName } from '../../utils'
+import GuntherClient from '../client'
 
 export default class CharacterArgType extends ArgumentType {
-	constructor(client: CommandoClient) {
+	constructor(client: GuntherClient) {
 		super(client, 'sdv-character')
 	}
 

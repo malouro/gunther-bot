@@ -1,4 +1,4 @@
-import { ArgumentType, CommandoClient } from 'discord.js-commando'
+import { ArgumentType } from 'discord.js-commando'
 import {
 	daysOfSeason,
 	SDVCalendarDate,
@@ -6,9 +6,10 @@ import {
 	seasons,
 	seasonShorthands,
 } from '../../data/structure'
+import GuntherClient from '../client'
 
 export default class DateArgType extends ArgumentType {
-	constructor(client: CommandoClient) {
+	constructor(client: GuntherClient) {
 		super(client, 'sdv-date')
 	}
 
