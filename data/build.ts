@@ -40,9 +40,9 @@ const yargv = yargs(process.argv.slice(2))
 const { b: buildType, t: inTestMode } = yargv
 
 const autoGenWarning =
-	'/*\
-WARNING: This file and its subsequent imports are auto-generated at build time.\
-Do not edit manually.\
+	'/* \n\
+WARNING: This file and its subsequent imports are auto-generated at build time.\n\
+Do not edit manually. \n\
 */'
 
 export async function buildCharacters(

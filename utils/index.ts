@@ -16,10 +16,10 @@ export function getWikiUrl(term: string): string {
 }
 
 /**
- * Returns a URL to a character's avatar
+ * Returns a URL to a Wiki image
  * @param imgSrc `src` attribute on the <img>
  */
-export function getAvatarUrl(imgSrc: string): string {
+export function getImageUrl(imgSrc: string): string {
 	return `${baseWikiUrl}${imgSrc[0] === '/' ? imgSrc : '/' + imgSrc}`
 }
 

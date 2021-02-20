@@ -1,49 +1,81 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="client-nojs">
+
 <head>
-<meta charset="UTF-8" /><script type="ee8e277aa83559d6e57a07bd-text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"4b66539c25",applicationID:"359151563"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(6),c=e(7),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(8);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(5),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],4:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],5:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],6:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],7:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],8:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(6),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!x++){var e=b.info=NREUM.info,t=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(y,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+b.offset],null,"api"),c("timing",["load",n]);var r=p.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===p.readyState&&o()}function o(){c("mark",["domContent",a()+b.offset],null,"api")}var a=e(2),c=e("handle"),f=e(6),u=e("ee"),s=e(4),d=window,p=d.document,l="addEventListener",m="attachEvent",v=d.XMLHttpRequest,g=v&&v.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:v,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var w=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1198.min.js"},h=v&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),b=t.exports={offset:a.getLastTimestamp(),now:a,origin:w,features:{},xhrWrappable:h,userAgent:s};e(1),e(3),p[l]?(p[l]("DOMContentLoaded",o,!1),d[l]("load",r,!1)):(p[m]("onreadystatechange",i),d[m]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var x=0},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(7),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
-<title>Calendar - Stardew Valley Wiki</title>
-<script type="ee8e277aa83559d6e57a07bd-text/javascript">document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
-<script type="ee8e277aa83559d6e57a07bd-text/javascript">window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+	<meta charset="UTF-8" />
+	<script
+		type="ee8e277aa83559d6e57a07bd-text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"4b66539c25",applicationID:"359151563"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(6),c=e(7),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(8);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(5),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,w=["click","keydown","mousedown","pointerdown","touchstart"];w.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],4:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],5:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],6:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],7:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],8:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?u(e,f,a):a()}function n(n,r,i,o,a){if(a!==!1&&(a=!0),!l.aborted||o){e&&a&&e(n,r,i);for(var c=t(i),f=v(n),u=f.length,s=0;s<u;s++)f[s].apply(c,r);var p=d[h[n]];return p&&p.push([b,n,r,c]),c}}function o(e,t){y[e]=v(e).concat(t)}function m(e,t){var n=y[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return y[e]||[]}function g(e){return p[e]=p[e]||i(n)}function w(e,t){s(e,function(e,n){t=t||"feature",h[n]=t,t in d||(d[t]=[])})}var y={},h={},b={on:o,addEventListener:o,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:w,abort:c,aborted:!1};return b}function o(e){return u(e,f,a)}function a(){return new r}function c(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var f="nr@context",u=e("gos"),s=e(6),d={},p={},l=t.exports=i();t.exports.getOrSetContext=o,l.backlog=d},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!x++){var e=b.info=NREUM.info,t=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(y,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+b.offset],null,"api"),c("timing",["load",n]);var r=p.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===p.readyState&&o()}function o(){c("mark",["domContent",a()+b.offset],null,"api")}var a=e(2),c=e("handle"),f=e(6),u=e("ee"),s=e(4),d=window,p=d.document,l="addEventListener",m="attachEvent",v=d.XMLHttpRequest,g=v&&v.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:v,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var w=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1198.min.js"},h=v&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),b=t.exports={offset:a.getLastTimestamp(),now:a,origin:w,features:{},xhrWrappable:h,userAgent:s};e(1),e(3),p[l]?(p[l]("DOMContentLoaded",o,!1),d[l]("load",r,!1)):(p[m]("onreadystatechange",i),d[m]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var x=0},{}],"wrap-function":[function(e,t,n){function r(e,t){function n(t,n,r,f,u){function nrWrapper(){var o,a,s,p;try{a=this,o=d(arguments),s="function"==typeof r?r(o,a):r||{}}catch(l){i([l,"",[o,a,f],s],e)}c(n+"start",[o,a,f],s,u);try{return p=t.apply(a,o)}catch(m){throw c(n+"err",[o,a,m],s,u),m}finally{c(n+"end",[o,a,p],s,u)}}return a(t)?t:(n||(n=""),nrWrapper[p]=t,o(t,nrWrapper,e),nrWrapper)}function r(e,t,r,i,o){r||(r="");var c,f,u,s="-"===r.charAt(0);for(u=0;u<t.length;u++)f=t[u],c=e[f],a(c)||(e[f]=n(c,s?f+r:r,i,f,o))}function c(n,r,o,a){if(!m||t){var c=m;m=!0;try{e.emit(n,r,o,t,a)}catch(f){i([f,n,r,o],e)}m=c}}return e||(e=s),n.inPlace=r,n.flag=p,n}function i(e,t){t||(t=s);try{t.emit("internal-error",e)}catch(n){}}function o(e,t,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(e);return r.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(o){i([o],n)}for(var a in e)l.call(e,a)&&(t[a]=e[a]);return t}function a(e){return!(e&&e instanceof Function&&e.apply&&!e[p])}function c(e,t){var n=t(e);return n[p]=e,o(e,n,s),n}function f(e,t,n){var r=e[t];e[t]=c(r,n)}function u(){for(var e=arguments.length,t=new Array(e),n=0;n<e;++n)t[n]=arguments[n];return t}var s=e("ee"),d=e(7),p="nr@original",l=Object.prototype.hasOwnProperty,m=!1;t.exports=r,t.exports.wrapFunction=c,t.exports.wrapInPlace=f,t.exports.argsToArray=u},{}]},{},["loader"]);</script>
+	<title>Calendar - Stardew Valley Wiki</title>
+	<script
+		type="ee8e277aa83559d6e57a07bd-text/javascript">document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+	<script type="ee8e277aa83559d6e57a07bd-text/javascript">window.RLQ = window.RLQ || []; window.RLQ.push( function () {
 mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"Calendar","wgTitle":"Calendar","wgCurRevisionId":96461,"wgRevisionId":96461,"wgArticleId":3356,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Wall hangings"],"wgBreakFrames":!1,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"Calendar","wgRelevantArticleId":3356,"wgIsProbablyEditable":!1,"wgRestrictionEdit":[],"wgRestrictionMove":[]});mw.loader.implement("user.options",function($,jQuery){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens",function($,jQuery){mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\"});});mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","skins.vector.js"]);
 } );</script>
-<link rel="stylesheet" href="/mediawiki/load.php?debug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.sectionAnchor%7Cmediawiki.skinning.interface%7Cskins.vector.styles&amp;only=styles&amp;skin=vector" />
-<meta name="ResourceLoaderDynamicStyles" content="" />
-<link rel="stylesheet" href="/mediawiki/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=styles&amp;skin=vector" />
-<style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}</style>
-<script async="" src="/mediawiki/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector" type="ee8e277aa83559d6e57a07bd-text/javascript"></script>
-<meta name="generator" content="MediaWiki 1.26.2" />
-<meta name="description" content="The Calendar is a piece of furniture that hangs on a wall.  Right-clicking on the calendar shows all birthdays and Festivals of the current season.  Upcoming weddings are also shown." />
-<meta name="twitter:title" content="Calendar - Stardew Valley Wiki" />
-<meta name="keywords" content="Stardew Valley Wiki, Stardew Valley, Calendar, gift" />
-<link rel="shortcut icon" href="/mediawiki/skins/Vector/stardewimages/favicon.png" />
-<link rel="search" type="application/opensearchdescription+xml" href="/mediawiki/opensearch_desc.php" title="Stardew Valley Wiki (en)" />
-<link rel="EditURI" type="application/rsd+xml" href="https://stardewcommunitywiki.com/mediawiki/api.php?action=rsd" />
-<link rel="copyright" href="http://creativecommons.org/licenses/by-nc-sa/3.0/" />
-<link rel="alternate" type="application/atom+xml" title="Stardew Valley Wiki Atom feed" href="/mediawiki/index.php?title=Special:RecentChanges&amp;feed=atom" />
-<meta property="og:title" content="Calendar - Stardew Valley Wiki" />
+	<link rel="stylesheet"
+		href="/mediawiki/load.php?debug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.sectionAnchor%7Cmediawiki.skinning.interface%7Cskins.vector.styles&amp;only=styles&amp;skin=vector" />
+	<meta name="ResourceLoaderDynamicStyles" content="" />
+	<link rel="stylesheet"
+		href="/mediawiki/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=styles&amp;skin=vector" />
+	<style>
+		a:lang(ar),
+		a:lang(kk-arab),
+		a:lang(mzn),
+		a:lang(ps),
+		a:lang(ur) {
+			text-decoration: none
+		}
+	</style>
+	<script async=""
+		src="/mediawiki/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector"
+		type="ee8e277aa83559d6e57a07bd-text/javascript"></script>
+	<meta name="generator" content="MediaWiki 1.26.2" />
+	<meta name="description"
+		content="The Calendar is a piece of furniture that hangs on a wall.  Right-clicking on the calendar shows all birthdays and Festivals of the current season.  Upcoming weddings are also shown." />
+	<meta name="twitter:title" content="Calendar - Stardew Valley Wiki" />
+	<meta name="keywords" content="Stardew Valley Wiki, Stardew Valley, Calendar, gift" />
+	<link rel="shortcut icon" href="/mediawiki/skins/Vector/stardewimages/favicon.png" />
+	<link rel="search" type="application/opensearchdescription+xml" href="/mediawiki/opensearch_desc.php"
+		title="Stardew Valley Wiki (en)" />
+	<link rel="EditURI" type="application/rsd+xml" href="https://stardewcommunitywiki.com/mediawiki/api.php?action=rsd" />
+	<link rel="copyright" href="http://creativecommons.org/licenses/by-nc-sa/3.0/" />
+	<link rel="alternate" type="application/atom+xml" title="Stardew Valley Wiki Atom feed"
+		href="/mediawiki/index.php?title=Special:RecentChanges&amp;feed=atom" />
+	<meta property="og:title" content="Calendar - Stardew Valley Wiki" />
 
-<meta property="og:type" content="article" />
+	<meta property="og:type" content="article" />
 
-<meta property="og:site_name" content="Stardew Valley Wiki" />
+	<meta property="og:site_name" content="Stardew Valley Wiki" />
 
-<!--[if lt IE 7]><style type="text/css">body{behavior:url("/mediawiki/skins/Vector/csshover.min.htc")}</style><![endif]-->
+	<!--[if lt IE 7]><style type="text/css">body{behavior:url("/mediawiki/skins/Vector/csshover.min.htc")}</style><![endif]-->
 </head>
+
 <body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-Calendar skin-vector action-view">
-		<div id="mw-page-base" class="noprint"></div>
-		<div id="mw-head-base" class="noprint"></div>
-		<div id="contentwrapper"><div id="adspaceholder"></div>
+	<div id="mw-page-base" class="noprint"></div>
+	<div id="mw-head-base" class="noprint"></div>
+	<div id="contentwrapper">
+		<div id="adspaceholder"></div>
 		<div id="content" class="mw-body" role="main">
 			<a id="top"></a>
 
-							<div id="siteNotice"><div id="localNotice" lang="en" dir="ltr"><p>We are in the process of transferring the hosting and maintenance responsibilities of the wiki from Chucklefish to ConcernedApe, which is why the wiki will temporarily be hosted at <a href="/Stardew_Valley_Wiki" title="Stardew Valley Wiki">stardewcommunitywiki.com</a>. The official wiki will resume at <a rel="nofollow" target="_blank" class="external text" href="https://stardewvalleywiki.com">stardewvalleywiki.com</a> and will be hosted going forward by ConcernedApe from February 16th, 2021.
-</p></div></div>
-						<div class="mw-indicators">
-</div>
+			<div id="siteNotice">
+				<div id="localNotice" lang="en" dir="ltr">
+					<p>We are in the process of transferring the hosting and maintenance responsibilities of the wiki from
+						Chucklefish to ConcernedApe, which is why the wiki will temporarily be hosted at <a
+							href="/Stardew_Valley_Wiki" title="Stardew Valley Wiki">stardewcommunitywiki.com</a>. The official wiki
+						will resume at <a rel="nofollow" target="_blank" class="external text"
+							href="https://stardewvalleywiki.com">stardewvalleywiki.com</a> and will be hosted going forward by
+						ConcernedApe from February 16th, 2021.
+					</p>
+				</div>
+			</div>
+			<div class="mw-indicators">
+			</div>
 			<div id="mobilelogo"></div>
-			<div style="width:100%;"><div class="responsiveadtop" style="width: 100%; text-align:center; height: 100%; margin: auto; background-color: rgba(255, 255, 255, 0.58); margin-top:-10px; margin-bottom:10px;">
-<div id="stardew_top_responsive" style="max-height:90px;"></div>
-<script type="ee8e277aa83559d6e57a07bd-text/javascript">
+			<div style="width:100%;">
+				<div class="responsiveadtop"
+					style="width: 100%; text-align:center; height: 100%; margin: auto; background-color: rgba(255, 255, 255, 0.58); margin-top:-10px; margin-bottom:10px;">
+					<div id="stardew_top_responsive" style="max-height:90px;"></div>
+					<script type="ee8e277aa83559d6e57a07bd-text/javascript">
 nads.createAd('stardew_top_responsive',
     {
         sizes: [],
@@ -61,736 +93,1289 @@ nads.createAd('stardew_top_responsive',
     }
 );
 </script>
-</div><div class="sociallinks">
-<a title="Twitter" target=_blank href="https://twitter.com/share?url=https://stardewcommunitywiki.com/Calendar" onclick="if (!window.__cfRLUnblockHandlers) return false; javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" data-cf-modified-ee8e277aa83559d6e57a07bd-=""><img border="0" alt="Twitter" src="/mediawiki/skins/Vector/stardewimages/socialicons/Icon_Twitter.png" width="23" height="23"></a>
-<a title="Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://stardewcommunitywiki.com/Calendar" target="_blank" onclick="if (!window.__cfRLUnblockHandlers) return false; javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" data-cf-modified-ee8e277aa83559d6e57a07bd-=""><img border="0" alt="Facebook" src="/mediawiki/skins/Vector/stardewimages/socialicons/Icon_Facebook.png" width="23" height="23"></a>
-<a title="Tumblr" href="https://www.tumblr.com/share/link?url=https://stardewcommunitywiki.com/Calendar" target="_blank" onclick="if (!window.__cfRLUnblockHandlers) return false; javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" data-cf-modified-ee8e277aa83559d6e57a07bd-=""><img border="0" alt="Tumblr" src="/mediawiki/skins/Vector/stardewimages/socialicons/Icon_Tumblr.png" width="23" height="23"></a>
-<a title="Reddit" href="https://www.reddit.com/submit?url=https://stardewcommunitywiki.com/Calendar" target="_blank" onclick="if (!window.__cfRLUnblockHandlers) return false; javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" data-cf-modified-ee8e277aa83559d6e57a07bd-=""><img border="0" alt="Reddit" src="/mediawiki/skins/Vector/stardewimages/socialicons/Icon_Reddit.png" width="23" height="23"></a>
-</div></div><div><div id="googlead">
-</div></div>
-			<h1 id="firstHeading" class="firstHeading" lang="en">Calendar</h1>
-									<div id="bodyContent" class="mw-body-content">
-									<div id="siteSub">From Stardew Valley Wiki</div>
-								<div id="contentSub"></div>
-												<div id="jump-to-nav" class="mw-jump">
-					Jump to:					<a href="#mw-head">navigation</a>, 					<a href="#p-search">search</a>
 				</div>
-				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="infoboxborder">
-<table id="infoboxtable">
-<tr>
-<td colspan="2" id="infoboxheader">Calendar
-</td></tr>
-<tr>
-<td colspan="2" style="padding-bottom: 5px; text-align: center;"><a href="/File:Calendar.png" class="image"><img alt="Calendar.png" src="/mediawiki/images/1/15/Calendar.png" width="39" height="54" /></a>
-</td></tr>
-<tr>
-<td colspan="2" id="infoboxdetail" style="text-align: center; font-style: italic;">Can be placed inside your house.
-</td></tr>
-<tr>
-<td colspan="2" id="infoboxsection" style="text-align: center;">Information
-</td></tr>
-<tr>
-<td id="infoboxsection" style="text-align: center;">Source
-</td>
-<td id="infoboxsection" style="text-align: center;"> Price
-</td></tr>
-<tr>
-<td id="infoboxdetail" class="no-wrap" style="background-color: rgba(3,160,7,0.3); border: 1px solid rgba(3,160,7,0.4);"><img alt="Robin Icon.png" src="/mediawiki/images/thumb/d/d1/Robin_Icon.png/24px-Robin_Icon.png" width="24" height="24" srcset="/mediawiki/images/d/d1/Robin_Icon.png 1.5x, /mediawiki/images/d/d1/Robin_Icon.png 2x" /> <a href="/Carpenter%27s_Shop" title="Carpenter's Shop">Carpenter's Shop</a>:
-</td>
-<td id="infoboxdetail"><span class="no-wrap" data-sort-value="2000"><img alt="Gold.png" src="/mediawiki/images/thumb/1/10/Gold.png/18px-Gold.png" width="18" height="18" srcset="/mediawiki/images/thumb/1/10/Gold.png/27px-Gold.png 1.5x, /mediawiki/images/thumb/1/10/Gold.png/36px-Gold.png 2x" />2,000g</span>
-</td></tr>
-<tr>
-<td id="infoboxdetail" class="no-wrap" style="background-color: rgba(3,160,7,0.3); border: 1px solid rgba(3,160,7,0.4);"><img alt="Furniture Catalogue.png" src="/mediawiki/images/thumb/e/e8/Furniture_Catalogue.png/24px-Furniture_Catalogue.png" width="24" height="24" srcset="/mediawiki/images/thumb/e/e8/Furniture_Catalogue.png/36px-Furniture_Catalogue.png 1.5x, /mediawiki/images/thumb/e/e8/Furniture_Catalogue.png/48px-Furniture_Catalogue.png 2x" /> <a href="/Furniture_Catalogue" title="Furniture Catalogue">Furniture Catalogue</a>:
-</td>
-<td id="infoboxdetail"><span class="no-wrap" data-sort-value="0"><img alt="Gold.png" src="/mediawiki/images/thumb/1/10/Gold.png/18px-Gold.png" width="18" height="18" srcset="/mediawiki/images/thumb/1/10/Gold.png/27px-Gold.png 1.5x, /mediawiki/images/thumb/1/10/Gold.png/36px-Gold.png 2x" />0g</span>
-</td></tr>
-<tr>
-<td id="infoboxsection">Other Source(s):
-</td>
-<td id="infoboxdetail">Front of <a href="/Pierre%27s_General_Store" title="Pierre's General Store">Pierre's General Store</a>
-</td></tr>
-<tr>
-<td id="infoboxsection">Sell Price:
-</td>
-<td id="infoboxdetail">Cannot be sold
-</td></tr>
-</table></div><!-- WikiSEO:og:image; -->
-<p>The <b>Calendar</b> is a piece of <a href="/Furniture" title="Furniture">furniture</a> that hangs on a wall.  <span style="display:inline-block; padding:0px 3px; border-radius:4px; border-style:outset; background:#FFFFFF; background: -webkit-linear-gradient(#FCFCFC, #E0E0E0); background: linear-gradient(#FCFCFC, #E0E0E0);">Right-clicking</span> on the calendar shows all birthdays and <a href="/Festivals" title="Festivals">Festivals</a> of the current <a href="/Seasons" title="Seasons">season</a>.  Upcoming <a href="/Marriage" title="Marriage">weddings</a> are also shown.
-</p><p>A calendar can be found on the front of <a href="/Pierre%27s_General_Store" title="Pierre's General Store">Pierre's General Store</a> (to the left of the door) next to the <a href="/Quests#Help_Wanted_Quests" title="Quests">'Help Wanted' board</a>.  You can also purchase a calendar from <a href="/Robin" title="Robin">Robin</a> at the <a href="/Carpenter%27s_Shop" title="Carpenter's Shop">Carpenter's Shop</a> for <span class="no-wrap" data-sort-value="2000"><img alt="Gold.png" src="/mediawiki/images/thumb/1/10/Gold.png/18px-Gold.png" width="18" height="18" srcset="/mediawiki/images/thumb/1/10/Gold.png/27px-Gold.png 1.5x, /mediawiki/images/thumb/1/10/Gold.png/36px-Gold.png 2x" />2,000g</span>, that can be hung on the wall of your <a href="/Farmhouse" title="Farmhouse">Farmhouse</a>.
-</p><p>The calendar is also available from the <a href="/Furniture_Catalogue" title="Furniture Catalogue">Furniture Catalogue</a> for <span class="no-wrap" data-sort-value="0"><img alt="Gold.png" src="/mediawiki/images/thumb/1/10/Gold.png/18px-Gold.png" width="18" height="18" srcset="/mediawiki/images/thumb/1/10/Gold.png/27px-Gold.png 1.5x, /mediawiki/images/thumb/1/10/Gold.png/36px-Gold.png 2x" />0g</span>.
-</p>
-<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
-<ul>
-<li class="toclevel-1 tocsection-1"><a href="#Spring"><span class="tocnumber">1</span> <span class="toctext">Spring</span></a>
-<ul>
-<li class="toclevel-2"><a href="#Festivals"><span class="tocnumber">1.1</span> <span class="toctext">Festivals</span></a></li>
-<li class="toclevel-2"><a href="#Other"><span class="tocnumber">1.2</span> <span class="toctext">Other</span></a></li>
-<li class="toclevel-2"><a href="#Birthdays"><span class="tocnumber">1.3</span> <span class="toctext">Birthdays</span></a></li>
-</ul>
-</li>
-<li class="toclevel-1 tocsection-2"><a href="#Summer"><span class="tocnumber">2</span> <span class="toctext">Summer</span></a>
-<ul>
-<li class="toclevel-2"><a href="#Festivals_2"><span class="tocnumber">2.1</span> <span class="toctext">Festivals</span></a></li>
-<li class="toclevel-2"><a href="#Other_2"><span class="tocnumber">2.2</span> <span class="toctext">Other</span></a></li>
-<li class="toclevel-2"><a href="#Birthdays_2"><span class="tocnumber">2.3</span> <span class="toctext">Birthdays</span></a></li>
-</ul>
-</li>
-<li class="toclevel-1 tocsection-3"><a href="#Fall"><span class="tocnumber">3</span> <span class="toctext">Fall</span></a>
-<ul>
-<li class="toclevel-2"><a href="#Festivals_3"><span class="tocnumber">3.1</span> <span class="toctext">Festivals</span></a></li>
-<li class="toclevel-2"><a href="#Other_3"><span class="tocnumber">3.2</span> <span class="toctext">Other</span></a></li>
-<li class="toclevel-2"><a href="#Birthdays_3"><span class="tocnumber">3.3</span> <span class="toctext">Birthdays</span></a></li>
-</ul>
-</li>
-<li class="toclevel-1 tocsection-4"><a href="#Winter"><span class="tocnumber">4</span> <span class="toctext">Winter</span></a>
-<ul>
-<li class="toclevel-2"><a href="#Festivals_4"><span class="tocnumber">4.1</span> <span class="toctext">Festivals</span></a></li>
-<li class="toclevel-2"><a href="#Birthdays_4"><span class="tocnumber">4.2</span> <span class="toctext">Birthdays</span></a></li>
-</ul>
-</li>
-<li class="toclevel-1 tocsection-5"><a href="#Trivia"><span class="tocnumber">5</span> <span class="toctext">Trivia</span></a></li>
-<li class="toclevel-1 tocsection-6"><a href="#History"><span class="tocnumber">6</span> <span class="toctext">History</span></a></li>
-</ul>
-</div>
+				<div class="sociallinks">
+					<a title="Twitter" target=_blank
+						href="https://twitter.com/share?url=https://stardewcommunitywiki.com/Calendar"
+						onclick="if (!window.__cfRLUnblockHandlers) return false; javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;"
+						data-cf-modified-ee8e277aa83559d6e57a07bd-=""><img border="0" alt="Twitter"
+							src="/mediawiki/skins/Vector/stardewimages/socialicons/Icon_Twitter.png" width="23" height="23"></a>
+					<a title="Facebook"
+						href="https://www.facebook.com/sharer/sharer.php?u=https://stardewcommunitywiki.com/Calendar"
+						target="_blank"
+						onclick="if (!window.__cfRLUnblockHandlers) return false; javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;"
+						data-cf-modified-ee8e277aa83559d6e57a07bd-=""><img border="0" alt="Facebook"
+							src="/mediawiki/skins/Vector/stardewimages/socialicons/Icon_Facebook.png" width="23" height="23"></a>
+					<a title="Tumblr" href="https://www.tumblr.com/share/link?url=https://stardewcommunitywiki.com/Calendar"
+						target="_blank"
+						onclick="if (!window.__cfRLUnblockHandlers) return false; javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;"
+						data-cf-modified-ee8e277aa83559d6e57a07bd-=""><img border="0" alt="Tumblr"
+							src="/mediawiki/skins/Vector/stardewimages/socialicons/Icon_Tumblr.png" width="23" height="23"></a>
+					<a title="Reddit" href="https://www.reddit.com/submit?url=https://stardewcommunitywiki.com/Calendar"
+						target="_blank"
+						onclick="if (!window.__cfRLUnblockHandlers) return false; javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;"
+						data-cf-modified-ee8e277aa83559d6e57a07bd-=""><img border="0" alt="Reddit"
+							src="/mediawiki/skins/Vector/stardewimages/socialicons/Icon_Reddit.png" width="23" height="23"></a>
+				</div>
+			</div>
+			<div>
+				<div id="googlead">
+				</div>
+			</div>
+			<h1 id="firstHeading" class="firstHeading" lang="en">Calendar</h1>
+			<div id="bodyContent" class="mw-body-content">
+				<div id="siteSub">From Stardew Valley Wiki</div>
+				<div id="contentSub"></div>
+				<div id="jump-to-nav" class="mw-jump">
+					Jump to: <a href="#mw-head">navigation</a>, <a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr">
+					<div id="infoboxborder">
+						<table id="infoboxtable">
+							<tr>
+								<td colspan="2" id="infoboxheader">Calendar
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" style="padding-bottom: 5px; text-align: center;"><a href="/File:Calendar.png"
+										class="image"><img alt="Calendar.png" src="/mediawiki/images/1/15/Calendar.png" width="39"
+											height="54" /></a>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" id="infoboxdetail" style="text-align: center; font-style: italic;">Can be placed inside
+									your house.
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" id="infoboxsection" style="text-align: center;">Information
+								</td>
+							</tr>
+							<tr>
+								<td id="infoboxsection" style="text-align: center;">Source
+								</td>
+								<td id="infoboxsection" style="text-align: center;"> Price
+								</td>
+							</tr>
+							<tr>
+								<td id="infoboxdetail" class="no-wrap"
+									style="background-color: rgba(3,160,7,0.3); border: 1px solid rgba(3,160,7,0.4);"><img
+										alt="Robin Icon.png" src="/mediawiki/images/thumb/d/d1/Robin_Icon.png/24px-Robin_Icon.png"
+										width="24" height="24"
+										srcset="/mediawiki/images/d/d1/Robin_Icon.png 1.5x, /mediawiki/images/d/d1/Robin_Icon.png 2x" /> <a
+										href="/Carpenter%27s_Shop" title="Carpenter's Shop">Carpenter's Shop</a>:
+								</td>
+								<td id="infoboxdetail"><span class="no-wrap" data-sort-value="2000"><img alt="Gold.png"
+											src="/mediawiki/images/thumb/1/10/Gold.png/18px-Gold.png" width="18" height="18"
+											srcset="/mediawiki/images/thumb/1/10/Gold.png/27px-Gold.png 1.5x, /mediawiki/images/thumb/1/10/Gold.png/36px-Gold.png 2x" />2,000g</span>
+								</td>
+							</tr>
+							<tr>
+								<td id="infoboxdetail" class="no-wrap"
+									style="background-color: rgba(3,160,7,0.3); border: 1px solid rgba(3,160,7,0.4);"><img
+										alt="Furniture Catalogue.png"
+										src="/mediawiki/images/thumb/e/e8/Furniture_Catalogue.png/24px-Furniture_Catalogue.png" width="24"
+										height="24"
+										srcset="/mediawiki/images/thumb/e/e8/Furniture_Catalogue.png/36px-Furniture_Catalogue.png 1.5x, /mediawiki/images/thumb/e/e8/Furniture_Catalogue.png/48px-Furniture_Catalogue.png 2x" />
+									<a href="/Furniture_Catalogue" title="Furniture Catalogue">Furniture Catalogue</a>:
+								</td>
+								<td id="infoboxdetail"><span class="no-wrap" data-sort-value="0"><img alt="Gold.png"
+											src="/mediawiki/images/thumb/1/10/Gold.png/18px-Gold.png" width="18" height="18"
+											srcset="/mediawiki/images/thumb/1/10/Gold.png/27px-Gold.png 1.5x, /mediawiki/images/thumb/1/10/Gold.png/36px-Gold.png 2x" />0g</span>
+								</td>
+							</tr>
+							<tr>
+								<td id="infoboxsection">Other Source(s):
+								</td>
+								<td id="infoboxdetail">Front of <a href="/Pierre%27s_General_Store"
+										title="Pierre's General Store">Pierre's General Store</a>
+								</td>
+							</tr>
+							<tr>
+								<td id="infoboxsection">Sell Price:
+								</td>
+								<td id="infoboxdetail">Cannot be sold
+								</td>
+							</tr>
+						</table>
+					</div><!-- WikiSEO:og:image; -->
+					<p>The <b>Calendar</b> is a piece of <a href="/Furniture" title="Furniture">furniture</a> that hangs on a
+						wall. <span
+							style="display:inline-block; padding:0px 3px; border-radius:4px; border-style:outset; background:#FFFFFF; background: -webkit-linear-gradient(#FCFCFC, #E0E0E0); background: linear-gradient(#FCFCFC, #E0E0E0);">Right-clicking</span>
+						on the calendar shows all birthdays and <a href="/Festivals" title="Festivals">Festivals</a> of the current
+						<a href="/Seasons" title="Seasons">season</a>. Upcoming <a href="/Marriage" title="Marriage">weddings</a>
+						are also shown.
+					</p>
+					<p>A calendar can be found on the front of <a href="/Pierre%27s_General_Store"
+							title="Pierre's General Store">Pierre's General Store</a> (to the left of the door) next to the <a
+							href="/Quests#Help_Wanted_Quests" title="Quests">'Help Wanted' board</a>. You can also purchase a calendar
+						from <a href="/Robin" title="Robin">Robin</a> at the <a href="/Carpenter%27s_Shop"
+							title="Carpenter's Shop">Carpenter's Shop</a> for <span class="no-wrap" data-sort-value="2000"><img
+								alt="Gold.png" src="/mediawiki/images/thumb/1/10/Gold.png/18px-Gold.png" width="18" height="18"
+								srcset="/mediawiki/images/thumb/1/10/Gold.png/27px-Gold.png 1.5x, /mediawiki/images/thumb/1/10/Gold.png/36px-Gold.png 2x" />2,000g</span>,
+						that can be hung on the wall of your <a href="/Farmhouse" title="Farmhouse">Farmhouse</a>.
+					</p>
+					<p>The calendar is also available from the <a href="/Furniture_Catalogue"
+							title="Furniture Catalogue">Furniture Catalogue</a> for <span class="no-wrap" data-sort-value="0"><img
+								alt="Gold.png" src="/mediawiki/images/thumb/1/10/Gold.png/18px-Gold.png" width="18" height="18"
+								srcset="/mediawiki/images/thumb/1/10/Gold.png/27px-Gold.png 1.5x, /mediawiki/images/thumb/1/10/Gold.png/36px-Gold.png 2x" />0g</span>.
+					</p>
+					<div id="toc" class="toc">
+						<div id="toctitle">
+							<h2>Contents</h2>
+						</div>
+						<ul>
+							<li class="toclevel-1 tocsection-1"><a href="#Spring"><span class="tocnumber">1</span> <span
+										class="toctext">Spring</span></a>
+								<ul>
+									<li class="toclevel-2"><a href="#Festivals"><span class="tocnumber">1.1</span> <span
+												class="toctext">Festivals</span></a></li>
+									<li class="toclevel-2"><a href="#Other"><span class="tocnumber">1.2</span> <span
+												class="toctext">Other</span></a></li>
+									<li class="toclevel-2"><a href="#Birthdays"><span class="tocnumber">1.3</span> <span
+												class="toctext">Birthdays</span></a></li>
+								</ul>
+							</li>
+							<li class="toclevel-1 tocsection-2"><a href="#Summer"><span class="tocnumber">2</span> <span
+										class="toctext">Summer</span></a>
+								<ul>
+									<li class="toclevel-2"><a href="#Festivals_2"><span class="tocnumber">2.1</span> <span
+												class="toctext">Festivals</span></a></li>
+									<li class="toclevel-2"><a href="#Other_2"><span class="tocnumber">2.2</span> <span
+												class="toctext">Other</span></a></li>
+									<li class="toclevel-2"><a href="#Birthdays_2"><span class="tocnumber">2.3</span> <span
+												class="toctext">Birthdays</span></a></li>
+								</ul>
+							</li>
+							<li class="toclevel-1 tocsection-3"><a href="#Fall"><span class="tocnumber">3</span> <span
+										class="toctext">Fall</span></a>
+								<ul>
+									<li class="toclevel-2"><a href="#Festivals_3"><span class="tocnumber">3.1</span> <span
+												class="toctext">Festivals</span></a></li>
+									<li class="toclevel-2"><a href="#Other_3"><span class="tocnumber">3.2</span> <span
+												class="toctext">Other</span></a></li>
+									<li class="toclevel-2"><a href="#Birthdays_3"><span class="tocnumber">3.3</span> <span
+												class="toctext">Birthdays</span></a></li>
+								</ul>
+							</li>
+							<li class="toclevel-1 tocsection-4"><a href="#Winter"><span class="tocnumber">4</span> <span
+										class="toctext">Winter</span></a>
+								<ul>
+									<li class="toclevel-2"><a href="#Festivals_4"><span class="tocnumber">4.1</span> <span
+												class="toctext">Festivals</span></a></li>
+									<li class="toclevel-2"><a href="#Birthdays_4"><span class="tocnumber">4.2</span> <span
+												class="toctext">Birthdays</span></a></li>
+								</ul>
+							</li>
+							<li class="toclevel-1 tocsection-5"><a href="#Trivia"><span class="tocnumber">5</span> <span
+										class="toctext">Trivia</span></a></li>
+							<li class="toclevel-1 tocsection-6"><a href="#History"><span class="tocnumber">6</span> <span
+										class="toctext">History</span></a></li>
+						</ul>
+					</div>
 
-<h2><span class="mw-headline" id="Spring"><a href="/Spring" title="Spring">Spring</a></span></h2>
-<div id="calendar"><img alt="Calendar Spring.png" src="/mediawiki/images/6/6d/Calendar_Spring.png" width="480" height="336" />
-<table id="calendartable" style="border-spacing:0; padding:0; margin: 65px 0 0 17px;">
-<tr>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Kent" title="Kent">Kent</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Lewis" title="Lewis">Lewis</a></td>
-</tr>
-<tr>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Vincent" title="Vincent">Vincent</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Egg_Festival" title="Egg Festival">Egg Festival</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Haley" title="Haley">Haley</a></td>
-</tr>
-<tr>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Pam" title="Pam">Pam</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Shane" title="Shane">Shane</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-</tr>
-<tr>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Flower_Dance" title="Flower Dance">Flower Dance</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Pierre" title="Pierre">Pierre</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Emily" title="Emily">Emily</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-</tr>
-</table></div>
-<table>
+					<h2><span class="mw-headline" id="Spring"><a href="/Spring" title="Spring">Spring</a></span></h2>
+					<div id="calendar"><img alt="Calendar Spring.png" src="/mediawiki/images/6/6d/Calendar_Spring.png" width="480"
+							height="336" />
+						<table id="calendartable" style="border-spacing:0; padding:0; margin: 65px 0 0 17px;">
+							<tr>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Kent" title="Kent">Kent</a>
+								</td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Lewis" title="Lewis">Lewis</a>
+								</td>
+							</tr>
+							<tr>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Vincent"
+										title="Vincent">Vincent</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Egg_Festival"
+										title="Egg Festival">Egg Festival</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Haley" title="Haley">Haley</a>
+								</td>
+							</tr>
+							<tr>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Pam" title="Pam">Pam</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Shane" title="Shane">Shane</a>
+								</td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+							</tr>
+							<tr>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Flower_Dance"
+										title="Flower Dance">Flower Dance</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Pierre"
+										title="Pierre">Pierre</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Emily" title="Emily">Emily</a>
+								</td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+							</tr>
+						</table>
+					</div>
+					<table>
 
-<tr>
-<td style="vertical-align: top;">
-<h3><span class="mw-headline" id="Festivals">Festivals</span></h3>
-<table class="wikitable" id="roundedborder">
-<tr>
-<th>Day
-</th>
-<th>Name
-</th></tr>
-<tr>
-<td>13</td>
-<td><p><img alt="Calendar Flag Anim.gif" src="/mediawiki/images/4/47/Calendar_Flag_Anim.gif" width="32" height="32" /> <a href="/Egg_Festival" title="Egg Festival">Egg Festival</a></p>
-</td></tr>
-<tr>
-<td>24</td>
-<td><p><img alt="Calendar Flag Anim.gif" src="/mediawiki/images/4/47/Calendar_Flag_Anim.gif" width="32" height="32" /> <a href="/Flower_Dance" title="Flower Dance">Flower Dance</a></p>
-</td></tr></table>
-<h3><span class="mw-headline" id="Other">Other</span></h3>
-<table class="wikitable" id="roundedborder">
+						<tr>
+							<td style="vertical-align: top;">
+								<h3><span class="mw-headline" id="Festivals">Festivals</span></h3>
+								<table class="wikitable" id="roundedborder">
+									<tr>
+										<th>Day
+										</th>
+										<th>Name
+										</th>
+									</tr>
+									<tr>
+										<td>13</td>
+										<td>
+											<p><img alt="Calendar Flag Anim.gif" src="/mediawiki/images/4/47/Calendar_Flag_Anim.gif"
+													width="32" height="32" /> <a href="/Egg_Festival" title="Egg Festival">Egg Festival</a></p>
+										</td>
+									</tr>
+									<tr>
+										<td>24</td>
+										<td>
+											<p><img alt="Calendar Flag Anim.gif" src="/mediawiki/images/4/47/Calendar_Flag_Anim.gif"
+													width="32" height="32" /> <a href="/Flower_Dance" title="Flower Dance">Flower Dance</a></p>
+										</td>
+									</tr>
+								</table>
+								<h3><span class="mw-headline" id="Other">Other</span></h3>
+								<table class="wikitable" id="roundedborder">
 
-<tr>
-<th>Day
-</th>
-<th>Event
-</th></tr>
-<tr>
-<td>15-18 </td>
-<td><a href="/Salmonberry" title="Salmonberry">Salmonberry</a> Season
-</td></tr></table>
-</td>
-<td style="width: 1em;">
-</td>
-<td>
-<h3><span class="mw-headline" id="Birthdays">Birthdays</span></h3>
-<table class="wikitable sortable" id="roundedborder">
-<tr>
-<th>Day
-</th>
-<th>Villager
-</th></tr>
-<tr>
-<td>04</td>
-<td><img alt="Kent Icon.png" src="/mediawiki/images/8/86/Kent_Icon.png" width="32" height="32" /> <a href="/Kent" title="Kent">Kent</a>
-</td></tr>
-<tr>
-<td>07</td>
-<td><img alt="Lewis Icon.png" src="/mediawiki/images/b/b6/Lewis_Icon.png" width="32" height="32" /> <a href="/Lewis" title="Lewis">Lewis</a>
-</td></tr>
-<tr>
-<td>10</td>
-<td><img alt="Vincent Icon.png" src="/mediawiki/images/0/0b/Vincent_Icon.png" width="32" height="32" /> <a href="/Vincent" title="Vincent">Vincent</a>
-</td></tr>
-<tr>
-<td>14</td>
-<td><img alt="Haley Icon.png" src="/mediawiki/images/f/f7/Haley_Icon.png" width="32" height="32" /> <a href="/Haley" title="Haley">Haley</a>
-</td></tr>
-<tr>
-<td>18</td>
-<td><img alt="Pam Icon.png" src="/mediawiki/images/b/b6/Pam_Icon.png" width="32" height="32" /> <a href="/Pam" title="Pam">Pam</a>
-</td></tr>
-<tr>
-<td>20</td>
-<td><img alt="Shane Icon.png" src="/mediawiki/images/b/b4/Shane_Icon.png" width="32" height="32" /> <a href="/Shane" title="Shane">Shane</a>
-</td></tr>
-<tr>
-<td>26</td>
-<td><img alt="Pierre Icon.png" src="/mediawiki/images/c/cf/Pierre_Icon.png" width="32" height="32" /> <a href="/Pierre" title="Pierre">Pierre</a>
-</td></tr>
-<tr>
-<td>27</td>
-<td><img alt="Emily Icon.png" src="/mediawiki/images/c/c3/Emily_Icon.png" width="32" height="32" /> <a href="/Emily" title="Emily">Emily</a>
-</td></tr></table>
-</td></tr></table>
-<p><br />
-</p>
-<h2><span class="mw-headline" id="Summer"><a href="/Summer" title="Summer">Summer</a></span></h2>
-<p>When you wake up on the third day of summer in the first year, an earthquake occurs that unlocks the <a href="/Railroad" title="Railroad">railroad</a> area that contains the <a href="/Spa" title="Spa">spa</a>.
-</p>
-<div id="calendar"><img alt="Calendar Summer.png" src="/mediawiki/images/e/e6/Calendar_Summer.png" width="480" height="336" />
-<table id="calendartable" style="border-spacing:0; padding:0; margin: 65px 0 0 17px;">
-<tr>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Jas" title="Jas">Jas</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-</tr>
-<tr>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Gus" title="Gus">Gus</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Maru" title="Maru">Maru</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Luau" title="Luau">Luau</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Alex" title="Alex">Alex</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-</tr>
-<tr>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Sam" title="Sam">Sam</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Demetrius" title="Demetrius">Demetrius</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-</tr>
-<tr>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Dwarf" title="Dwarf">Dwarf</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Willy" title="Willy">Willy</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Leo" title="Leo">Leo</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Dance_of_the_Moonlight_Jellies" title="Dance of the Moonlight Jellies">Dance of the Moonlight Jellies</a></td>
-</tr>
-</table></div>
-<table>
+									<tr>
+										<th>Day
+										</th>
+										<th>Event
+										</th>
+									</tr>
+									<tr>
+										<td>15-18 </td>
+										<td><a href="/Salmonberry" title="Salmonberry">Salmonberry</a> Season
+										</td>
+									</tr>
+								</table>
+							</td>
+							<td style="width: 1em;">
+							</td>
+							<td>
+								<h3><span class="mw-headline" id="Birthdays">Birthdays</span></h3>
+								<table class="wikitable sortable" id="roundedborder">
+									<tr>
+										<th>Day
+										</th>
+										<th>Villager
+										</th>
+									</tr>
+									<tr>
+										<td>04</td>
+										<td><img alt="Kent Icon.png" src="/mediawiki/images/8/86/Kent_Icon.png" width="32" height="32" /> <a
+												href="/Kent" title="Kent">Kent</a>
+										</td>
+									</tr>
+									<tr>
+										<td>07</td>
+										<td><img alt="Lewis Icon.png" src="/mediawiki/images/b/b6/Lewis_Icon.png" width="32" height="32" />
+											<a href="/Lewis" title="Lewis">Lewis</a>
+										</td>
+									</tr>
+									<tr>
+										<td>10</td>
+										<td><img alt="Vincent Icon.png" src="/mediawiki/images/0/0b/Vincent_Icon.png" width="32"
+												height="32" /> <a href="/Vincent" title="Vincent">Vincent</a>
+										</td>
+									</tr>
+									<tr>
+										<td>14</td>
+										<td><img alt="Haley Icon.png" src="/mediawiki/images/f/f7/Haley_Icon.png" width="32" height="32" />
+											<a href="/Haley" title="Haley">Haley</a>
+										</td>
+									</tr>
+									<tr>
+										<td>18</td>
+										<td><img alt="Pam Icon.png" src="/mediawiki/images/b/b6/Pam_Icon.png" width="32" height="32" /> <a
+												href="/Pam" title="Pam">Pam</a>
+										</td>
+									</tr>
+									<tr>
+										<td>20</td>
+										<td><img alt="Shane Icon.png" src="/mediawiki/images/b/b4/Shane_Icon.png" width="32" height="32" />
+											<a href="/Shane" title="Shane">Shane</a>
+										</td>
+									</tr>
+									<tr>
+										<td>26</td>
+										<td><img alt="Pierre Icon.png" src="/mediawiki/images/c/cf/Pierre_Icon.png" width="32"
+												height="32" /> <a href="/Pierre" title="Pierre">Pierre</a>
+										</td>
+									</tr>
+									<tr>
+										<td>27</td>
+										<td><img alt="Emily Icon.png" src="/mediawiki/images/c/c3/Emily_Icon.png" width="32" height="32" />
+											<a href="/Emily" title="Emily">Emily</a>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+					<p><br />
+					</p>
+					<h2><span class="mw-headline" id="Summer"><a href="/Summer" title="Summer">Summer</a></span></h2>
+					<p>When you wake up on the third day of summer in the first year, an earthquake occurs that unlocks the <a
+							href="/Railroad" title="Railroad">railroad</a> area that contains the <a href="/Spa" title="Spa">spa</a>.
+					</p>
+					<div id="calendar"><img alt="Calendar Summer.png" src="/mediawiki/images/e/e6/Calendar_Summer.png" width="480"
+							height="336" />
+						<table id="calendartable" style="border-spacing:0; padding:0; margin: 65px 0 0 17px;">
+							<tr>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Jas" title="Jas">Jas</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+							</tr>
+							<tr>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Gus" title="Gus">Gus</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Maru" title="Maru">Maru</a>
+								</td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Luau" title="Luau">Luau</a>
+								</td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Alex" title="Alex">Alex</a>
+								</td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+							</tr>
+							<tr>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Sam" title="Sam">Sam</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Demetrius"
+										title="Demetrius">Demetrius</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+							</tr>
+							<tr>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Dwarf" title="Dwarf">Dwarf</a>
+								</td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Willy" title="Willy">Willy</a>
+								</td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Leo" title="Leo">Leo</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a
+										href="/Dance_of_the_Moonlight_Jellies" title="Dance of the Moonlight Jellies">Dance of the Moonlight
+										Jellies</a></td>
+							</tr>
+						</table>
+					</div>
+					<table>
 
-<tr>
-<td style="vertical-align: top;">
-<h3><span class="mw-headline" id="Festivals_2">Festivals</span></h3>
-<table class="wikitable" id="roundedborder">
-<tr>
-<th>Day
-</th>
-<th>Name
-</th></tr>
-<tr>
-<td>11</td>
-<td><p><a href="/File:Calendar_Flag_Anim.gif" class="image"><img alt="Calendar Flag Anim.gif" src="/mediawiki/images/4/47/Calendar_Flag_Anim.gif" width="32" height="32" /></a> <a href="/Luau" title="Luau">Luau</a></p>
-</td></tr>
-<tr>
-<td>28</td>
-<td><p><a href="/File:Calendar_Flag_Anim.gif" class="image"><img alt="Calendar Flag Anim.gif" src="/mediawiki/images/4/47/Calendar_Flag_Anim.gif" width="32" height="32" /></a> <a href="/Dance_of_the_Moonlight_Jellies" title="Dance of the Moonlight Jellies">Dance of the Moonlight Jellies</a></p>
-</td></tr></table>
-<h3><span class="mw-headline" id="Other_2">Other</span></h3>
-<table class="wikitable" id="roundedborder">
+						<tr>
+							<td style="vertical-align: top;">
+								<h3><span class="mw-headline" id="Festivals_2">Festivals</span></h3>
+								<table class="wikitable" id="roundedborder">
+									<tr>
+										<th>Day
+										</th>
+										<th>Name
+										</th>
+									</tr>
+									<tr>
+										<td>11</td>
+										<td>
+											<p><a href="/File:Calendar_Flag_Anim.gif" class="image"><img alt="Calendar Flag Anim.gif"
+														src="/mediawiki/images/4/47/Calendar_Flag_Anim.gif" width="32" height="32" /></a> <a
+													href="/Luau" title="Luau">Luau</a></p>
+										</td>
+									</tr>
+									<tr>
+										<td>28</td>
+										<td>
+											<p><a href="/File:Calendar_Flag_Anim.gif" class="image"><img alt="Calendar Flag Anim.gif"
+														src="/mediawiki/images/4/47/Calendar_Flag_Anim.gif" width="32" height="32" /></a> <a
+													href="/Dance_of_the_Moonlight_Jellies" title="Dance of the Moonlight Jellies">Dance of the
+													Moonlight Jellies</a></p>
+										</td>
+									</tr>
+								</table>
+								<h3><span class="mw-headline" id="Other_2">Other</span></h3>
+								<table class="wikitable" id="roundedborder">
 
-<tr>
-<th>Day
-</th>
-<th>Event
-</th></tr>
-<tr>
-<td>12-14</td>
-<td>Extra <a href="/Foraging" title="Foraging">forageables</a> at <a href="/The_Beach" title="The Beach">The Beach</a>
-</td></tr></table>
-</td>
-<td style="width: 1em;">
-</td>
-<td>
-<h3><span class="mw-headline" id="Birthdays_2">Birthdays</span></h3>
-<table class="wikitable sortable" id="roundedborder">
-<tr>
-<th>Day
-</th>
-<th>Villager
-</th></tr>
-<tr>
-<td>04</td>
-<td><img alt="Jas Icon.png" src="/mediawiki/images/6/68/Jas_Icon.png" width="32" height="32" /> <a href="/Jas" title="Jas">Jas</a>
-</td></tr>
-<tr>
-<td>08</td>
-<td><img alt="Gus Icon.png" src="/mediawiki/images/d/db/Gus_Icon.png" width="32" height="32" /> <a href="/Gus" title="Gus">Gus</a>
-</td></tr>
-<tr>
-<td>10</td>
-<td><img alt="Maru Icon.png" src="/mediawiki/images/2/23/Maru_Icon.png" width="32" height="32" /> <a href="/Maru" title="Maru">Maru</a>
-</td></tr>
-<tr>
-<td>13</td>
-<td><img alt="Alex Icon.png" src="/mediawiki/images/7/73/Alex_Icon.png" width="32" height="32" /> <a href="/Alex" title="Alex">Alex</a>
-</td></tr>
-<tr>
-<td>17</td>
-<td><img alt="Sam Icon.png" src="/mediawiki/images/5/52/Sam_Icon.png" width="32" height="32" /> <a href="/Sam" title="Sam">Sam</a>
-</td></tr>
-<tr>
-<td>19</td>
-<td><img alt="Demetrius Icon.png" src="/mediawiki/images/0/0b/Demetrius_Icon.png" width="32" height="32" /> <a href="/Demetrius" title="Demetrius">Demetrius</a>
-</td></tr>
-<tr>
-<td>22</td>
-<td><img alt="Dwarf Icon.png" src="/mediawiki/images/0/08/Dwarf_Icon.png" width="32" height="32" /> <a href="/Dwarf" title="Dwarf">Dwarf</a>
-</td></tr>
-<tr>
-<td>24</td>
-<td><img alt="Willy Icon.png" src="/mediawiki/images/7/73/Willy_Icon.png" width="32" height="32" /> <a href="/Willy" title="Willy">Willy</a>
-</td></tr>
-<tr>
-<td>26</td>
-<td><img alt="Leo Icon.png" src="/mediawiki/images/3/3d/Leo_Icon.png" width="32" height="32" /> <a href="/Leo" title="Leo">Leo</a>
-</td></tr></table>
-</td></tr></table>
-<p><br />
-</p>
-<h2><span class="mw-headline" id="Fall"><a href="/Fall" title="Fall">Fall</a></span></h2>
-<div id="calendar"><img alt="Calendar Fall.png" src="/mediawiki/images/c/cb/Calendar_Fall.png" width="480" height="336" />
-<table id="calendartable" style="border-spacing:0; padding:0; margin: 65px 0 0 17px;">
-<tr>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Penny" title="Penny">Penny</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Elliott" title="Elliott">Elliott</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-</tr>
-<tr>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Jodi" title="Jodi">Jodi</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Abigail" title="Abigail">Abigail</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-</tr>
-<tr>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Sandy" title="Sandy">Sandy</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Stardew_Valley_Fair" title="Stardew Valley Fair">Stardew Valley Fair</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Marnie" title="Marnie">Marnie</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Robin" title="Robin">Robin</a></td>
-</tr>
-<tr>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/George" title="George">George</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Spirit%27s_Eve" title="Spirit's Eve">Spirit's Eve</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-</tr>
-</table></div>
-<table>
+									<tr>
+										<th>Day
+										</th>
+										<th>Event
+										</th>
+									</tr>
+									<tr>
+										<td>12-14</td>
+										<td>Extra <a href="/Foraging" title="Foraging">forageables</a> at <a href="/The_Beach"
+												title="The Beach">The Beach</a>
+										</td>
+									</tr>
+								</table>
+							</td>
+							<td style="width: 1em;">
+							</td>
+							<td>
+								<h3><span class="mw-headline" id="Birthdays_2">Birthdays</span></h3>
+								<table class="wikitable sortable" id="roundedborder">
+									<tr>
+										<th>Day
+										</th>
+										<th>Villager
+										</th>
+									</tr>
+									<tr>
+										<td>04</td>
+										<td><img alt="Jas Icon.png" src="/mediawiki/images/6/68/Jas_Icon.png" width="32" height="32" /> <a
+												href="/Jas" title="Jas">Jas</a>
+										</td>
+									</tr>
+									<tr>
+										<td>08</td>
+										<td><img alt="Gus Icon.png" src="/mediawiki/images/d/db/Gus_Icon.png" width="32" height="32" /> <a
+												href="/Gus" title="Gus">Gus</a>
+										</td>
+									</tr>
+									<tr>
+										<td>10</td>
+										<td><img alt="Maru Icon.png" src="/mediawiki/images/2/23/Maru_Icon.png" width="32" height="32" /> <a
+												href="/Maru" title="Maru">Maru</a>
+										</td>
+									</tr>
+									<tr>
+										<td>13</td>
+										<td><img alt="Alex Icon.png" src="/mediawiki/images/7/73/Alex_Icon.png" width="32" height="32" /> <a
+												href="/Alex" title="Alex">Alex</a>
+										</td>
+									</tr>
+									<tr>
+										<td>17</td>
+										<td><img alt="Sam Icon.png" src="/mediawiki/images/5/52/Sam_Icon.png" width="32" height="32" /> <a
+												href="/Sam" title="Sam">Sam</a>
+										</td>
+									</tr>
+									<tr>
+										<td>19</td>
+										<td><img alt="Demetrius Icon.png" src="/mediawiki/images/0/0b/Demetrius_Icon.png" width="32"
+												height="32" /> <a href="/Demetrius" title="Demetrius">Demetrius</a>
+										</td>
+									</tr>
+									<tr>
+										<td>22</td>
+										<td><img alt="Dwarf Icon.png" src="/mediawiki/images/0/08/Dwarf_Icon.png" width="32" height="32" />
+											<a href="/Dwarf" title="Dwarf">Dwarf</a>
+										</td>
+									</tr>
+									<tr>
+										<td>24</td>
+										<td><img alt="Willy Icon.png" src="/mediawiki/images/7/73/Willy_Icon.png" width="32" height="32" />
+											<a href="/Willy" title="Willy">Willy</a>
+										</td>
+									</tr>
+									<tr>
+										<td>26</td>
+										<td><img alt="Leo Icon.png" src="/mediawiki/images/3/3d/Leo_Icon.png" width="32" height="32" /> <a
+												href="/Leo" title="Leo">Leo</a>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+					<p><br />
+					</p>
+					<h2><span class="mw-headline" id="Fall"><a href="/Fall" title="Fall">Fall</a></span></h2>
+					<div id="calendar"><img alt="Calendar Fall.png" src="/mediawiki/images/c/cb/Calendar_Fall.png" width="480"
+							height="336" />
+						<table id="calendartable" style="border-spacing:0; padding:0; margin: 65px 0 0 17px;">
+							<tr>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Penny" title="Penny">Penny</a>
+								</td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Elliott"
+										title="Elliott">Elliott</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+							</tr>
+							<tr>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Jodi" title="Jodi">Jodi</a>
+								</td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Abigail"
+										title="Abigail">Abigail</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+							</tr>
+							<tr>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Sandy" title="Sandy">Sandy</a>
+								</td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Stardew_Valley_Fair"
+										title="Stardew Valley Fair">Stardew Valley Fair</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Marnie"
+										title="Marnie">Marnie</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Robin" title="Robin">Robin</a>
+								</td>
+							</tr>
+							<tr>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/George"
+										title="George">George</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Spirit%27s_Eve"
+										title="Spirit's Eve">Spirit's Eve</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+							</tr>
+						</table>
+					</div>
+					<table>
 
-<tr>
-<td style="vertical-align: top;">
-<h3><span class="mw-headline" id="Festivals_3">Festivals</span></h3>
-<table class="wikitable" id="roundedborder">
-<tr>
-<th>Day
-</th>
-<th>Name
-</th></tr>
-<tr>
-<td>16</td>
-<td><p><a href="/File:Calendar_Flag_Anim.gif" class="image"><img alt="Calendar Flag Anim.gif" src="/mediawiki/images/4/47/Calendar_Flag_Anim.gif" width="32" height="32" /></a> <a href="/Stardew_Valley_Fair" title="Stardew Valley Fair">Stardew Valley Fair</a></p>
-</td></tr>
-<tr>
-<td>27</td>
-<td><p><a href="/File:Calendar_Flag_Anim.gif" class="image"><img alt="Calendar Flag Anim.gif" src="/mediawiki/images/4/47/Calendar_Flag_Anim.gif" width="32" height="32" /></a> <a href="/Spirit%27s_Eve" title="Spirit's Eve">Spirit's Eve</a></p>
-</td></tr></table>
-<h3><span class="mw-headline" id="Other_3">Other</span></h3>
-<table class="wikitable" id="roundedborder">
+						<tr>
+							<td style="vertical-align: top;">
+								<h3><span class="mw-headline" id="Festivals_3">Festivals</span></h3>
+								<table class="wikitable" id="roundedborder">
+									<tr>
+										<th>Day
+										</th>
+										<th>Name
+										</th>
+									</tr>
+									<tr>
+										<td>16</td>
+										<td>
+											<p><a href="/File:Calendar_Flag_Anim.gif" class="image"><img alt="Calendar Flag Anim.gif"
+														src="/mediawiki/images/4/47/Calendar_Flag_Anim.gif" width="32" height="32" /></a> <a
+													href="/Stardew_Valley_Fair" title="Stardew Valley Fair">Stardew Valley Fair</a></p>
+										</td>
+									</tr>
+									<tr>
+										<td>27</td>
+										<td>
+											<p><a href="/File:Calendar_Flag_Anim.gif" class="image"><img alt="Calendar Flag Anim.gif"
+														src="/mediawiki/images/4/47/Calendar_Flag_Anim.gif" width="32" height="32" /></a> <a
+													href="/Spirit%27s_Eve" title="Spirit's Eve">Spirit's Eve</a></p>
+										</td>
+									</tr>
+								</table>
+								<h3><span class="mw-headline" id="Other_3">Other</span></h3>
+								<table class="wikitable" id="roundedborder">
 
-<tr>
-<th>Day
-</th>
-<th>Event
-</th></tr>
-<tr>
-<td>8-11 </td>
-<td><a href="/Blackberry" title="Blackberry">Blackberry</a> Season
-</td></tr></table>
-</td>
-<td style="width: 1em;">
-</td>
-<td>
-<h3><span class="mw-headline" id="Birthdays_3">Birthdays</span></h3>
-<table class="wikitable sortable" id="roundedborder">
-<tr>
-<th>Day
-</th>
-<th>Villager
-</th></tr>
-<tr>
-<td>02</td>
-<td><img alt="Penny Icon.png" src="/mediawiki/images/b/bc/Penny_Icon.png" width="32" height="32" /> <a href="/Penny" title="Penny">Penny</a>
-</td></tr>
-<tr>
-<td>05</td>
-<td><img alt="Elliott Icon.png" src="/mediawiki/images/6/6f/Elliott_Icon.png" width="32" height="32" /> <a href="/Elliott" title="Elliott">Elliott</a>
-</td></tr>
-<tr>
-<td>11</td>
-<td><img alt="Jodi Icon.png" src="/mediawiki/images/f/f7/Jodi_Icon.png" width="32" height="32" /> <a href="/Jodi" title="Jodi">Jodi</a>
-</td></tr>
-<tr>
-<td>13</td>
-<td><img alt="Abigail Icon.png" src="/mediawiki/images/6/63/Abigail_Icon.png" width="32" height="32" /> <a href="/Abigail" title="Abigail">Abigail</a>
-</td></tr>
-<tr>
-<td>15</td>
-<td><img alt="Sandy Icon.png" src="/mediawiki/images/7/7d/Sandy_Icon.png" width="32" height="32" /> <a href="/Sandy" title="Sandy">Sandy</a>
-</td></tr>
-<tr>
-<td>18</td>
-<td><img alt="Marnie Icon.png" src="/mediawiki/images/d/d4/Marnie_Icon.png" width="32" height="32" /> <a href="/Marnie" title="Marnie">Marnie</a>
-</td></tr>
-<tr>
-<td>21</td>
-<td><img alt="Robin Icon.png" src="/mediawiki/images/d/d1/Robin_Icon.png" width="32" height="32" /> <a href="/Robin" title="Robin">Robin</a>
-</td></tr>
-<tr>
-<td>24</td>
-<td><img alt="George Icon.png" src="/mediawiki/images/a/ad/George_Icon.png" width="32" height="32" /> <a href="/George" title="George">George</a>
-</td></tr></table>
-</td></tr></table>
-<p><br />
-</p>
-<h2><span class="mw-headline" id="Winter"><a href="/Winter" title="Winter">Winter</a></span></h2>
-<div id="calendar"><img alt="Calendar Winter.png" src="/mediawiki/images/5/5e/Calendar_Winter.png" width="480" height="336" />
-<table id="calendartable" style="border-spacing:0; padding:0; margin: 65px 0 0 17px;"><tr>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Krobus" title="Krobus">Krobus</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Linus" title="Linus">Linus</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Caroline" title="Caroline">Caroline</a></td>
-</tr>
-<tr>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Festival_of_Ice" title="Festival of Ice">Festival of Ice</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Sebastian" title="Sebastian">Sebastian</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Harvey" title="Harvey">Harvey</a></td>
-</tr>
-<tr>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Night_Market" title="Night Market">Night Market</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Night_Market" title="Night Market">Night Market</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;">
-    <table style="padding: 0; margin: 0; border: 0; border-spacing: 0;">
-    <tr>
-    <td style="border: 0; padding: 0; width: 24px"><a href="/Night_Market" title="Night Market">Night Market</a></td>
-    <td style="border: 0; padding: 0; width: 36px;"><a href="/Wizard" title="Wizard">Wizard</a></td>
-    </tr>
-    </table>
-</td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Evelyn" title="Evelyn">Evelyn</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-</tr>
-<tr>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Leah" title="Leah">Leah</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Feast_of_the_Winter_Star" title="Feast of the Winter Star">Feast of the Winter Star</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Clint" title="Clint">Clint</a></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
-</tr>
-</table></div>
-<table>
+									<tr>
+										<th>Day
+										</th>
+										<th>Event
+										</th>
+									</tr>
+									<tr>
+										<td>8-11 </td>
+										<td><a href="/Blackberry" title="Blackberry">Blackberry</a> Season
+										</td>
+									</tr>
+								</table>
+							</td>
+							<td style="width: 1em;">
+							</td>
+							<td>
+								<h3><span class="mw-headline" id="Birthdays_3">Birthdays</span></h3>
+								<table class="wikitable sortable" id="roundedborder">
+									<tr>
+										<th>Day
+										</th>
+										<th>Villager
+										</th>
+									</tr>
+									<tr>
+										<td>02</td>
+										<td><img alt="Penny Icon.png" src="/mediawiki/images/b/bc/Penny_Icon.png" width="32" height="32" />
+											<a href="/Penny" title="Penny">Penny</a>
+										</td>
+									</tr>
+									<tr>
+										<td>05</td>
+										<td><img alt="Elliott Icon.png" src="/mediawiki/images/6/6f/Elliott_Icon.png" width="32"
+												height="32" /> <a href="/Elliott" title="Elliott">Elliott</a>
+										</td>
+									</tr>
+									<tr>
+										<td>11</td>
+										<td><img alt="Jodi Icon.png" src="/mediawiki/images/f/f7/Jodi_Icon.png" width="32" height="32" /> <a
+												href="/Jodi" title="Jodi">Jodi</a>
+										</td>
+									</tr>
+									<tr>
+										<td>13</td>
+										<td><img alt="Abigail Icon.png" src="/mediawiki/images/6/63/Abigail_Icon.png" width="32"
+												height="32" /> <a href="/Abigail" title="Abigail">Abigail</a>
+										</td>
+									</tr>
+									<tr>
+										<td>15</td>
+										<td><img alt="Sandy Icon.png" src="/mediawiki/images/7/7d/Sandy_Icon.png" width="32" height="32" />
+											<a href="/Sandy" title="Sandy">Sandy</a>
+										</td>
+									</tr>
+									<tr>
+										<td>18</td>
+										<td><img alt="Marnie Icon.png" src="/mediawiki/images/d/d4/Marnie_Icon.png" width="32"
+												height="32" /> <a href="/Marnie" title="Marnie">Marnie</a>
+										</td>
+									</tr>
+									<tr>
+										<td>21</td>
+										<td><img alt="Robin Icon.png" src="/mediawiki/images/d/d1/Robin_Icon.png" width="32" height="32" />
+											<a href="/Robin" title="Robin">Robin</a>
+										</td>
+									</tr>
+									<tr>
+										<td>24</td>
+										<td><img alt="George Icon.png" src="/mediawiki/images/a/ad/George_Icon.png" width="32"
+												height="32" /> <a href="/George" title="George">George</a>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+					<p><br />
+					</p>
+					<h2><span class="mw-headline" id="Winter"><a href="/Winter" title="Winter">Winter</a></span></h2>
+					<div id="calendar"><img alt="Calendar Winter.png" src="/mediawiki/images/5/5e/Calendar_Winter.png" width="480"
+							height="336" />
+						<table id="calendartable" style="border-spacing:0; padding:0; margin: 65px 0 0 17px;">
+							<tr>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Krobus"
+										title="Krobus">Krobus</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Linus" title="Linus">Linus</a>
+								</td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Caroline"
+										title="Caroline">Caroline</a></td>
+							</tr>
+							<tr>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Festival_of_Ice"
+										title="Festival of Ice">Festival of Ice</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Sebastian"
+										title="Sebastian">Sebastian</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Harvey"
+										title="Harvey">Harvey</a></td>
+							</tr>
+							<tr>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Night_Market"
+										title="Night Market">Night Market</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Night_Market"
+										title="Night Market">Night Market</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;">
+									<table style="padding: 0; margin: 0; border: 0; border-spacing: 0;">
+										<tr>
+											<td style="border: 0; padding: 0; width: 24px"><a href="/Night_Market" title="Night Market">Night
+													Market</a></td>
+											<td style="border: 0; padding: 0; width: 36px;"><a href="/Wizard" title="Wizard">Wizard</a></td>
+										</tr>
+									</table>
+								</td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Evelyn"
+										title="Evelyn">Evelyn</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+							</tr>
+							<tr>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Leah" title="Leah">Leah</a>
+								</td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Feast_of_the_Winter_Star"
+										title="Feast of the Winter Star">Feast of the Winter Star</a></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"><a href="/Clint" title="Clint">Clint</a>
+								</td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+								<td style="padding: 2px; border: 0; width: 60px; height: 60px;"></td>
+							</tr>
+						</table>
+					</div>
+					<table>
 
-<tr>
-<td style="vertical-align: top;">
-<h3><span class="mw-headline" id="Festivals_4">Festivals</span></h3>
-<table class="wikitable" id="roundedborder">
-<tr>
-<th>Day
-</th>
-<th>Name
-</th></tr>
-<tr>
-<td>08</td>
-<td><p><a href="/File:Calendar_Flag_Anim.gif" class="image"><img alt="Calendar Flag Anim.gif" src="/mediawiki/images/4/47/Calendar_Flag_Anim.gif" width="32" height="32" /></a> <a href="/Festival_of_Ice" title="Festival of Ice">Festival of Ice</a></p>
-</td></tr>
-<tr>
-<td>15-17</td>
-<td><p><a href="/File:Iridium_Quality.png" class="image"><img alt="Iridium Quality.png" src="/mediawiki/images/b/bc/Iridium_Quality.png" width="24" height="24" /></a> <a href="/Night_Market" title="Night Market">Night Market</a></p>
-</td></tr>
-<tr>
-<td>25</td>
-<td><p><a href="/File:Calendar_Flag_Anim.gif" class="image"><img alt="Calendar Flag Anim.gif" src="/mediawiki/images/4/47/Calendar_Flag_Anim.gif" width="32" height="32" /></a> <a href="/Feast_of_the_Winter_Star" title="Feast of the Winter Star">Feast of the Winter Star</a></p>
-</td></tr></table>
-</td>
-<td style="width: 1em;">
-</td>
-<td>
-<h3><span class="mw-headline" id="Birthdays_4">Birthdays</span></h3>
-<table class="wikitable sortable" id="roundedborder">
-<tr>
-<th>Day
-</th>
-<th>Villager
-</th></tr>
-<tr>
-<td>01</td>
-<td><img alt="Krobus Icon.png" src="/mediawiki/images/1/10/Krobus_Icon.png" width="32" height="32" /> <a href="/Krobus" title="Krobus">Krobus</a>
-</td></tr>
-<tr>
-<td>03</td>
-<td><img alt="Linus Icon.png" src="/mediawiki/images/d/db/Linus_Icon.png" width="32" height="32" /> <a href="/Linus" title="Linus">Linus</a>
-</td></tr>
-<tr>
-<td>07</td>
-<td><img alt="Caroline Icon.png" src="/mediawiki/images/d/d4/Caroline_Icon.png" width="32" height="32" /> <a href="/Caroline" title="Caroline">Caroline</a>
-</td></tr>
-<tr>
-<td>10</td>
-<td><img alt="Sebastian Icon.png" src="/mediawiki/images/6/6a/Sebastian_Icon.png" width="32" height="32" /> <a href="/Sebastian" title="Sebastian">Sebastian</a>
-</td></tr>
-<tr>
-<td>14</td>
-<td><img alt="Harvey Icon.png" src="/mediawiki/images/7/7a/Harvey_Icon.png" width="32" height="32" /> <a href="/Harvey" title="Harvey">Harvey</a>
-</td></tr>
-<tr>
-<td>17</td>
-<td><img alt="Wizard Icon.png" src="/mediawiki/images/e/e9/Wizard_Icon.png" width="32" height="32" /> <a href="/Wizard" title="Wizard">Wizard</a>
-</td></tr>
-<tr>
-<td>20</td>
-<td><img alt="Evelyn Icon.png" src="/mediawiki/images/5/54/Evelyn_Icon.png" width="32" height="32" /> <a href="/Evelyn" title="Evelyn">Evelyn</a>
-</td></tr>
-<tr>
-<td>23</td>
-<td><img alt="Leah Icon.png" src="/mediawiki/images/6/6e/Leah_Icon.png" width="32" height="32" /> <a href="/Leah" title="Leah">Leah</a>
-</td></tr>
-<tr>
-<td>26</td>
-<td><img alt="Clint Icon.png" src="/mediawiki/images/7/74/Clint_Icon.png" width="32" height="32" /> <a href="/Clint" title="Clint">Clint</a>
-</td></tr></table>
-</td></tr></table>
-<p><br />
-</p>
-<h2><span class="mw-headline" id="Trivia">Trivia</span></h2>
-<p>When <a href="/Shane" title="Shane">Shane</a> or <a href="/Maru" title="Maru">Maru</a> are at work, their images on the calendar show them in their work uniforms.
-</p>
-<h2><span class="mw-headline" id="History">History</span></h2>
-<ul><li> <a href="/Version_History#1.4" title="Version History">1.4</a>: Upcoming weddings now show on the calendar.</li></ul>
-<table class="wikitable" id="navbox">
-<tr>
-<th colspan="2"> <a href="/Furniture" title="Furniture">Furniture</a>
-</th></tr>
-<tr>
-<th>Chairs
-</th>
-<td><a href="/Birch_Chair" title="Birch Chair">Birch Chair</a> • <a href="/Blue_Diner_Chair" title="Blue Diner Chair">Blue Diner Chair</a> • <a href="/Blue_Stool" title="Blue Stool">Blue Stool</a> • <a href="/Breakfast_Chair" title="Breakfast Chair">Breakfast Chair</a> • <a href="/Country_Chair" title="Country Chair">Country Chair</a> • <a href="/Crystal_Chair" title="Crystal Chair">Crystal Chair</a> • <a href="/Cute_Chair" title="Cute Chair">Cute Chair</a> • <a href="/Dark_Throne" title="Dark Throne">Dark Throne</a> • <a href="/Dining_Chair_(red)" title="Dining Chair (red)">Dining Chair (red)</a> • <a href="/Dining_Chair_(yellow)" title="Dining Chair (yellow)">Dining Chair (yellow)</a> • <a href="/Green_Office_Stool" title="Green Office Stool">Green Office Stool</a> • <a href="/Green_Plush_Seat" title="Green Plush Seat">Green Plush Seat</a> • <a href="/Green_Stool" title="Green Stool">Green Stool</a> • <a href="/Groovy_Chair" title="Groovy Chair">Groovy Chair</a> • <a href="/King_Chair" title="King Chair">King Chair</a> • <a href="/Mahogany_Chair" title="Mahogany Chair">Mahogany Chair</a> • <a href="/Metal_Chair" title="Metal Chair">Metal Chair</a> • <a href="/Oak_Chair" title="Oak Chair">Oak Chair</a> • <a href="/Orange_Office_Stool" title="Orange Office Stool">Orange Office Stool</a> • <a href="/Pink_Office_Chair" title="Pink Office Chair">Pink Office Chair</a> • <a href="/Pink_Plush_Seat" title="Pink Plush Seat">Pink Plush Seat</a> • <a href="/Purple_Office_Chair" title="Purple Office Chair">Purple Office Chair</a> • <a href="/Red_Diner_Chair" title="Red Diner Chair">Red Diner Chair</a> • <a href="/Stump_Seat" title="Stump Seat">Stump Seat</a> • <a href="/Tropical_Chair" title="Tropical Chair">Tropical Chair</a> • <a href="/Walnut_Chair" title="Walnut Chair">Walnut Chair</a> • <a href="/Winter_Chair" title="Winter Chair">Winter Chair</a>
-</td></tr>
-<tr>
-<th>Benches
-</th>
-<td><a href="/Birch_Bench" title="Birch Bench">Birch Bench</a> • <a href="/Mahogany_Bench" title="Mahogany Bench">Mahogany Bench</a> • <a href="/Modern_Bench" title="Modern Bench">Modern Bench</a> • <a href="/Oak_Bench" title="Oak Bench">Oak Bench</a> • <a href="/Walnut_Bench" title="Walnut Bench">Walnut Bench</a>
-</td></tr>
-<tr>
-<th>Armchairs
-</th>
-<td><a href="/Blue_Armchair" title="Blue Armchair">Blue Armchair</a> • <a href="/Brown_Armchair" title="Brown Armchair">Brown Armchair</a> • <a href="/Green_Armchair" title="Green Armchair">Green Armchair</a> • <a href="/Red_Armchair" title="Red Armchair">Red Armchair</a> • <a href="/Yellow_Armchair" title="Yellow Armchair">Yellow Armchair</a>
-</td></tr>
-<tr>
-<th>Couches
-</th>
-<td><a href="/Blue_Couch" title="Blue Couch">Blue Couch</a> • <a href="/Brown_Couch" title="Brown Couch">Brown Couch</a> • <a href="/Dark_Couch" title="Dark Couch">Dark Couch</a> • <a href="/Green_Couch" title="Green Couch">Green Couch</a> • <a href="/Large_Brown_Couch" title="Large Brown Couch">Large Brown Couch</a> • <a href="/Red_Couch" title="Red Couch">Red Couch</a> • <a href="/Wizard_Couch" title="Wizard Couch">Wizard Couch</a> • <a href="/Woodsy_Couch" title="Woodsy Couch">Woodsy Couch</a> • <a href="/Yellow_Couch" title="Yellow Couch">Yellow Couch</a>
-</td></tr>
-<tr>
-<th>Tables
-</th>
-<td><a href="/Birch_Table" title="Birch Table">Birch Table</a> • <a href="/Candy_Table" title="Candy Table">Candy Table</a> • <a href="/Coffee_Table" title="Coffee Table">Coffee Table</a> • <a href="/Dark_Table" title="Dark Table">Dark Table</a> • <a href="/Diviner_Table" title="Diviner Table">Diviner Table</a> • <a href="/Luau_Table" title="Luau Table">Luau Table</a> • <a href="/Luxury_Table" title="Luxury Table">Luxury Table</a> • <a href="/Mahogany_Table" title="Mahogany Table">Mahogany Table</a> • <a href="/Modern_Table" title="Modern Table">Modern Table</a> • <a href="/Moon_Table" title="Moon Table">Moon Table</a> • <a href="/Neolithic_Table" title="Neolithic Table">Neolithic Table</a> • <a href="/Oak_Table" title="Oak Table">Oak Table</a> • <a href="/Pub_Table" title="Pub Table">Pub Table</a> • <a href="/Puzzle_Table" title="Puzzle Table">Puzzle Table</a> • <a href="/Stone_Slab" title="Stone Slab">Stone Slab</a> • <a href="/Sun_Table" title="Sun Table">Sun Table</a> • <a href="/Walnut_Table" title="Walnut Table">Walnut Table</a> • <a href="/Winter_Table" title="Winter Table">Winter Table</a>
-</td></tr>
-<tr>
-<th>Tea-Tables
-</th>
-<td><a href="/Birch_Tea-Table" title="Birch Tea-Table">Birch Tea-Table</a> • <a href="/Mahogany_Tea-Table" title="Mahogany Tea-Table">Mahogany Tea-Table</a> • <a href="/Modern_Tea-Table" title="Modern Tea-Table">Modern Tea-Table</a> • <a href="/Oak_Tea-Table" title="Oak Tea-Table">Oak Tea-Table</a> • <a href="/Walnut_Tea-Table" title="Walnut Tea-Table">Walnut Tea-Table</a>
-</td></tr>
-<tr>
-<th>End Tables
-</th>
-<td><a href="/Birch_End_Table" title="Birch End Table">Birch End Table</a> • <a href="/Grandmother_End_Table" title="Grandmother End Table">Grandmother End Table</a> • <a href="/Mahogany_End_Table" title="Mahogany End Table">Mahogany End Table</a> • <a href="/Modern_End_Table" title="Modern End Table">Modern End Table</a> • <a href="/Oak_End_Table" title="Oak End Table">Oak End Table</a> • <a href="/Walnut_End_Table" title="Walnut End Table">Walnut End Table</a> • <a href="/Winter_End_Table" title="Winter End Table">Winter End Table</a>
-</td></tr>
-<tr>
-<th>Long Tables
-</th>
-<td><a href="/Festive_Dining_Table" title="Festive Dining Table">Festive Dining Table</a> • <a href="/Mahogany_Dining_Table" title="Mahogany Dining Table">Mahogany Dining Table</a> • <a href="/Modern_Dining_Table" title="Modern Dining Table">Modern Dining Table</a> • <a href="/Winter_Dining_Table" title="Winter Dining Table">Winter Dining Table</a>
-</td></tr>
-<tr>
-<th>Bookcases
-</th>
-<td><a href="/Artist_Bookcase" title="Artist Bookcase">Artist Bookcase</a> • <a href="/Dark_Bookcase" title="Dark Bookcase">Dark Bookcase</a> • <a href="/Luxury_Bookcase" title="Luxury Bookcase">Luxury Bookcase</a> • <a href="/Modern_Bookcase" title="Modern Bookcase">Modern Bookcase</a>
-</td></tr>
-<tr>
-<th>Dressers
-</th>
-<td><a href="/Birch_Dresser" title="Birch Dresser">Birch Dresser</a> • <a href="/Mahogany_Dresser" title="Mahogany Dresser">Mahogany Dresser</a> • <a href="/Oak_Dresser" title="Oak Dresser">Oak Dresser</a> • <a href="/Walnut_Dresser" title="Walnut Dresser">Walnut Dresser</a>
-</td></tr>
-<tr>
-<th>Fireplaces
-</th>
-<td><a href="/Brick_Fireplace" title="Brick Fireplace">Brick Fireplace</a> • <a href="/Elegant_Fireplace" title="Elegant Fireplace">Elegant Fireplace</a> • <a href="/Iridium_Fireplace" title="Iridium Fireplace">Iridium Fireplace</a> • <a href="/Monster_Fireplace" title="Monster Fireplace">Monster Fireplace</a> • <a href="/Stone_Fireplace" title="Stone Fireplace">Stone Fireplace</a> • <a href="/Stove_Fireplace" title="Stove Fireplace">Stove Fireplace</a>
-</td></tr>
-<tr>
-<th>Lamps
-</th>
-<td><a href="/Box_Lamp" title="Box Lamp">Box Lamp</a> • <a href="/Candle_Lamp" title="Candle Lamp">Candle Lamp</a> • <a href="/Classic_Lamp" title="Classic Lamp">Classic Lamp</a> • <a href="/Country_Lamp" title="Country Lamp">Country Lamp</a> • <a href="/Modern_Lamp" title="Modern Lamp">Modern Lamp</a> • <a href="/Ornate_Lamp" title="Ornate Lamp">Ornate Lamp</a> • <a href="/Wall_Sconce" title="Wall Sconce">Wall Sconce</a>
-</td></tr>
-<tr>
-<th>Windows
-</th>
-<td><a href="/Basic_Window" title="Basic Window">Basic Window</a> • <a href="/Boarded_Window" title="Boarded Window">Boarded Window</a> • <a href="/Carved_Window" title="Carved Window">Carved Window</a> • <a href="/Metal_Window" title="Metal Window">Metal Window</a> • <a href="/Ornate_Window" title="Ornate Window">Ornate Window</a> • <a href="/Porthole" title="Porthole">Porthole</a> • <a href="/Small_Window" title="Small Window">Small Window</a>
-</td></tr>
-<tr>
-<th>Rugs
-</th>
-<td><a href="/Bamboo_Mat" title="Bamboo Mat">Bamboo Mat</a> • <a href="/Blossom_Rug" title="Blossom Rug">Blossom Rug</a> • <a href="/Bone_Rug" title="Bone Rug">Bone Rug</a> • <a href="/Burlap_Rug" title="Burlap Rug">Burlap Rug</a> • <a href="/Dark_Rug" title="Dark Rug">Dark Rug</a> • <a href="/Floor_Divider" title="Floor Divider">Floor Divider</a> • <a href="/Fruit_Salad_Rug" title="Fruit Salad Rug">Fruit Salad Rug</a> • <a href="/Funky_Rug" title="Funky Rug">Funky Rug</a> • <a href="/Green_Cottage_Rug" title="Green Cottage Rug">Green Cottage Rug</a> • <a href="/Icy_Rug" title="Icy Rug">Icy Rug</a> • <a href="/Large_Cottage_Rug" title="Large Cottage Rug">Large Cottage Rug</a> • <a href="/Large_Green_Rug" title="Large Green Rug">Large Green Rug</a> • <a href="/Large_Red_Rug" title="Large Red Rug">Large Red Rug</a> • <a href="/Light_Green_Rug" title="Light Green Rug">Light Green Rug</a> • <a href="/Modern_Rug" title="Modern Rug">Modern Rug</a> • <a href="/Monster_Rug" title="Monster Rug">Monster Rug</a> • <a href="/Mystic_Rug" title="Mystic Rug">Mystic Rug</a> • <a href="/Nautical_Rug" title="Nautical Rug">Nautical Rug</a> • <a href="/Oceanic_Rug" title="Oceanic Rug">Oceanic Rug</a> • <a href="/Old_World_Rug" title="Old World Rug">Old World Rug</a> • <a href="/Patchwork_Rug" title="Patchwork Rug">Patchwork Rug</a> • <a href="/Pirate_Rug" title="Pirate Rug">Pirate Rug</a> • <a href="/Red_Cottage_Rug" title="Red Cottage Rug">Red Cottage Rug</a> • <a href="/Red_Rug" title="Red Rug">Red Rug</a> • <a href="/Snowy_Rug" title="Snowy Rug">Snowy Rug</a> • <a href="/Woodcut_Rug" title="Woodcut Rug">Woodcut Rug</a>
-</td></tr>
-<tr>
-<th>TVs
-</th>
-<td><a href="/Budget_TV" title="Budget TV">Budget TV</a> • <a href="/Floor_TV" title="Floor TV">Floor TV</a> • <a href="/Plasma_TV" title="Plasma TV">Plasma TV</a> • <a href="/Tropical_TV" title="Tropical TV">Tropical TV</a>
-</td></tr>
-<tr>
-<th>Beds
-</th>
-<td><a href="/Birch_Double_Bed" title="Birch Double Bed">Birch Double Bed</a> • <a href="/Child_Bed" title="Child Bed">Child Bed</a> • <a href="/Deluxe_Red_Double_Bed" title="Deluxe Red Double Bed">Deluxe Red Double Bed</a> • <a href="/Double_Bed" title="Double Bed">Double Bed</a> • <a href="/Exotic_Double_Bed" title="Exotic Double Bed">Exotic Double Bed</a> • <a href="/Fisher_Double_Bed" title="Fisher Double Bed">Fisher Double Bed</a> • <a href="/Modern_Double_Bed" title="Modern Double Bed">Modern Double Bed</a> • <a href="/Pirate_Double_Bed" title="Pirate Double Bed">Pirate Double Bed</a> • <a href="/Single_Bed" title="Single Bed">Single Bed</a> • <a href="/Starry_Double_Bed" title="Starry Double Bed">Starry Double Bed</a> • <a href="/Strawberry_Double_Bed" title="Strawberry Double Bed">Strawberry Double Bed</a> • <a href="/Tropical_Bed" title="Tropical Bed">Tropical Bed</a> • <a href="/Tropical_Double_Bed" title="Tropical Double Bed">Tropical Double Bed</a> • <a href="/Wild_Double_Bed" title="Wild Double Bed">Wild Double Bed</a>
-</td></tr>
-<tr>
-<th>Decorative Plants
-</th>
-<td><a href="/Bonsai_Tree" title="Bonsai Tree">Bonsai Tree</a> • <a href="/Deluxe_Tree" title="Deluxe Tree">Deluxe Tree</a> • <a href="/Dried_Sunflowers" title="Dried Sunflowers">Dried Sunflowers</a> • <a href="/Exotic_Tree" title="Exotic Tree">Exotic Tree</a> • <a href="/House_Plant" title="House Plant">House Plant</a> • <a href="/Indoor_Palm" title="Indoor Palm">Indoor Palm</a> • <a href="/Long_Cactus" title="Long Cactus">Long Cactus</a> • <a href="/Long_Palm" title="Long Palm">Long Palm</a> • <a href="/Manicured_Pine" title="Manicured Pine">Manicured Pine</a> • <a href="/S._Pine" title="S. Pine">S. Pine</a> • <a href="/Small_Plant" title="Small Plant">Small Plant</a> • <a href="/Table_Plant" title="Table Plant">Table Plant</a> • <a href="/Topiary_Tree" title="Topiary Tree">Topiary Tree</a> • <a href="/Tree_Column" title="Tree Column">Tree Column</a> • <a href="/Tree_of_the_Winter_Star" title="Tree of the Winter Star">Tree of the Winter Star</a>
-</td></tr>
-<tr>
-<th>Decorative Hanging Plants
-</th>
-<td><a href="/Ceiling_Leaves" title="Ceiling Leaves">Ceiling Leaves</a> • <a href="/Indoor_Hanging_Basket" title="Indoor Hanging Basket">Indoor Hanging Basket</a> • <a href="/Jungle_Decal" title="Jungle Decal">Jungle Decal</a> • <a href="/L._Light_String" title="L. Light String">L. Light String</a> • <a href="/Palm_Wall_Ornament" title="Palm Wall Ornament">Palm Wall Ornament</a> • <a href="/S._Wall_Flower" title="S. Wall Flower">S. Wall Flower</a> • <a href="/Wall_Basket" title="Wall Basket">Wall Basket</a> • <a href="/Wall_Cactus" title="Wall Cactus">Wall Cactus</a> • <a href="/Wall_Flower" title="Wall Flower">Wall Flower</a> • <a href="/Wall_Palm" title="Wall Palm">Wall Palm</a>
-</td></tr>
-<tr>
-<th>Paintings
-</th>
-<td><a href="/%27A_Night_On_Eco-Hill%27" title="'A Night On Eco-Hill'">'A Night On Eco-Hill'</a> • <a href="/%27Blue_City%27" title="'Blue City'">'Blue City'</a> • <a href="/%27Blueberries%27" title="'Blueberries'">'Blueberries'</a> • <a href="/%27Boat%27" title="'Boat'">'Boat'</a> • <a href="/%27Burnt_Offering%27" title="'Burnt Offering'">'Burnt Offering'</a> • <a href="/Calico_Falls" title="Calico Falls">Calico Falls</a> • <a href="/Colorful_Set" title="Colorful Set">Colorful Set</a> • <a href="/%27Dancing_Grass%27" title="'Dancing Grass'">'Dancing Grass'</a> • <a href="/Foliage_Print" title="Foliage Print">Foliage Print</a> • <a href="/%27Frozen_Dreams%27" title="'Frozen Dreams'">'Frozen Dreams'</a> • <a href="/%27Highway_89%27" title="'Highway 89'">'Highway 89'</a> • <a href="/%27Jade_Hills%27" title="'Jade Hills'">'Jade Hills'</a> • <a href="/%27Jade_Hills_Extended%27" title="'Jade Hills Extended'">'Jade Hills Extended'</a> • <a href="/%27Kitemaster_%2795%27" title="'Kitemaster '95'">'Kitemaster '95'</a> • <a href="/%27Little_Tree%27" title="'Little Tree'">'Little Tree'</a> • <a href="/My_First_Painting" title="My First Painting">My First Painting</a> • <a href="/Needlepoint_Flower" title="Needlepoint Flower">Needlepoint Flower</a> • <a href="/%27Pathways%27" title="'Pathways'">'Pathways'</a> • <a href="/%27Physics_101%27" title="'Physics 101'">'Physics 101'</a> • <a href="/%27Primal_Motion%27" title="'Primal Motion'">'Primal Motion'</a> • <a href="/%27Queen_of_the_Gem_Sea%27" title="'Queen of the Gem Sea'">'Queen of the Gem Sea'</a> • <a href="/%27Spires%27" title="'Spires'">'Spires'</a> • <a href="/%27Sun_44%27" title="'Sun 44'">'Sun #44'</a> • <a href="/%27Sun_45%27" title="'Sun 45'">'Sun #45'</a> • <a href="/%27The_Muzzamaroo%27" title="'The Muzzamaroo'">'The Muzzamaroo'</a> • <a href="/%27Vanilla_Villa%27" title="'Vanilla Villa'">'Vanilla Villa'</a> • <a href="/%27VGA_Paradise%27" title="'VGA Paradise'">'VGA Paradise'</a> • <a href="/%27Vista%27" title="'Vista'">'Vista'</a> • <a href="/%27Volcano%27_Photo" title="'Volcano' Photo">'Volcano' Photo</a>
-</td></tr>
-<tr>
-<th>Lupini Paintings
-</th>
-<td><a href="/%271000_Years_From_Now%27" title="'1000 Years From Now'">'1000 Years From Now'</a> • <a href="/%27Clouds%27" title="'Clouds'">'Clouds'</a> • <a href="/%27Land_Of_Clay%27" title="'Land Of Clay'">'Land Of Clay'</a> • <a href="/%27Portrait_Of_A_Mermaid%27" title="'Portrait Of A Mermaid'">'Portrait Of A Mermaid'</a> • <a href="/%27Red_Eagle%27" title="'Red Eagle'">'Red Eagle'</a> • <a href="/%27Solar_Kingdom%27" title="'Solar Kingdom'">'Solar Kingdom'</a> • <a href="/%27The_Serpent%27" title="'The Serpent'">'The Serpent'</a> • <a href="/%27Three_Trees%27" title="'Three Trees'">'Three Trees'</a> • <a href="/%27Tropical_Fish_173%27" title="'Tropical Fish 173'">'Tropical Fish #173'</a>
-</td></tr>
-<tr>
-<th><a href="/Movie_Theater" title="Movie Theater">Movie Posters</a>
-</th>
-<td><a href="/%27It_Howls_In_The_Rain%27" title="'It Howls In The Rain'">'It Howls In The Rain'</a> • <a href="/%27Journey_Of_The_Prairie_King:_The_Motion_Picture%27" title="'Journey Of The Prairie King: The Motion Picture'">'Journey Of The Prairie King: The Motion Picture'</a> • <a href="/%27Mysterium%27" title="'Mysterium'">'Mysterium'</a> • <a href="/%27Natural_Wonders:_Exploring_Our_Vibrant_World%27" title="'Natural Wonders: Exploring Our Vibrant World'">'Natural Wonders: Exploring Our Vibrant World'</a> • <a href="/%27The_Brave_Little_Sapling%27" title="'The Brave Little Sapling'">'The Brave Little Sapling'</a> • <a href="/%27The_Miracle_At_Coldstar_Ranch%27" title="'The Miracle At Coldstar Ranch'">'The Miracle At Coldstar Ranch'</a> • <a href="/%27The_Zuzu_City_Express%27" title="'The Zuzu City Express'">'The Zuzu City Express'</a> • <a href="/%27Wumbus%27" title="'Wumbus'">'Wumbus'</a>
-</td></tr>
-<tr>
-<th>Banners
-</th>
-<td><a href="/Clouds_Banner" title="Clouds Banner">Clouds Banner</a> • <a href="/Icy_Banner" title="Icy Banner">Icy Banner</a> • <a href="/Moonlight_Jellies_Banner" title="Moonlight Jellies Banner">Moonlight Jellies Banner</a> • <a href="/Pastel_Banner" title="Pastel Banner">Pastel Banner</a> • <a href="/Winter_Banner" title="Winter Banner">Winter Banner</a>
-</td></tr>
-<tr>
-<th>Wall Hangings
-</th>
-<td><a href="/Anchor_(Furniture)" title="Anchor (Furniture)">Anchor</a> • <strong class="selflink">Calendar</strong> • <a href="/Ceiling_Flags" title="Ceiling Flags">Ceiling Flags</a> • <a href="/Cloud_Decal" title="Cloud Decal">Cloud Decal</a> • <a href="/Decorative_Axe" title="Decorative Axe">Decorative Axe</a> • <a href="/Decorative_Pitchfork" title="Decorative Pitchfork">Decorative Pitchfork</a> • <a href="/Hanging_Shield" title="Hanging Shield">Hanging Shield</a> • <a href="/J._Cola_Light" title="J. Cola Light">J. Cola Light</a> • <a href="/Lifesaver" title="Lifesaver">Lifesaver</a> • <a href="/Little_Photos" title="Little Photos">Little Photos</a> • <a href="/Log_Panel" title="Log Panel">Log Panel</a> • <a href="/Miner%27s_Crest" title="Miner's Crest">Miner's Crest</a> • <a href="/Monster_Danglers" title="Monster Danglers">Monster Danglers</a> • <a href="/Night_Sky_Decal_1" title="Night Sky Decal 1">Night Sky Decal #1</a> • <a href="/Night_Sky_Decal_2" title="Night Sky Decal 2">Night Sky Decal #2</a> • <a href="/Night_Sky_Decal_3" title="Night Sky Decal 3">Night Sky Decal #3</a> • <a href="/Pirate_Flag" title="Pirate Flag">Pirate Flag</a> • <a href="/Pyramid_Decal" title="Pyramid Decal">Pyramid Decal</a> • <a href="/Skull_Poster" title="Skull Poster">Skull Poster</a> • <a href="/Small_Wall_Pumpkin" title="Small Wall Pumpkin">Small Wall Pumpkin</a> • <a href="/Starport_Decal" title="Starport Decal">Starport Decal</a> • <a href="/Strawberry_Decal" title="Strawberry Decal">Strawberry Decal</a> • <a href="/Wall_Pumpkin" title="Wall Pumpkin">Wall Pumpkin</a> • <a href="/Wallflower_Pal" title="Wallflower Pal">Wallflower Pal</a> • <a href="/Winter_Tree_Decal" title="Winter Tree Decal">Winter Tree Decal</a>• <a href="/Wood_Panel" title="Wood Panel">Wood Panel</a> • <a href="/World_Map" title="World Map">World Map</a>
-</td></tr>
-<tr>
-<th>Fish Tanks
-</th>
-<td><a href="/Aquatic_Sanctuary" title="Aquatic Sanctuary">Aquatic Sanctuary</a> • <a href="/Deluxe_Fish_Tank" title="Deluxe Fish Tank">Deluxe Fish Tank</a> • <a href="/Large_Fish_Tank" title="Large Fish Tank">Large Fish Tank</a> • <a href="/Modern_Fish_Tank" title="Modern Fish Tank">Modern Fish Tank</a> • <a href="/Small_Fish_Tank" title="Small Fish Tank">Small Fish Tank</a>
-</td></tr>
-<tr>
-<th>Torches
-</th>
-<td><a href="/Jungle_Torch" title="Jungle Torch">Jungle Torch</a> • <a href="/Plain_Torch" title="Plain Torch">Plain Torch</a> • <a href="/Stump_Torch" title="Stump Torch">Stump Torch</a>
-</td></tr>
-<tr>
-<th>Misc.
-</th>
-<td><a href="/Ceramic_Pillar" title="Ceramic Pillar">Ceramic Pillar</a> • <a href="/China_Cabinet" title="China Cabinet">China Cabinet</a> • <a href="/Decorative_Bowl" title="Decorative Bowl">Decorative Bowl</a> • <a href="/Decorative_Lantern" title="Decorative Lantern">Decorative Lantern</a> • <a href="/Decorative_Trash_Can" title="Decorative Trash Can">Decorative Trash Can</a> • <a href="/Futan_Bear" title="Futan Bear">Futan Bear</a> • <a href="/Globe" title="Globe">Globe</a> • <a href="/Gold_Pillar" title="Gold Pillar">Gold Pillar</a> • <a href="/Industrial_Pipe" title="Industrial Pipe">Industrial Pipe</a> • <a href="/Model_Ship" title="Model Ship">Model Ship</a> • <a href="/Small_Crystal" title="Small Crystal">Small Crystal</a> • <a href="/Totem_Pole" title="Totem Pole">Totem Pole</a>
-</td></tr>
-<tr>
-<th>Other Decoration
-</th>
-<td><a href="/Bear_Statue" title="Bear Statue">Bear Statue</a> • <a href="/Bobo_Statue" title="Bobo Statue">Bobo Statue</a> • <a href="/Butterfly_Hutch" title="Butterfly Hutch">Butterfly Hutch</a> • <a href="/Chicken_Statue_(furniture)" title="Chicken Statue (furniture)">Chicken Statue</a> • <a href="/Futan_Rabbit" title="Futan Rabbit">Futan Rabbit</a> • <a href="/Gourmand_Statue" title="Gourmand Statue">Gourmand Statue</a> • <a href="/Green_Serpent_Statue" title="Green Serpent Statue">Green Serpent Statue</a> • <a href="/Iridium_Krobus" title="Iridium Krobus">Iridium Krobus</a> • <a href="/Junimo_Plush" title="Junimo Plush">Junimo Plush</a> • <a href="/Leah%27s_Sculpture" title="Leah's Sculpture">Leah's Sculpture</a> • <a href="/Lg._Futan_Bear" title="Lg. Futan Bear">Lg. Futan Bear</a> • <a href="/Obsidian_Vase" title="Obsidian Vase">Obsidian Vase</a> • <a href="/Purple_Serpent_Statue" title="Purple Serpent Statue">Purple Serpent Statue</a> • <a href="/Sam%27s_Boombox" title="Sam's Boombox">Sam's Boombox</a> • <a href="/Singing_Stone" title="Singing Stone">Singing Stone</a> • <a href="/Skeleton_Statue" title="Skeleton Statue">Skeleton Statue</a> • <a href="/Sloth_Skeleton" title="Sloth Skeleton">Sloth Skeleton</a> • <a href="/Small_Junimo_Plush" title="Small Junimo Plush">Small Junimo Plush</a> • <a href="/Squirrel_Figurine" title="Squirrel Figurine">Squirrel Figurine</a> • <a href="/Standing_Geode" title="Standing Geode">Standing Geode</a> • <a href="/Wumbus_Statue" title="Wumbus Statue">Wumbus Statue</a>
-</td></tr>
-<tr>
-<th>Special Items
-</th>
-<td><a href="/Basic_Log" title="Basic Log">Basic Log</a> • <a href="/Big_Green_Cane" title="Big Green Cane">Big Green Cane</a> • <a href="/Big_Red_Cane" title="Big Red Cane">Big Red Cane</a> • <a href="/Coffee_Maker" title="Coffee Maker">Coffee Maker</a> • <a href="/Drum_Block" title="Drum Block">Drum Block</a> • <a href="/Farm_Computer" title="Farm Computer">Farm Computer</a> • <a href="/Flute_Block" title="Flute Block">Flute Block</a> • <a href="/Grave_Stone" title="Grave Stone">Grave Stone</a> • <a href="/Green_Canes" title="Green Canes">Green Canes</a> • <a href="/Junimo_Kart_Arcade_System" title="Junimo Kart Arcade System">Junimo Kart Arcade System</a> • <a href="/Lawn_Flamingo" title="Lawn Flamingo">Lawn Flamingo</a> • <a href="/Log_Section" title="Log Section">Log Section</a> • <a href="/Mini-Jukebox" title="Mini-Jukebox">Mini-Jukebox</a> • <a href="/Mixed_Cane" title="Mixed Cane">Mixed Cane</a> • <a href="/Ornamental_Hay_Bale" title="Ornamental Hay Bale">Ornamental Hay Bale</a> • <a href="/Plush_Bunny" title="Plush Bunny">Plush Bunny</a> • <a href="/Prairie_King_Arcade_System" title="Prairie King Arcade System">Prairie King Arcade System</a> • <a href="/Red_Canes" title="Red Canes">Red Canes</a> • <a href="/Seasonal_Plant" title="Seasonal Plant">Seasonal Plant</a> • <a href="/Seasonal_Decor" title="Seasonal Decor">Seasonal Decor</a> • <a href="/Sewing_Machine" title="Sewing Machine">Sewing Machine</a> • <a href="/Sign_Of_The_Vessel" title="Sign Of The Vessel">Sign Of The Vessel</a> • <a href="/Soda_Machine" title="Soda Machine">Soda Machine</a> • <a href="/Stardew_Hero_Trophy" title="Stardew Hero Trophy">Stardew Hero Trophy</a> • <a href="/Statue_Of_Endless_Fortune" title="Statue Of Endless Fortune">Statue Of Endless Fortune</a> • <a href="/Statue_of_Perfection" title="Statue of Perfection">Statue of Perfection</a> • <a href="/Statue_Of_True_Perfection" title="Statue Of True Perfection">Statue Of True Perfection</a> • <a href="/Stone_Cairn" title="Stone Cairn">Stone Cairn</a> • <a href="/Stone_Frog" title="Stone Frog">Stone Frog</a> • <a href="/Stone_Junimo" title="Stone Junimo">Stone Junimo</a> • <a href="/Stone_Owl" title="Stone Owl">Stone Owl</a> • <a href="/Stone_Parrot" title="Stone Parrot">Stone Parrot</a> • <a href="/Suit_Of_Armor" title="Suit Of Armor">Suit Of Armor</a> • <a href="/Tea_Set" title="Tea Set">Tea Set</a> • <a href="/Telephone" title="Telephone">Telephone</a> • <a href="/Tub_o%27_Flowers" title="Tub o' Flowers">Tub o' Flowers</a> • <a href="/Wicked_Statue" title="Wicked Statue">Wicked Statue</a>
-</td></tr>
-<tr>
-<th> Secrets
-</th>
-<td><a href="/%3F%3FForoguemon%3F%3F" title="??Foroguemon??">??Foroguemon??</a> • <a href="/%3F%3FHMTGF%3F%3F" title="??HMTGF??">??HMTGF??</a> • <a href="/%3F%3FPinky_Lemon%3F%3F" title="??Pinky Lemon??">??Pinky Lemon??</a> • <a href="/Empty_Capsule" title="Empty Capsule" class="mw-redirect">Empty Capsule</a> • <a href="/Solid_Gold_Lewis" title="Solid Gold Lewis">Solid Gold Lewis</a> • <a href="/Random_Events#Stone_Owl" title="Random Events">Stone Owl</a> • <a href="/Strange_Capsule" title="Strange Capsule" class="mw-redirect">Strange Capsule</a>
-</td></tr>
-<tr>
-<th> Catalogues
-</th>
-<td><a href="/Catalogue" title="Catalogue">Catalogue</a> • <a href="/Furniture_Catalogue" title="Furniture Catalogue">Furniture Catalogue</a>
-</td></tr>
-</table>
+						<tr>
+							<td style="vertical-align: top;">
+								<h3><span class="mw-headline" id="Festivals_4">Festivals</span></h3>
+								<table class="wikitable" id="roundedborder">
+									<tr>
+										<th>Day
+										</th>
+										<th>Name
+										</th>
+									</tr>
+									<tr>
+										<td>08</td>
+										<td>
+											<p><a href="/File:Calendar_Flag_Anim.gif" class="image"><img alt="Calendar Flag Anim.gif"
+														src="/mediawiki/images/4/47/Calendar_Flag_Anim.gif" width="32" height="32" /></a> <a
+													href="/Festival_of_Ice" title="Festival of Ice">Festival of Ice</a></p>
+										</td>
+									</tr>
+									<tr>
+										<td>15-17</td>
+										<td>
+											<p><a href="/File:Iridium_Quality.png" class="image"><img alt="Iridium Quality.png"
+														src="/mediawiki/images/b/bc/Iridium_Quality.png" width="24" height="24" /></a> <a
+													href="/Night_Market" title="Night Market">Night Market</a></p>
+										</td>
+									</tr>
+									<tr>
+										<td>25</td>
+										<td>
+											<p><a href="/File:Calendar_Flag_Anim.gif" class="image"><img alt="Calendar Flag Anim.gif"
+														src="/mediawiki/images/4/47/Calendar_Flag_Anim.gif" width="32" height="32" /></a> <a
+													href="/Feast_of_the_Winter_Star" title="Feast of the Winter Star">Feast of the Winter Star</a>
+											</p>
+										</td>
+									</tr>
+								</table>
+							</td>
+							<td style="width: 1em;">
+							</td>
+							<td>
+								<h3><span class="mw-headline" id="Birthdays_4">Birthdays</span></h3>
+								<table class="wikitable sortable" id="roundedborder">
+									<tr>
+										<th>Day
+										</th>
+										<th>Villager
+										</th>
+									</tr>
+									<tr>
+										<td>01</td>
+										<td><img alt="Krobus Icon.png" src="/mediawiki/images/1/10/Krobus_Icon.png" width="32"
+												height="32" /> <a href="/Krobus" title="Krobus">Krobus</a>
+										</td>
+									</tr>
+									<tr>
+										<td>03</td>
+										<td><img alt="Linus Icon.png" src="/mediawiki/images/d/db/Linus_Icon.png" width="32" height="32" />
+											<a href="/Linus" title="Linus">Linus</a>
+										</td>
+									</tr>
+									<tr>
+										<td>07</td>
+										<td><img alt="Caroline Icon.png" src="/mediawiki/images/d/d4/Caroline_Icon.png" width="32"
+												height="32" /> <a href="/Caroline" title="Caroline">Caroline</a>
+										</td>
+									</tr>
+									<tr>
+										<td>10</td>
+										<td><img alt="Sebastian Icon.png" src="/mediawiki/images/6/6a/Sebastian_Icon.png" width="32"
+												height="32" /> <a href="/Sebastian" title="Sebastian">Sebastian</a>
+										</td>
+									</tr>
+									<tr>
+										<td>14</td>
+										<td><img alt="Harvey Icon.png" src="/mediawiki/images/7/7a/Harvey_Icon.png" width="32"
+												height="32" /> <a href="/Harvey" title="Harvey">Harvey</a>
+										</td>
+									</tr>
+									<tr>
+										<td>17</td>
+										<td><img alt="Wizard Icon.png" src="/mediawiki/images/e/e9/Wizard_Icon.png" width="32"
+												height="32" /> <a href="/Wizard" title="Wizard">Wizard</a>
+										</td>
+									</tr>
+									<tr>
+										<td>20</td>
+										<td><img alt="Evelyn Icon.png" src="/mediawiki/images/5/54/Evelyn_Icon.png" width="32"
+												height="32" /> <a href="/Evelyn" title="Evelyn">Evelyn</a>
+										</td>
+									</tr>
+									<tr>
+										<td>23</td>
+										<td><img alt="Leah Icon.png" src="/mediawiki/images/6/6e/Leah_Icon.png" width="32" height="32" /> <a
+												href="/Leah" title="Leah">Leah</a>
+										</td>
+									</tr>
+									<tr>
+										<td>26</td>
+										<td><img alt="Clint Icon.png" src="/mediawiki/images/7/74/Clint_Icon.png" width="32" height="32" />
+											<a href="/Clint" title="Clint">Clint</a>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+					<p><br />
+					</p>
+					<h2><span class="mw-headline" id="Trivia">Trivia</span></h2>
+					<p>When <a href="/Shane" title="Shane">Shane</a> or <a href="/Maru" title="Maru">Maru</a> are at work, their
+						images on the calendar show them in their work uniforms.
+					</p>
+					<h2><span class="mw-headline" id="History">History</span></h2>
+					<ul>
+						<li> <a href="/Version_History#1.4" title="Version History">1.4</a>: Upcoming weddings now show on the
+							calendar.</li>
+					</ul>
+					<table class="wikitable" id="navbox">
+						<tr>
+							<th colspan="2"> <a href="/Furniture" title="Furniture">Furniture</a>
+							</th>
+						</tr>
+						<tr>
+							<th>Chairs
+							</th>
+							<td><a href="/Birch_Chair" title="Birch Chair">Birch Chair</a> • <a href="/Blue_Diner_Chair"
+									title="Blue Diner Chair">Blue Diner Chair</a> • <a href="/Blue_Stool" title="Blue Stool">Blue
+									Stool</a> • <a href="/Breakfast_Chair" title="Breakfast Chair">Breakfast Chair</a> • <a
+									href="/Country_Chair" title="Country Chair">Country Chair</a> • <a href="/Crystal_Chair"
+									title="Crystal Chair">Crystal Chair</a> • <a href="/Cute_Chair" title="Cute Chair">Cute Chair</a> • <a
+									href="/Dark_Throne" title="Dark Throne">Dark Throne</a> • <a href="/Dining_Chair_(red)"
+									title="Dining Chair (red)">Dining Chair (red)</a> • <a href="/Dining_Chair_(yellow)"
+									title="Dining Chair (yellow)">Dining Chair (yellow)</a> • <a href="/Green_Office_Stool"
+									title="Green Office Stool">Green Office Stool</a> • <a href="/Green_Plush_Seat"
+									title="Green Plush Seat">Green Plush Seat</a> • <a href="/Green_Stool" title="Green Stool">Green
+									Stool</a> • <a href="/Groovy_Chair" title="Groovy Chair">Groovy Chair</a> • <a href="/King_Chair"
+									title="King Chair">King Chair</a> • <a href="/Mahogany_Chair" title="Mahogany Chair">Mahogany
+									Chair</a> • <a href="/Metal_Chair" title="Metal Chair">Metal Chair</a> • <a href="/Oak_Chair"
+									title="Oak Chair">Oak Chair</a> • <a href="/Orange_Office_Stool" title="Orange Office Stool">Orange
+									Office Stool</a> • <a href="/Pink_Office_Chair" title="Pink Office Chair">Pink Office Chair</a> • <a
+									href="/Pink_Plush_Seat" title="Pink Plush Seat">Pink Plush Seat</a> • <a href="/Purple_Office_Chair"
+									title="Purple Office Chair">Purple Office Chair</a> • <a href="/Red_Diner_Chair"
+									title="Red Diner Chair">Red Diner Chair</a> • <a href="/Stump_Seat" title="Stump Seat">Stump Seat</a>
+								• <a href="/Tropical_Chair" title="Tropical Chair">Tropical Chair</a> • <a href="/Walnut_Chair"
+									title="Walnut Chair">Walnut Chair</a> • <a href="/Winter_Chair" title="Winter Chair">Winter Chair</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Benches
+							</th>
+							<td><a href="/Birch_Bench" title="Birch Bench">Birch Bench</a> • <a href="/Mahogany_Bench"
+									title="Mahogany Bench">Mahogany Bench</a> • <a href="/Modern_Bench" title="Modern Bench">Modern
+									Bench</a> • <a href="/Oak_Bench" title="Oak Bench">Oak Bench</a> • <a href="/Walnut_Bench"
+									title="Walnut Bench">Walnut Bench</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Armchairs
+							</th>
+							<td><a href="/Blue_Armchair" title="Blue Armchair">Blue Armchair</a> • <a href="/Brown_Armchair"
+									title="Brown Armchair">Brown Armchair</a> • <a href="/Green_Armchair" title="Green Armchair">Green
+									Armchair</a> • <a href="/Red_Armchair" title="Red Armchair">Red Armchair</a> • <a
+									href="/Yellow_Armchair" title="Yellow Armchair">Yellow Armchair</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Couches
+							</th>
+							<td><a href="/Blue_Couch" title="Blue Couch">Blue Couch</a> • <a href="/Brown_Couch"
+									title="Brown Couch">Brown Couch</a> • <a href="/Dark_Couch" title="Dark Couch">Dark Couch</a> • <a
+									href="/Green_Couch" title="Green Couch">Green Couch</a> • <a href="/Large_Brown_Couch"
+									title="Large Brown Couch">Large Brown Couch</a> • <a href="/Red_Couch" title="Red Couch">Red Couch</a>
+								• <a href="/Wizard_Couch" title="Wizard Couch">Wizard Couch</a> • <a href="/Woodsy_Couch"
+									title="Woodsy Couch">Woodsy Couch</a> • <a href="/Yellow_Couch" title="Yellow Couch">Yellow Couch</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Tables
+							</th>
+							<td><a href="/Birch_Table" title="Birch Table">Birch Table</a> • <a href="/Candy_Table"
+									title="Candy Table">Candy Table</a> • <a href="/Coffee_Table" title="Coffee Table">Coffee Table</a> •
+								<a href="/Dark_Table" title="Dark Table">Dark Table</a> • <a href="/Diviner_Table"
+									title="Diviner Table">Diviner Table</a> • <a href="/Luau_Table" title="Luau Table">Luau Table</a> • <a
+									href="/Luxury_Table" title="Luxury Table">Luxury Table</a> • <a href="/Mahogany_Table"
+									title="Mahogany Table">Mahogany Table</a> • <a href="/Modern_Table" title="Modern Table">Modern
+									Table</a> • <a href="/Moon_Table" title="Moon Table">Moon Table</a> • <a href="/Neolithic_Table"
+									title="Neolithic Table">Neolithic Table</a> • <a href="/Oak_Table" title="Oak Table">Oak Table</a> •
+								<a href="/Pub_Table" title="Pub Table">Pub Table</a> • <a href="/Puzzle_Table"
+									title="Puzzle Table">Puzzle Table</a> • <a href="/Stone_Slab" title="Stone Slab">Stone Slab</a> • <a
+									href="/Sun_Table" title="Sun Table">Sun Table</a> • <a href="/Walnut_Table"
+									title="Walnut Table">Walnut Table</a> • <a href="/Winter_Table" title="Winter Table">Winter Table</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Tea-Tables
+							</th>
+							<td><a href="/Birch_Tea-Table" title="Birch Tea-Table">Birch Tea-Table</a> • <a href="/Mahogany_Tea-Table"
+									title="Mahogany Tea-Table">Mahogany Tea-Table</a> • <a href="/Modern_Tea-Table"
+									title="Modern Tea-Table">Modern Tea-Table</a> • <a href="/Oak_Tea-Table" title="Oak Tea-Table">Oak
+									Tea-Table</a> • <a href="/Walnut_Tea-Table" title="Walnut Tea-Table">Walnut Tea-Table</a>
+							</td>
+						</tr>
+						<tr>
+							<th>End Tables
+							</th>
+							<td><a href="/Birch_End_Table" title="Birch End Table">Birch End Table</a> • <a
+									href="/Grandmother_End_Table" title="Grandmother End Table">Grandmother End Table</a> • <a
+									href="/Mahogany_End_Table" title="Mahogany End Table">Mahogany End Table</a> • <a
+									href="/Modern_End_Table" title="Modern End Table">Modern End Table</a> • <a href="/Oak_End_Table"
+									title="Oak End Table">Oak End Table</a> • <a href="/Walnut_End_Table" title="Walnut End Table">Walnut
+									End Table</a> • <a href="/Winter_End_Table" title="Winter End Table">Winter End Table</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Long Tables
+							</th>
+							<td><a href="/Festive_Dining_Table" title="Festive Dining Table">Festive Dining Table</a> • <a
+									href="/Mahogany_Dining_Table" title="Mahogany Dining Table">Mahogany Dining Table</a> • <a
+									href="/Modern_Dining_Table" title="Modern Dining Table">Modern Dining Table</a> • <a
+									href="/Winter_Dining_Table" title="Winter Dining Table">Winter Dining Table</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Bookcases
+							</th>
+							<td><a href="/Artist_Bookcase" title="Artist Bookcase">Artist Bookcase</a> • <a href="/Dark_Bookcase"
+									title="Dark Bookcase">Dark Bookcase</a> • <a href="/Luxury_Bookcase" title="Luxury Bookcase">Luxury
+									Bookcase</a> • <a href="/Modern_Bookcase" title="Modern Bookcase">Modern Bookcase</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Dressers
+							</th>
+							<td><a href="/Birch_Dresser" title="Birch Dresser">Birch Dresser</a> • <a href="/Mahogany_Dresser"
+									title="Mahogany Dresser">Mahogany Dresser</a> • <a href="/Oak_Dresser" title="Oak Dresser">Oak
+									Dresser</a> • <a href="/Walnut_Dresser" title="Walnut Dresser">Walnut Dresser</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Fireplaces
+							</th>
+							<td><a href="/Brick_Fireplace" title="Brick Fireplace">Brick Fireplace</a> • <a href="/Elegant_Fireplace"
+									title="Elegant Fireplace">Elegant Fireplace</a> • <a href="/Iridium_Fireplace"
+									title="Iridium Fireplace">Iridium Fireplace</a> • <a href="/Monster_Fireplace"
+									title="Monster Fireplace">Monster Fireplace</a> • <a href="/Stone_Fireplace"
+									title="Stone Fireplace">Stone Fireplace</a> • <a href="/Stove_Fireplace" title="Stove Fireplace">Stove
+									Fireplace</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Lamps
+							</th>
+							<td><a href="/Box_Lamp" title="Box Lamp">Box Lamp</a> • <a href="/Candle_Lamp" title="Candle Lamp">Candle
+									Lamp</a> • <a href="/Classic_Lamp" title="Classic Lamp">Classic Lamp</a> • <a href="/Country_Lamp"
+									title="Country Lamp">Country Lamp</a> • <a href="/Modern_Lamp" title="Modern Lamp">Modern Lamp</a> •
+								<a href="/Ornate_Lamp" title="Ornate Lamp">Ornate Lamp</a> • <a href="/Wall_Sconce"
+									title="Wall Sconce">Wall Sconce</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Windows
+							</th>
+							<td><a href="/Basic_Window" title="Basic Window">Basic Window</a> • <a href="/Boarded_Window"
+									title="Boarded Window">Boarded Window</a> • <a href="/Carved_Window" title="Carved Window">Carved
+									Window</a> • <a href="/Metal_Window" title="Metal Window">Metal Window</a> • <a href="/Ornate_Window"
+									title="Ornate Window">Ornate Window</a> • <a href="/Porthole" title="Porthole">Porthole</a> • <a
+									href="/Small_Window" title="Small Window">Small Window</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Rugs
+							</th>
+							<td><a href="/Bamboo_Mat" title="Bamboo Mat">Bamboo Mat</a> • <a href="/Blossom_Rug"
+									title="Blossom Rug">Blossom Rug</a> • <a href="/Bone_Rug" title="Bone Rug">Bone Rug</a> • <a
+									href="/Burlap_Rug" title="Burlap Rug">Burlap Rug</a> • <a href="/Dark_Rug" title="Dark Rug">Dark
+									Rug</a> • <a href="/Floor_Divider" title="Floor Divider">Floor Divider</a> • <a
+									href="/Fruit_Salad_Rug" title="Fruit Salad Rug">Fruit Salad Rug</a> • <a href="/Funky_Rug"
+									title="Funky Rug">Funky Rug</a> • <a href="/Green_Cottage_Rug" title="Green Cottage Rug">Green Cottage
+									Rug</a> • <a href="/Icy_Rug" title="Icy Rug">Icy Rug</a> • <a href="/Large_Cottage_Rug"
+									title="Large Cottage Rug">Large Cottage Rug</a> • <a href="/Large_Green_Rug"
+									title="Large Green Rug">Large Green Rug</a> • <a href="/Large_Red_Rug" title="Large Red Rug">Large Red
+									Rug</a> • <a href="/Light_Green_Rug" title="Light Green Rug">Light Green Rug</a> • <a
+									href="/Modern_Rug" title="Modern Rug">Modern Rug</a> • <a href="/Monster_Rug"
+									title="Monster Rug">Monster Rug</a> • <a href="/Mystic_Rug" title="Mystic Rug">Mystic Rug</a> • <a
+									href="/Nautical_Rug" title="Nautical Rug">Nautical Rug</a> • <a href="/Oceanic_Rug"
+									title="Oceanic Rug">Oceanic Rug</a> • <a href="/Old_World_Rug" title="Old World Rug">Old World Rug</a>
+								• <a href="/Patchwork_Rug" title="Patchwork Rug">Patchwork Rug</a> • <a href="/Pirate_Rug"
+									title="Pirate Rug">Pirate Rug</a> • <a href="/Red_Cottage_Rug" title="Red Cottage Rug">Red Cottage
+									Rug</a> • <a href="/Red_Rug" title="Red Rug">Red Rug</a> • <a href="/Snowy_Rug"
+									title="Snowy Rug">Snowy Rug</a> • <a href="/Woodcut_Rug" title="Woodcut Rug">Woodcut Rug</a>
+							</td>
+						</tr>
+						<tr>
+							<th>TVs
+							</th>
+							<td><a href="/Budget_TV" title="Budget TV">Budget TV</a> • <a href="/Floor_TV" title="Floor TV">Floor
+									TV</a> • <a href="/Plasma_TV" title="Plasma TV">Plasma TV</a> • <a href="/Tropical_TV"
+									title="Tropical TV">Tropical TV</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Beds
+							</th>
+							<td><a href="/Birch_Double_Bed" title="Birch Double Bed">Birch Double Bed</a> • <a href="/Child_Bed"
+									title="Child Bed">Child Bed</a> • <a href="/Deluxe_Red_Double_Bed"
+									title="Deluxe Red Double Bed">Deluxe Red Double Bed</a> • <a href="/Double_Bed"
+									title="Double Bed">Double Bed</a> • <a href="/Exotic_Double_Bed" title="Exotic Double Bed">Exotic
+									Double Bed</a> • <a href="/Fisher_Double_Bed" title="Fisher Double Bed">Fisher Double Bed</a> • <a
+									href="/Modern_Double_Bed" title="Modern Double Bed">Modern Double Bed</a> • <a
+									href="/Pirate_Double_Bed" title="Pirate Double Bed">Pirate Double Bed</a> • <a href="/Single_Bed"
+									title="Single Bed">Single Bed</a> • <a href="/Starry_Double_Bed" title="Starry Double Bed">Starry
+									Double Bed</a> • <a href="/Strawberry_Double_Bed" title="Strawberry Double Bed">Strawberry Double
+									Bed</a> • <a href="/Tropical_Bed" title="Tropical Bed">Tropical Bed</a> • <a
+									href="/Tropical_Double_Bed" title="Tropical Double Bed">Tropical Double Bed</a> • <a
+									href="/Wild_Double_Bed" title="Wild Double Bed">Wild Double Bed</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Decorative Plants
+							</th>
+							<td><a href="/Bonsai_Tree" title="Bonsai Tree">Bonsai Tree</a> • <a href="/Deluxe_Tree"
+									title="Deluxe Tree">Deluxe Tree</a> • <a href="/Dried_Sunflowers" title="Dried Sunflowers">Dried
+									Sunflowers</a> • <a href="/Exotic_Tree" title="Exotic Tree">Exotic Tree</a> • <a href="/House_Plant"
+									title="House Plant">House Plant</a> • <a href="/Indoor_Palm" title="Indoor Palm">Indoor Palm</a> • <a
+									href="/Long_Cactus" title="Long Cactus">Long Cactus</a> • <a href="/Long_Palm" title="Long Palm">Long
+									Palm</a> • <a href="/Manicured_Pine" title="Manicured Pine">Manicured Pine</a> • <a href="/S._Pine"
+									title="S. Pine">S. Pine</a> • <a href="/Small_Plant" title="Small Plant">Small Plant</a> • <a
+									href="/Table_Plant" title="Table Plant">Table Plant</a> • <a href="/Topiary_Tree"
+									title="Topiary Tree">Topiary Tree</a> • <a href="/Tree_Column" title="Tree Column">Tree Column</a> •
+								<a href="/Tree_of_the_Winter_Star" title="Tree of the Winter Star">Tree of the Winter Star</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Decorative Hanging Plants
+							</th>
+							<td><a href="/Ceiling_Leaves" title="Ceiling Leaves">Ceiling Leaves</a> • <a href="/Indoor_Hanging_Basket"
+									title="Indoor Hanging Basket">Indoor Hanging Basket</a> • <a href="/Jungle_Decal"
+									title="Jungle Decal">Jungle Decal</a> • <a href="/L._Light_String" title="L. Light String">L. Light
+									String</a> • <a href="/Palm_Wall_Ornament" title="Palm Wall Ornament">Palm Wall Ornament</a> • <a
+									href="/S._Wall_Flower" title="S. Wall Flower">S. Wall Flower</a> • <a href="/Wall_Basket"
+									title="Wall Basket">Wall Basket</a> • <a href="/Wall_Cactus" title="Wall Cactus">Wall Cactus</a> • <a
+									href="/Wall_Flower" title="Wall Flower">Wall Flower</a> • <a href="/Wall_Palm" title="Wall Palm">Wall
+									Palm</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Paintings
+							</th>
+							<td><a href="/%27A_Night_On_Eco-Hill%27" title="'A Night On Eco-Hill'">'A Night On Eco-Hill'</a> • <a
+									href="/%27Blue_City%27" title="'Blue City'">'Blue City'</a> • <a href="/%27Blueberries%27"
+									title="'Blueberries'">'Blueberries'</a> • <a href="/%27Boat%27" title="'Boat'">'Boat'</a> • <a
+									href="/%27Burnt_Offering%27" title="'Burnt Offering'">'Burnt Offering'</a> • <a href="/Calico_Falls"
+									title="Calico Falls">Calico Falls</a> • <a href="/Colorful_Set" title="Colorful Set">Colorful Set</a>
+								• <a href="/%27Dancing_Grass%27" title="'Dancing Grass'">'Dancing Grass'</a> • <a href="/Foliage_Print"
+									title="Foliage Print">Foliage Print</a> • <a href="/%27Frozen_Dreams%27"
+									title="'Frozen Dreams'">'Frozen Dreams'</a> • <a href="/%27Highway_89%27"
+									title="'Highway 89'">'Highway 89'</a> • <a href="/%27Jade_Hills%27" title="'Jade Hills'">'Jade
+									Hills'</a> • <a href="/%27Jade_Hills_Extended%27" title="'Jade Hills Extended'">'Jade Hills
+									Extended'</a> • <a href="/%27Kitemaster_%2795%27" title="'Kitemaster '95'">'Kitemaster '95'</a> • <a
+									href="/%27Little_Tree%27" title="'Little Tree'">'Little Tree'</a> • <a href="/My_First_Painting"
+									title="My First Painting">My First Painting</a> • <a href="/Needlepoint_Flower"
+									title="Needlepoint Flower">Needlepoint Flower</a> • <a href="/%27Pathways%27"
+									title="'Pathways'">'Pathways'</a> • <a href="/%27Physics_101%27" title="'Physics 101'">'Physics
+									101'</a> • <a href="/%27Primal_Motion%27" title="'Primal Motion'">'Primal Motion'</a> • <a
+									href="/%27Queen_of_the_Gem_Sea%27" title="'Queen of the Gem Sea'">'Queen of the Gem Sea'</a> • <a
+									href="/%27Spires%27" title="'Spires'">'Spires'</a> • <a href="/%27Sun_44%27" title="'Sun 44'">'Sun
+									#44'</a> • <a href="/%27Sun_45%27" title="'Sun 45'">'Sun #45'</a> • <a href="/%27The_Muzzamaroo%27"
+									title="'The Muzzamaroo'">'The Muzzamaroo'</a> • <a href="/%27Vanilla_Villa%27"
+									title="'Vanilla Villa'">'Vanilla Villa'</a> • <a href="/%27VGA_Paradise%27"
+									title="'VGA Paradise'">'VGA Paradise'</a> • <a href="/%27Vista%27" title="'Vista'">'Vista'</a> • <a
+									href="/%27Volcano%27_Photo" title="'Volcano' Photo">'Volcano' Photo</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Lupini Paintings
+							</th>
+							<td><a href="/%271000_Years_From_Now%27" title="'1000 Years From Now'">'1000 Years From Now'</a> • <a
+									href="/%27Clouds%27" title="'Clouds'">'Clouds'</a> • <a href="/%27Land_Of_Clay%27"
+									title="'Land Of Clay'">'Land Of Clay'</a> • <a href="/%27Portrait_Of_A_Mermaid%27"
+									title="'Portrait Of A Mermaid'">'Portrait Of A Mermaid'</a> • <a href="/%27Red_Eagle%27"
+									title="'Red Eagle'">'Red Eagle'</a> • <a href="/%27Solar_Kingdom%27" title="'Solar Kingdom'">'Solar
+									Kingdom'</a> • <a href="/%27The_Serpent%27" title="'The Serpent'">'The Serpent'</a> • <a
+									href="/%27Three_Trees%27" title="'Three Trees'">'Three Trees'</a> • <a href="/%27Tropical_Fish_173%27"
+									title="'Tropical Fish 173'">'Tropical Fish #173'</a>
+							</td>
+						</tr>
+						<tr>
+							<th><a href="/Movie_Theater" title="Movie Theater">Movie Posters</a>
+							</th>
+							<td><a href="/%27It_Howls_In_The_Rain%27" title="'It Howls In The Rain'">'It Howls In The Rain'</a> • <a
+									href="/%27Journey_Of_The_Prairie_King:_The_Motion_Picture%27"
+									title="'Journey Of The Prairie King: The Motion Picture'">'Journey Of The Prairie King: The Motion
+									Picture'</a> • <a href="/%27Mysterium%27" title="'Mysterium'">'Mysterium'</a> • <a
+									href="/%27Natural_Wonders:_Exploring_Our_Vibrant_World%27"
+									title="'Natural Wonders: Exploring Our Vibrant World'">'Natural Wonders: Exploring Our Vibrant
+									World'</a> • <a href="/%27The_Brave_Little_Sapling%27" title="'The Brave Little Sapling'">'The Brave
+									Little Sapling'</a> • <a href="/%27The_Miracle_At_Coldstar_Ranch%27"
+									title="'The Miracle At Coldstar Ranch'">'The Miracle At Coldstar Ranch'</a> • <a
+									href="/%27The_Zuzu_City_Express%27" title="'The Zuzu City Express'">'The Zuzu City Express'</a> • <a
+									href="/%27Wumbus%27" title="'Wumbus'">'Wumbus'</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Banners
+							</th>
+							<td><a href="/Clouds_Banner" title="Clouds Banner">Clouds Banner</a> • <a href="/Icy_Banner"
+									title="Icy Banner">Icy Banner</a> • <a href="/Moonlight_Jellies_Banner"
+									title="Moonlight Jellies Banner">Moonlight Jellies Banner</a> • <a href="/Pastel_Banner"
+									title="Pastel Banner">Pastel Banner</a> • <a href="/Winter_Banner" title="Winter Banner">Winter
+									Banner</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Wall Hangings
+							</th>
+							<td><a href="/Anchor_(Furniture)" title="Anchor (Furniture)">Anchor</a> • <strong
+									class="selflink">Calendar</strong> • <a href="/Ceiling_Flags" title="Ceiling Flags">Ceiling Flags</a>
+								• <a href="/Cloud_Decal" title="Cloud Decal">Cloud Decal</a> • <a href="/Decorative_Axe"
+									title="Decorative Axe">Decorative Axe</a> • <a href="/Decorative_Pitchfork"
+									title="Decorative Pitchfork">Decorative Pitchfork</a> • <a href="/Hanging_Shield"
+									title="Hanging Shield">Hanging Shield</a> • <a href="/J._Cola_Light" title="J. Cola Light">J. Cola
+									Light</a> • <a href="/Lifesaver" title="Lifesaver">Lifesaver</a> • <a href="/Little_Photos"
+									title="Little Photos">Little Photos</a> • <a href="/Log_Panel" title="Log Panel">Log Panel</a> • <a
+									href="/Miner%27s_Crest" title="Miner's Crest">Miner's Crest</a> • <a href="/Monster_Danglers"
+									title="Monster Danglers">Monster Danglers</a> • <a href="/Night_Sky_Decal_1"
+									title="Night Sky Decal 1">Night Sky Decal #1</a> • <a href="/Night_Sky_Decal_2"
+									title="Night Sky Decal 2">Night Sky Decal #2</a> • <a href="/Night_Sky_Decal_3"
+									title="Night Sky Decal 3">Night Sky Decal #3</a> • <a href="/Pirate_Flag" title="Pirate Flag">Pirate
+									Flag</a> • <a href="/Pyramid_Decal" title="Pyramid Decal">Pyramid Decal</a> • <a href="/Skull_Poster"
+									title="Skull Poster">Skull Poster</a> • <a href="/Small_Wall_Pumpkin" title="Small Wall Pumpkin">Small
+									Wall Pumpkin</a> • <a href="/Starport_Decal" title="Starport Decal">Starport Decal</a> • <a
+									href="/Strawberry_Decal" title="Strawberry Decal">Strawberry Decal</a> • <a href="/Wall_Pumpkin"
+									title="Wall Pumpkin">Wall Pumpkin</a> • <a href="/Wallflower_Pal" title="Wallflower Pal">Wallflower
+									Pal</a> • <a href="/Winter_Tree_Decal" title="Winter Tree Decal">Winter Tree Decal</a>• <a
+									href="/Wood_Panel" title="Wood Panel">Wood Panel</a> • <a href="/World_Map" title="World Map">World
+									Map</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Fish Tanks
+							</th>
+							<td><a href="/Aquatic_Sanctuary" title="Aquatic Sanctuary">Aquatic Sanctuary</a> • <a
+									href="/Deluxe_Fish_Tank" title="Deluxe Fish Tank">Deluxe Fish Tank</a> • <a href="/Large_Fish_Tank"
+									title="Large Fish Tank">Large Fish Tank</a> • <a href="/Modern_Fish_Tank"
+									title="Modern Fish Tank">Modern Fish Tank</a> • <a href="/Small_Fish_Tank"
+									title="Small Fish Tank">Small Fish Tank</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Torches
+							</th>
+							<td><a href="/Jungle_Torch" title="Jungle Torch">Jungle Torch</a> • <a href="/Plain_Torch"
+									title="Plain Torch">Plain Torch</a> • <a href="/Stump_Torch" title="Stump Torch">Stump Torch</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Misc.
+							</th>
+							<td><a href="/Ceramic_Pillar" title="Ceramic Pillar">Ceramic Pillar</a> • <a href="/China_Cabinet"
+									title="China Cabinet">China Cabinet</a> • <a href="/Decorative_Bowl"
+									title="Decorative Bowl">Decorative Bowl</a> • <a href="/Decorative_Lantern"
+									title="Decorative Lantern">Decorative Lantern</a> • <a href="/Decorative_Trash_Can"
+									title="Decorative Trash Can">Decorative Trash Can</a> • <a href="/Futan_Bear" title="Futan Bear">Futan
+									Bear</a> • <a href="/Globe" title="Globe">Globe</a> • <a href="/Gold_Pillar" title="Gold Pillar">Gold
+									Pillar</a> • <a href="/Industrial_Pipe" title="Industrial Pipe">Industrial Pipe</a> • <a
+									href="/Model_Ship" title="Model Ship">Model Ship</a> • <a href="/Small_Crystal"
+									title="Small Crystal">Small Crystal</a> • <a href="/Totem_Pole" title="Totem Pole">Totem Pole</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Other Decoration
+							</th>
+							<td><a href="/Bear_Statue" title="Bear Statue">Bear Statue</a> • <a href="/Bobo_Statue"
+									title="Bobo Statue">Bobo Statue</a> • <a href="/Butterfly_Hutch" title="Butterfly Hutch">Butterfly
+									Hutch</a> • <a href="/Chicken_Statue_(furniture)" title="Chicken Statue (furniture)">Chicken
+									Statue</a> • <a href="/Futan_Rabbit" title="Futan Rabbit">Futan Rabbit</a> • <a
+									href="/Gourmand_Statue" title="Gourmand Statue">Gourmand Statue</a> • <a href="/Green_Serpent_Statue"
+									title="Green Serpent Statue">Green Serpent Statue</a> • <a href="/Iridium_Krobus"
+									title="Iridium Krobus">Iridium Krobus</a> • <a href="/Junimo_Plush" title="Junimo Plush">Junimo
+									Plush</a> • <a href="/Leah%27s_Sculpture" title="Leah's Sculpture">Leah's Sculpture</a> • <a
+									href="/Lg._Futan_Bear" title="Lg. Futan Bear">Lg. Futan Bear</a> • <a href="/Obsidian_Vase"
+									title="Obsidian Vase">Obsidian Vase</a> • <a href="/Purple_Serpent_Statue"
+									title="Purple Serpent Statue">Purple Serpent Statue</a> • <a href="/Sam%27s_Boombox"
+									title="Sam's Boombox">Sam's Boombox</a> • <a href="/Singing_Stone" title="Singing Stone">Singing
+									Stone</a> • <a href="/Skeleton_Statue" title="Skeleton Statue">Skeleton Statue</a> • <a
+									href="/Sloth_Skeleton" title="Sloth Skeleton">Sloth Skeleton</a> • <a href="/Small_Junimo_Plush"
+									title="Small Junimo Plush">Small Junimo Plush</a> • <a href="/Squirrel_Figurine"
+									title="Squirrel Figurine">Squirrel Figurine</a> • <a href="/Standing_Geode"
+									title="Standing Geode">Standing Geode</a> • <a href="/Wumbus_Statue" title="Wumbus Statue">Wumbus
+									Statue</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Special Items
+							</th>
+							<td><a href="/Basic_Log" title="Basic Log">Basic Log</a> • <a href="/Big_Green_Cane"
+									title="Big Green Cane">Big Green Cane</a> • <a href="/Big_Red_Cane" title="Big Red Cane">Big Red
+									Cane</a> • <a href="/Coffee_Maker" title="Coffee Maker">Coffee Maker</a> • <a href="/Drum_Block"
+									title="Drum Block">Drum Block</a> • <a href="/Farm_Computer" title="Farm Computer">Farm Computer</a> •
+								<a href="/Flute_Block" title="Flute Block">Flute Block</a> • <a href="/Grave_Stone"
+									title="Grave Stone">Grave Stone</a> • <a href="/Green_Canes" title="Green Canes">Green Canes</a> • <a
+									href="/Junimo_Kart_Arcade_System" title="Junimo Kart Arcade System">Junimo Kart Arcade System</a> • <a
+									href="/Lawn_Flamingo" title="Lawn Flamingo">Lawn Flamingo</a> • <a href="/Log_Section"
+									title="Log Section">Log Section</a> • <a href="/Mini-Jukebox" title="Mini-Jukebox">Mini-Jukebox</a> •
+								<a href="/Mixed_Cane" title="Mixed Cane">Mixed Cane</a> • <a href="/Ornamental_Hay_Bale"
+									title="Ornamental Hay Bale">Ornamental Hay Bale</a> • <a href="/Plush_Bunny" title="Plush Bunny">Plush
+									Bunny</a> • <a href="/Prairie_King_Arcade_System" title="Prairie King Arcade System">Prairie King
+									Arcade System</a> • <a href="/Red_Canes" title="Red Canes">Red Canes</a> • <a href="/Seasonal_Plant"
+									title="Seasonal Plant">Seasonal Plant</a> • <a href="/Seasonal_Decor" title="Seasonal Decor">Seasonal
+									Decor</a> • <a href="/Sewing_Machine" title="Sewing Machine">Sewing Machine</a> • <a
+									href="/Sign_Of_The_Vessel" title="Sign Of The Vessel">Sign Of The Vessel</a> • <a href="/Soda_Machine"
+									title="Soda Machine">Soda Machine</a> • <a href="/Stardew_Hero_Trophy"
+									title="Stardew Hero Trophy">Stardew Hero Trophy</a> • <a href="/Statue_Of_Endless_Fortune"
+									title="Statue Of Endless Fortune">Statue Of Endless Fortune</a> • <a href="/Statue_of_Perfection"
+									title="Statue of Perfection">Statue of Perfection</a> • <a href="/Statue_Of_True_Perfection"
+									title="Statue Of True Perfection">Statue Of True Perfection</a> • <a href="/Stone_Cairn"
+									title="Stone Cairn">Stone Cairn</a> • <a href="/Stone_Frog" title="Stone Frog">Stone Frog</a> • <a
+									href="/Stone_Junimo" title="Stone Junimo">Stone Junimo</a> • <a href="/Stone_Owl"
+									title="Stone Owl">Stone Owl</a> • <a href="/Stone_Parrot" title="Stone Parrot">Stone Parrot</a> • <a
+									href="/Suit_Of_Armor" title="Suit Of Armor">Suit Of Armor</a> • <a href="/Tea_Set" title="Tea Set">Tea
+									Set</a> • <a href="/Telephone" title="Telephone">Telephone</a> • <a href="/Tub_o%27_Flowers"
+									title="Tub o' Flowers">Tub o' Flowers</a> • <a href="/Wicked_Statue" title="Wicked Statue">Wicked
+									Statue</a>
+							</td>
+						</tr>
+						<tr>
+							<th> Secrets
+							</th>
+							<td><a href="/%3F%3FForoguemon%3F%3F" title="??Foroguemon??">??Foroguemon??</a> • <a
+									href="/%3F%3FHMTGF%3F%3F" title="??HMTGF??">??HMTGF??</a> • <a href="/%3F%3FPinky_Lemon%3F%3F"
+									title="??Pinky Lemon??">??Pinky Lemon??</a> • <a href="/Empty_Capsule" title="Empty Capsule"
+									class="mw-redirect">Empty Capsule</a> • <a href="/Solid_Gold_Lewis" title="Solid Gold Lewis">Solid
+									Gold Lewis</a> • <a href="/Random_Events#Stone_Owl" title="Random Events">Stone Owl</a> • <a
+									href="/Strange_Capsule" title="Strange Capsule" class="mw-redirect">Strange Capsule</a>
+							</td>
+						</tr>
+						<tr>
+							<th> Catalogues
+							</th>
+							<td><a href="/Catalogue" title="Catalogue">Catalogue</a> • <a href="/Furniture_Catalogue"
+									title="Furniture Catalogue">Furniture Catalogue</a>
+							</td>
+						</tr>
+					</table>
 
-<!-- 
+					<!-- 
 NewPP limit report
 Cached time: 20210214161502
 Cache expiry: 86400
@@ -805,7 +1390,7 @@ Highest expansion depth: 9/40
 Expensive parser function count: 1/100
 -->
 
-<!-- 
+					<!-- 
 Transclusion expansion time report (%,ms,calls,template)
 100.00%  126.050      1 - -total
  59.09%   74.481      1 - Template:Infobox_furniture
@@ -819,14 +1404,26 @@ Transclusion expansion time report (%,ms,calls,template)
   3.35%    4.226      4 - Template:Calendar
 -->
 
-<!-- Saved in parser cache with key xffuvdjmza:pcache:idhash:3356-0!*!0!!en!5!* and timestamp 20210214161502 and revision id 96461
+					<!-- Saved in parser cache with key xffuvdjmza:pcache:idhash:3356-0!*!0!!en!5!* and timestamp 20210214161502 and revision id 96461
  -->
-</div>					<div class="printfooter">
-						Retrieved from "<a dir="ltr" href="https://stardewcommunitywiki.com/mediawiki/index.php?title=Calendar&amp;oldid=96461">https://stardewcommunitywiki.com/mediawiki/index.php?title=Calendar&amp;oldid=96461</a>"					</div>
-				<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="/Category:Wall_hangings" title="Category:Wall hangings">Wall hangings</a></li></ul></div></div>				<div class="visualClear"></div>
-				<div style="width:100%;"><div style="width: 100%; text-align:center; height: 100%; margin: auto; background-color: rgba(255, 255, 255, 0.58); margin-top:10px; margin-bottom:-10px;">
-<div id="stardew_bottom_responsive"></div>
-<script type="ee8e277aa83559d6e57a07bd-text/javascript">
+				</div>
+				<div class="printfooter">
+					Retrieved from "<a dir="ltr"
+						href="https://stardewcommunitywiki.com/mediawiki/index.php?title=Calendar&amp;oldid=96461">https://stardewcommunitywiki.com/mediawiki/index.php?title=Calendar&amp;oldid=96461</a>"
+				</div>
+				<div id='catlinks' class='catlinks'>
+					<div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/Special:Categories"
+							title="Special:Categories">Category</a>: <ul>
+							<li><a href="/Category:Wall_hangings" title="Category:Wall hangings">Wall hangings</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="visualClear"></div>
+				<div style="width:100%;">
+					<div
+						style="width: 100%; text-align:center; height: 100%; margin: auto; background-color: rgba(255, 255, 255, 0.58); margin-top:10px; margin-bottom:-10px;">
+						<div id="stardew_bottom_responsive"></div>
+						<script type="ee8e277aa83559d6e57a07bd-text/javascript">
 nads.createAd('stardew_bottom_responsive',
     {
         sizes: [],
@@ -846,104 +1443,177 @@ nads.createAd('stardew_bottom_responsive',
     }
 );
 </script>
-</div></div>
+					</div>
+				</div>
 				<div class="visualClear"></div>
-							</div>
+			</div>
 		</div>
 		<div id="mw-navigation">
 			<h2>Navigation menu</h2>
 
 			<div id="mw-head">
-									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
-						<h3 id="p-personal-label">Personal tools</h3>
-						<ul>
-							<li id="pt-createaccount"><a href="/mediawiki/index.php?title=Special:UserLogin&amp;returnto=Calendar&amp;type=signup" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="/mediawiki/index.php?title=Special:UserLogin&amp;returnto=Calendar" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>						</ul>
-					</div>
-									<div id="left-navigation">
-										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+				<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+					<h3 id="p-personal-label">Personal tools</h3>
+					<ul>
+						<li id="pt-createaccount"><a
+								href="/mediawiki/index.php?title=Special:UserLogin&amp;returnto=Calendar&amp;type=signup"
+								title="You are encouraged to create an account and log in; however, it is not mandatory">Create
+								account</a></li>
+						<li id="pt-login"><a href="/mediawiki/index.php?title=Special:UserLogin&amp;returnto=Calendar"
+								title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>
+					</ul>
+				</div>
+				<div id="left-navigation">
+					<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
 						<h3 id="p-namespaces-label">Namespaces</h3>
 						<ul>
-															<li  id="ca-nstab-main" class="selected"><span><a href="/Calendar"  title="View the content page [c]" accesskey="c">Page</a></span></li>
-															<li  id="ca-talk"><span><a href="/Talk:Calendar"  title="Discussion about the content page [t]" accesskey="t" rel="discussion">Discussion</a></span></li>
-													</ul>
+							<li id="ca-nstab-main" class="selected"><span><a href="/Calendar" title="View the content page [c]"
+										accesskey="c">Page</a></span></li>
+							<li id="ca-talk"><span><a href="/Talk:Calendar" title="Discussion about the content page [t]"
+										accesskey="t" rel="discussion">Discussion</a></span></li>
+						</ul>
 					</div>
-										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
-												<h3 id="p-variants-label">
+					<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+						<h3 id="p-variants-label">
 							<span>Variants</span><a href="#"></a>
 						</h3>
 
 						<div class="menu">
 							<ul>
-															</ul>
+							</ul>
 						</div>
 					</div>
-									</div>
+				</div>
 				<div id="right-navigation">
-										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+					<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
 						<h3 id="p-views-label">Views</h3>
 						<ul>
-															<li id="ca-view" class="selected"><span><a href="/Calendar" >Read</a></span></li>
-															<li id="ca-viewsource"><span><a href="/mediawiki/index.php?title=Calendar&amp;action=edit"  title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span></li>
-															<li id="ca-history" class="collapsible"><span><a href="/mediawiki/index.php?title=Calendar&amp;action=history"  title="Past revisions of this page [h]" accesskey="h">View history</a></span></li>
-													</ul>
+							<li id="ca-view" class="selected"><span><a href="/Calendar">Read</a></span></li>
+							<li id="ca-viewsource"><span><a href="/mediawiki/index.php?title=Calendar&amp;action=edit"
+										title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></span>
+							</li>
+							<li id="ca-history" class="collapsible"><span><a
+										href="/mediawiki/index.php?title=Calendar&amp;action=history"
+										title="Past revisions of this page [h]" accesskey="h">View history</a></span></li>
+						</ul>
 					</div>
-										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+					<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
 						<h3 id="p-cactions-label"><span>More</span><a href="#"></a></h3>
 
 						<div class="menu">
 							<ul>
-															</ul>
+							</ul>
 						</div>
 					</div>
-										<div id="p-search" role="search">
+					<div id="p-search" role="search">
 						<h3>
 							<label for="searchInput">Search</label>
 						</h3>
 
 						<form action="/mediawiki/index.php" id="searchform">
 							<div id="simpleSearch">
-							<input type="search" name="search" placeholder="Search" title="Search Stardew Valley Wiki [f]" accesskey="f" id="searchInput" /><input type="hidden" value="Special:Search" name="title" /><input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton mw-fallbackSearchButton" /><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton" />							</div>
+								<input type="search" name="search" placeholder="Search" title="Search Stardew Valley Wiki [f]"
+									accesskey="f" id="searchInput" /><input type="hidden" value="Special:Search" name="title" /><input
+									type="submit" name="fulltext" value="Search" title="Search the pages for this text"
+									id="mw-searchButton" class="searchButton mw-fallbackSearchButton" /><input type="submit" name="go"
+									value="Go" title="Go to a page with this exact name if it exists" id="searchButton"
+									class="searchButton" />
+							</div>
 						</form>
 					</div>
-									</div>
+				</div>
 			</div>
 			<div id="mw-panel">
-				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="/Stardew_Valley_Wiki"  title="Visit the main page"></a></div>
-						<div class="portal" role="navigation" id='p-navigation' aria-labelledby='p-navigation-label'>
-			<h3 id='p-navigation-label'>Navigation</h3>
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="/Stardew_Valley_Wiki"
+						title="Visit the main page"></a></div>
+				<div class="portal" role="navigation" id='p-navigation' aria-labelledby='p-navigation-label'>
+					<h3 id='p-navigation-label'>Navigation</h3>
 
-			<div class="body">
-									<ul>
-						<li id="n-mainpage-description"><a href="/Stardew_Valley_Wiki" title="Visit the main page [z]" accesskey="z">Main page</a></li><li id="n-recentchanges"><a href="/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li><li id="n-Admin-noticeboard"><a href="/Stardew_Valley_Wiki:Admin_noticeboard">Admin noticeboard</a></li><li id="n-randompage"><a href="/Special:Random" title="Load a random page [x]" accesskey="x">Random page</a></li>					</ul>
-							</div>
-		</div>
-			<div class="portal" role="navigation" id='p-Official_Links' aria-labelledby='p-Official_Links-label'>
-			<h3 id='p-Official_Links-label'>Official Links</h3>
+					<div class="body">
+						<ul>
+							<li id="n-mainpage-description"><a href="/Stardew_Valley_Wiki" title="Visit the main page [z]"
+									accesskey="z">Main page</a></li>
+							<li id="n-recentchanges"><a href="/Special:RecentChanges" title="A list of recent changes in the wiki [r]"
+									accesskey="r">Recent changes</a></li>
+							<li id="n-Admin-noticeboard"><a href="/Stardew_Valley_Wiki:Admin_noticeboard">Admin noticeboard</a></li>
+							<li id="n-randompage"><a href="/Special:Random" title="Load a random page [x]" accesskey="x">Random
+									page</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="portal" role="navigation" id='p-Official_Links' aria-labelledby='p-Official_Links-label'>
+					<h3 id='p-Official_Links-label'>Official Links</h3>
 
-			<div class="body">
-									<ul>
-						<li id="n-Official-Site"><a href="https://stardewvalley.net" rel="nofollow" target="_blank">Official Site</a></li><li id="n-Official-Forums"><a href="https://forums.stardewvalley.net/" rel="nofollow" target="_blank">Official Forums</a></li><li id="n-Official-Merchandise"><a href="https://www.stardewvalley.net/shop/" rel="nofollow" target="_blank">Official Merchandise</a></li><li id="n-Reddit"><a href="https://www.reddit.com/r/StardewValley" rel="nofollow" target="_blank">Reddit</a></li>					</ul>
-							</div>
-		</div>
-			<div class="portal" role="navigation" id='p-tb' aria-labelledby='p-tb-label'>
-			<h3 id='p-tb-label'>Tools</h3>
+					<div class="body">
+						<ul>
+							<li id="n-Official-Site"><a href="https://stardewvalley.net" rel="nofollow" target="_blank">Official
+									Site</a></li>
+							<li id="n-Official-Forums"><a href="https://forums.stardewvalley.net/" rel="nofollow"
+									target="_blank">Official Forums</a></li>
+							<li id="n-Official-Merchandise"><a href="https://www.stardewvalley.net/shop/" rel="nofollow"
+									target="_blank">Official Merchandise</a></li>
+							<li id="n-Reddit"><a href="https://www.reddit.com/r/StardewValley" rel="nofollow"
+									target="_blank">Reddit</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="portal" role="navigation" id='p-tb' aria-labelledby='p-tb-label'>
+					<h3 id='p-tb-label'>Tools</h3>
 
-			<div class="body">
-									<ul>
-						<li id="t-whatlinkshere"><a href="/Special:WhatLinksHere/Calendar" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="/Special:RecentChangesLinked/Calendar" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="/mediawiki/index.php?title=Calendar&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="/mediawiki/index.php?title=Calendar&amp;oldid=96461" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="/mediawiki/index.php?title=Calendar&amp;action=info" title="More information about this page">Page information</a></li>					</ul>
-							</div>
-		</div>
-			<div class="portal" role="navigation" id='p-lang' aria-labelledby='p-lang-label'>
-			<h3 id='p-lang-label'>In other languages</h3>
+					<div class="body">
+						<ul>
+							<li id="t-whatlinkshere"><a href="/Special:WhatLinksHere/Calendar"
+									title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+							<li id="t-recentchangeslinked"><a href="/Special:RecentChangesLinked/Calendar"
+									title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+							<li id="t-specialpages"><a href="/Special:SpecialPages" title="A list of all special pages [q]"
+									accesskey="q">Special pages</a></li>
+							<li id="t-print"><a href="/mediawiki/index.php?title=Calendar&amp;printable=yes" rel="alternate"
+									title="Printable version of this page [p]" accesskey="p">Printable version</a></li>
+							<li id="t-permalink"><a href="/mediawiki/index.php?title=Calendar&amp;oldid=96461"
+									title="Permanent link to this revision of the page">Permanent link</a></li>
+							<li id="t-info"><a href="/mediawiki/index.php?title=Calendar&amp;action=info"
+									title="More information about this page">Page information</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="portal" role="navigation" id='p-lang' aria-labelledby='p-lang-label'>
+					<h3 id='p-lang-label'>In other languages</h3>
 
-			<div class="body">
-									<ul>
-						<li class="interlanguage-link interwiki-de"><a href="https://de.stardewcommunitywiki.com/Kalender" title="Kalender – Deutsch" lang="de" hreflang="de">Deutsch</a></li><li class="interlanguage-link interwiki-es"><a href="https://es.stardewvalleywiki.com/Calendario" title="Calendario – español" lang="es" hreflang="es">Español</a></li><li class="interlanguage-link interwiki-fr"><a href="https://fr.stardewvalleywiki.com/Calendrier" title="Calendrier – français" lang="fr" hreflang="fr">Français</a></li><li class="interlanguage-link interwiki-it"><a href="https://it.stardewvalleywiki.com/Calendario" title="Calendario – italiano" lang="it" hreflang="it">Italiano</a></li><li class="interlanguage-link interwiki-ja"><a href="https://ja.stardewvalleywiki.com/%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC" title="カレンダー – 日本語" lang="ja" hreflang="ja">日本語</a></li><li class="interlanguage-link interwiki-ko"><a href="https://ko.stardewvalleywiki.com/%EB%8B%AC%EB%A0%A5" title="달력 – 한국어" lang="ko" hreflang="ko">한국어</a></li><li class="interlanguage-link interwiki-hu"><a href="https://hu.stardewvalleywiki.com/Napt%C3%A1r" title="Naptár – magyar" lang="hu" hreflang="hu">Magyar</a></li><li class="interlanguage-link interwiki-pt"><a href="https://pt.stardewvalleywiki.com/Calend%C3%A1rio" title="Calendário – português" lang="pt" hreflang="pt">Português</a></li><li class="interlanguage-link interwiki-ru"><a href="https://ru.stardewvalleywiki.com/%D0%9A%D0%B0%D0%BB%D0%B5%D0%BD%D0%B4%D0%B0%D1%80%D1%8C" title="Календарь – русский" lang="ru" hreflang="ru">Русский</a></li><li class="interlanguage-link interwiki-tr"><a href="https://tr.stardewvalleywiki.com/Takvim" title="Takvim – Türkçe" lang="tr" hreflang="tr">Türkçe</a></li><li class="interlanguage-link interwiki-zh"><a href="https://zh.stardewvalleywiki.com/%E6%97%A5%E5%8E%86" title="日历 – 中文" lang="zh" hreflang="zh">中文</a></li>					</ul>
-							</div>
-		</div>
-				<div id="side-adspace" style="height:100%;"><div style="width: 100%; text-align:center; height: 100%; margin: auto; background-color: rgba(255, 255, 255, 0.58);">
-<div id="stardew_vertical_sidebar"></div>
-<script type="ee8e277aa83559d6e57a07bd-text/javascript">
+					<div class="body">
+						<ul>
+							<li class="interlanguage-link interwiki-de"><a href="https://de.stardewcommunitywiki.com/Kalender"
+									title="Kalender – Deutsch" lang="de" hreflang="de">Deutsch</a></li>
+							<li class="interlanguage-link interwiki-es"><a href="https://es.stardewvalleywiki.com/Calendario"
+									title="Calendario – español" lang="es" hreflang="es">Español</a></li>
+							<li class="interlanguage-link interwiki-fr"><a href="https://fr.stardewvalleywiki.com/Calendrier"
+									title="Calendrier – français" lang="fr" hreflang="fr">Français</a></li>
+							<li class="interlanguage-link interwiki-it"><a href="https://it.stardewvalleywiki.com/Calendario"
+									title="Calendario – italiano" lang="it" hreflang="it">Italiano</a></li>
+							<li class="interlanguage-link interwiki-ja"><a
+									href="https://ja.stardewvalleywiki.com/%E3%82%AB%E3%83%AC%E3%83%B3%E3%83%80%E3%83%BC"
+									title="カレンダー – 日本語" lang="ja" hreflang="ja">日本語</a></li>
+							<li class="interlanguage-link interwiki-ko"><a href="https://ko.stardewvalleywiki.com/%EB%8B%AC%EB%A0%A5"
+									title="달력 – 한국어" lang="ko" hreflang="ko">한국어</a></li>
+							<li class="interlanguage-link interwiki-hu"><a href="https://hu.stardewvalleywiki.com/Napt%C3%A1r"
+									title="Naptár – magyar" lang="hu" hreflang="hu">Magyar</a></li>
+							<li class="interlanguage-link interwiki-pt"><a href="https://pt.stardewvalleywiki.com/Calend%C3%A1rio"
+									title="Calendário – português" lang="pt" hreflang="pt">Português</a></li>
+							<li class="interlanguage-link interwiki-ru"><a
+									href="https://ru.stardewvalleywiki.com/%D0%9A%D0%B0%D0%BB%D0%B5%D0%BD%D0%B4%D0%B0%D1%80%D1%8C"
+									title="Календарь – русский" lang="ru" hreflang="ru">Русский</a></li>
+							<li class="interlanguage-link interwiki-tr"><a href="https://tr.stardewvalleywiki.com/Takvim"
+									title="Takvim – Türkçe" lang="tr" hreflang="tr">Türkçe</a></li>
+							<li class="interlanguage-link interwiki-zh"><a href="https://zh.stardewvalleywiki.com/%E6%97%A5%E5%8E%86"
+									title="日历 – 中文" lang="zh" hreflang="zh">中文</a></li>
+						</ul>
+					</div>
+				</div>
+				<div id="side-adspace" style="height:100%;">
+					<div
+						style="width: 100%; text-align:center; height: 100%; margin: auto; background-color: rgba(255, 255, 255, 0.58);">
+						<div id="stardew_vertical_sidebar"></div>
+						<script type="ee8e277aa83559d6e57a07bd-text/javascript">
 nads.createAd('stardew_vertical_sidebar',
     {
         sizes: [],
@@ -961,32 +1631,50 @@ nads.createAd('stardew_vertical_sidebar',
     }
 );
 </script>
-</div></div></div>
-		</div></div>
-		<div id="footer" role="contentinfo">
-							<ul id="footer-info">
-											<li id="footer-info-lastmod"> This page was last modified on 5 February 2020, at 20:23.</li>
-											<li id="footer-info-copyright">Content is available under <a class="external" rel="nofollow" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution-NonCommercial-ShareAlike</a> unless otherwise noted.</li>
-									</ul>
-							<ul id="footer-places">
-											<li id="footer-places-privacy"><a href="/Stardew_Valley_Wiki:Privacy_policy" title="Stardew Valley Wiki:Privacy policy">Privacy policy</a></li>
-											<li id="footer-places-about"><a href="/Stardew_Valley_Wiki:About" title="Stardew Valley Wiki:About">About Stardew Valley Wiki</a></li>
-											<li id="footer-places-disclaimer"><a href="/Stardew_Valley_Wiki:General_disclaimer" title="Stardew Valley Wiki:General disclaimer">Disclaimers</a></li>
-											<li id="footer-places-mobileview"><a href="https://stardewcommunitywiki.com/mediawiki/index.php?title=Calendar&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
-									</ul>
-										<ul id="footer-icons" class="noprint">
-											<li id="footer-copyrightico">
-							<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img src="/mediawiki/resources/assets/licenses/cc-by-nc-sa.png" alt="Creative Commons Attribution-NonCommercial-ShareAlike" width="88" height="31" /></a>						</li>
-											<li id="footer-poweredbyico">
-							<a href="//www.mediawiki.org/"><img src="/mediawiki/resources/assets/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/mediawiki/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /mediawiki/resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31" /></a>						</li>
-										<li id="hosted-by">
-					</li>
-				</ul>
-						<div style="clear:both"></div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<script type="ee8e277aa83559d6e57a07bd-text/javascript">window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+	</div>
+	<div id="footer" role="contentinfo">
+		<ul id="footer-info">
+			<li id="footer-info-lastmod"> This page was last modified on 5 February 2020, at 20:23.</li>
+			<li id="footer-info-copyright">Content is available under <a class="external" rel="nofollow"
+					href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons
+					Attribution-NonCommercial-ShareAlike</a> unless otherwise noted.</li>
+		</ul>
+		<ul id="footer-places">
+			<li id="footer-places-privacy"><a href="/Stardew_Valley_Wiki:Privacy_policy"
+					title="Stardew Valley Wiki:Privacy policy">Privacy policy</a></li>
+			<li id="footer-places-about"><a href="/Stardew_Valley_Wiki:About" title="Stardew Valley Wiki:About">About Stardew
+					Valley Wiki</a></li>
+			<li id="footer-places-disclaimer"><a href="/Stardew_Valley_Wiki:General_disclaimer"
+					title="Stardew Valley Wiki:General disclaimer">Disclaimers</a></li>
+			<li id="footer-places-mobileview"><a
+					href="https://stardewcommunitywiki.com/mediawiki/index.php?title=Calendar&amp;mobileaction=toggle_view_mobile"
+					class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+		</ul>
+		<ul id="footer-icons" class="noprint">
+			<li id="footer-copyrightico">
+				<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/"><img
+						src="/mediawiki/resources/assets/licenses/cc-by-nc-sa.png"
+						alt="Creative Commons Attribution-NonCommercial-ShareAlike" width="88" height="31" /></a>
+			</li>
+			<li id="footer-poweredbyico">
+				<a href="//www.mediawiki.org/"><img src="/mediawiki/resources/assets/poweredby_mediawiki_88x31.png"
+						alt="Powered by MediaWiki"
+						srcset="/mediawiki/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /mediawiki/resources/assets/poweredby_mediawiki_176x62.png 2x"
+						width="88" height="31" /></a>
+			</li>
+			<li id="hosted-by">
+			</li>
+		</ul>
+		<div style="clear:both"></div>
+	</div>
+	<script type="ee8e277aa83559d6e57a07bd-text/javascript">window.RLQ = window.RLQ || []; window.RLQ.push( function () {
 mw.loader.state({"user":"ready","user.groups":"ready"});mw.loader.load(["mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest"]);
-} );</script><script type="ee8e277aa83559d6e57a07bd-text/javascript">
+} );</script>
+	<script type="ee8e277aa83559d6e57a07bd-text/javascript">
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -997,8 +1685,13 @@ mw.loader.state({"user":"ready","user.groups":"ready"});mw.loader.load(["mediawi
   ga('send', 'pageview');
 
 </script>
-<script type="ee8e277aa83559d6e57a07bd-text/javascript">window.RLQ = window.RLQ || []; window.RLQ.push( function () {
+	<script type="ee8e277aa83559d6e57a07bd-text/javascript">window.RLQ = window.RLQ || []; window.RLQ.push( function () {
 mw.config.set({"wgBackendResponseTime":30});
 } );</script>
-	<script type="ee8e277aa83559d6e57a07bd-text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"4b66539c25","applicationID":"359151563","transactionName":"NFBTNkdZX0NWUEQMDg0acAFBUV5eGFJTEQgMWx4UXF1G","queueTime":0,"applicationTime":32,"atts":"GBdQQA9DTE0=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script><script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="ee8e277aa83559d6e57a07bd-|49" defer=""></script></body>
+	<script
+		type="ee8e277aa83559d6e57a07bd-text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"4b66539c25","applicationID":"359151563","transactionName":"NFBTNkdZX0NWUEQMDg0acAFBUV5eGFJTEQgMWx4UXF1G","queueTime":0,"applicationTime":32,"atts":"GBdQQA9DTE0=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script>
+	<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js"
+		data-cf-settings="ee8e277aa83559d6e57a07bd-|49" defer=""></script>
+</body>
+
 </html>

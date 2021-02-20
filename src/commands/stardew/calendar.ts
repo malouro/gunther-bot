@@ -1,8 +1,13 @@
 import { Message, MessageEmbed } from 'discord.js'
 import { Command, CommandInfo, CommandoMessage } from 'discord.js-commando'
+import {
+	Event,
+	SDVCharacterName,
+	SDVCalendarDate,
+	SDVCalendarSeason
+} from '../../../data/structure'
 import { Calendar } from '../../../data'
-import { Event, SDVCharacterName, SDVDate } from '../../../data/structure'
-import { getWeekday, getWikiUrl } from '../../../utils'
+import { getWeekday } from '../../../utils'
 import GuntherClient from '../../client'
 
 const COMMAND_NAME = 'calendar-info'
@@ -34,32 +39,36 @@ export default class CalendarCommand extends Command {
 
 	async run(
 		message: CommandoMessage,
-		args: { date: SDVDate }
+		args: { date: SDVCalendarDate }
 	): Promise<Message> {
 		const { day, season } = args.date
 		const embed = new MessageEmbed()
-		const seasonUrl = getWikiUrl(season)
+		const calendarSeason: SDVCalendarSeason = Calendar[season]
 
 		if (day === null) {
 			embed
 				.setTitle(season)
-				.setURL(seasonUrl)
+				.setURL(calendarSeason.wiki)
 				.setDescription(`Overview for the ${season} season`)
+				.addFields(
+					{ name: 'Events this season', value: calendarSeason.events },
+					{ name: 'Birthdays this season', value: calendarSeason.birthdays },
+				)
+				.setImage(calendarSeason.image)
 		} else {
 			const weekday = getWeekday(day)
-			const events: Array<Event> = Calendar[season][day].events
-			const birthdays: Array<SDVCharacterName> = Calendar[season][day].birthdays
+			const events: Array<Event> = calendarSeason.days[day].events
+			const birthdays: Array<SDVCharacterName> = calendarSeason.days[day].birthdays
 
 			embed
 				.setTitle(`${season} ${day}`)
-				.setURL(seasonUrl)
+				.setURL(calendarSeason.wiki)
 				.setDescription(
 					`Overview for **${season} ${day}**. This is a **${weekday}**.`
 				)
-				.addField('Events', events.length > 0 ? events.join('\n') : 'No events')
-				.addField(
-					'Birthdays',
-					birthdays.length > 0 ? birthdays.join('\n') : 'No birthdays'
+				.addFields(
+					{ name: 'Events', value: events.length > 0 ? events.join('\n') : 'No events' },
+					{ name: 'Birthdays', value: birthdays.length > 0 ? birthdays.join('\n') : 'No birthdays' }
 				)
 		}
 

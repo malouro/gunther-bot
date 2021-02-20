@@ -1,15 +1,15 @@
 import cheerio from 'cheerio'
-import { getWikiUrl, getAvatarUrl, getDayOfSeason } from '../utils'
+import { getWikiUrl, getImageUrl, getDayOfSeason } from '../utils'
 import {
 	SDVCharacterData,
-	SDVCalendarData,
-	SDVCalendarSeason,
 	SDVCharacterList,
-	SDVDate,
+	SDVCalendarData,
+	SDVCalendarDate,
+	SDVCalendarDay,
+	SDVCalendarSeason,
 	Season,
 	daysOfWeek,
 	daysOfSeason,
-	SDVCalendarDay,
 	seasons,
 } from './structure'
 
@@ -46,7 +46,7 @@ export function getCharacterData(html: string): SDVCharacterData {
 
 	return {
 		name: characterName,
-		avatar: getAvatarUrl(imageSrc),
+		avatar: getImageUrl(imageSrc),
 		birthday: getInfoBoxData('Birthday').text().trim(),
 		bestGifts: gifts,
 		canMarry: Boolean(
@@ -60,8 +60,8 @@ export function getCalendarData(html: string): SDVCalendarData {
 	const $ = cheerio.load(html)
 
 	const builtCalendar: SDVCalendarData = {}
-	const seasonSelector = (season: Season) => $(`#${season}`)
-	const calendarSection = '#calendartable'
+	const seasonSelector = (season: Season) => $(`h2 > #${season}`)
+	const calendarSection = '#calendar'
 
 	function buildDay(
 		season: Season,
@@ -70,7 +70,7 @@ export function getCalendarData(html: string): SDVCalendarData {
 		dateCell
 	): SDVCalendarDay {
 		let innerText = $(dateCell).text()
-		const date: SDVDate = {
+		const date: SDVCalendarDate = {
 			season,
 			dayOfWeek: daysOfWeek[dayOfWeekIndex],
 			day: daysOfSeason[getDayOfSeason(week, dayOfWeekIndex)],
@@ -99,29 +99,64 @@ export function getCalendarData(html: string): SDVCalendarData {
 	}
 
 	function buildSeason(season: Season): SDVCalendarSeason {
-		const builtSeason: SDVCalendarSeason = {}
 		const days: Array<SDVCalendarDay> = []
+		let seasonEvents = []
+		let seasonBirthdays = []
 
-		const seasonSection = seasonSelector(season)
-			.parent()
-			.nextUntil(calendarSection)
-		const tableRows = seasonSection
-			.find('tr')
+		const seasonSection = seasonSelector(season).parent()
+		const seasonCalendarSection = seasonSection
+			.nextAll(calendarSection)
+			.first()
+			.children('#calendartable')
+			.children()
+			.first()
+		const seasonCalendarImage = seasonSection
+			.nextAll(calendarSection)
+			.first()
+			.children()
+			.first()
+			.attr('src')
+		const tableRows = $(seasonCalendarSection)
+			.children('tr')
 			.map((_, row) => $(row))
 			.get()
 
 		tableRows.forEach((row, week) => {
 			$(row)
-				.find('td')
+				.children('td')
 				.map((_, column) => $(column))
 				.get()
 				.forEach((dateCell, dayOfWeekIndex) => {
-					days.push(buildDay(season, week, dayOfWeekIndex, dateCell))
+					const { date, birthdays, events } = buildDay(
+						season,
+						week,
+						dayOfWeekIndex,
+						dateCell
+					)
+
+					seasonEvents = seasonEvents.concat(
+						events.filter(item => !seasonEvents.includes(item))
+					)
+					seasonBirthdays = seasonBirthdays.concat(birthdays)
+
+					days.push({
+						date,
+						birthdays,
+						events,
+					})
 				})
 		})
 
+		const builtSeason: SDVCalendarSeason = {
+			days: {},
+			image: getImageUrl(seasonCalendarImage),
+			wiki: getWikiUrl(season),
+			events: seasonEvents,
+			birthdays: seasonBirthdays,
+		}
+
 		for (let i = 0; i < 28; i++) {
-			builtSeason[daysOfSeason[i]] = days[i]
+			builtSeason.days[daysOfSeason[i]] = days[i]
 		}
 
 		return builtSeason
@@ -130,6 +165,8 @@ export function getCalendarData(html: string): SDVCalendarData {
 	seasons.forEach(season => {
 		builtCalendar[season] = buildSeason(season)
 	})
+
+	// builtCalendar.Summer = buildSeason('Summer')
 
 	return builtCalendar
 }

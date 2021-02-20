@@ -1,7 +1,7 @@
 import { ArgumentType, CommandoClient } from 'discord.js-commando'
 import {
 	daysOfSeason,
-	SDVDate,
+	SDVCalendarDate,
 	Season,
 	seasons,
 	seasonShorthands,
@@ -12,7 +12,7 @@ export default class DateArgType extends ArgumentType {
 		super(client, 'sdv-date')
 	}
 
-	parse(val: string): SDVDate | Season {
+	parse(val: string): SDVCalendarDate | Season {
 		let season = [...seasons, ...seasonShorthands].find(possibleSeason =>
 			val.toLocaleLowerCase().startsWith(possibleSeason.toLocaleLowerCase())
 		)

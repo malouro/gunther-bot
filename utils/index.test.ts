@@ -1,5 +1,5 @@
 import assert from 'assert'
-import { formatCharacterName, getWikiUrl, getAvatarUrl, baseWikiUrl } from '.'
+import { formatCharacterName, getWikiUrl, getImageUrl, baseWikiUrl } from '.'
 
 describe('formatCharacterName', () => {
 	it('should format character name w/ proper capitalization', () => {
@@ -16,13 +16,13 @@ describe('getWikiUrl', () => {
 	})
 })
 
-describe('getAvatarUrl', () => {
+describe('getImageUrl', () => {
 	it('should return a Stardew Wiki URL', () => {
-		assert.ok(getAvatarUrl('foo').includes(baseWikiUrl))
+		assert.ok(getImageUrl('foo').includes(baseWikiUrl))
 	})
 
 	it('should conditionally include "/" based on input', () => {
-		assert.strictEqual(getAvatarUrl('/path/to/avatar').split('/').length, 6)
-		assert.strictEqual(getAvatarUrl('path/to/avatar').split('/').length, 6)
+		assert.strictEqual(getImageUrl('/path/to/avatar').split('/').length, 6)
+		assert.strictEqual(getImageUrl('path/to/avatar').split('/').length, 6)
 	})
 })

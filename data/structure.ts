@@ -144,18 +144,24 @@ export const seasonShorthands: ReadonlyArray<SeasonShorthand> = [
 	'wi',
 ]
 
-export type SDVDate = {
+export type SDVCalendarDate = {
 	season: Season | SeasonShorthand
 	day: DayOfSeason
 	dayOfWeek?: DayOfWeek
 }
 export type SDVCalendarDay = {
-	date: SDVDate
+	date: SDVCalendarDate
 	birthdays: Array<SDVCharacterName>
 	events: Array<Event>
 }
 export type SDVCalendarSeason = {
-	[key in DayOfSeason]?: SDVCalendarDay
+	days: {
+		[key in DayOfSeason]?: SDVCalendarDay
+	}
+	image: string
+	wiki: string
+	events: Array<Event>
+	birthdays: Array<SDVCharacterName>
 }
 export type SDVCalendarData = {
 	[key in Season]?: SDVCalendarSeason
