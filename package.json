@@ -6,6 +6,11 @@
   "author": "Mike A. Louro <mike.a.louro@gmail.com>",
   "license": "MIT",
   "private": true,
+  "main": "./dist/cjs/src/",
+  "module": "./dist/esm/src/",
+  "bin": {
+    "build-sdv-data": "./dist/cjs/data/build.js"
+  },
   "dependencies": {
     "discord.js": "^12.5.1",
     "discord.js-commando": "^0.12.2",
@@ -18,7 +23,11 @@
   },
   "scripts": {
     "start": "ts-node ./src/index",
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc -p tsconfig.json",
+    "build:cjs": "tsc -p tsconfig-cjs.json",
     "build:data": "ts-node ./data/build",
+    "clean": "npx rimraf ./dist",
     "lint": "eslint .",
     "check:format": "prettier --check **/*.ts",
     "check:spelling": "npx cspell **/*.ts",

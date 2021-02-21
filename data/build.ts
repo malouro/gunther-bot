@@ -6,6 +6,9 @@ import yargs from 'yargs'
 import { getCharacterData, getCalendarData } from './dataParser'
 import { getWikiUrl } from '../utils'
 import { SDVCharacterList, SDVCharacterName } from './structure'
+import { bin as binScripts } from '../package.json'
+
+const scriptName = Object.keys(binScripts)[0]
 
 type BuildTypes = 'characters' | 'calendar' | 'all'
 const buildTypeChoices: ReadonlyArray<BuildTypes> = [
@@ -22,7 +25,7 @@ export interface BuildArguments {
 }
 
 const yargv = yargs(process.argv.slice(2))
-	.usage('Usage: $0 <command> [options]')
+	.usage(`Usage: ${scriptName} <command> [options]`)
 	.option('b', {
 		description:
 			'What type of data do you want to build/generate? (default: all)',
