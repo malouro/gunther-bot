@@ -4,7 +4,11 @@ import {
 	Event,
 	SDVCharacterName,
 	SDVCalendarDate,
-	SDVCalendarSeason
+	Season,
+	DayOfSeason,
+	seasons,
+	seasonShorthands,
+	daysOfSeason
 } from '../../../data/structure'
 import { Calendar } from '../../../data'
 import { getWeekday } from '../../../utils'
@@ -20,14 +24,21 @@ export const info: CommandInfo = {
 	description: 'Fetches info from the calendar',
 	details: [
 		'This can return back information related to either a specific day, or a specific season. ',
-		'This includes upcoming birthdays and events.',
+		'This includes upcoming birthdays and events.\n\n',
+		`Seasons include: ${seasons.map(season => '`' + season + '`').join(',')}\n`,
+		`And their shorthand aliases: ${seasonShorthands.map(season => '`' + season + '`').join(',')}`
 	].join(''),
-	examples: [`\`${COMMAND_NAME} summer 15\``],
+	examples: [
+		`\`${COMMAND_NAME} ${seasons[0]} ${daysOfSeason[15]}\``,
+		`\`${COMMAND_NAME} ${seasonShorthands[0]} ${daysOfSeason[15]}\``,
+		`\`${COMMAND_NAME} ${seasons[1]}\``
+	],
 	args: [
 		{
-			key: 'date',
+			key: 'dateOrSeason',
 			prompt: 'What date on the calendar are you curious about?',
-			type: 'sdv-date',
+			type: 'sdv-season|sdv-date',
+
 		},
 	],
 }
@@ -39,11 +50,20 @@ export default class CalendarCommand extends Command {
 
 	async run(
 		message: CommandoMessage,
-		args: { date: SDVCalendarDate }
+		args: { dateOrSeason: SDVCalendarDate | Season }
 	): Promise<Message> {
-		const { day, season } = args.date
+		let day: DayOfSeason, season: Season
+
+		if (typeof args.dateOrSeason === 'string') {
+			day = null
+			season = args.dateOrSeason
+		} else {
+			day = args.dateOrSeason.day
+			season = args.dateOrSeason.season
+		}
+
 		const embed = new MessageEmbed()
-		const calendarSeason: SDVCalendarSeason = Calendar[season]
+		const calendarSeason = Calendar[season]
 
 		if (day === null) {
 			embed

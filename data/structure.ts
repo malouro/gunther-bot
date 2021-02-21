@@ -145,7 +145,7 @@ export const seasonShorthands: ReadonlyArray<SeasonShorthand> = [
 ]
 
 export type SDVCalendarDate = {
-	season: Season | SeasonShorthand
+	season: Season
 	day: DayOfSeason
 	dayOfWeek?: DayOfWeek
 }
