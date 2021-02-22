@@ -29,4 +29,5 @@ jobs:
     - run: yarn check:spelling
     - run: yarn check:format
     - run: yarn test
+    - run: yarn build
     - run: yarn test:e2e
