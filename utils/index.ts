@@ -31,6 +31,12 @@ export function getImageUrl(imgSrc: string): string {
  * @returns dayOfSeason - (ie: the {15}th of Spring) (( zero-indexed ))
  */
 export function getDayOfSeason(week: number, dayOfWeek: number): number {
+	if (week < 0 || week > 3) {
+		throw new Error('`week` must be between [0-3]')
+	}
+	if (dayOfWeek < 0 || dayOfWeek > 6) {
+		throw new Error('`dayOfWeek` must be between [0-6]')
+	}
 	return week * 7 + dayOfWeek
 }
 
