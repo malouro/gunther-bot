@@ -1,12 +1,12 @@
 import { CommandoClient } from 'discord.js-commando'
-import commands, { groups } from './commands'
-import argTypes from './argTypes'
-import * as events from './events'
+import commands, { groups } from '../commands'
+import argTypes from '../argTypes'
+import * as events from '../events'
 
-import Logger from './logger'
+import GuntherLogger from './logger'
 
 export class GuntherClient extends CommandoClient {
-	logger = Logger
+	logger = GuntherLogger
 }
 
 const GuntherBot = new GuntherClient({
