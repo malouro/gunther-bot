@@ -1,6 +1,3 @@
-import { GuntherClient, default as GuntherBot }from './bot/client'
+import { GuntherClient, default as GuntherBot } from './bot/client'
 
-export { 
-	GuntherClient,
-	GuntherBot
-}
+export { GuntherClient, GuntherBot }
