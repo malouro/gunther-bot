@@ -12,7 +12,7 @@ import {
 } from '../../../data/structure'
 import { Calendar } from '../../../data'
 import { getWeekday } from '../../../utils'
-import GuntherClient from '../../client'
+import { GuntherClient } from '../../client'
 
 const COMMAND_NAME = 'calendar-info'
 

@@ -1,7 +1,7 @@
 import { Message } from 'discord.js'
 import { Command, CommandInfo, CommandoMessage } from 'discord.js-commando'
 import { repository } from '../../../package.json'
-import GuntherClient from '../../client'
+import { GuntherClient } from '../../client'
 
 const COMMAND_NAME = 'git-repo'
 

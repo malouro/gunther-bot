@@ -1,7 +1,7 @@
 import { ArgumentType } from 'discord.js-commando'
 import { checkDate, getDate } from './common'
 import { SDVCalendarDate } from '../../data/structure'
-import GuntherClient from '../client'
+import { GuntherClient } from '../client'
 
 export default class DateArgType extends ArgumentType {
 	constructor(client: GuntherClient) {

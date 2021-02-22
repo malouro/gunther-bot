@@ -18,17 +18,19 @@
     "winston": "^3.3.3"
   },
   "scripts": {
-    "start": "ts-node ./src/index",
+    "start": "ts-node ./src/start",
     "build": "yarn build:esm && yarn build:cjs",
     "build:esm": "tsc -p tsconfig.json",
     "build:cjs": "tsc -p tsconfig-cjs.json",
     "build:data": "ts-node ./data/build",
     "clean": "npx rimraf ./dist",
-    "lint": "eslint .",
     "check:format": "prettier --check **/*.ts",
-    "check:spelling": "npx cspell **/*.ts",
+    "check:lint": "eslint .",
+    "check:spelling": "cspell **/*.ts",
+    "fix": "yarn check:lint --fix",
     "format": "yarn check:format --write",
-    "test": "ts-mocha **/*.test.ts"
+    "test": "ts-mocha **/*.test.ts",
+    "test:e2e": "echo 'WIP; no end-to-end tests written yet.'"
   },
   "devDependencies": {
     "@types/expect": "^24.3.0",
@@ -38,6 +40,7 @@
     "@typescript-eslint/eslint-plugin": "^4.14.2",
     "@typescript-eslint/parser": "^4.14.2",
     "cheerio": "^1.0.0-rc.5",
+    "cspell": "^5.2.4",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "mocha": "^8.2.1",
