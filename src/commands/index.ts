@@ -10,5 +10,5 @@ export default [
 	GitCommand,
 	/* Stardew Commands */
 	CharacterCommand,
-	CalendarCommand
+	CalendarCommand,
 ]

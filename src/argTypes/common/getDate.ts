@@ -1,4 +1,10 @@
-import { seasons, seasonShorthands, daysOfSeason, SDVCalendarDate, Season } from '../../../data/structure'
+import {
+	seasons,
+	seasonShorthands,
+	daysOfSeason,
+	SDVCalendarDate,
+	Season,
+} from '../../../data/structure'
 
 export default function checkDate(val: string): SDVCalendarDate {
 	const parsedSeason = [...seasons, ...seasonShorthands].find(possibleSeason =>

@@ -1,5 +1,12 @@
 import assert from 'assert'
-import { formatCharacterName, getWikiUrl, getImageUrl, baseWikiUrl, getDayOfSeason, getWeekday } from '.'
+import {
+	formatCharacterName,
+	getWikiUrl,
+	getImageUrl,
+	baseWikiUrl,
+	getDayOfSeason,
+	getWeekday,
+} from '.'
 import { daysOfSeason, daysOfWeek } from '../data/structure'
 
 describe('formatCharacterName', () => {
@@ -34,9 +41,7 @@ describe('getDayOfSeason', () => {
 
 		for (let week = 0; week < 4; week++) {
 			for (let dayOfWeek = 0; dayOfWeek < 7; dayOfWeek++) {
-				result.push(
-					(getDayOfSeason(week, dayOfWeek) + 1).toString()
-				)
+				result.push((getDayOfSeason(week, dayOfWeek) + 1).toString())
 			}
 		}
 

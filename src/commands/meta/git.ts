@@ -20,8 +20,6 @@ export default class GitCommand extends Command {
 	}
 
 	async run(message: CommandoMessage): Promise<Message> {
-		return message.reply(
-			`Check out my source code at: ${repository}`
-		)
+		return message.reply(`Check out my source code at: ${repository}`)
 	}
 }
