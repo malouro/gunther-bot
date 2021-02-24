@@ -3,9 +3,14 @@ import {
 	DayOfWeek,
 	daysOfWeek,
 	SDVCharacterName,
+	Season,
 } from '../data/structure'
 
 export const baseWikiUrl = 'https://stardewcommunitywiki.com'
+export const messageEmojis = {
+	birthday: '🎂',
+	event: '🚩'
+}
 
 /**
  * Get a URL to the Wiki for a given search term
@@ -38,6 +43,21 @@ export function getDayOfSeason(week: number, dayOfWeek: number): number {
 		throw new Error('`dayOfWeek` must be between [0-6]')
 	}
 	return week * 7 + dayOfWeek
+}
+
+export function getNextSeason(season: Season): Season {
+	switch (season) {
+		case 'Spring':
+			return 'Summer'
+		case 'Summer':
+			return 'Fall'
+		case 'Fall':
+			return 'Winter'
+		case 'Winter':
+			return 'Spring'
+		default:
+			throw new Error(`"${season}" is not a valid season`)
+	}
 }
 
 /**

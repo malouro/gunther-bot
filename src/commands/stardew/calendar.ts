@@ -4,6 +4,7 @@ import {
 	Event,
 	SDVCharacterName,
 	SDVCalendarDate,
+	SDVCalendarDay,
 	Season,
 	DayOfSeason,
 	seasons,
@@ -11,8 +12,8 @@ import {
 	daysOfSeason,
 } from '../../../data/structure'
 import { Calendar } from '../../../data'
-import { getWeekday } from '../../../utils'
-import { GuntherClient } from '../../client'
+import { messageEmojis, getWeekday, getNextSeason } from '../../../utils'
+import { GuntherClient } from '../../bot/client'
 
 const COMMAND_NAME = 'calendar-info'
 
@@ -42,6 +43,29 @@ export const info: CommandInfo = {
 			type: 'sdv-season|sdv-date',
 		},
 	],
+}
+
+function getUpcomingDays(
+	season: Season,
+	currentDay: DayOfSeason,
+	nextXDays = 5
+): Array<SDVCalendarDay> {
+	const calendarSeason = Calendar[season]
+	const upcomingDays = []
+
+	for (let x = 1; x <= nextXDays; x++) {
+		const currentDayNumber = Number(currentDay)
+		let nextDayToPush = currentDayNumber + x
+		let currentSeason = calendarSeason
+
+		if (nextDayToPush > 28) {
+			nextDayToPush = nextDayToPush % 28
+			currentSeason = Calendar[getNextSeason(season)]
+		}
+		upcomingDays.push(currentSeason.days[nextDayToPush])
+	}
+
+	return upcomingDays
 }
 
 export default class CalendarCommand extends Command {
@@ -79,8 +103,26 @@ export default class CalendarCommand extends Command {
 		} else {
 			const weekday = getWeekday(day)
 			const events: Array<Event> = calendarSeason.days[day].events
-			const birthdays: Array<SDVCharacterName> =
-				calendarSeason.days[day].birthdays
+			const birthdays: Array<SDVCharacterName> = calendarSeason.days[day].birthdays
+			const upcomingDays = getUpcomingDays(season, day, 5)
+			let upcomingNewSeasonFlag = false
+
+			const upcomingDetails = upcomingDays.map(
+				day => `${
+					day.date.season !== season && !upcomingNewSeasonFlag && (() => {
+						upcomingNewSeasonFlag = true
+						return `--- **${day.date.season}** ---\n`
+					})() || ''
+				}**${day.date.day}**: ${
+					day.events.length > 0
+						? day.events.map(calEvent => `${messageEmojis.event} ${calEvent}`).join(' ').concat(' ')
+						: ''
+				}${
+					day.birthdays.length > 0
+						? day.birthdays.map(birthday => `${messageEmojis.birthday} ${birthday}`).join(' ')
+						: ''
+				}`
+			).join('\n')
 
 			embed
 				.setTitle(`${season} ${day}`)
@@ -96,6 +138,10 @@ export default class CalendarCommand extends Command {
 					{
 						name: 'Birthdays',
 						value: birthdays.length > 0 ? birthdays.join('\n') : 'No birthdays',
+					},
+					{
+						name: 'Upcoming',
+						value: upcomingDetails
 					}
 				)
 		}

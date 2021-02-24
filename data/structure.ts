@@ -138,10 +138,10 @@ export const seasons: ReadonlyArray<Season> = [
 export const seasonShorthands: ReadonlyArray<SeasonShorthand> = [
 	'sp',
 	'su',
-	'f',
 	'fa',
-	'w',
+	'f',
 	'wi',
+	'w',
 ]
 
 export type SDVCalendarDate = {
