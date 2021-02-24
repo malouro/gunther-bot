@@ -9,7 +9,7 @@ import {
 export const baseWikiUrl = 'https://stardewcommunitywiki.com'
 export const messageEmojis = {
 	birthday: '🎂',
-	event: '🚩'
+	event: '🚩',
 }
 
 /**
@@ -45,6 +45,10 @@ export function getDayOfSeason(week: number, dayOfWeek: number): number {
 	return week * 7 + dayOfWeek
 }
 
+/**
+ * Get the next upcoming season
+ * @param season Current season
+ */
 export function getNextSeason(season: Season): Season {
 	switch (season) {
 		case 'Spring':

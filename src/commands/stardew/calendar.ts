@@ -103,26 +103,35 @@ export default class CalendarCommand extends Command {
 		} else {
 			const weekday = getWeekday(day)
 			const events: Array<Event> = calendarSeason.days[day].events
-			const birthdays: Array<SDVCharacterName> = calendarSeason.days[day].birthdays
+			const birthdays: Array<SDVCharacterName> =
+				calendarSeason.days[day].birthdays
 			const upcomingDays = getUpcomingDays(season, day, 5)
-			let upcomingNewSeasonFlag = false
-
-			const upcomingDetails = upcomingDays.map(
-				day => `${
-					day.date.season !== season && !upcomingNewSeasonFlag && (() => {
-						upcomingNewSeasonFlag = true
-						return `--- **${day.date.season}** ---\n`
-					})() || ''
-				}**${day.date.day}**: ${
-					day.events.length > 0
-						? day.events.map(calEvent => `${messageEmojis.event} ${calEvent}`).join(' ').concat(' ')
-						: ''
-				}${
-					day.birthdays.length > 0
-						? day.birthdays.map(birthday => `${messageEmojis.birthday} ${birthday}`).join(' ')
-						: ''
-				}`
-			).join('\n')
+			const upcomingDetails = upcomingDays
+				.map(
+					day =>
+						`${
+							/* If date is in new season, add a title header */
+							day.date.season !== season && day.date.day === '1'
+								? `--- **${day.date.season}** ---\n`
+								: ''
+						}**${day.date.day}**: ${
+							/* Display events */
+							day.events.length > 0
+								? day.events
+										.map(calEvent => `${messageEmojis.event} ${calEvent}`)
+										.join(' ')
+										.concat(' ')
+								: ''
+						}${
+							/* Display birthdays */
+							day.birthdays.length > 0
+								? day.birthdays
+										.map(birthday => `${messageEmojis.birthday} ${birthday}`)
+										.join(' ')
+								: ''
+						}`
+				)
+				.join('\n')
 
 			embed
 				.setTitle(`${season} ${day}`)
@@ -141,7 +150,7 @@ export default class CalendarCommand extends Command {
 					},
 					{
 						name: 'Upcoming',
-						value: upcomingDetails
+						value: upcomingDetails,
 					}
 				)
 		}
