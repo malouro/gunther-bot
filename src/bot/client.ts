@@ -1,9 +1,11 @@
+import dotenv from 'dotenv'
 import { CommandoClient } from 'discord.js-commando'
 import commands, { groups } from '../commands'
 import argTypes from '../argTypes'
 import * as events from '../events'
-
 import GuntherLogger from './logger'
+
+dotenv.config()
 
 export class GuntherClient extends CommandoClient {
 	logger = GuntherLogger

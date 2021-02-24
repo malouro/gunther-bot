@@ -1,4 +1,4 @@
-import { GuntherClient } from '../client'
+import { GuntherClient } from '../bot/client'
 
 export default function Ready(client: GuntherClient): void {
 	client.logger.log({
