@@ -1,4 +1,3 @@
-import assert from 'assert'
 import {
 	formatCharacterName,
 	getWikiUrl,
@@ -10,33 +9,34 @@ import {
 import { daysOfSeason, daysOfWeek } from '../data/structure'
 
 describe('formatCharacterName', () => {
-	it('should format character name w/ proper capitalization', () => {
+	test('should format character name w/ proper capitalization', () => {
 		const Abigail = 'Abigail'
-		assert.strictEqual(formatCharacterName('abigail'), Abigail)
-		assert.strictEqual(formatCharacterName('aBiGaIL'), Abigail)
-		assert.strictEqual(formatCharacterName('ABIGAIL'), Abigail)
+
+		expect(formatCharacterName('abigail')).toBe(Abigail)
+		expect(formatCharacterName('aBiGaIL')).toBe(Abigail)
+		expect(formatCharacterName('ABIGAIL')).toBe(Abigail)
 	})
 })
 
 describe('getWikiUrl', () => {
-	it('should return a Stardew Wiki URL', () => {
-		assert.ok(getWikiUrl('foo').includes(baseWikiUrl))
+	test('should return a Stardew Wiki URL', () => {
+		expect(getWikiUrl('foo')).toMatch(baseWikiUrl)
 	})
 })
 
 describe('getImageUrl', () => {
-	it('should return a Stardew Wiki URL', () => {
-		assert.ok(getImageUrl('foo').includes(baseWikiUrl))
+	test('should return a Stardew Wiki URL', () => {
+		expect(getImageUrl('foo')).toMatch(baseWikiUrl)
 	})
 
-	it('should conditionally include "/" based on input', () => {
-		assert.strictEqual(getImageUrl('/path/to/avatar').split('/').length, 6)
-		assert.strictEqual(getImageUrl('path/to/avatar').split('/').length, 6)
+	test('should conditionally include "/" based on input', () => {
+		expect(getImageUrl('/path/to/avatar').split('/')).toHaveLength(6)
+		expect(getImageUrl('path/to/avatar').split('/')).toHaveLength(6)
 	})
 })
 
 describe('getDayOfSeason', () => {
-	it('should return day of season based on week# and dayOfWeek#', () => {
+	test('should return day of season based on week# and dayOfWeek#', () => {
 		const result = []
 
 		for (let week = 0; week < 4; week++) {
@@ -45,27 +45,25 @@ describe('getDayOfSeason', () => {
 			}
 		}
 
-		assert.deepStrictEqual(result, daysOfSeason)
+		expect(result).toStrictEqual(daysOfSeason)
 	})
 
-	it('should only return a value from 0-27', () => {
-		assert.strictEqual(getDayOfSeason(0, 0), 0)
-		assert.strictEqual(getDayOfSeason(3, 6), 27)
+	test('should only return a value from 0-27', () => {
+		expect(getDayOfSeason(0, 0)).toBe(0)
+		expect(getDayOfSeason(3, 6)).toBe(27)
 
-		assert.throws(() => getDayOfSeason(-1, 0), /between \[0-3\]/)
-		assert.throws(() => getDayOfSeason(4, 0), /between \[0-3\]/)
+		expect(() => getDayOfSeason(-1, 0)).toThrow(/between \[0-3\]/)
+		expect(() => getDayOfSeason(4, 0)).toThrow(/between \[0-3\]/)
 
-		assert.throws(() => getDayOfSeason(0, -1), /between \[0-6\]/)
-		assert.throws(() => getDayOfSeason(0, 7), /between \[0-6\]/)
+		expect(() => getDayOfSeason(0, -1)).toThrow(/between \[0-6\]/)
+		expect(() => getDayOfSeason(0, 7)).toThrow(/between \[0-6\]/)
 	})
 })
 
 describe('getWeekday', () => {
-	it('returns weekday based on input', () => {
-		for (const day of daysOfSeason) {
-			const result = getWeekday(day)
+	test.each(daysOfSeason)('returns correct weekday for day #%s of any Season', (day) => {
+		const result = getWeekday(day)
 
-			assert.strictEqual(result, daysOfWeek[(Number(day) - 1) % 7])
-		}
+		expect(result).toBe(daysOfWeek[(Number(day) - 1) % 7])
 	})
 })
