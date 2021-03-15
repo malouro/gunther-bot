@@ -61,9 +61,12 @@ describe('getDayOfSeason', () => {
 })
 
 describe('getWeekday', () => {
-	test.each(daysOfSeason)('returns correct weekday for day #%s of any Season', (day) => {
-		const result = getWeekday(day)
+	test.each(daysOfSeason)(
+		'returns correct weekday for day #%s of any Season',
+		day => {
+			const result = getWeekday(day)
 
-		expect(result).toBe(daysOfWeek[(Number(day) - 1) % 7])
-	})
+			expect(result).toBe(daysOfWeek[(Number(day) - 1) % 7])
+		}
+	)
 })

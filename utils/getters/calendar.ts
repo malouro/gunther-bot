@@ -12,7 +12,7 @@ import {
  * @param dayOfWeek Day of the week [0-6]
  * @returns dayOfSeason - (ie: the {15}th of Spring) (( zero-indexed ))
  */
- export function getDayOfSeason(week: number, dayOfWeek: number): number {
+export function getDayOfSeason(week: number, dayOfWeek: number): number {
 	if (week < 0 || week > 3) {
 		throw new Error('`week` must be between [0-3]')
 	}

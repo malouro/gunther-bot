@@ -4,7 +4,7 @@ import { baseWikiUrl } from '../constants'
  * Get a URL to the Wiki for a given search term
  * @param term Search term to get URL for
  */
- export function getWikiUrl(term: string): string {
+export function getWikiUrl(term: string): string {
 	return `${baseWikiUrl}/${term}`
 }
 
