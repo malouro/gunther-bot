@@ -10,6 +10,8 @@ import {
 	seasons,
 	seasonShorthands,
 	daysOfSeason,
+	daysInAWeek,
+	daysInASeason,
 } from '../../../data/structure'
 import { Calendar } from '../../../data'
 import { messageEmojis, getWeekday, getNextSeason } from '../../../utils'
@@ -39,7 +41,7 @@ export const info: CommandInfo = {
 	args: [
 		{
 			key: 'dateOrSeason',
-			prompt: 'What date on the calendar are you curious about?',
+			prompt: 'What date or season on the calendar are you curious about?',
 			type: 'sdv-season|sdv-date',
 		},
 	],
@@ -48,7 +50,7 @@ export const info: CommandInfo = {
 function getUpcomingDays(
 	season: Season,
 	currentDay: DayOfSeason,
-	nextXDays = 5
+	nextXDays = daysInAWeek
 ): Array<SDVCalendarDay> {
 	const calendarSeason = Calendar[season]
 	const upcomingDays = []
@@ -58,8 +60,8 @@ function getUpcomingDays(
 		let nextDayToPush = currentDayNumber + x
 		let currentSeason = calendarSeason
 
-		if (nextDayToPush > 28) {
-			nextDayToPush = nextDayToPush % 28
+		if (nextDayToPush > daysInASeason) {
+			nextDayToPush = nextDayToPush % daysInASeason
 			currentSeason = Calendar[getNextSeason(season)]
 		}
 		upcomingDays.push(currentSeason.days[nextDayToPush])
@@ -105,7 +107,7 @@ export default class CalendarCommand extends Command {
 			const events: Array<Event> = calendarSeason.days[day].events
 			const birthdays: Array<SDVCharacterName> =
 				calendarSeason.days[day].birthdays
-			const upcomingDays = getUpcomingDays(season, day, 5)
+			const upcomingDays = getUpcomingDays(season, day, 7)
 			const upcomingDetails = upcomingDays
 				.map(
 					day =>

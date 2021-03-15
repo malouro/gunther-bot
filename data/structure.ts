@@ -99,6 +99,7 @@ export const daysOfWeek: ReadonlyArray<DayOfWeek> = [
 	'Saturday',
 	'Sunday',
 ]
+export const daysInAWeek = daysOfWeek.length
 export const daysOfSeason: ReadonlyArray<DayOfSeason> = [
 	'1',
 	'2',
@@ -129,6 +130,7 @@ export const daysOfSeason: ReadonlyArray<DayOfSeason> = [
 	'27',
 	'28',
 ]
+export const daysInASeason = daysOfSeason.length
 export const seasons: ReadonlyArray<Season> = [
 	'Spring',
 	'Summer',
