@@ -1,12 +1,17 @@
 import { getDayOfSeason, getWeekday } from '../'
-import { daysOfSeason, daysOfWeek, daysInAWeek, daysInASeason } from '../../data/structure'
+import {
+	daysOfSeason,
+	daysOfWeek,
+	daysInAWeek,
+	daysInASeason,
+} from '../../data/structure'
 
 describe('Calendar Getters', () => {
 	describe('getDayOfSeason', () => {
 		test('should return day of season based on week# and dayOfWeek#', () => {
 			const result = []
 
-			for (let week = 0; week < (daysInASeason / daysInAWeek); week++) {
+			for (let week = 0; week < daysInASeason / daysInAWeek; week++) {
 				for (let dayOfWeek = 0; dayOfWeek < daysInAWeek; dayOfWeek++) {
 					result.push((getDayOfSeason(week, dayOfWeek) + 1).toString())
 				}
