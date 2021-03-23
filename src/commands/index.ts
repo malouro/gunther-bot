@@ -4,6 +4,7 @@ export { groups }
 import GitCommand from './meta/git'
 import CharacterCommand from './stardew/character'
 import CalendarCommand from './stardew/calendar'
+import WikiCommand from './stardew/wiki'
 
 export default [
 	/* Meta Commands */
@@ -11,4 +12,5 @@ export default [
 	/* Stardew Commands */
 	CharacterCommand,
 	CalendarCommand,
+	WikiCommand,
 ]
