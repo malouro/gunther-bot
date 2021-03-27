@@ -1,13 +1,13 @@
 # Stardew Valley JSON Data
 
 This directory exports data depicting values & information related to Stardew Valley characters, events, items and more.
-These values are pulled and parsed from information available on the [Stardew Valley Wiki](https://stardewvalleywiki.com)
+These values are pulled and parsed from information available on the [Stardew Valley Wiki](https://stardewvalleywiki.com).
 
-## Data Structure
+## Content & Usage
 
 Within `data`, and exported as `SDVData` from the `gunther-bot` package, is the available JSON dataset used by the bot. It contains the following format:
 
-```json
+```json5
 "SDVData": {
 	"Calendar": { ... },
 	"Characters": {
@@ -26,14 +26,43 @@ import { SDVData } from 'gunther-bot'
 import * as SDVData from 'gunther-bot/data'
 ```
 
-Additionally, the structure and shape of the inner data elements is further described within `data/structure`. These can be used as TypeScript definitions for importing the dataset or inferring types of user input. (ie: if the bot is expecting a character name, and user inputs `"Alex"` -- OK; if user inputs `"Pink Cake"` -- NOT OK, etc.)
+### Data Types & Structure
 
-You can import and use these like so:
+Additionally, the structure and shape of the inner data elements is further described within `data/structure`. This is used as TypeScript definitions during development, as well as for importing the dataset yourself and inferring types of potential user input.
+
+(ie: if the bot is expecting a `SDVCharacterName`, and user inputs `"Alex"` -> ✅; if user inputs `"Pink Cake"` -> ❌)
+
+You can import and use this like so:
 
 ```js
 import { SDVDataStructure } from 'gunther-bot'
-// or
-import * as SDVDataStructure from 'gunther-bot/data/structure'
+
+console.log(SDVDataStructure.SDVCharacterList) // Outputs:
+/*[
+  'Alex',     'Elliott',   'Harvey',
+  'Sam',      'Sebastian', 'Shane',
+  'Abigail',  'Emily',     'Haley',
+  'Leah',     'Maru',      'Penny',
+  'Caroline', 'Clint',     'Demetrius',
+  'Dwarf',    'Evelyn',    'George',
+  'Gus',      'Jas',       'Jodi',
+  'Kent',     'Krobus',    'Leo',
+  'Lewis',    'Linus',     'Marnie',
+  'Pam',      'Pierre',    'Robin',
+  'Sandy',    'Vincent',   'Willy',
+  'Wizard'
+]*/
+```
+
+Furthermore, type definition files are built & exported for TypeScript support:
+
+```txt
+gunther-bot\
+\_____ cjs\
+   |_____ data\
+   \_____ src\
+       |_ index.js   // <-- package entry point
+       \_ index.d.ts // <-- type definitions!
 ```
 
 ### Calendar
