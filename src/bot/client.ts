@@ -12,7 +12,7 @@ export class GuntherClient extends CommandoClient {
 }
 
 const GuntherBot = new GuntherClient({
-	owner: process.env.OWNER.split(','),
+	owner: process.env.OWNER?.split(','),
 	commandPrefix: process.env.COMMAND_PREFIX,
 })
 

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/esm",
+    "outDir": "./esm",
     "target": "ES2019",
     "moduleResolution": "node",
     "types": [
@@ -13,6 +13,10 @@
   },
   "include": [
     "./data",
-    "./src"
+    "./src",
+    "./utils"
+  ],
+  "exclude": [
+    "**/*.test.ts"
   ]
 }

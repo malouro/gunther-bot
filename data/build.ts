@@ -4,11 +4,10 @@ import fs from 'fs'
 import path from 'path'
 import yargs from 'yargs'
 import { getCharacterData, getCalendarData } from './dataParser'
-import { getWikiUrl } from '../utils'
+import { getWikiUrl } from '../src/utils'
 import { SDVCharacterList, SDVCharacterName } from './structure'
-import { bin as binScripts } from '../package.json'
 
-const scriptName = Object.keys(binScripts)[0]
+const scriptName = 'build-sdv-data'
 
 type BuildTypes = 'characters' | 'calendar' | 'all'
 const buildTypeChoices: ReadonlyArray<BuildTypes> = [

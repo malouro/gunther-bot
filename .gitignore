@@ -25,10 +25,12 @@ coverage
 # Dependency directories
 node_modules/
 jspm_packages/
+.yalc
 
 # Lock files
 yarn.lock
 package-lock.json
+yalc.lock
 
 # TypeScript cache
 *.tsbuildinfo
@@ -56,4 +58,5 @@ package-lock.json
 .cache
 
 # Build output
-dist
+cjs
+esm

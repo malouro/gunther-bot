@@ -5,11 +5,10 @@
   "repository": "https://github.com/malouro/gunther-bot.git",
   "author": "Mike A. Louro <mike.a.louro@gmail.com>",
   "license": "MIT",
-  "private": true,
-  "main": "./dist/cjs/src/",
-  "module": "./dist/esm/src/",
+  "main": "cjs/src",
+  "module": "esm/src",
   "bin": {
-    "build-sdv-data": "./dist/cjs/data/build.js"
+    "build-sdv-data": "./cjs/data/build.js"
   },
   "dependencies": {
     "discord.js": "^12.5.1",
@@ -23,7 +22,7 @@
     "build:esm": "tsc -p tsconfig.json",
     "build:cjs": "tsc -p tsconfig-cjs.json",
     "build:data": "ts-node ./data/build",
-    "clean": "npx rimraf ./dist",
+    "clean": "npx rimraf cjs esm",
     "check:format": "prettier --check **/*.ts",
     "check:lint": "eslint .",
     "check:spelling": "cspell **/*.ts",

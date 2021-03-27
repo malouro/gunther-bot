@@ -14,7 +14,7 @@ import {
 	daysInASeason,
 } from '../../../data/structure'
 import { Calendar } from '../../../data'
-import { messageEmojis, getWeekday, getNextSeason } from '../../../utils'
+import { messageEmojis, getWeekday, getNextSeason } from '../../utils'
 import { GuntherClient } from '../../bot/client'
 
 const COMMAND_NAME = 'calendar-info'

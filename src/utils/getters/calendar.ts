@@ -3,7 +3,7 @@ import {
 	DayOfWeek,
 	daysOfWeek,
 	Season,
-} from '../../data/structure'
+} from '../../../data/structure'
 
 /**
  * Given zero-indexed values for the week and day of the week,

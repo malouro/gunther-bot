@@ -1,5 +1,5 @@
 import cheerio from 'cheerio'
-import { getWikiUrl, getImageUrl, getDayOfSeason } from '../utils'
+import { getWikiUrl, getImageUrl, getDayOfSeason } from '../src/utils'
 import {
 	SDVCharacterData,
 	SDVCharacterList,

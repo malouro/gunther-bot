@@ -4,7 +4,7 @@ import {
 	daysOfWeek,
 	daysInAWeek,
 	daysInASeason,
-} from '../../data/structure'
+} from '../../../data/structure'
 
 describe('Calendar Getters', () => {
 	describe('getDayOfSeason', () => {

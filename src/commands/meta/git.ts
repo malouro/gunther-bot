@@ -1,9 +1,9 @@
 import { Message } from 'discord.js'
 import { Command, CommandInfo, CommandoMessage } from 'discord.js-commando'
-import { repository } from '../../../package.json'
 import { GuntherClient } from '../../bot/client'
 
 const COMMAND_NAME = 'git-repo'
+const repository = 'https://github.com/malouro/gunther-bot.git'
 
 export const info: CommandInfo = {
 	name: COMMAND_NAME,

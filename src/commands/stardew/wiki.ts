@@ -1,7 +1,6 @@
 import { Message } from 'discord.js'
 import { Command, CommandInfo, CommandoMessage } from 'discord.js-commando'
-import { getWikiUrl } from '../../../utils'
-import { formatWikiTerm } from '../../../utils/formatters'
+import { getWikiUrl, formatWikiTerm } from '../../utils'
 import { GuntherClient } from '../../bot/client'
 
 import fetch from 'node-fetch'
