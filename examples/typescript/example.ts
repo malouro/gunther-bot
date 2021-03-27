@@ -1,3 +1,3 @@
-import * as GuntherBot from 'gunther-bot'
+import { GuntherBot } from 'gunther-bot'
 
-console.log(GuntherBot)
+GuntherBot.login()

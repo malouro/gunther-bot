@@ -11,6 +11,7 @@
   "scripts": {
     "build": "cd ../../ && yarn build && npx yalc publish",
     "preinstall": "npx yalc add gunther-bot",
-    "start": "npx ts-node example.ts"
+    "start": "npx ts-node example.ts",
+    "start:node": "node ./node-example.js"
   }
 }

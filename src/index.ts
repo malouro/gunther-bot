@@ -10,3 +10,4 @@ export * from './utils'
 
 // Data
 export * as SDVData from '../data'
+export * as SDVDataStructure from '../data/structure'

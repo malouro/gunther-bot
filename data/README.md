@@ -1,2 +1,65 @@
 # Stardew Valley JSON Data
 
+This directory exports data depicting values & information related to Stardew Valley characters, events, items and more.
+These values are pulled and parsed from information available on the [Stardew Valley Wiki](https://stardewvalleywiki.com)
+
+## Data Structure
+
+Within `data`, and exported as `SDVData` from the `gunther-bot` package, is the available JSON dataset used by the bot. It contains the following format:
+
+```json
+"SDVData": {
+	"Calendar": { ... },
+	"Characters": {
+		"Alex": { ... },
+		"Elliott": { ... },
+		// ...
+	}
+}
+```
+
+You can import this data like so:
+
+```js
+import { SDVData } from 'gunther-bot'
+// or
+import * as SDVData from 'gunther-bot/data'
+```
+
+Additionally, the structure and shape of the inner data elements is further described within `data/structure`. These can be used as TypeScript definitions for importing the dataset or inferring types of user input. (ie: if the bot is expecting a character name, and user inputs `"Alex"` -- OK; if user inputs `"Pink Cake"` -- NOT OK, etc.)
+
+You can import and use these like so:
+
+```js
+import { SDVDataStructure } from 'gunther-bot'
+// or
+import * as SDVDataStructure from 'gunther-bot/data/structure'
+```
+
+### Calendar
+
+> See: https://stardewvalleywiki.com/Calendar
+
+### Characters
+
+> See: https://stardewvalleywiki.com/Villagers
+
+## Building the Dataset
+
+You can build the dataset yourself by running:
+
+```bash
+build-sdv-data [options]
+```
+
+This will write JSON into `data/*` according to the data type. (ie: `calendar.json` is generated within `data/calendar`, etc.)
+
+Currently, this is only expected to be used for local development of the `gunther-bot` package, despite the script being exported under the package's available `bin` scripts. External use of the script is not supported fully - and probably will not be in the future.
+
+Here are the available `[options]` for the `build-sdv-data` script:
+
+| Option | Type | Default | Description |
+|:-------|:----:|:-------:|:------------|
+| <ul><li>`build-type`</li><li>`buildType`</li><li>`-b`</li></ul> | One of: <ul><li>`characters`</li><li>`calendar`</li><li>`all`</li></ul> | `all` | <p>Indicates the dataset you wish to build. Defaults to building *all* data.</p><p>Eg: <code>build-sdv-data --build-type calendar</code> will build only the SDV Calendar data.</p>|
+| <ul><li>`dry-run`</li><li>`test`</li><li>`-t`</li></ul> | `boolean` | `false` | <p>Indicates that you wish to run the build against test data.</p><p>This does not update or write any output, only logs the JSON to the console.</p> |
+| <ul><li>`help`</li><li>`-h`</li></ul> | --- | --- | Opens help menu. |

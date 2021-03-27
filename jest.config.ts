@@ -1,9 +1,13 @@
 import type { Config } from '@jest/types'
 
+const ignoreDirectories = ['node_modules', 'examples', 'coverage']
+
 const config: Config.InitialOptions = {
-	// testMatch: ['**/*.test.ts'],
 	preset: 'ts-jest',
 	testEnvironment: 'node',
+
+	testPathIgnorePatterns: ignoreDirectories,
+	watchPathIgnorePatterns: ignoreDirectories
 }
 
 export default config
