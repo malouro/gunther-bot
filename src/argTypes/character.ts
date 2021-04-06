@@ -6,7 +6,7 @@ import {
 	SDVCharacterList,
 } from '../../data/structure'
 import { formatCharacterName } from '../utils'
-import { GuntherClient } from '../bot/client'
+import { GuntherClient } from '../bot'
 
 export default class CharacterArgType extends ArgumentType {
 	constructor(client: GuntherClient) {

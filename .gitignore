@@ -54,7 +54,7 @@ yalc.lock
 .env
 .env.test
 
-# parcel-bundler cache (https://parceljs.org/)
+# cache directory
 .cache
 
 # Build output

@@ -1,7 +1,5 @@
-import { GuntherClient, default as GuntherBot } from './bot/client'
-
 // Gunther bot
-export { GuntherClient, GuntherBot }
+export { GuntherBot, GuntherClient, GuntherCommand } from './bot'
 export * as GuntherCommands from './commands'
 export * as GuntherArgTypes from './argTypes'
 

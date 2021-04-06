@@ -1,9 +1,7 @@
 import { Message } from 'discord.js'
-import { Command, CommandInfo, CommandoMessage } from 'discord.js-commando'
+import { CommandInfo, CommandoMessage } from 'discord.js-commando'
 import { getWikiUrl, formatWikiTerm } from '../../utils'
-import { GuntherClient } from '../../bot/client'
-
-import fetch from 'node-fetch'
+import { GuntherClient, GuntherCommand } from '../../bot'
 
 const COMMAND_NAME = 'wiki'
 
@@ -27,7 +25,7 @@ export const info: CommandInfo = {
 	],
 }
 
-export default class WikiCommand extends Command {
+export default class WikiCommand extends GuntherCommand {
 	constructor(client: GuntherClient) {
 		super(client, info)
 	}
@@ -38,7 +36,7 @@ export default class WikiCommand extends Command {
 	): Promise<Message> {
 		const { searchTerms } = args
 		const url = getWikiUrl(formatWikiTerm(searchTerms))
-		const pageContent = await fetch(url)
+		const pageContent = await this.client.fetch(url)
 
 		if (
 			(await pageContent.text()).includes(
