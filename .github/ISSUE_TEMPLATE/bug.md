@@ -7,20 +7,20 @@ assignees: ''
 
 ---
 
-**Summary**
+## Summary
 <!-- Short summary explaining the bug and what's currently happening -->
 
-**Expectation**
+### Expectation
 <!-- What's the expected behavior?  -->
 
-**Steps To Reproduce**
+### Steps To Reproduce
 <!-- Example:
 1. Use the following command: `{prefix}foo bar`
 2. Bot returns "Error!"
 3. (etc.)
 -->
 
-**Environment**
+### Environment
 <!--
 - gunther-bot version (the specific commit, branch, or package version)
 - Operating System
@@ -28,8 +28,8 @@ assignees: ''
 - Any other useful environment info
 -->
 
-**Additional context (optional)**
+### Additional context (optional)
 <!-- Any other useful information regarding the issue -->
 
-**Screenshots (optional)**
+### Screenshots (optional)
 <!-- Add images & screenshots if it's useful to reporting the issue -->
