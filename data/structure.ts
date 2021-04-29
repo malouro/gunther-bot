@@ -6,6 +6,7 @@ export type SDVCharacterData = {
 	avatar: string
 	birthday: string
 	bestGifts: Array<string>
+	gifts: SDVGifts
 	canMarry: boolean
 	wiki: string
 }
@@ -46,7 +47,14 @@ export const SDVCharacterList = [
 	'Wizard',
 ]
 export type SDVCharacterName = typeof SDVCharacterList[number]
-
+export type SDVGifts = {
+	[key in GiftTypes]?: Array<string>
+}
+export type GiftTypes = 'love' | 'like' | 'dislike' | 'neutral' | 'hate'
+export const giftTypes = [ 'love', 'like', 'dislike', 'neutral', 'hate' ]
+export const characterDataFields = [
+	'name', 'avatar', 'birthday', 'bestGifts', ...giftTypes
+]
 // ------------------------------------------------------------
 // Calendar
 // ------------------------------------------------------------

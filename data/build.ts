@@ -3,18 +3,20 @@ import fetch from 'node-fetch'
 import fs from 'fs'
 import path from 'path'
 import yargs from 'yargs'
-import { getCharacterData, getCalendarData } from './dataParser'
+import { getCharacterData, getCalendarData } from './wikiParser'
 import { getWikiUrl } from '../src/utils'
 import { SDVCharacterList, SDVCharacterName } from './structure'
 
 const scriptName = 'build-sdv-data'
 
 type BuildTypes = 'characters' | 'calendar' | 'all'
+
 const buildTypeChoices: ReadonlyArray<BuildTypes> = [
 	'characters',
 	'calendar',
 	'all',
 ]
+
 export interface BuildArguments {
 	[x: string]: unknown
 	b: BuildTypes
@@ -42,9 +44,9 @@ const yargv = yargs(process.argv.slice(2))
 const { b: buildType, t: inTestMode } = yargv
 
 const autoGenWarning =
-	'/* \n\
+	'/*\n\
 WARNING: This file and its subsequent imports are auto-generated at build time.\n\
-Do not edit manually. \n\
+Do not edit manually.\n\
 */'
 
 export async function buildCharacters(

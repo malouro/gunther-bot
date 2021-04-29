@@ -1,4 +1,5 @@
 import cheerio from 'cheerio'
+import flatten from 'lodash.flatten'
 import { getWikiUrl, getImageUrl, getDayOfSeason } from '../src/utils'
 import {
 	SDVCharacterData,
@@ -7,10 +8,13 @@ import {
 	SDVCalendarDate,
 	SDVCalendarDay,
 	SDVCalendarSeason,
+	SDVGifts,
+	GiftTypes,
 	Season,
 	daysOfWeek,
 	daysOfSeason,
 	seasons,
+	giftTypes
 } from './structure'
 
 /**
@@ -31,24 +35,56 @@ export function getCharacterData(html: string): SDVCharacterData {
 	 * Get data from the side info box section
 	 * @param {string} fieldName Name of field to look for in info box
 	 */
-	function getInfoBoxData(fieldName) {
+	function getInfoBoxData(fieldName: string) {
 		return $(infoBoxSection)
 			.filter((_, element) => $(element).text().includes(fieldName))
 			.next(infoBoxDetail)
 	}
 
-	const gifts = []
+	/**
+	 * Return info on liked/disliked gifts
+	 */
+	function getGiftInfo(giftType: GiftTypes) {
+		const gifts = []
+		const section = $('h3').filter(function () {
+			return new RegExp(`${giftType}s*`).test(
+				$(this).text().trim().toLocaleLowerCase()
+			)
+		})
+		const tableBody = $(section).nextAll('table.wikitable').first().find('tbody')
+
+		$(tableBody).children().each((_, row) => {
+			const itemText = $($(row).find('td').toArray()[1]).text().trim().replace(/\s+/g, ' ')
+			if (itemText !== '') {
+				gifts.push(itemText)
+			}
+		})
+
+		return gifts
+	}
+
+	const gifts: SDVGifts = {}
+	const bestGifts: Array<string> = []
+
+	giftTypes.forEach((giftType: GiftTypes) => {
+		const giftList = getGiftInfo(giftType)
+		gifts[giftType] = flatten(giftList.map((data: string) =>
+			data.split(/\s*All\s+/).filter(element => element !== '')
+		))
+	})
+
 	const imageSrc = $(`img[alt="${characterName}.png"]`).attr('src')
 
 	$(getInfoBoxData('Best Gifts'))
 		.find('a')
-		.each((_, gift) => gifts.push($(gift).text().toString().trim()))
+		.each((_, gift) => bestGifts.push($(gift).text().toString().trim().replace(/\s+/g, ' ')))
 
 	return {
 		name: characterName,
 		avatar: getImageUrl(imageSrc),
 		birthday: getInfoBoxData('Birthday').text().trim(),
-		bestGifts: gifts,
+		bestGifts: bestGifts,
+		gifts,
 		canMarry: Boolean(
 			getInfoBoxData('Marriage').text().trim().toLowerCase() === 'yes'
 		),
