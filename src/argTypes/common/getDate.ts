@@ -3,7 +3,7 @@ import {
 	seasonShorthands,
 	daysOfSeason,
 	SDVCalendarDate,
-	Season,
+	SDVSeason,
 } from '../../../data/structure'
 
 export default function checkDate(val: string): SDVCalendarDate {
@@ -11,7 +11,7 @@ export default function checkDate(val: string): SDVCalendarDate {
 		val.toLocaleLowerCase().startsWith(possibleSeason.toLocaleLowerCase())
 	)
 
-	let season: Season
+	let season: SDVSeason
 	let inferredDay = val
 		.toLocaleLowerCase()
 		.replace(parsedSeason.toLocaleLowerCase(), '')
@@ -37,7 +37,11 @@ export default function checkDate(val: string): SDVCalendarDate {
 			season = 'Winter'
 			break
 		default:
-			throw new Error('Shorthand for season not recognized')
+			if (!seasons.includes(parsedSeason)) {
+				console.error(`Parsed season detected: ${parsedSeason}`)
+				throw new Error('Shorthand for season not recognized')
+			}
+			season = parsedSeason
 	}
 
 	const day = inferredDay && daysOfSeason[parseInt(inferredDay) - 1]

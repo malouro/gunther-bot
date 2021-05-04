@@ -9,8 +9,8 @@ import {
 	SDVCalendarDay,
 	SDVCalendarSeason,
 	SDVGifts,
-	GiftTypes,
-	Season,
+	SDVGiftTypes,
+	SDVSeason,
 	daysOfWeek,
 	daysOfSeason,
 	seasons,
@@ -44,7 +44,7 @@ export function getCharacterData(html: string): SDVCharacterData {
 	/**
 	 * Return info on liked/disliked gifts
 	 */
-	function getGiftInfo(giftType: GiftTypes) {
+	function getGiftInfo(giftType: SDVGiftTypes) {
 		const gifts = []
 		const section = $('h3').filter(function () {
 			return new RegExp(`${giftType}s*`).test(
@@ -66,7 +66,7 @@ export function getCharacterData(html: string): SDVCharacterData {
 	const gifts: SDVGifts = {}
 	const bestGifts: Array<string> = []
 
-	giftTypes.forEach((giftType: GiftTypes) => {
+	giftTypes.forEach((giftType: SDVGiftTypes) => {
 		const giftList = getGiftInfo(giftType)
 		gifts[giftType] = flatten(giftList.map((data: string) =>
 			data.split(/\s*All\s+/).filter(element => element !== '')
@@ -96,11 +96,11 @@ export function getCalendarData(html: string): SDVCalendarData {
 	const $ = cheerio.load(html)
 
 	const builtCalendar: SDVCalendarData = {}
-	const seasonSelector = (season: Season) => $(`h2 > #${season}`)
+	const seasonSelector = (season: SDVSeason) => $(`h2 > #${season}`)
 	const calendarSection = '#calendar'
 
 	function buildDay(
-		season: Season,
+		season: SDVSeason,
 		week: number,
 		dayOfWeekIndex: number,
 		dateCell
@@ -134,7 +134,7 @@ export function getCalendarData(html: string): SDVCalendarData {
 		}
 	}
 
-	function buildSeason(season: Season): SDVCalendarSeason {
+	function buildSeason(season: SDVSeason): SDVCalendarSeason {
 		const days: Array<SDVCalendarDay> = []
 		let seasonEvents = []
 		let seasonBirthdays = []
@@ -201,8 +201,6 @@ export function getCalendarData(html: string): SDVCalendarData {
 	seasons.forEach(season => {
 		builtCalendar[season] = buildSeason(season)
 	})
-
-	// builtCalendar.Summer = buildSeason('Summer')
 
 	return builtCalendar
 }
