@@ -3,8 +3,7 @@ import {
 	SDVGiftTypes,
 	giftTypes,
 } from '../../data/structure'
-import { GuntherClient } from '../bot'
-import { GuntherArgValue } from './common/types'
+import { GuntherClient, GuntherArgValue } from '../bot'
 
 export default class CharacterInquiryArgType extends ArgumentType {
 	constructor(client: GuntherClient) {
@@ -15,7 +14,7 @@ export default class CharacterInquiryArgType extends ArgumentType {
 		return val.toLocaleLowerCase().replace(/s$/,'')
 	}
 
-	parse(val: string): GuntherArgValue<SDVGiftTypes> {
+	parse(val: SDVGiftTypes): GuntherArgValue<string> {
 		return { value: this.sanitize(val), type: 'sdv-gift-type' }
 	}
 

@@ -15,8 +15,7 @@ import {
 } from '../../../data/structure'
 import { Calendar } from '../../../data'
 import { messageEmojis, getWeekday, getNextSeason } from '../../utils'
-import { GuntherClient } from '../../bot'
-import { GuntherArgTypeKeys, GuntherArgValue } from '../../argTypes/common/types'
+import { GuntherClient, GuntherArgTypeKeys, GuntherArgValue } from '../../bot'
 
 const COMMAND_NAME = 'calendar-info'
 

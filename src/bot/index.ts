@@ -7,3 +7,4 @@ export {
 	GuntherClient,
 	GuntherCommand
 }
+export * from './argument'

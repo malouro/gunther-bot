@@ -1,8 +1,7 @@
 import { Message, MessageEmbed } from 'discord.js'
 import { CommandInfo, CommandoMessage } from 'discord.js-commando'
 import { SDVCharacterData, SDVCalendarDate, SDVGiftTypes, giftTypes } from '../../../data/structure'
-import { GuntherArgValue } from '../../argTypes/common/types'
-import { GuntherClient, GuntherCommand } from '../../bot'
+import { GuntherClient, GuntherCommand, GuntherArgValue } from '../../bot'
 import { capitalize } from '../../utils'
 
 const COMMAND_NAME = 'character-info'
@@ -66,11 +65,13 @@ export default class CharacterCommand extends GuntherCommand {
 	getCharacterScheduleInfo({
 		name: characterName,
 		avatar,
-	}: SDVCharacterData): MessageEmbed {
+	}: SDVCharacterData,
+		date: SDVCalendarDate
+	): MessageEmbed {
 		return new MessageEmbed()
 			.setTitle(characterName)
 			.setThumbnail(avatar)
-			.addField('This is where the schedule info would go.', 'IF IT EXISTED!')
+			.addField(`Date of ${date}`, 'This is where the schedule info would go.')
 	}
 
 	getCharacterGiftInfo({
@@ -99,12 +100,15 @@ export default class CharacterCommand extends GuntherCommand {
 		},
 	): Promise<Message> {
 		const { character, inquiry } = args
+		let value = null
 
 		switch (inquiry.type) {
 			case 'sdv-date':
-				return message.reply(this.getCharacterScheduleInfo(character))
+				value = inquiry.value as SDVCalendarDate
+				return message.reply(this.getCharacterScheduleInfo(character, value))
 			case 'sdv-gift-type':
-				return message.reply(this.getCharacterGiftInfo(character, inquiry.value))
+				value = inquiry.value as SDVGiftTypes
+				return message.reply(this.getCharacterGiftInfo(character, value))
 			default:
 				return message.reply(this.getGeneralCharacterInfo(character))
 		}

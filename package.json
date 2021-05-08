@@ -8,7 +8,7 @@
   "main": "cjs/src",
   "module": "esm/src",
   "bin": {
-    "build-sdv-data": "./cjs/data/build.js"
+    "build-sdv-data": "./cjs/data/builder/index.js"
   },
   "dependencies": {
     "@types/make-fetch-happen": "^8.0.1",
@@ -23,7 +23,7 @@
     "build": "yarn build:esm && yarn build:cjs",
     "build:esm": "tsc -p tsconfig.json",
     "build:cjs": "tsc -p tsconfig-cjs.json",
-    "build:data": "ts-node ./data/build",
+    "build:data": "ts-node ./data/builder",
     "clean": "npx rimraf ./cjs ./esm",
     "clean:cache": "npx rimraf ./.cache",
     "clean:modules": "npx rimraf ./node_modules",

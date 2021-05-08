@@ -1,4 +1,3 @@
-import { ArgumentType } from 'discord.js-commando'
 import { Characters } from '../../data'
 import {
 	SDVCharacterData,
@@ -6,9 +5,9 @@ import {
 	SDVCharacterList,
 } from '../../data/structure'
 import { formatCharacterName } from '../utils'
-import { GuntherClient } from '../bot'
+import { GuntherArgType, GuntherClient } from '../bot'
 
-export default class CharacterArgType extends ArgumentType {
+export default class CharacterArgType extends GuntherArgType {
 	constructor(client: GuntherClient) {
 		super(client, 'sdv-character')
 	}

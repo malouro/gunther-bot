@@ -12,14 +12,6 @@ export default function checkDate(val: string): SDVCalendarDate {
 	)
 
 	let season: SDVSeason
-	let inferredDay = val
-		.toLocaleLowerCase()
-		.replace(parsedSeason.toLocaleLowerCase(), '')
-		.trim()
-
-	if (/\s+/.test(inferredDay)) {
-		inferredDay = inferredDay.split(/\s+/)[0]
-	}
 
 	switch (parsedSeason) {
 		case 'sp':
@@ -39,9 +31,23 @@ export default function checkDate(val: string): SDVCalendarDate {
 		default:
 			if (!seasons.includes(parsedSeason)) {
 				console.error(`Parsed season detected: ${parsedSeason}`)
-				throw new Error('Shorthand for season not recognized')
+
+				return {
+					season: null,
+					day: null
+				}
 			}
 			season = parsedSeason
+			break
+	}
+
+	let inferredDay = val
+		.toLocaleLowerCase()
+		.replace(parsedSeason.toLocaleLowerCase(), '')
+		.trim()
+
+	if (/\s+/.test(inferredDay)) {
+		inferredDay = inferredDay.split(/\s+/)[0]
 	}
 
 	const day = inferredDay && daysOfSeason[parseInt(inferredDay) - 1]
