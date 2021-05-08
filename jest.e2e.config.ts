@@ -2,7 +2,5 @@ import config from './jest.config'
 
 export default {
 	...config,
-	collectCoverageFrom: [
-		'src/**/*.ts'
-	]
+	collectCoverageFrom: ['src/**/*.ts'],
 }

@@ -77,14 +77,15 @@ export default class CalendarCommand extends Command {
 
 	async run(
 		message: CommandoMessage,
-		args: { dateOrSeason: GuntherArgValue<SDVCalendarDate|SDVSeason> }
+		args: { dateOrSeason: GuntherArgValue<SDVCalendarDate | SDVSeason> }
 	): Promise<Message> {
-		const { type }: {
+		const {
+			type,
+		}: {
 			type: GuntherArgTypeKeys
 		} = args.dateOrSeason
 
-		let
-			value: SDVCalendarDate|SDVSeason,
+		let value: SDVCalendarDate | SDVSeason,
 			day: SDVDayOfSeason,
 			season: SDVSeason
 

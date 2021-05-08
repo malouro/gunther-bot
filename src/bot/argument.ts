@@ -1,18 +1,18 @@
 import { ArgumentType } from 'discord.js-commando'
 import GuntherClient from './client'
 
-/** Key name identifiers for Gunther ArgTypes */
+/** Key name identifiers for `GuntherArgType`s */
 export type GuntherArgTypeKeys =
-	'sdv-character'
+	| 'sdv-character'
 	| 'sdv-character-prop'
 	| 'sdv-date'
 	| 'sdv-gift-type'
 	| 'sdv-season'
 
-/** Return value for parse() method in Gunther ArgTypes */
+/** Return value for `parse()` method in `GuntherArgType`s */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type GuntherArgValue<V = any> = {
-	value: V,
+	value: V
 	type: GuntherArgTypeKeys | null
 }
 

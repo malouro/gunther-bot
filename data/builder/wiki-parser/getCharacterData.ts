@@ -5,17 +5,16 @@ import {
 	SDVCharacterData,
 	SDVGiftTypes,
 	SDVGifts,
-	giftTypes
+	giftTypes,
 } from '../../structure'
 
 /* cspell: disable */
 const CHARACTER_SELECTORS = {
 	infoBoxSection: '#infoboxsection',
 	infoBoxDetail: '#infoboxdetail',
-	giftTable: 'table.wikitable'
+	giftTable: 'table.wikitable',
 }
-	/* cspell: enable */
-
+/* cspell: enable */
 
 /**
  * Generate a character data object based on fetched Wiki HTML
@@ -30,7 +29,7 @@ export default function getCharacterData(html: string): SDVCharacterData {
 	 * Get data from the side info box section
 	 * @param {string} fieldName Name of field to look for in info box
 	 */
-	 function getInfoBoxData(fieldName: string) {
+	function getInfoBoxData(fieldName: string) {
 		return $(CHARACTER_SELECTORS.infoBoxSection)
 			.filter((_: unknown, element) => $(element).text().includes(fieldName))
 			.next(CHARACTER_SELECTORS.infoBoxDetail)
@@ -51,12 +50,17 @@ export default function getCharacterData(html: string): SDVCharacterData {
 			.first()
 			.find('tbody')
 
-		$(tableBody).children().each((_, row) => {
-			const itemText = $($(row).find('td').toArray()[1]).text().trim().replace(/\s+/g, ' ')
-			if (itemText !== '') {
-				gifts.push(itemText)
-			}
-		})
+		$(tableBody)
+			.children()
+			.each((_, row) => {
+				const itemText = $($(row).find('td').toArray()[1])
+					.text()
+					.trim()
+					.replace(/\s+/g, ' ')
+				if (itemText !== '') {
+					gifts.push(itemText)
+				}
+			})
 
 		return gifts
 	}
@@ -64,20 +68,19 @@ export default function getCharacterData(html: string): SDVCharacterData {
 	const characterName = $('h1').text().trim()
 	const imageSrc = $(`img[alt="${characterName}.png"]`).attr('src')
 
-
-	giftTypes.forEach(
-		(giftType: SDVGiftTypes) => {
-			const giftList = getGiftInfo(giftType)
-			gifts[giftType] = flatten(giftList.map((data: string) =>
+	giftTypes.forEach((giftType: SDVGiftTypes) => {
+		const giftList = getGiftInfo(giftType)
+		gifts[giftType] = flatten(
+			giftList.map((data: string) =>
 				data.split(/\s*All\s+/).filter(element => element !== '')
-			))
-		}
-	)
+			)
+		)
+	})
 
 	$(getInfoBoxData('Best Gifts'))
 		.find('a')
-		.each((_, gift) => bestGifts.push(
-			$(gift).text().toString().trim().replace(/\s+/g, ' '))
+		.each((_, gift) =>
+			bestGifts.push($(gift).text().toString().trim().replace(/\s+/g, ' '))
 		)
 
 	return {

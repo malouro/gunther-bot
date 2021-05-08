@@ -1,6 +1,11 @@
 import { Message, MessageEmbed } from 'discord.js'
 import { CommandInfo, CommandoMessage } from 'discord.js-commando'
-import { SDVCharacterData, SDVCalendarDate, SDVGiftTypes, giftTypes } from '../../../data/structure'
+import {
+	SDVCharacterData,
+	SDVCalendarDate,
+	SDVGiftTypes,
+	giftTypes,
+} from '../../../data/structure'
 import { GuntherClient, GuntherCommand, GuntherArgValue } from '../../bot'
 import { capitalize } from '../../utils'
 
@@ -16,12 +21,14 @@ export const info: CommandInfo = {
 		'Returns back information on the character. ',
 		'This includes their birthday, favorite gifts, etc.',
 		'\n\nPossible `[inquiry options]` include:\n',
-		`${giftTypes.map((gifType) => `• \`${gifType}\``).join('\n')}\n...or a \`calendar date\``,
+		`${giftTypes
+			.map(gifType => `• \`${gifType}\``)
+			.join('\n')}\n...or a \`calendar date\``,
 	].join(''),
 	examples: [
 		`\`${COMMAND_NAME} abigail\``,
 		`\`${COMMAND_NAME} lewis hates\``,
-		`\`${COMMAND_NAME} shane summer 13\``
+		`\`${COMMAND_NAME} shane summer 13\``,
 	],
 	args: [
 		{
@@ -34,8 +41,8 @@ export const info: CommandInfo = {
 			prompt: 'What particular information are you interested in?',
 			type: 'sdv-gift-type|sdv-date',
 			label: 'inquiry options',
-			default: { value: null, type: null }
-		}
+			default: { value: null, type: null },
+		},
 	],
 }
 
@@ -62,10 +69,8 @@ export default class CharacterCommand extends GuntherCommand {
 			.addField('Best Gifts', bestGifts)
 	}
 
-	getCharacterScheduleInfo({
-		name: characterName,
-		avatar,
-	}: SDVCharacterData,
+	getCharacterScheduleInfo(
+		{ name: characterName, avatar }: SDVCharacterData,
 		date: SDVCalendarDate
 	): MessageEmbed {
 		return new MessageEmbed()
@@ -74,11 +79,8 @@ export default class CharacterCommand extends GuntherCommand {
 			.addField(`Date of ${date}`, 'This is where the schedule info would go.')
 	}
 
-	getCharacterGiftInfo({
-		name: characterName,
-		avatar,
-		gifts
-	}: SDVCharacterData,
+	getCharacterGiftInfo(
+		{ name: characterName, avatar, gifts }: SDVCharacterData,
 		giftType: SDVGiftTypes
 	): MessageEmbed {
 		return new MessageEmbed()
@@ -95,9 +97,9 @@ export default class CharacterCommand extends GuntherCommand {
 	async run(
 		message: CommandoMessage,
 		args: {
-			character: SDVCharacterData,
-			inquiry: GuntherArgValue<SDVCalendarDate|SDVGiftTypes>
-		},
+			character: SDVCharacterData
+			inquiry: GuntherArgValue<SDVCalendarDate | SDVGiftTypes>
+		}
 	): Promise<Message> {
 		const { character, inquiry } = args
 		let value = null

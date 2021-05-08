@@ -34,7 +34,7 @@ export default function checkDate(val: string): SDVCalendarDate {
 
 				return {
 					season: null,
-					day: null
+					day: null,
 				}
 			}
 			season = parsedSeason

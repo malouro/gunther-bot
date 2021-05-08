@@ -1,8 +1,5 @@
 import { ArgumentType } from 'discord.js-commando'
-import {
-	SDVGiftTypes,
-	giftTypes,
-} from '../../data/structure'
+import { SDVGiftTypes, giftTypes } from '../../data/structure'
 import { GuntherClient, GuntherArgValue } from '../bot'
 
 export default class CharacterInquiryArgType extends ArgumentType {
@@ -11,7 +8,7 @@ export default class CharacterInquiryArgType extends ArgumentType {
 	}
 
 	sanitize(val: string): string {
-		return val.toLocaleLowerCase().replace(/s$/,'')
+		return val.toLocaleLowerCase().replace(/s$/, '')
 	}
 
 	parse(val: SDVGiftTypes): GuntherArgValue<string> {

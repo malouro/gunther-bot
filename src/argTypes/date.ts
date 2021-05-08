@@ -13,7 +13,7 @@ export default class DateArgType extends ArgumentType {
 
 		return {
 			value: { day, season },
-			type: 'sdv-date'
+			type: 'sdv-date',
 		}
 	}
 

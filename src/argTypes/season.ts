@@ -13,7 +13,7 @@ export default class SeasonArgType extends ArgumentType {
 
 		return {
 			value: season,
-			type: 'sdv-season'
+			type: 'sdv-season',
 		}
 	}
 

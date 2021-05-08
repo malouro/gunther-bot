@@ -1,8 +1,5 @@
 import { ArgumentType } from 'discord.js-commando'
-import {
-	characterDataFields,
-	SDVCharacterData,
-} from '../../data/structure'
+import { characterDataFields, SDVCharacterData } from '../../data/structure'
 import { GuntherClient, GuntherArgValue } from '../bot'
 
 export default class CharacterInquiryArgType extends ArgumentType {

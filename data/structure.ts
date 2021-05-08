@@ -52,9 +52,13 @@ export type SDVGifts = {
 }
 export type SDVGiftTypes = 'love' | 'like' | 'dislike' | 'neutral' | 'hate'
 
-export const giftTypes = [ 'love', 'like', 'dislike', 'neutral', 'hate' ]
+export const giftTypes = ['love', 'like', 'dislike', 'neutral', 'hate']
 export const characterDataFields = [
-	'name', 'avatar', 'birthday', 'bestGifts', ...giftTypes
+	'name',
+	'avatar',
+	'birthday',
+	'bestGifts',
+	...giftTypes,
 ]
 // ------------------------------------------------------------
 // Calendar

@@ -9,7 +9,7 @@ dotenv.config()
 const cacheManager = path.resolve(process.cwd(), './.cache')
 const fetcher = fetch.defaults({
 	cacheManager: cacheManager,
-	cache: 'default'
+	cache: 'default',
 })
 
 export default class GuntherClient extends CommandoClient {
