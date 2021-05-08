@@ -3,5 +3,5 @@ import config from './jest.config'
 
 export default {
 	...config,
-	collectCoverageFrom: [...config.collectCoverageFrom, 'src/**/*.ts'],
+	collectCoverageFrom: ['data/**/*.ts', 'src/**/*.ts'],
 } as Config.InitialOptions

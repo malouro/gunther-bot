@@ -117,8 +117,8 @@ export default class CalendarCommand extends Command {
 		} else {
 			const weekday = getWeekday(day)
 			const events: Array<SDVEvent> = calendarSeason.days[day].events
-			const birthdays: Array<SDVCharacterName> =
-				calendarSeason.days[day].birthdays
+			const birthdays: Array<SDVCharacterName> = calendarSeason.days[day]
+				.birthdays as SDVCharacterName[]
 			const upcomingDays = getUpcomingDays(season, day, 7)
 			const upcomingDetails = upcomingDays
 				.map(

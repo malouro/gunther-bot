@@ -17,7 +17,7 @@ const config: Config.InitialOptions = {
 		'src/utils/**/*.ts',
 		'data/**/*.ts',
 		'data/builder/wiki-parser/**/*.ts',
-		'!data/builder/*.ts'
+		'!data/builder/*.ts',
 	],
 	testPathIgnorePatterns: ignoreDirectories,
 	watchPathIgnorePatterns: ignoreDirectories,
