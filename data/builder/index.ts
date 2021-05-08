@@ -29,6 +29,7 @@ const yargv = yargs(process.argv.slice(2))
 	.option('t', {
 		description: 'Execute a dry-run of the build against test data',
 		type: 'boolean',
+		default: process.env.NODE_ENV === 'test',
 		alias: ['test', 'dry-run'],
 	})
 	.help('h')

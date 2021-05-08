@@ -6,15 +6,14 @@ import getCalendarData from './wiki-parser/getCalendarData'
 
 import { getWikiUrl } from '../../src/utils'
 import { inTestMode, autoGenWarning } from './'
+import { SDVCalendarData } from '../structure'
 
-export default async function buildCalendar(): Promise<void> {
+export default async function buildCalendar(): Promise<void | SDVCalendarData> {
 	if (inTestMode) {
-		return console.log(
-			getCalendarData(
-				fs.readFileSync(
-					path.resolve(__dirname, './test_fixtures/Calendar.txt'),
-					'utf-8'
-				)
+		return getCalendarData(
+			fs.readFileSync(
+				path.resolve(__dirname, '../test_fixtures/Calendar.txt'),
+				'utf-8'
 			)
 		)
 	}

@@ -39,12 +39,15 @@ export default function getCalendarData(html: string): SDVCalendarData {
 			SDVCharacterList.forEach(character => {
 				if (innerText.includes(character)) {
 					birthdays.push(character)
-					innerText = innerText.replace(character, '').trim()
+					innerText = innerText
+						.replace(character, '')
+						.trim()
+						.replace(/\s+/g, ' ')
 				}
 			})
 
 			if (innerText != '') {
-				events.push(innerText.trim())
+				events.push(innerText.trim().replace(/\s+/g, ' '))
 			}
 		}
 

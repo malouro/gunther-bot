@@ -4,20 +4,22 @@ import path from 'path'
 
 import getCharacterData from './wiki-parser/getCharacterData'
 
-import { SDVCharacterName, SDVCharacterList } from '../structure'
+import {
+	SDVCharacterName,
+	SDVCharacterList,
+	SDVCharacterData,
+} from '../structure'
 import { getWikiUrl } from '../../src/utils'
 import { inTestMode, autoGenWarning } from './'
 
 export default async function buildCharacters(
 	characters: ReadonlyArray<SDVCharacterName> = SDVCharacterList
-): Promise<void> {
+): Promise<void | SDVCharacterData> {
 	if (inTestMode) {
-		return console.log(
-			getCharacterData(
-				fs.readFileSync(
-					path.resolve(__dirname, './test_fixtures/Marnie.txt'),
-					'utf-8'
-				)
+		return getCharacterData(
+			fs.readFileSync(
+				path.resolve(__dirname, '../test_fixtures/Marnie.txt'),
+				'utf-8'
 			)
 		)
 	}

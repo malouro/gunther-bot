@@ -45,7 +45,7 @@ export const SDVCharacterList = [
 	'Vincent',
 	'Willy',
 	'Wizard',
-]
+] as const
 export type SDVCharacterName = typeof SDVCharacterList[number]
 export type SDVGifts = {
 	[key in SDVGiftTypes]?: Array<string>

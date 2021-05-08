@@ -1,13 +1,13 @@
-import * as characters from './characters'
+import { Characters } from './'
 import { SDVCharacterData } from './structure'
 import { baseWikiUrl } from '../src/utils/constants'
 
-const characterData = Object.keys(characters).map(charKey => [
-	characters[charKey].name,
-	characters[charKey],
+const characterData = Object.keys(Characters).map(charKey => [
+	Characters[charKey].name,
+	Characters[charKey],
 ])
 
-describe('Data Structure Conformance', () => {
+describe('Data Structure', () => {
 	describe('Characters', () => {
 		test.each(characterData)(
 			'data for %s contains all expected data fields',

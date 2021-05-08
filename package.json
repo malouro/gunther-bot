@@ -30,8 +30,8 @@
     "check:format": "prettier --check **/*.ts",
     "check:lint": "eslint .",
     "check:spelling": "cspell **/*.ts",
-    "fix": "yarn check:lint --fix",
-    "format": "yarn check:format --write",
+    "fix:format": "yarn check:format --write",
+    "fix:lint": "yarn check:lint --fix",
     "test": "jest",
     "test:coverage": "jest --coverage --maxWorkers=50%",
     "test:e2e": "jest --coverage --maxWorkers=50% --config=jest.e2e.config.ts"
