@@ -1,7 +1,7 @@
 import { ArgumentType } from 'discord.js-commando'
-import { checkDate, getDate } from './common'
+import { checkDate, getDate, GuntherArgValue } from './common'
 import { SDVSeason } from '../../data/structure'
-import { GuntherClient, GuntherArgValue } from '../bot'
+import { GuntherClient } from '../bot'
 
 export default class SeasonArgType extends ArgumentType {
 	constructor(client: GuntherClient) {

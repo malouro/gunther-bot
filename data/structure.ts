@@ -58,8 +58,11 @@ export const characterDataFields = [
 	'avatar',
 	'birthday',
 	'bestGifts',
-	...giftTypes,
-]
+	'canMarry',
+	'gifts',
+	'wiki',
+] as const
+export type SDVCharacterDataField = typeof characterDataFields[number]
 // ------------------------------------------------------------
 // Calendar
 // ------------------------------------------------------------

@@ -1,17 +1,25 @@
-import { ArgumentType } from 'discord.js-commando'
-import { characterDataFields, SDVCharacterData } from '../../data/structure'
-import { GuntherClient, GuntherArgValue } from '../bot'
+import camelCase from 'lodash.camelcase'
+import {
+	characterDataFields,
+	SDVCharacterData,
+	SDVCharacterDataField,
+} from '../../data/structure'
+import { GuntherArgValue, GuntherArgType } from './common'
+import GuntherClient from '../bot/client'
 
-export default class CharacterInquiryArgType extends ArgumentType {
+export default class CharacterInquiryArgType extends GuntherArgType {
 	constructor(client: GuntherClient) {
 		super(client, 'sdv-character-prop')
 	}
 
-	parse(val: string): GuntherArgValue<string> {
-		return { value: val.toLocaleLowerCase(), type: 'sdv-character-prop' }
+	parse(val: string): GuntherArgValue<SDVCharacterDataField> {
+		return {
+			value: camelCase(val) as SDVCharacterDataField,
+			type: 'sdv-character-prop',
+		}
 	}
 
 	validate(val: keyof SDVCharacterData): boolean {
-		return Object.keys(characterDataFields).includes(val.toLocaleLowerCase())
+		return characterDataFields.includes(camelCase(val) as SDVCharacterDataField)
 	}
 }

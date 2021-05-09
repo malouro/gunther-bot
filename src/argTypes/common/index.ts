@@ -1,4 +1,14 @@
 import checkDate from './checkDate'
 import getDate from './getDate'
+import GuntherArgType, {
+	GuntherArgValue,
+	GuntherArgTypeKeys,
+} from './GuntherArgType'
 
-export { checkDate, getDate }
+export {
+	GuntherArgType,
+	GuntherArgValue,
+	GuntherArgTypeKeys,
+	checkDate,
+	getDate,
+}

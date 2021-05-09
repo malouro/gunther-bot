@@ -1,6 +1,7 @@
 import { ArgumentType } from 'discord.js-commando'
 import { SDVGiftTypes, giftTypes } from '../../data/structure'
-import { GuntherClient, GuntherArgValue } from '../bot'
+import { GuntherClient } from '../bot'
+import { GuntherArgValue } from './common'
 
 export default class CharacterInquiryArgType extends ArgumentType {
 	constructor(client: GuntherClient) {

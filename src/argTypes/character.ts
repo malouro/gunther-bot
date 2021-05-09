@@ -1,19 +1,19 @@
 import { Characters } from '../../data'
-import {
-	SDVCharacterData,
-	SDVCharacterName,
-	SDVCharacterList,
-} from '../../data/structure'
+import { SDVCharacterName, SDVCharacterList } from '../../data/structure'
 import { formatCharacterName } from '../utils'
-import { GuntherArgType, GuntherClient } from '../bot'
+import { GuntherClient } from '../bot'
+import { GuntherArgType, GuntherArgValue } from './common'
 
 export default class CharacterArgType extends GuntherArgType {
 	constructor(client: GuntherClient) {
 		super(client, 'sdv-character')
 	}
 
-	parse(val: string): SDVCharacterData {
-		return Characters[formatCharacterName(val)]
+	parse(val: string): GuntherArgValue {
+		return {
+			value: Characters[formatCharacterName(val)],
+			type: 'sdv-character',
+		}
 	}
 
 	validate(val: SDVCharacterName): boolean {
