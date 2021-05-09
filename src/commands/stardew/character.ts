@@ -23,16 +23,16 @@ export const info: CommandInfo = {
 	details: [
 		'Returns back information on the character. ',
 		'This includes their birthday, favorite gifts, etc.',
-		'\n\nPossible `[inquiry options]` include:\n',
+		'\n\nPossible `[inquiry]` options include:\n',
 		`${giftTypes
 			.map(giftType => `• \`${giftType}(s)\``)
 			.concat(characterDataFields.map(dataField => `• \`${dataField}\``))
 			.join('\n')}\n...or a \`calendar date\``,
 	].join(''),
 	examples: [
-		`\`${COMMAND_NAME} abigail\``,
-		`\`${COMMAND_NAME} lewis hates\``,
-		`\`${COMMAND_NAME} shane summer 13\``,
+		`\`${COMMAND_NAME} abigail\` => general info on Abigail`,
+		`\`${COMMAND_NAME} lewis hates\` => gifts that Lewis hates`,
+		`\`${COMMAND_NAME} shane summer 13\` => where is Shane on Su. 13?`,
 	],
 	args: [
 		{
@@ -44,7 +44,7 @@ export const info: CommandInfo = {
 			key: 'inquiry',
 			prompt: 'What particular information are you interested in?',
 			type: 'sdv-gift-type|sdv-character-prop|sdv-date',
-			label: 'inquiry options',
+			label: '`[inquiry]`',
 			default: { value: null, type: null },
 		},
 	],
@@ -80,12 +80,37 @@ export default class CharacterCommand extends GuntherCommand {
 		const specificInfo = characterInfo[dataField]
 		const { name: characterName, avatar, wiki } = characterInfo
 
-		return new MessageEmbed()
+		const embed = new MessageEmbed()
 			.setTitle(characterName)
 			.setURL(`${wiki}#${formatWikiTerm(dataField)}`)
 			.setThumbnail(avatar)
-			.setDescription(`Information on ${characterName}`)
-			.addField(capitalize(dataField), specificInfo)
+			.setDescription(`Specific info on ${characterName}`)
+
+		switch (dataField) {
+			case 'bestGifts':
+				embed.addField('Best Gifts', Array(specificInfo).join('\n'))
+				break
+			case 'gifts':
+				embed.addField(
+					'Gifts',
+					Object.entries(specificInfo).map(
+						([key, value]) => `**${capitalize(key)}**:\n${value.join('\n')}\n`
+					)
+				)
+				break
+			case 'canMarry':
+				embed.addField('Can marry?', specificInfo === true ? 'Yes' : 'No')
+				break
+			case 'avatar':
+			case 'name':
+			case 'wiki':
+			case 'birthday':
+			default:
+				embed.addField(capitalize(dataField), specificInfo)
+				break
+		}
+
+		return embed
 	}
 
 	getCharacterScheduleInfo(
