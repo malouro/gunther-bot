@@ -79,9 +79,11 @@ export default function getCharacterData(html: string): SDVCharacterData {
 
 	$(getInfoBoxData('Best Gifts'))
 		.find('a')
-		.each((_, gift) =>
-			bestGifts.push($(gift).text().toString().trim().replace(/\s+/g, ' '))
-		)
+		.each((_, gift) => {
+			bestGifts.push(
+				$(gift).text().toString().trim().replace(/\s+/g, ' ')
+			)
+		})
 
 	return {
 		name: characterName,
