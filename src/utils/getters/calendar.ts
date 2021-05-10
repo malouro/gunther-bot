@@ -1,8 +1,8 @@
 import {
-	DayOfSeason,
-	DayOfWeek,
+	SDVDayOfSeason,
+	SDVDayOfWeek,
+	SDVSeason,
 	daysOfWeek,
-	Season,
 } from '../../../data/structure'
 
 /**
@@ -26,7 +26,7 @@ export function getDayOfSeason(week: number, dayOfWeek: number): number {
  * Get the next upcoming season
  * @param season Current season
  */
-export function getNextSeason(season: Season): Season {
+export function getNextSeason(season: SDVSeason): SDVSeason {
 	switch (season) {
 		case 'Spring':
 			return 'Summer'
@@ -45,6 +45,6 @@ export function getNextSeason(season: Season): Season {
  * Given a day of the season, return what day of the week it is
  * @param day The number of the day of the season (ie: the {15}th of Spring) (( one-indexed ))
  */
-export function getWeekday(day: DayOfSeason): DayOfWeek {
+export function getWeekday(day: SDVDayOfSeason): SDVDayOfWeek {
 	return daysOfWeek[(parseInt(day) - 1) % 7]
 }

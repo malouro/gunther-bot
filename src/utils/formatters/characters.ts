@@ -6,5 +6,5 @@ import { capitalize } from './common'
  * @param name String of the character's name to format properly
  */
 export function formatCharacterName(name: string): SDVCharacterName {
-	return capitalize(name)
+	return capitalize(name) as SDVCharacterName
 }

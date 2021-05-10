@@ -1,12 +1,12 @@
 import { Message, MessageEmbed } from 'discord.js'
 import { Command, CommandInfo, CommandoMessage } from 'discord.js-commando'
 import {
-	Event,
+	SDVEvent,
 	SDVCharacterName,
 	SDVCalendarDate,
 	SDVCalendarDay,
-	Season,
-	DayOfSeason,
+	SDVSeason,
+	SDVDayOfSeason,
 	seasons,
 	seasonShorthands,
 	daysOfSeason,
@@ -16,6 +16,7 @@ import {
 import { Calendar } from '../../../data'
 import { messageEmojis, getWeekday, getNextSeason } from '../../utils'
 import { GuntherClient } from '../../bot'
+import { GuntherArgTypeKeys, GuntherArgValue } from '../../argTypes/common'
 
 const COMMAND_NAME = 'calendar-info'
 
@@ -48,8 +49,8 @@ export const info: CommandInfo = {
 }
 
 function getUpcomingDays(
-	season: Season,
-	currentDay: DayOfSeason,
+	season: SDVSeason,
+	currentDay: SDVDayOfSeason,
 	nextXDays = daysInAWeek
 ): Array<SDVCalendarDay> {
 	const calendarSeason = Calendar[season]
@@ -77,16 +78,28 @@ export default class CalendarCommand extends Command {
 
 	async run(
 		message: CommandoMessage,
-		args: { dateOrSeason: SDVCalendarDate | Season }
+		args: { dateOrSeason: GuntherArgValue<SDVCalendarDate | SDVSeason> }
 	): Promise<Message> {
-		let day: DayOfSeason, season: Season
+		const {
+			type,
+		}: {
+			type: GuntherArgTypeKeys
+		} = args.dateOrSeason
 
-		if (typeof args.dateOrSeason === 'string') {
+		let value: SDVCalendarDate | SDVSeason,
+			day: SDVDayOfSeason,
+			season: SDVSeason
+
+		if (type === 'sdv-season') {
+			value = args.dateOrSeason.value as SDVSeason
 			day = null
-			season = args.dateOrSeason
+			season = value
+		} else if (type === 'sdv-date') {
+			value = args.dateOrSeason.value as SDVCalendarDate
+			day = value.day
+			season = value.season
 		} else {
-			day = args.dateOrSeason.day
-			season = args.dateOrSeason.season
+			throw new Error(`ArgType of ${type} is not valid for <dateOrSeason>.`)
 		}
 
 		const embed = new MessageEmbed()
@@ -104,9 +117,9 @@ export default class CalendarCommand extends Command {
 				.setImage(calendarSeason.image)
 		} else {
 			const weekday = getWeekday(day)
-			const events: Array<Event> = calendarSeason.days[day].events
-			const birthdays: Array<SDVCharacterName> =
-				calendarSeason.days[day].birthdays
+			const events: Array<SDVEvent> = calendarSeason.days[day].events
+			const birthdays: Array<SDVCharacterName> = calendarSeason.days[day]
+				.birthdays as SDVCharacterName[]
 			const upcomingDays = getUpcomingDays(season, day, 7)
 			const upcomingDetails = upcomingDays
 				.map(

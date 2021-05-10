@@ -7,14 +7,19 @@
   "license": "MIT",
   "main": "cjs/src",
   "module": "esm/src",
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "bin": {
-    "build-sdv-data": "./cjs/data/build.js"
+    "build-sdv-data": "./cjs/data/builder/index.js"
   },
   "dependencies": {
     "@types/make-fetch-happen": "^8.0.1",
     "discord.js": "^12.5.1",
     "discord.js-commando": "^0.12.2",
     "dotenv": "^8.2.0",
+    "lodash.camelcase": "^4.3.0",
+    "lodash.flatten": "^4.4.0",
     "make-fetch-happen": "^8.0.14",
     "winston": "^3.3.3"
   },
@@ -23,17 +28,18 @@
     "build": "yarn build:esm && yarn build:cjs",
     "build:esm": "tsc -p tsconfig.json",
     "build:cjs": "tsc -p tsconfig-cjs.json",
-    "build:data": "ts-node ./data/build",
+    "build:data": "ts-node ./data/builder",
     "clean": "npx rimraf ./cjs ./esm",
     "clean:cache": "npx rimraf ./.cache",
     "clean:modules": "npx rimraf ./node_modules",
     "check:format": "prettier --check **/*.ts",
     "check:lint": "eslint .",
     "check:spelling": "cspell **/*.ts",
-    "fix": "yarn check:lint --fix",
-    "format": "yarn check:format --write",
+    "fix:format": "yarn check:format --write",
+    "fix:lint": "yarn check:lint --fix",
     "test": "jest",
-    "test:e2e": "echo 'WIP; no end-to-end tests written yet.'"
+    "test:coverage": "jest --coverage --maxWorkers=50%",
+    "test:e2e": "jest --coverage --maxWorkers=50% --config=jest.e2e.config.ts"
   },
   "devDependencies": {
     "@types/expect": "^24.3.0",

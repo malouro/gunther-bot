@@ -1,11 +1,18 @@
-import { createLogger, format, transports, addColors } from 'winston'
+import {
+	createLogger,
+	format,
+	transports,
+	addColors,
+	Logger,
+	LoggerOptions,
+} from 'winston'
 import {
 	AbstractConfigSetLevels,
 	AbstractConfigSetColors,
 } from 'winston/lib/winston/config'
 
 /**
- * @todo Make this a config somewhere
+ * @todo Make this a config somewhere?
  */
 const TIMESTAMP_ENABLED = true
 const LOG_LEVEL_ICON_ENABLED = false
@@ -47,14 +54,16 @@ export const logLevels: AbstractConfigSetLevels = {
 
 addColors(logColors)
 
-const GuntherLogger = createLogger({
-	format: format.combine(
-		format.colorize(),
-		format.timestamp({ format: 'HH:mm:ss.SSS' }),
-		logFormatting
-	),
-	levels: logLevels,
-	transports: [new transports.Console()],
-})
+const GuntherLogger = (config: LoggerOptions = {}): Logger =>
+	createLogger({
+		format: format.combine(
+			format.colorize(),
+			format.timestamp({ format: 'HH:mm:ss.SSS' }),
+			logFormatting
+		),
+		levels: logLevels,
+		transports: [new transports.Console()],
+		...config,
+	})
 
 export default GuntherLogger
