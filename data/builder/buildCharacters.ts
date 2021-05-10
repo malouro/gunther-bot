@@ -18,7 +18,7 @@ export default async function buildCharacters(
 	if (inTestMode) {
 		return getCharacterData(
 			fs.readFileSync(
-				path.resolve(__dirname, '../test_fixtures/Marnie.txt'),
+				path.resolve(__dirname, '../__test_fixtures__/Marnie.html'),
 				'utf-8'
 			)
 		)

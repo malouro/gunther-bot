@@ -12,7 +12,7 @@ export default async function buildCalendar(): Promise<void | SDVCalendarData> {
 	if (inTestMode) {
 		return getCalendarData(
 			fs.readFileSync(
-				path.resolve(__dirname, '../test_fixtures/Calendar.txt'),
+				path.resolve(__dirname, '../__test_fixtures__/Calendar.html'),
 				'utf-8'
 			)
 		)
