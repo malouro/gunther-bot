@@ -4,7 +4,13 @@ import {
 	daysOfSeason,
 	SDVCalendarDate,
 	SDVSeason,
+	daysInASeason,
 } from '../../../data/structure'
+
+const nullDate: SDVCalendarDate = {
+	season: null,
+	day: null
+}
 
 export default function checkDate(val: string): SDVCalendarDate {
 	const parsedSeason = [...seasons, ...seasonShorthands].find(possibleSeason =>
@@ -30,12 +36,7 @@ export default function checkDate(val: string): SDVCalendarDate {
 			break
 		default:
 			if (!seasons.includes(parsedSeason)) {
-				console.error(`Parsed season detected: ${parsedSeason}`)
-
-				return {
-					season: null,
-					day: null,
-				}
+				return nullDate
 			}
 			season = parsedSeason
 			break
@@ -50,15 +51,23 @@ export default function checkDate(val: string): SDVCalendarDate {
 		inferredDay = inferredDay.split(/\s+/)[0]
 	}
 
-	const day = inferredDay && daysOfSeason[parseInt(inferredDay) - 1]
+	const dayAsNumber = parseInt(inferredDay)
 
+	if (Number.isNaN(dayAsNumber) && inferredDay !== '') {
+		return nullDate
+	}
+
+	const day = inferredDay && daysOfSeason[dayAsNumber - 1]
+
+	if (dayAsNumber > daysInASeason || dayAsNumber <= 0) {
+		return nullDate
+	}
 	if (!day) {
 		return {
 			season,
 			day: null,
 		}
 	}
-
 	return {
 		season,
 		day,

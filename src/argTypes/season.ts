@@ -1,6 +1,6 @@
 import { ArgumentType } from 'discord.js-commando'
 import { checkDate, getDate, GuntherArgValue } from './common'
-import { SDVSeason } from '../../data/structure'
+import { SDVCalendarDate, SDVSeason } from '../../data/structure'
 import { GuntherClient } from '../bot'
 
 export default class SeasonArgType extends ArgumentType {
@@ -8,16 +8,17 @@ export default class SeasonArgType extends ArgumentType {
 		super(client, 'sdv-season')
 	}
 
-	parse(val: string): GuntherArgValue<SDVSeason> {
-		const { season } = getDate(val)
+	date: SDVCalendarDate = null
 
+	parse(): GuntherArgValue<SDVSeason> {
 		return {
-			value: season,
+			value: this.date.season,
 			type: 'sdv-season',
 		}
 	}
 
 	validate(val: string): boolean {
-		return checkDate(val) && getDate(val).day === null
+		this.date = getDate(val)
+		return checkDate(val) && this.date.day === null
 	}
 }
