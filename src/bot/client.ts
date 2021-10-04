@@ -1,7 +1,9 @@
 import { CommandoClient } from 'discord.js-commando'
 import dotenv from 'dotenv'
-import fetch from 'make-fetch-happen'
+import fetch, { FetchInterface } from 'make-fetch-happen'
 import path from 'path'
+import { PathLike } from 'fs'
+import { Logger } from 'winston'
 import GuntherLogger from './logger'
 
 dotenv.config()
@@ -13,7 +15,7 @@ const fetcher = fetch.defaults({
 })
 
 export default class GuntherClient extends CommandoClient {
-	logger = GuntherLogger()
-	cacheManager = cacheManager
-	fetch = fetcher
+	logger: Logger = GuntherLogger()
+	cacheManager: string | PathLike = cacheManager
+	fetch: FetchInterface = fetcher
 }
