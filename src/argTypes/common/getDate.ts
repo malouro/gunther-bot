@@ -5,11 +5,11 @@ import {
 	SDVCalendarDate,
 	SDVSeason,
 	daysInASeason,
-} from '../../../data/structure'
+} from '../../../data/types'
 
 const nullDate: SDVCalendarDate = {
 	season: null,
-	day: null
+	day: null,
 }
 
 export default function checkDate(val: string): SDVCalendarDate {

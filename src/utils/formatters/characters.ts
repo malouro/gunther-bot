@@ -1,4 +1,4 @@
-import { SDVCharacterName } from '../../../data/structure'
+import { SDVCharacterName } from '../../../data/types'
 import { capitalize } from './common'
 
 /**

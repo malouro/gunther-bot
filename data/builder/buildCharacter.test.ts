@@ -1,9 +1,9 @@
 import { getWikiUrl } from '../../src/utils'
-import { SDVCharacterData } from '../structure'
+import { SDVCharacterData } from '../types'
 import buildCharacters from './buildCharacters'
 
 describe('Data Builder for Characters', () => {
-	let results: SDVCharacterData = null
+	let results: SDVCharacterData
 
 	beforeAll(async () => {
 		results = (await buildCharacters()) as SDVCharacterData

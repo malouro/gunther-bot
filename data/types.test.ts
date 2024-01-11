@@ -1,5 +1,5 @@
-import { Characters } from './'
-import { SDVCharacterData } from './structure'
+import { Characters } from '.'
+import { SDVCharacterData } from './types'
 import { baseWikiUrl } from '../src/utils/constants'
 
 const characterData = Object.keys(Characters).map(charKey => [

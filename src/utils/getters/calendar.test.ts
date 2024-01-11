@@ -4,16 +4,19 @@ import {
 	daysOfWeek,
 	daysInAWeek,
 	daysInASeason,
-} from '../../../data/structure'
+	SDVDayOfSeason,
+} from '../../../data/types'
 
 describe('Calendar Getters', () => {
 	describe('getDayOfSeason', () => {
 		test('should return day of season based on week# and dayOfWeek#', () => {
-			const result = []
+			const result: SDVDayOfSeason[] = []
 
 			for (let week = 0; week < daysInASeason / daysInAWeek; week++) {
 				for (let dayOfWeek = 0; dayOfWeek < daysInAWeek; dayOfWeek++) {
-					result.push((getDayOfSeason(week, dayOfWeek) + 1).toString())
+					result.push(
+						(getDayOfSeason(week, dayOfWeek) + 1).toString() as SDVDayOfSeason
+					)
 				}
 			}
 

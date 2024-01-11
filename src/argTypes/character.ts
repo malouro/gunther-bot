@@ -1,5 +1,5 @@
 import { Characters } from '../../data'
-import { SDVCharacterName, SDVCharacterList } from '../../data/structure'
+import { SDVCharacterName, SDVCharacterList } from '../../data/types'
 import { formatCharacterName } from '../utils'
 import { GuntherClient } from '../bot'
 import { GuntherArgType, GuntherArgValue } from './common'

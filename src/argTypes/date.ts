@@ -1,5 +1,5 @@
 import { checkDate, getDate, GuntherArgType, GuntherArgValue } from './common'
-import { SDVCalendarDate } from '../../data/structure'
+import { SDVCalendarDate } from '../../data/types'
 import { GuntherClient } from '../bot'
 
 export default class DateArgType extends GuntherArgType {

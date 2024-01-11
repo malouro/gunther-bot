@@ -3,7 +3,7 @@ import {
 	characterDataFields,
 	SDVCharacterData,
 	SDVCharacterDataField,
-} from '../../data/structure'
+} from '../../data/types'
 import { GuntherArgValue, GuntherArgType } from './common'
 import GuntherClient from '../bot/client'
 
@@ -17,7 +17,8 @@ export default class CharacterInquiryArgType extends GuntherArgType {
 
 		return {
 			value: characterDataFields.find(
-				fieldName => fieldName.toLocaleLowerCase() === sanitizedVal.toLocaleLowerCase()
+				fieldName =>
+					fieldName.toLocaleLowerCase() === sanitizedVal.toLocaleLowerCase()
 			),
 			type: 'sdv-character-prop',
 		}

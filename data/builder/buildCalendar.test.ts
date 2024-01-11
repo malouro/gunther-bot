@@ -1,5 +1,5 @@
 import { getWikiUrl } from '../../src/utils'
-import { daysOfSeason, SDVCalendarData, SDVCharacterName } from '../structure'
+import { daysOfSeason, SDVCalendarData, SDVCharacterName } from '../types'
 import buildCalendar from './buildCalendar'
 
 const days = Object.fromEntries(
@@ -49,7 +49,7 @@ const winterBirthdays: SDVCharacterName[] = [
 ]
 
 describe('Data Builder for Calendar', () => {
-	let results: SDVCalendarData = null
+	let results: SDVCalendarData
 
 	beforeAll(async () => {
 		results = (await buildCalendar()) as SDVCalendarData

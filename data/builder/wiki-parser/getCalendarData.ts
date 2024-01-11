@@ -11,7 +11,7 @@ import {
 	daysOfWeek,
 	daysOfSeason,
 	seasons,
-} from '../../structure'
+} from '../../types'
 
 export default function getCalendarData(html: string): SDVCalendarData {
 	const $ = cheerio.load(html)

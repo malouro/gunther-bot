@@ -1,5 +1,5 @@
 import { ArgumentType } from 'discord.js-commando'
-import { SDVGiftTypes, giftTypes } from '../../data/structure'
+import { SDVGiftTypes, giftTypes } from '../../data/types'
 import { GuntherClient } from '../bot'
 import { GuntherArgValue } from './common'
 

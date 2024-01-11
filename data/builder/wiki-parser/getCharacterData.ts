@@ -6,7 +6,7 @@ import {
 	SDVGiftTypes,
 	SDVGifts,
 	giftTypes,
-} from '../../structure'
+} from '../../types'
 
 /* cspell: disable */
 const CHARACTER_SELECTORS = {
@@ -80,9 +80,7 @@ export default function getCharacterData(html: string): SDVCharacterData {
 	$(getInfoBoxData('Best Gifts'))
 		.find('a')
 		.each((_, gift) => {
-			bestGifts.push(
-				$(gift).text().toString().trim().replace(/\s+/g, ' ')
-			)
+			bestGifts.push($(gift).text().toString().trim().replace(/\s+/g, ' '))
 		})
 
 	return {

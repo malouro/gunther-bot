@@ -1,4 +1,4 @@
-import { seasons, seasonShorthands } from '../../../data/structure'
+import { SDVSeason, SDVSeasonShorthand } from '@/data/types'
 import getDate from './getDate'
 
 /**
@@ -12,7 +12,7 @@ import getDate from './getDate'
  * @returns {boolean} Whether the input was a valid SDV date or not.
  */
 export default function checkDate(
-	val: string | typeof seasons[number] | typeof seasonShorthands[number]
+	val: string | SDVSeason | SDVSeasonShorthand
 ): boolean {
 	const { season } = getDate(val)
 

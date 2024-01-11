@@ -1,23 +1,18 @@
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "declaration": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "outDir": "./esm",
-    "target": "ES2020",
-    "moduleResolution": "node",
-    "types": [
-      "node",
-      "jest"
-    ]
-  },
-  "include": [
-    "./data",
-    "./src",
-    "./utils"
-  ],
-  "exclude": [
-    "**/*.test.ts"
-  ]
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"declaration": true,
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
+		"outDir": "./esm",
+		"target": "ES2020",
+		"moduleResolution": "node",
+		"types": ["node", "jest"],
+		"paths": {
+			"@/*": ["./src/*"],
+			"@/data/*": ["./data/*"]
+		}
+	},
+	"include": ["./data", "./src", "./utils"],
+	"exclude": ["**/*.test.ts"]
 }

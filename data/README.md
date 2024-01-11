@@ -28,7 +28,7 @@ import * as SDVData from 'gunther-bot/data'
 
 ### Data Types & Structure
 
-Additionally, the structure and shape of the inner data elements is further described within `data/structure`. This is used as TypeScript definitions during development, as well as for importing the dataset yourself and inferring types of potential user input.
+Additionally, the structure and shape of the inner data elements is further described within `data/types`. This is used as TypeScript definitions during development, as well as for importing the dataset yourself and inferring types of potential user input.
 
 (ie: if the bot is expecting a `SDVCharacterName`, and user inputs `"Alex"` -> ✅; if user inputs `"Pink Cake"` -> ❌)
 
@@ -87,8 +87,8 @@ Currently, this is only expected to be used for local development of the `gunthe
 
 Here are the available `[options]` for the `build-sdv-data` script:
 
-| Option | Type | Default | Description |
-|:-------|:----:|:-------:|:------------|
-| <ul><li>`build-type`</li><li>`buildType`</li><li>`-b`</li></ul> | One of: <ul><li>`characters`</li><li>`calendar`</li><li>`all`</li></ul> | `all` | <p>Indicates the dataset you wish to build. Defaults to building *all* data.</p><p>Eg: <code>build-sdv-data --build-type calendar</code> will build only the SDV Calendar data.</p>|
-| <ul><li>`dry-run`</li><li>`test`</li><li>`-t`</li></ul> | `boolean` | `false` | <p>Indicates that you wish to run the build against test data.</p><p>This does not update or write any output, only logs the JSON to the console.</p> |
-| <ul><li>`help`</li><li>`-h`</li></ul> | --- | --- | Opens help menu. |
+| Option                                                          |                                  Type                                   | Default | Description                                                                                                                                                                         |
+| :-------------------------------------------------------------- | :---------------------------------------------------------------------: | :-----: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <ul><li>`build-type`</li><li>`buildType`</li><li>`-b`</li></ul> | One of: <ul><li>`characters`</li><li>`calendar`</li><li>`all`</li></ul> |  `all`  | <p>Indicates the dataset you wish to build. Defaults to building _all_ data.</p><p>Eg: <code>build-sdv-data --build-type calendar</code> will build only the SDV Calendar data.</p> |
+| <ul><li>`dry-run`</li><li>`test`</li><li>`-t`</li></ul>         |                                `boolean`                                | `false` | <p>Indicates that you wish to run the build against test data.</p><p>This does not update or write any output, only logs the JSON to the console.</p>                               |
+| <ul><li>`help`</li><li>`-h`</li></ul>                           |                                   ---                                   |   ---   | Opens help menu.                                                                                                                                                                    |

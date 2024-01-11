@@ -12,7 +12,7 @@ import {
 	daysOfSeason,
 	daysInAWeek,
 	daysInASeason,
-} from '../../../data/structure'
+} from '../../../data/types'
 import { Calendar } from '../../../data'
 import { messageEmojis, getWeekday, getNextSeason } from '../../utils'
 import { GuntherClient } from '../../bot'

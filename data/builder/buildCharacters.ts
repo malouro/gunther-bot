@@ -4,11 +4,7 @@ import path from 'path'
 
 import getCharacterData from './wiki-parser/getCharacterData'
 
-import {
-	SDVCharacterName,
-	SDVCharacterList,
-	SDVCharacterData,
-} from '../structure'
+import { SDVCharacterName, SDVCharacterList, SDVCharacterData } from '../types'
 import { getWikiUrl } from '../../src/utils'
 import { inTestMode, autoGenWarning } from './'
 
