@@ -1,15 +1,18 @@
 {
-    "version": "0.1",
-    "language": "en",
-    "words": [
-        "calendartable",
-        "junimo",
-        "krobus",
-        "marnie",
-        "maru",
-        "printf",
-        "stardew",
-        "structs",
-        "yargv"
-    ]
+	"version": "0.1",
+	"language": "en",
+	"words": [
+		"calendartable",
+		"junimo",
+		"krobus",
+		"marnie",
+		"maru",
+		"printf",
+		"stardew",
+		"structs",
+		"yargv",
+		"bot's"
+	],
+	"ignorePaths": ["node_modules/**", "cjs/**", "esm/**", "coverage/**"],
+	"ignoreRegExpList": ["/from\\s+(['\"]).*\\1/"]
 }

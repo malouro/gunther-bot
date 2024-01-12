@@ -29,5 +29,3 @@ Include table here with available commands?
 Yarn scripts available
 Other bin scripts, if they exist, could go here too
 -->
-
-# 
