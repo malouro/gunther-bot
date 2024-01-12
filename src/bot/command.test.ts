@@ -9,7 +9,7 @@ describe('Gunther Command', () => {
 				name: 'test-command',
 				group: 'test',
 				memberName: 'test-command',
-				description: 'Just for testing ;)'
+				description: 'Just for testing ;)',
 			})
 		}
 		run = mockRunFn
@@ -26,7 +26,7 @@ describe('Gunther Command', () => {
 
 		expect(DerivedTestCommand).toBeInstanceOf(GuntherCommand)
 	})
-	
+
 	test('run method triggers on run', () => {
 		const DerivedTestCommand = new TestCommand(testClient)
 
