@@ -5,7 +5,7 @@ import {
 	SDVCalendarDate,
 	SDVSeason,
 	daysInASeason,
-} from '../../../data/types'
+} from '@/data/types'
 
 const nullDate: SDVCalendarDate = {
 	season: null,

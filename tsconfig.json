@@ -10,9 +10,9 @@
 		"types": ["node", "jest"],
 		"paths": {
 			"@/*": ["./src/*"],
+			"@/data": ["./data/index"],
 			"@/data/*": ["./data/*"]
 		}
 	},
-	"include": ["./data", "./src", "./utils"],
-	"exclude": ["**/*.test.ts"]
+	"include": ["./data", "./src", "./utils"]
 }

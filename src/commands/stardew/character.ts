@@ -7,10 +7,10 @@ import {
 	giftTypes,
 	SDVCharacterDataField,
 	characterDataFields,
-} from '../../../data/types'
-import { GuntherClient, GuntherCommand } from '../../bot'
-import { GuntherArgValue } from '../../argTypes/common'
-import { capitalize, formatWikiTerm } from '../../utils'
+} from '@/data/types'
+import { GuntherClient, GuntherCommand } from '@/bot'
+import { GuntherArgValue } from '@/argTypes/common'
+import { capitalize, formatWikiTerm } from '@/utils'
 
 const COMMAND_NAME = 'character-info'
 

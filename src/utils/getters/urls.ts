@@ -1,4 +1,4 @@
-import { baseWikiUrl } from '../constants'
+import { baseWikiUrl } from '@/utils/constants'
 
 /**
  * Get a URL to the Wiki for a given search term

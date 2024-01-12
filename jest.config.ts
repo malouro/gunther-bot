@@ -13,6 +13,12 @@ const config: Config.InitialOptions = {
 	preset: 'ts-jest',
 	testEnvironment: 'node',
 
+	moduleNameMapper: {
+		'^@/(.*)$': '<rootDir>/src/$1',
+		'^@/data/(.*)$': '<rootDir>/data/$1',
+		'^@/data': '<rootDir>/data/index',
+	},
+
 	collectCoverageFrom: [
 		'src/utils/**/*.ts',
 		'data/**/*.ts',

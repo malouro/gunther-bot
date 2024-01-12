@@ -1,4 +1,4 @@
-import { formatWikiTerm } from './urls'
+import { formatWikiTerm } from '@/utils/formatters/urls'
 
 describe('URL Formatters', () => {
 	test('formatWikiTerm', () => {

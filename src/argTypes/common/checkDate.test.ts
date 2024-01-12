@@ -1,5 +1,5 @@
 import checkDate from './checkDate'
-import { seasons, seasonShorthands } from '../../../data/types'
+import { seasons, seasonShorthands } from '@/data/types'
 
 const testCases: Array<[string, boolean]> = [
 	['winter', true],

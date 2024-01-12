@@ -3,9 +3,9 @@ import {
 	characterDataFields,
 	SDVCharacterData,
 	SDVCharacterDataField,
-} from '../../data/types'
-import { GuntherArgValue, GuntherArgType } from './common'
-import GuntherClient from '../bot/client'
+} from '@/data/types'
+import { GuntherArgValue, GuntherArgType } from '@/argTypes/common'
+import { GuntherClient } from '@/bot'
 
 export default class CharacterInquiryArgType extends GuntherArgType {
 	constructor(client: GuntherClient) {

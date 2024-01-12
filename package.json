@@ -1,62 +1,62 @@
 {
-  "name": "gunther-bot",
-  "version": "0.1.0",
-  "description": "Stardew Valley Discord Bot",
-  "repository": "https://github.com/malouro/gunther-bot.git",
-  "author": "Mike A. Louro <mike.a.louro@gmail.com>",
-  "license": "MIT",
-  "main": "cjs/src",
-  "module": "esm/src",
-  "engines": {
-    "node": ">=10.0.0"
-  },
-  "bin": {
-    "build-sdv-data": "./cjs/data/builder/index.js"
-  },
-  "dependencies": {
-    "@types/make-fetch-happen": "^8.0.1",
-    "discord.js": "^12.5.1",
-    "discord.js-commando": "^0.12.2",
-    "dotenv": "^8.2.0",
-    "lodash.camelcase": "^4.3.0",
-    "lodash.flatten": "^4.4.0",
-    "make-fetch-happen": "^8.0.14",
-    "winston": "^3.3.3"
-  },
-  "scripts": {
-    "start": "ts-node ./src/start",
-    "build": "yarn build:esm && yarn build:cjs",
-    "build:esm": "tsc -p tsconfig.json",
-    "build:cjs": "tsc -p tsconfig-cjs.json",
-    "build:data": "ts-node ./data/builder",
-    "clean": "npx rimraf ./cjs ./esm",
-    "clean:cache": "npx rimraf ./.cache",
-    "clean:modules": "npx rimraf ./node_modules",
-    "check:format": "prettier --check **/*.ts",
-    "check:lint": "eslint .",
-    "check:spelling": "cspell **/*.ts",
-    "fix:format": "yarn check:format --write",
-    "fix:lint": "yarn check:lint --fix",
-    "test": "jest",
-    "test:coverage": "jest --coverage --maxWorkers=50%",
-    "test:watch": "jest --watch --maxWorkers=25%",
-    "test:e2e": "jest --coverage --maxWorkers=50% --config=jest.e2e.config.ts"
-  },
-  "devDependencies": {
-    "@types/expect": "^24.3.0",
-    "@types/jest": "^26.0.20",
-    "@types/node": "^14.14.25",
-    "@typescript-eslint/eslint-plugin": "^4.14.2",
-    "@typescript-eslint/parser": "^4.14.2",
-    "cheerio": "^1.0.0-rc.5",
-    "cspell": "^5.2.4",
-    "eslint": "^7.19.0",
-    "eslint-config-prettier": "^7.2.0",
-    "jest": "^26.6.3",
-    "prettier": "^2.2.1",
-    "ts-jest": "^26.5.3",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.1.3",
-    "yargs": "^16.2.0"
-  }
+	"name": "gunther-bot",
+	"version": "0.1.0",
+	"description": "Stardew Valley Discord Bot",
+	"repository": "https://github.com/malouro/gunther-bot.git",
+	"author": "Mike A. Louro <mike.a.louro@gmail.com>",
+	"license": "MIT",
+	"main": "cjs/src",
+	"module": "esm/src",
+	"engines": {
+		"node": ">=10.0.0"
+	},
+	"bin": {
+		"build-sdv-data": "./cjs/data/builder/index.js"
+	},
+	"dependencies": {
+		"@types/make-fetch-happen": "^8.0.1",
+		"discord.js": "^12.5.1",
+		"discord.js-commando": "^0.12.2",
+		"dotenv": "^8.2.0",
+		"lodash.camelcase": "^4.3.0",
+		"lodash.flatten": "^4.4.0",
+		"make-fetch-happen": "^8.0.14",
+		"winston": "^3.3.3"
+	},
+	"scripts": {
+		"start": "ts-node ./src/start",
+		"build": "yarn build:esm && yarn build:cjs",
+		"build:esm": "tsc -p tsconfig.build.json",
+		"build:cjs": "tsc -p tsconfig.cjs.json",
+		"build:data": "ts-node ./data/builder",
+		"clean": "npx rimraf ./cjs ./esm",
+		"clean:cache": "npx rimraf ./.cache",
+		"clean:modules": "npx rimraf ./node_modules",
+		"check:format": "prettier --check **/*.ts",
+		"check:lint": "eslint .",
+		"check:spelling": "cspell **/*.ts",
+		"fix:format": "yarn check:format --write",
+		"fix:lint": "yarn check:lint --fix",
+		"test": "jest",
+		"test:coverage": "jest --coverage --maxWorkers=50%",
+		"test:watch": "jest --watch --maxWorkers=25%",
+		"test:e2e": "jest --coverage --maxWorkers=50% --config=jest.e2e.config.ts"
+	},
+	"devDependencies": {
+		"@types/expect": "^24.3.0",
+		"@types/jest": "^26.0.20",
+		"@types/node": "^14.14.25",
+		"@typescript-eslint/eslint-plugin": "^4.14.2",
+		"@typescript-eslint/parser": "^4.14.2",
+		"cheerio": "^1.0.0-rc.5",
+		"cspell": "^5.2.4",
+		"eslint": "^7.19.0",
+		"eslint-config-prettier": "^7.2.0",
+		"jest": "^26.6.3",
+		"prettier": "^2.2.1",
+		"ts-jest": "^26.5.3",
+		"ts-node": "^9.1.1",
+		"typescript": "^4.1.3",
+		"yargs": "^16.2.0"
+	}
 }

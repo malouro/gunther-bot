@@ -1,5 +1,5 @@
-import { formatCharacterName } from '../'
-import * as common from './common'
+import { formatCharacterName } from '@/utils/formatters'
+import * as common from '@/utils/formatters/common'
 
 describe('Character Formatters', () => {
 	describe('formatCharacterName', () => {

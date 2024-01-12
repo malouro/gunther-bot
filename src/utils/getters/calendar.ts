@@ -3,7 +3,7 @@ import {
 	SDVDayOfWeek,
 	SDVSeason,
 	daysOfWeek,
-} from '../../../data/types'
+} from '@/data/types'
 
 /**
  * Given zero-indexed values for the week and day of the week,

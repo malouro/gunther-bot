@@ -1,5 +1,5 @@
 import { SDVSeason, SDVSeasonShorthand } from '@/data/types'
-import getDate from './getDate'
+import getDate from '@/argTypes/common/getDate'
 
 /**
  * Checks that input was a valid SDV date.

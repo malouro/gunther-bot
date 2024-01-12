@@ -1,11 +1,11 @@
-import { getDayOfSeason, getWeekday } from '../'
+import { getDayOfSeason, getWeekday } from '@/utils/getters'
 import {
 	daysOfSeason,
 	daysOfWeek,
 	daysInAWeek,
 	daysInASeason,
 	SDVDayOfSeason,
-} from '../../../data/types'
+} from '@/data/types'
 
 describe('Calendar Getters', () => {
 	describe('getDayOfSeason', () => {

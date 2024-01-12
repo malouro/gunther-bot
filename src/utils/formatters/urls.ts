@@ -1,4 +1,4 @@
-import { capitalize } from './common'
+import { capitalize } from '@/utils/formatters/common'
 
 /**
  *

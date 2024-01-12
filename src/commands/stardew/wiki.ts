@@ -1,7 +1,7 @@
 import { Message } from 'discord.js'
 import { CommandInfo, CommandoMessage } from 'discord.js-commando'
-import { getWikiUrl, formatWikiTerm } from '../../utils'
-import { GuntherClient, GuntherCommand } from '../../bot'
+import { getWikiUrl, formatWikiTerm } from '@/utils'
+import { GuntherClient, GuntherCommand } from '@/bot'
 
 const COMMAND_NAME = 'wiki'
 

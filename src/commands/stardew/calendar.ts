@@ -12,11 +12,11 @@ import {
 	daysOfSeason,
 	daysInAWeek,
 	daysInASeason,
-} from '../../../data/types'
-import { Calendar } from '../../../data'
-import { messageEmojis, getWeekday, getNextSeason } from '../../utils'
-import { GuntherClient } from '../../bot'
-import { GuntherArgTypeKeys, GuntherArgValue } from '../../argTypes/common'
+} from '@/data/types'
+import { Calendar } from '@/data'
+import { messageEmojis, getWeekday, getNextSeason } from '@/utils'
+import { GuntherClient } from '@/bot'
+import { GuntherArgTypeKeys, GuntherArgValue } from '@/argTypes/common'
 
 const COMMAND_NAME = 'calendar-info'
 

@@ -1,3 +1,3 @@
-import { GuntherBot } from './bot'
+import { GuntherBot } from '@/bot'
 
 GuntherBot.login(process.env.TOKEN)

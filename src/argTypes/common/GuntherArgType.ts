@@ -1,5 +1,5 @@
 import { Argument, ArgumentType, CommandoMessage } from 'discord.js-commando'
-import GuntherClient from '../../bot/client'
+import { GuntherClient } from '@/bot'
 
 /** Key name identifiers for `GuntherArgType`s */
 export type GuntherArgTypeKeys =

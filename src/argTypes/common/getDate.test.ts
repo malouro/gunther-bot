@@ -1,5 +1,5 @@
-import getDate from './getDate'
-import { SDVCalendarDate } from '../../../data/types'
+import { getDate } from '@/argTypes/common'
+import { SDVCalendarDate } from '@/data/types'
 
 const nullDate: SDVCalendarDate = { season: null, day: null }
 const testCases: Array<[string, SDVCalendarDate]> = [
