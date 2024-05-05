@@ -9,9 +9,7 @@
 		"moduleResolution": "node",
 		"types": ["node", "jest"],
 		"paths": {
-			"@/*": ["./src/*"],
-			"@/data": ["./data/index"],
-			"@/data/*": ["./data/*"]
+			"@/*": ["./src/*"]
 		}
 	},
 	"include": ["./data", "./src", "./utils"]
