@@ -10,6 +10,7 @@ import {
 	AbstractConfigSetLevels,
 	AbstractConfigSetColors,
 } from 'winston/lib/winston/config'
+import { type Format } from 'logform'
 
 /**
  * @todo Make this a config somewhere?
@@ -38,7 +39,7 @@ export const logColors: AbstractConfigSetColors = {
 export const getIconForLogLevel = (level: string): string =>
 	logIcons[Object.keys(logLevels).find(levelName => level.includes(levelName))]
 
-export const logFormatting = format.printf(
+export const logFormatting: Format = format.printf(
 	({ message, timestamp: logTimestamp, level }) =>
 		`${TIMESTAMP_ENABLED ? `(${logTimestamp}) ` : ''}${
 			LOG_LEVEL_ICON_ENABLED ? getIconForLogLevel(level) : level
@@ -63,6 +64,7 @@ const GuntherLogger = (config: LoggerOptions = {}): Logger =>
 		),
 		levels: logLevels,
 		transports: [new transports.Console()],
+		level: 'debug',
 		...config,
 	})
 

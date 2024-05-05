@@ -1,4 +1,4 @@
-import groups from './groups'
+import groups from '@/commands/groups'
 export { groups }
 
 import GitCommand from './meta/git'

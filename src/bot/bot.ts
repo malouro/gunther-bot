@@ -1,7 +1,7 @@
-import GuntherClient from './client'
-import commands, { groups } from '../commands'
-import argTypes from '../argTypes'
-import * as events from '../events'
+import GuntherClient from '@/bot/client'
+import commands, { groups } from '@/commands'
+import argTypes from '@/argTypes'
+import * as events from '@/events'
 
 const GuntherBot = new GuntherClient({
 	owner: process.env.OWNER?.split(',') || 'NO_OWNER',
