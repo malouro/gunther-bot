@@ -1,42 +1,29 @@
+/** @todo */
 import { Message } from 'discord.js'
-import { CommandInfo, CommandoMessage } from 'discord.js-commando'
 import { getWikiUrl, formatWikiTerm } from '@/utils'
-import { GuntherClient, GuntherCommand } from '@/bot'
+import { GuntherCommand } from '@/bot'
+import { Command } from '@sapphire/framework'
 
 const COMMAND_NAME = 'wiki'
 
-export const info: CommandInfo = {
-	name: COMMAND_NAME,
-	aliases: ['w'],
-	group: 'stardew',
-	memberName: 'wiki',
-	description: 'Fetch url to a Wiki article',
-	details: '',
-	examples: [
-		`\`${COMMAND_NAME} fish\``,
-		`\`${COMMAND_NAME} some random search term\``,
-	],
-	args: [
-		{
-			key: 'searchTerms',
-			prompt: 'What term or Wiki page are you looking for?',
-			type: 'string',
-		},
-	],
-}
-
 export default class WikiCommand extends GuntherCommand {
-	constructor(client: GuntherClient) {
-		super(client, info)
+	public constructor(context: Command.LoaderContext, options: Command.Options) {
+		super(context, {
+			...options,
+			name: COMMAND_NAME,
+			aliases: ['w'],
+			description: 'Fetch URL to a related Wiki page.',
+			detailedDescription: [
+				`\`${COMMAND_NAME} fish\``,
+				`\`${COMMAND_NAME} some random search term\``,
+			].join('\n'),
+		})
 	}
 
-	async run(
-		message: CommandoMessage,
-		args: { searchTerms: string }
-	): Promise<Message> {
-		const { searchTerms } = args
-		const url = getWikiUrl(formatWikiTerm(searchTerms))
-		const pageContent = await this.client.fetch(url)
+	public async messageRun(message: Message): Promise<Message> {
+		const [, ...searchTerms] = message.content.split(/\s+/)
+		const url = getWikiUrl(formatWikiTerm(searchTerms.join()))
+		const pageContent = await fetch(url)
 
 		if (
 			(await pageContent.text()).includes(

@@ -5,14 +5,14 @@
 	"repository": "https://github.com/malouro/gunther-bot.git",
 	"author": "Mike A. Louro <mike.a.louro@gmail.com>",
 	"license": "MIT",
-	"main": "cjs/src",
-	"module": "esm/src",
+	"main": "src/index.ts",
 	"bin": {
 		"build-sdv-data": "./cjs/data/builder/index.js"
 	},
 	"dependencies": {
+		"@sapphire/framework": "^5.2.0",
 		"@types/make-fetch-happen": "^8.0.1",
-		"discord.js": "^12.5.1",
+		"discord.js": "^14.15.2",
 		"discord.js-commando": "^0.12.2",
 		"dotenv": "^8.2.0",
 		"lodash.camelcase": "^4.3.0",
@@ -21,7 +21,7 @@
 		"winston": "^3.3.3"
 	},
 	"scripts": {
-		"start": "ts-node ./src/start",
+		"start": "ts-node ./src/index.ts",
 		"build": "yarn build:esm && yarn build:cjs",
 		"build:esm": "tsc -p tsconfig.build.json",
 		"build:cjs": "tsc -p tsconfig.cjs.json",

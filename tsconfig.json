@@ -8,12 +8,14 @@
 		"target": "ES2022",
 		"moduleResolution": "node",
 		"types": ["node", "jest"],
+		"rootDir": "./src",
 		"paths": {
-			"@/*": ["./src/*"]
+			"@/*": ["./src/*"],
+			"@root/*": ["./*"]
 		}
 	},
-	"include": ["./src"],
 	"ts-node": {
 		"require": ["tsconfig-paths/register"]
-	}
+	},
+	"exclude": ["_old_", "examples", "jest.*"]
 }

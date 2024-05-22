@@ -1,26 +1,19 @@
-import { Message } from 'discord.js'
-import { Command, CommandInfo, CommandoMessage } from 'discord.js-commando'
-import { GuntherClient, GuntherCommand } from '@/bot'
-
-const COMMAND_NAME = 'git-repo'
-const repository = 'https://github.com/malouro/gunther-bot.git'
-
-export const info: CommandInfo = {
-	name: COMMAND_NAME,
-	aliases: ['git', 'github', 'repo'],
-	group: 'meta',
-	memberName: 'git',
-	description: "View the bot's source code",
-	examples: [`\`${COMMAND_NAME}\``],
-}
+import type { Message } from 'discord.js'
+import { GuntherCommand } from '@/bot'
+import { Command } from '@sapphire/framework'
+import { repository } from '@root/package.json'
 
 export default class GitCommand extends GuntherCommand {
-	constructor(client: GuntherClient) {
-		super(client, info)
+	public constructor(context: Command.LoaderContext, options: Command.Options) {
+		super(context, {
+			...options,
+			name: 'git-repo',
+			aliases: ['git', 'github', 'repo'],
+			description: "View the bot's source code",
+		})
 	}
 
-	async run(message: CommandoMessage): Promise<Message> {
-		this.client.logger.log('info', 'HELLO')
+	public async messageRun(message: Message): Promise<Message> {
 		return message.reply(`Check out my source code at: ${repository}`)
 	}
 }
