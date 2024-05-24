@@ -1,8 +1,17 @@
+import { Calendar } from '@/data'
 import {
+	SDVCalendarDate,
 	SDVDayOfSeason,
 	SDVDayOfWeek,
 	SDVSeason,
+	SDVSeasonShorthand,
+	daysInASeason,
+	daysOfSeason,
 	daysOfWeek,
+	seasons,
+	seasonShorthands,
+	SDVCalendarDay,
+	daysInAWeek,
 } from '@/data/types'
 
 /**
@@ -42,9 +51,129 @@ export function getNextSeason(season: SDVSeason): SDVSeason {
 }
 
 /**
+ * Get the next X upcoming days on the calendar.
+ * @param season
+ * @param currentDay
+ * @param nextXDays
+ * @returns Array of calendar days that are upcoming
+ */
+export function getUpcomingDays(
+	season: SDVSeason,
+	currentDay: SDVDayOfSeason,
+	nextXDays = daysInAWeek
+): Array<SDVCalendarDay> {
+	const calendarSeason = Calendar[season]
+	const upcomingDays: SDVCalendarDay[] = []
+
+	for (let x = 1; x <= nextXDays; x++) {
+		const currentDayNumber = Number(currentDay)
+		let nextDayToPush = currentDayNumber + x
+		let currentSeason = calendarSeason
+
+		if (nextDayToPush > daysInASeason) {
+			nextDayToPush = nextDayToPush % daysInASeason
+			currentSeason = Calendar[getNextSeason(season)]
+		}
+		upcomingDays.push(currentSeason.days[nextDayToPush])
+	}
+
+	return upcomingDays
+}
+
+/**
  * Given a day of the season, return what day of the week it is
  * @param day The number of the day of the season (ie: the {15}th of Spring) (( one-indexed ))
  */
 export function getWeekday(day: SDVDayOfSeason): SDVDayOfWeek {
 	return daysOfWeek[(parseInt(day) - 1) % 7]
+}
+
+const nullDate: SDVCalendarDate = {
+	season: null,
+	day: null,
+}
+
+/**
+ * Returns a date on the calendar, given an input string
+ * @param val {string}
+ * @returns {SDVCalendarDate}
+ */
+export function getDate(val: string): SDVCalendarDate {
+	const parsedSeason = [...seasons, ...seasonShorthands].find(possibleSeason =>
+		val.toLocaleLowerCase().startsWith(possibleSeason.toLocaleLowerCase())
+	)
+
+	let season: SDVSeason
+
+	switch (parsedSeason) {
+		case 'sp':
+			season = 'Spring'
+			break
+		case 'su':
+			season = 'Summer'
+			break
+		case 'f':
+		case 'fa':
+			season = 'Fall'
+			break
+		case 'w':
+		case 'wi':
+			season = 'Winter'
+			break
+		default:
+			if (!seasons.includes(parsedSeason)) {
+				return nullDate
+			}
+			season = parsedSeason
+			break
+	}
+
+	let inferredDay = val
+		.toLocaleLowerCase()
+		.replace(parsedSeason.toLocaleLowerCase(), '')
+		.trim()
+
+	if (/\s+/.test(inferredDay)) {
+		inferredDay = inferredDay.split(/\s+/)[0]
+	}
+
+	const dayAsNumber = parseInt(inferredDay)
+
+	if (Number.isNaN(dayAsNumber) && inferredDay !== '') {
+		return nullDate
+	}
+
+	const day = inferredDay && daysOfSeason[dayAsNumber - 1]
+
+	if (dayAsNumber > daysInASeason || dayAsNumber <= 0) {
+		return nullDate
+	}
+	if (!day) {
+		return {
+			season,
+			day: null,
+		}
+	}
+	return {
+		season,
+		day,
+	}
+}
+
+/**
+ * Checks that input was a valid SDV date.
+ *
+ * A valid SDV date starts with the full string for any season name,
+ * or season shorthand name, and optionally includes a number value
+ * from [1-28]. (ie: "summer 5")
+ *
+ * @param val Some user inputted string to check if is a date
+ * @returns {boolean} Whether the input was a valid SDV date or not.
+ */
+export function checkDate(
+	val: string | SDVSeason | SDVSeasonShorthand
+): boolean {
+	const { season } = getDate(val)
+
+	return Boolean(season)
 }
