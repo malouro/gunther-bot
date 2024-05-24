@@ -1,10 +1,9 @@
-/** @todo */
 import { Message } from 'discord.js'
 import { getWikiUrl, formatWikiTerm } from '@/utils'
 import { GuntherCommand } from '@/bot'
 import { Command } from '@sapphire/framework'
 
-const COMMAND_NAME = 'wiki'
+export const COMMAND_NAME = 'wiki'
 
 export default class WikiCommand extends GuntherCommand {
 	public constructor(context: Command.LoaderContext, options: Command.Options) {

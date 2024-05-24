@@ -13,13 +13,14 @@ import { Args, Command } from '@sapphire/framework'
 import { capitalize, formatWikiTerm, makeList } from '@/utils'
 import { CharacterArgument } from '@/args'
 
-const COMMAND_NAME = 'character'
-
 export default class CharacterCommand extends GuntherCommand {
-	public constructor(context: Command.LoaderContext, options: Command.Options) {
+	private constructor(
+		context: Command.LoaderContext,
+		options: Command.Options
+	) {
 		super(context, {
 			...options,
-			name: COMMAND_NAME,
+			name: 'character',
 			aliases: ['c', 'char'],
 			description: 'Fetches information on a character.',
 			detailedDescription: [
@@ -32,11 +33,10 @@ export default class CharacterCommand extends GuntherCommand {
 						.concat(characterDataFields.map(dataField => `\`${dataField}\``))
 				)}\n...or a \`calendar date\``,
 			].join(''),
-			options: [],
 		})
 	}
 
-	public getSpecificCharacterInfo(
+	private getSpecificCharacterInfo(
 		characterInfo: SDVCharacterData,
 		dataField: SDVCharacterDataField
 	): EmbedBuilder {
@@ -89,8 +89,8 @@ export default class CharacterCommand extends GuntherCommand {
 	}
 
 	public async messageRun(message: Message, args: Args): Promise<Message> {
-		let character: null | SDVCharacterName
-		let inquiry: null | string
+		let character: null | SDVCharacterName = null
+		let inquiry: null | string = null
 		let inquiryType: string
 
 		try {
