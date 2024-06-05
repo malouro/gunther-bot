@@ -3,6 +3,9 @@ import { checkDate, getDate } from '@/utils'
 import { Args } from '@sapphire/framework'
 import { isNullishOrEmpty, isNullish } from '@sapphire/utilities'
 
+/**
+ * Is the provided string "spring", "summer", "fall", or "winter".
+ */
 export const SeasonArgument = Args.make<SDVSeason>(
 	(parameter: string, { argument }) => {
 		if (!isNullishOrEmpty(parameter)) {

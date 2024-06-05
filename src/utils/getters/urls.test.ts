@@ -1,4 +1,4 @@
-import { baseWikiUrl } from '@/utils/constants'
+import { baseWikiUrl } from '@/utils/constants/constants'
 import { getImageUrl, getWikiUrl } from '@/utils/getters/urls'
 
 describe('URL Getters', () => {

@@ -7,8 +7,8 @@ export default class GitCommand extends GuntherCommand {
 	public constructor(context: Command.LoaderContext, options: Command.Options) {
 		super(context, {
 			...options,
-			name: 'git-repo',
-			aliases: ['git', 'github', 'repo'],
+			name: 'git',
+			aliases: ['github', 'repo'],
 			description: "View the bot's source code",
 		})
 	}

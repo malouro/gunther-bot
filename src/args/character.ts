@@ -3,6 +3,10 @@ import { formatCharacterName } from '@/utils'
 import { Args } from '@sapphire/framework'
 import { isNullishOrEmpty } from '@sapphire/utilities'
 
+/**
+ * Is the provided string a character name?
+ * Like "Abigail", "Alex", "Caroline", etc.
+ */
 export const CharacterArgument = Args.make<SDVCharacterName>(
 	(parameter: string, { argument }) => {
 		const formattedName: SDVCharacterName = formatCharacterName(

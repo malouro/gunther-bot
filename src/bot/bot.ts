@@ -1,7 +1,6 @@
 import GuntherClient from '@/bot/client'
 import { ready } from '@/events'
 import { GatewayIntentBits } from 'discord.js'
-import path from 'node:path'
 
 const GuntherBot = new GuntherClient({
 	intents: [
@@ -11,7 +10,6 @@ const GuntherBot = new GuntherClient({
 	],
 	loadMessageCommandListeners: true,
 	defaultPrefix: process.env.COMMAND_PREFIX ?? '!',
-	// baseUserDirectory: path.resolve(__dirname, '../'),
 })
 
 GuntherBot.on('ready', ready)
