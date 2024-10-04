@@ -46,7 +46,7 @@ export const SDVCharacterList = [
 	'Willy',
 	'Wizard',
 ] as const
-export type SDVCharacterName = typeof SDVCharacterList[number]
+export type SDVCharacterName = (typeof SDVCharacterList)[number]
 export type SDVGifts = {
 	[key in SDVGiftTypes]?: Array<string>
 }
@@ -62,10 +62,12 @@ export const characterDataFields = [
 	'gifts',
 	'wiki',
 ] as const
-export type SDVCharacterDataField = typeof characterDataFields[number]
+export type SDVCharacterDataField = (typeof characterDataFields)[number]
+
 // ------------------------------------------------------------
 // Calendar
 // ------------------------------------------------------------
+// #region
 export type SDVEvent = string
 export type SDVDayOfWeek =
 	| 'Monday'
@@ -183,4 +185,22 @@ export type SDVCalendarSeason = {
 }
 export type SDVCalendarData = {
 	[key in SDVSeason]?: SDVCalendarSeason
+}
+// #endregion
+
+// ------------------------------------------------------------
+// Crops
+// ------------------------------------------------------------
+
+export interface Crop {
+	name: string
+	id: number
+	seasons: SDVSeason[]
+	harvestMin: number
+	harvestMax: number
+	trellisCrop: boolean
+	paddyCrop: boolean
+	regrow: boolean
+	regrowDays: number
+	sellPrice: number
 }

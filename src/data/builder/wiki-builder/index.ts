@@ -17,7 +17,7 @@ export interface BuildArguments {
 	$0: string
 }
 
-const scriptName = 'build-sdv-data'
+const scriptName = 'build-sdv-data-from-wiki'
 const yargv = yargs(process.argv.slice(2))
 	.usage(`Usage: ${scriptName} <command> [options]`)
 	.option('b', {

@@ -4,9 +4,9 @@ import path from 'path'
 
 import getCalendarData from './wiki-parser/getCalendarData'
 
-import { getWikiUrl } from '../../src/utils'
+import { getWikiUrl } from '@/utils'
 import { inTestMode, autoGenWarning } from './'
-import { SDVCalendarData } from '../types'
+import { SDVCalendarData } from '@/data/types'
 
 export default async function buildCalendar(): Promise<void | SDVCalendarData> {
 	if (inTestMode) {

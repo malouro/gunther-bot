@@ -1,12 +1,12 @@
 import cheerio from 'cheerio'
-import flatten from 'lodash.flatten'
-import { getWikiUrl, getImageUrl } from '../../../src/utils'
+import { flatten } from 'lodash'
+import { getWikiUrl, getImageUrl } from '@/utils'
 import {
 	SDVCharacterData,
 	SDVGiftTypes,
 	SDVGifts,
 	giftTypes,
-} from '../../types'
+} from '@/data/types'
 
 /* cspell: disable */
 const CHARACTER_SELECTORS = {

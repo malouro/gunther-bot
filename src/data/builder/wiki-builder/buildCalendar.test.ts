@@ -1,5 +1,5 @@
-import { getWikiUrl } from '../../src/utils'
-import { daysOfSeason, SDVCalendarData, SDVCharacterName } from '../types'
+import { getWikiUrl } from '@/utils'
+import { daysOfSeason, SDVCalendarData, SDVCharacterName } from '@/data/types'
 import buildCalendar from './buildCalendar'
 
 const days = Object.fromEntries(

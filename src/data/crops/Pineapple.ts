@@ -1,0 +1,12 @@
+export default {
+	name: 'Pineapple',
+	id: '832',
+	seasons: ['Summer'],
+	harvestMin: 1,
+	harvestMax: 1,
+	trellisCrop: false,
+	paddyCrop: false,
+	regrow: true,
+	regrowDays: 7,
+	sellPrice: 300,
+}

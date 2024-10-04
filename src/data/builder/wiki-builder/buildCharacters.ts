@@ -4,8 +4,12 @@ import path from 'path'
 
 import getCharacterData from './wiki-parser/getCharacterData'
 
-import { SDVCharacterName, SDVCharacterList, SDVCharacterData } from '../types'
-import { getWikiUrl } from '../../src/utils'
+import {
+	SDVCharacterName,
+	SDVCharacterList,
+	SDVCharacterData,
+} from '@/data/types'
+import { getWikiUrl } from '@/utils'
 import { inTestMode, autoGenWarning } from './'
 
 export default async function buildCharacters(

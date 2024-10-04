@@ -1,5 +1,5 @@
-import { getWikiUrl } from '../../src/utils'
-import { SDVCharacterData } from '../types'
+import { getWikiUrl } from '@/utils'
+import { SDVCharacterData } from '@/data/types'
 import buildCharacters from './buildCharacters'
 
 describe('Data Builder for Characters', () => {

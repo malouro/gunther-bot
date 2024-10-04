@@ -1,5 +1,5 @@
 import cheerio from 'cheerio'
-import { getWikiUrl, getImageUrl, getDayOfSeason } from '../../../src/utils'
+import { getWikiUrl, getImageUrl, getDayOfSeason } from '@/utils'
 import {
 	SDVCharacterList,
 	SDVCalendarData,
@@ -11,7 +11,7 @@ import {
 	daysOfWeek,
 	daysOfSeason,
 	seasons,
-} from '../../types'
+} from '@/data/types'
 
 export default function getCalendarData(html: string): SDVCalendarData {
 	const $ = cheerio.load(html)
