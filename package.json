@@ -28,7 +28,7 @@
 		"build:cjs": "tsc -p tsconfig.cjs.json",
 		"build:data:wiki": "ts-node ./data/builder/wiki-builder",
 		"build:data:xnb": "ts-node ./src/data/builder/xnb-builder",
-		"clean": "rimraf ./cjs ./esm",
+		"clean": "rimraf ./cjs ./esm ./src/data/crops/*",
 		"clean:cache": "rimraf ./.cache",
 		"clean:modules": "rimraf ./node_modules",
 		"check:format": "prettier --check '**/*.ts'",

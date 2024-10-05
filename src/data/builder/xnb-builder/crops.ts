@@ -6,7 +6,7 @@ import { camelCase, flow, upperFirst } from 'lodash'
 
 import CropJson from '@/data/json/Crops.json'
 import ObjectJson from '@/data/json/Objects.json'
-import { Crop } from '@/data/types'
+import { SDVCrop } from '@/data/types'
 
 export default async function (): Promise<void> {
 	let indexContent = ''
@@ -26,9 +26,9 @@ export default async function (): Promise<void> {
 
 		console.info('Generating crop data for ', name)
 
-		const cropData: Crop = {
+		const cropData: SDVCrop = {
 			name,
-			id: objectId,
+			id: Number(objectId),
 			seasons,
 			harvestMin,
 			harvestMax,
@@ -41,7 +41,8 @@ export default async function (): Promise<void> {
 
 		const codeSafeName = flow(camelCase, upperFirst)(name.replace(/\s+/g, ''))
 		const fileContent = `
-export default ${JSON.stringify(cropData, null, '\t')}
+import { SDVCrop } from '@/data/types'
+export default ${JSON.stringify(cropData, null, '\t')} as SDVCrop
 `
 		writeFileSync(
 			path.resolve(__dirname, `../../crops/${codeSafeName}.ts`),

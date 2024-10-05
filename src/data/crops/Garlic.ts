@@ -1,6 +1,7 @@
+import { SDVCrop } from '@/data/types'
 export default {
 	name: 'Garlic',
-	id: '248',
+	id: 248,
 	seasons: ['Spring'],
 	harvestMin: 1,
 	harvestMax: 1,
@@ -9,4 +10,4 @@ export default {
 	regrow: false,
 	regrowDays: 0,
 	sellPrice: 60,
-}
+} as SDVCrop

@@ -1,6 +1,7 @@
+import { SDVCrop } from '@/data/types'
 export default {
 	name: 'Qi Fruit',
-	id: '889',
+	id: 889,
 	seasons: ['Spring', 'Summer', 'Fall', 'Winter'],
 	harvestMin: 1,
 	harvestMax: 1,
@@ -9,4 +10,4 @@ export default {
 	regrow: false,
 	regrowDays: 0,
 	sellPrice: 1,
-}
+} as SDVCrop

@@ -1,6 +1,7 @@
+import { SDVCrop } from '@/data/types'
 export default {
 	name: 'Sunflower',
-	id: '421',
+	id: 421,
 	seasons: ['Summer', 'Fall'],
 	harvestMin: 1,
 	harvestMax: 1,
@@ -9,4 +10,4 @@ export default {
 	regrow: false,
 	regrowDays: 0,
 	sellPrice: 80,
-}
+} as SDVCrop

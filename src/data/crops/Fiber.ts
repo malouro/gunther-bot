@@ -1,6 +1,7 @@
+import { SDVCrop } from '@/data/types'
 export default {
 	name: 'Fiber',
-	id: '771',
+	id: 771,
 	seasons: ['Spring', 'Summer', 'Fall', 'Winter'],
 	harvestMin: 4,
 	harvestMax: 7,
@@ -9,4 +10,4 @@ export default {
 	regrow: false,
 	regrowDays: 0,
 	sellPrice: 1,
-}
+} as SDVCrop

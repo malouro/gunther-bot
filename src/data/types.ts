@@ -192,7 +192,7 @@ export type SDVCalendarData = {
 // Crops
 // ------------------------------------------------------------
 
-export interface Crop {
+export interface SDVCrop {
 	name: string
 	id: number
 	seasons: SDVSeason[]

@@ -1,7 +1,13 @@
 # Stardew Valley JSON Data
 
 This directory exports data depicting values & information related to Stardew Valley characters, events, items and more.
-These values are pulled and parsed from information available on the [Stardew Valley Wiki](https://stardewvalleywiki.com).
+
+These values are pulled from XNB unpacked data straight from the Stardew Valley install folder ([see `StardewXnbHack`](https://github.com/Pathoschild/StardewXnbHack#readme)) via the [`xnb-builder`](./builder/xnb-builder/) script.
+
+> **Deprecated** `wiki-builder` is now not supported.
+>
+> Old data was gathered via some web crawling through the Wiki. This wasn't effecient however,
+> and was difficult to keep up-to-date considering that formatting changes alone could break the build.
 
 ## Content & Usage
 

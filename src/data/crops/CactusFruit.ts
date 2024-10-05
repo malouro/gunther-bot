@@ -1,6 +1,7 @@
+import { SDVCrop } from '@/data/types'
 export default {
 	name: 'Cactus Fruit',
-	id: '90',
+	id: 90,
 	seasons: ['Spring', 'Summer', 'Fall', 'Winter'],
 	harvestMin: 1,
 	harvestMax: 1,
@@ -9,4 +10,4 @@ export default {
 	regrow: true,
 	regrowDays: 3,
 	sellPrice: 75,
-}
+} as SDVCrop
