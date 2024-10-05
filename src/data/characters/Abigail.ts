@@ -115,8 +115,8 @@ export default {
 		'Blackberry Cobbler',
 		'Banana Pudding',
 	],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: true,
 	gender: 'Female',
-	wiki: 'https://stardewcommunitywiki.com/Abigail',
+	wiki: 'https://stardewvalleywiki.com/Abigail',
 } as SDVCharacterData

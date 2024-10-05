@@ -125,8 +125,8 @@ export default {
 		'Omni Geode',
 		'Lava Eel',
 	],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: false,
 	gender: 'Undefined',
-	wiki: 'https://stardewcommunitywiki.com/Dwarf',
+	wiki: 'https://stardewvalleywiki.com/Dwarf',
 } as SDVCharacterData

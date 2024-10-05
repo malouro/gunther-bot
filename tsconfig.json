@@ -10,7 +10,8 @@
 		"types": ["node", "jest"],
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./src/*"]
+			"@/*": ["./src/*"],
+			"package.json": ["./package.json"]
 		}
 	},
 	"ts-node": {

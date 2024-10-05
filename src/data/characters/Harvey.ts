@@ -132,8 +132,8 @@ export default {
 	birthdayDay: '14',
 	birthdaySeason: 'Winter',
 	bestGifts: ['Wine', 'Super Meal', 'Truffle Oil', 'Coffee', 'Pickles'],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: true,
 	gender: 'Male',
-	wiki: 'https://stardewcommunitywiki.com/Harvey',
+	wiki: 'https://stardewvalleywiki.com/Harvey',
 } as SDVCharacterData

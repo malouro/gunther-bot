@@ -129,8 +129,8 @@ export default {
 		'Mead',
 		'Gold Bar',
 	],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: false,
 	gender: 'Male',
-	wiki: 'https://stardewcommunitywiki.com/Willy',
+	wiki: 'https://stardewvalleywiki.com/Willy',
 } as SDVCharacterData

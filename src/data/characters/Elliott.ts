@@ -126,8 +126,8 @@ export default {
 		'Pomegranate',
 		'Squid Ink',
 	],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: true,
 	gender: 'Male',
-	wiki: 'https://stardewcommunitywiki.com/Elliott',
+	wiki: 'https://stardewvalleywiki.com/Elliott',
 } as SDVCharacterData

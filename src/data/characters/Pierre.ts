@@ -100,8 +100,8 @@ export default {
 	birthdayDay: '26',
 	birthdaySeason: 'Spring',
 	bestGifts: ['Fried Calamari'],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: false,
 	gender: 'Male',
-	wiki: 'https://stardewcommunitywiki.com/Pierre',
+	wiki: 'https://stardewvalleywiki.com/Pierre',
 } as SDVCharacterData

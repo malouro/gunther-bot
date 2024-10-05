@@ -124,8 +124,8 @@ export default {
 		'Fairy Rose',
 		'Raisins',
 	],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: false,
 	gender: 'Female',
-	wiki: 'https://stardewcommunitywiki.com/Evelyn',
+	wiki: 'https://stardewvalleywiki.com/Evelyn',
 } as SDVCharacterData

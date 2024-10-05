@@ -133,8 +133,8 @@ export default {
 		'Cloth',
 		'Wool',
 	],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: true,
 	gender: 'Female',
-	wiki: 'https://stardewcommunitywiki.com/Emily',
+	wiki: 'https://stardewvalleywiki.com/Emily',
 } as SDVCharacterData

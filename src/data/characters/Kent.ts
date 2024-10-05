@@ -106,8 +106,8 @@ export default {
 	birthdayDay: '4',
 	birthdaySeason: 'Spring',
 	bestGifts: ['Roasted Hazelnuts', 'Fiddlehead Risotto'],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: false,
 	gender: 'Male',
-	wiki: 'https://stardewcommunitywiki.com/Kent',
+	wiki: 'https://stardewvalleywiki.com/Kent',
 } as SDVCharacterData

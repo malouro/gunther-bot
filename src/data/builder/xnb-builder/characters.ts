@@ -130,7 +130,8 @@ export default async function (): Promise<void> {
 			birthdayDay: birthdayDay.toString(),
 			birthdaySeason,
 			bestGifts: getGiftArray(lovedGifts),
-			avatar: '',
+			// temporarily set the avatar so the embeds work
+			avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 			canMarry,
 			gender,
 			wiki: getWikiUrl(name),

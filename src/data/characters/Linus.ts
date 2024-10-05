@@ -109,8 +109,8 @@ export default {
 		"Dish O' The Sea",
 		'Yam',
 	],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: false,
 	gender: 'Male',
-	wiki: 'https://stardewcommunitywiki.com/Linus',
+	wiki: 'https://stardewvalleywiki.com/Linus',
 } as SDVCharacterData

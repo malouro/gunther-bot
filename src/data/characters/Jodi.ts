@@ -120,8 +120,8 @@ export default {
 		'Fried Eel',
 		'Eggplant Parmesan',
 	],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: false,
 	gender: 'Female',
-	wiki: 'https://stardewcommunitywiki.com/Jodi',
+	wiki: 'https://stardewvalleywiki.com/Jodi',
 } as SDVCharacterData

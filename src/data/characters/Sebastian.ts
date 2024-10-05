@@ -102,8 +102,8 @@ export default {
 	birthdayDay: '10',
 	birthdaySeason: 'Winter',
 	bestGifts: ['Frozen Tear', 'Sashimi', 'Pumpkin Soup', 'Obsidian', 'Void Egg'],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: true,
 	gender: 'Male',
-	wiki: 'https://stardewcommunitywiki.com/Sebastian',
+	wiki: 'https://stardewvalleywiki.com/Sebastian',
 } as SDVCharacterData

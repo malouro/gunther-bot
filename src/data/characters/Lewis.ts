@@ -118,8 +118,8 @@ export default {
 		'Green Tea',
 		'Hot Pepper',
 	],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: false,
 	gender: 'Male',
-	wiki: 'https://stardewcommunitywiki.com/Lewis',
+	wiki: 'https://stardewvalleywiki.com/Lewis',
 } as SDVCharacterData

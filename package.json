@@ -7,8 +7,7 @@
 	"license": "MIT",
 	"main": "src/index.ts",
 	"bin": {
-		"build-sdv-data-from-wiki": "./cjs/data/builder/wiki-builder/index.js",
-		"build-sdv-data-from-xnb": "./cjs/data/builder/xnb-builder/index.js"
+		"build-sdv-data": "./cjs/data/builder/xnb-builder/index.js"
 	},
 	"dependencies": {
 		"@sapphire/framework": "^5.2.0",
@@ -26,7 +25,7 @@
 		"build": "yarn build:esm && yarn build:cjs",
 		"build:esm": "tsc -p tsconfig.build.json",
 		"build:cjs": "tsc -p tsconfig.cjs.json",
-		"build:data:wiki": "ts-node ./data/builder/wiki-builder",
+		"build:data": "yarn build:data:xnb",
 		"build:data:xnb": "ts-node ./src/data/builder/xnb-builder",
 		"clean": "rimraf ./cjs ./esm",
 		"clean:data": "ts-node ./src/data/builder/reset-indexes",

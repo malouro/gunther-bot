@@ -1,7 +1,7 @@
 import type { Message } from 'discord.js'
 import { GuntherCommand } from '@/bot'
 import { Command } from '@sapphire/framework'
-import { repository } from '@root/package.json'
+import { repository } from 'package.json'
 
 export default class GitCommand extends GuntherCommand {
 	public constructor(context: Command.LoaderContext, options: Command.Options) {

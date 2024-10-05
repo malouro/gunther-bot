@@ -104,8 +104,8 @@ export default {
 	birthdayDay: '20',
 	birthdaySeason: 'Spring',
 	bestGifts: ['Pizza', 'Pepper Poppers', 'Hot Pepper', 'Beer'],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: true,
 	gender: 'Male',
-	wiki: 'https://stardewcommunitywiki.com/Shane',
+	wiki: 'https://stardewvalleywiki.com/Shane',
 } as SDVCharacterData

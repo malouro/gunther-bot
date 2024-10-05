@@ -97,8 +97,8 @@ export default {
 	birthdayDay: '15',
 	birthdaySeason: 'Fall',
 	bestGifts: ['Daffodil', 'Sweet Pea', 'Crocus', 'Mango Sticky Rice'],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: false,
 	gender: 'Female',
-	wiki: 'https://stardewcommunitywiki.com/Sandy',
+	wiki: 'https://stardewvalleywiki.com/Sandy',
 } as SDVCharacterData

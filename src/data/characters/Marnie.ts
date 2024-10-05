@@ -103,8 +103,8 @@ export default {
 	birthdayDay: '18',
 	birthdaySeason: 'Fall',
 	bestGifts: ['Diamond', 'Pink Cake', "Farmer's Lunch", 'Pumpkin Pie'],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: false,
 	gender: 'Female',
-	wiki: 'https://stardewcommunitywiki.com/Marnie',
+	wiki: 'https://stardewvalleywiki.com/Marnie',
 } as SDVCharacterData

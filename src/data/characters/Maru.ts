@@ -138,8 +138,8 @@ export default {
 		'Radioactive Bar',
 		'Dwarf Gadget',
 	],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: true,
 	gender: 'Female',
-	wiki: 'https://stardewcommunitywiki.com/Maru',
+	wiki: 'https://stardewvalleywiki.com/Maru',
 } as SDVCharacterData

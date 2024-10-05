@@ -123,8 +123,8 @@ export default {
 	birthdayDay: '26',
 	birthdaySeason: 'Summer',
 	bestGifts: ['Duck Feather', 'Ostrich Egg', 'Mango', 'Poi'],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: false,
 	gender: 'Male',
-	wiki: 'https://stardewcommunitywiki.com/Leo',
+	wiki: 'https://stardewvalleywiki.com/Leo',
 } as SDVCharacterData

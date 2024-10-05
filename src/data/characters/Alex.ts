@@ -101,8 +101,8 @@ export default {
 	birthdayDay: '13',
 	birthdaySeason: 'Summer',
 	bestGifts: ['Complete Breakfast', 'Salmon Dinner'],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: true,
 	gender: 'Male',
-	wiki: 'https://stardewcommunitywiki.com/Alex',
+	wiki: 'https://stardewvalleywiki.com/Alex',
 } as SDVCharacterData

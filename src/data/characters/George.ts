@@ -109,8 +109,8 @@ export default {
 	birthdayDay: '24',
 	birthdaySeason: 'Fall',
 	bestGifts: ['Leek', 'Fried Mushroom'],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: false,
 	gender: 'Male',
-	wiki: 'https://stardewcommunitywiki.com/George',
+	wiki: 'https://stardewvalleywiki.com/George',
 } as SDVCharacterData

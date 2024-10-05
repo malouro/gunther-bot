@@ -101,8 +101,8 @@ export default {
 	birthdayDay: '21',
 	birthdaySeason: 'Fall',
 	bestGifts: ['Spaghetti', 'Goat Cheese', 'Peach'],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: false,
 	gender: 'Female',
-	wiki: 'https://stardewcommunitywiki.com/Robin',
+	wiki: 'https://stardewvalleywiki.com/Robin',
 } as SDVCharacterData

@@ -109,8 +109,8 @@ export default {
 	birthdayDay: '7',
 	birthdaySeason: 'Winter',
 	bestGifts: ['Fish Taco', 'Green Tea', 'Summer Spangle', 'Tropical Curry'],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: false,
 	gender: 'Female',
-	wiki: 'https://stardewcommunitywiki.com/Caroline',
+	wiki: 'https://stardewvalleywiki.com/Caroline',
 } as SDVCharacterData

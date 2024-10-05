@@ -108,8 +108,8 @@ export default {
 	birthdayDay: '8',
 	birthdaySeason: 'Summer',
 	bestGifts: ['Diamond', 'Fish Taco', 'Orange', 'Escargot', 'Tropical Curry'],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: false,
 	gender: 'Male',
-	wiki: 'https://stardewcommunitywiki.com/Gus',
+	wiki: 'https://stardewvalleywiki.com/Gus',
 } as SDVCharacterData

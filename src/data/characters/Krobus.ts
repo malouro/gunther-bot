@@ -108,8 +108,8 @@ export default {
 		'Void Mayonnaise',
 		'Monster Musk',
 	],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: false,
 	gender: 'Male',
-	wiki: 'https://stardewcommunitywiki.com/Krobus',
+	wiki: 'https://stardewvalleywiki.com/Krobus',
 } as SDVCharacterData

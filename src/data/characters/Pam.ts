@@ -129,8 +129,8 @@ export default {
 		'Mead',
 		'Piña Colada',
 	],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: false,
 	gender: 'Female',
-	wiki: 'https://stardewcommunitywiki.com/Pam',
+	wiki: 'https://stardewvalleywiki.com/Pam',
 } as SDVCharacterData

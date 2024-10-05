@@ -112,8 +112,8 @@ export default {
 	birthdayDay: '4',
 	birthdaySeason: 'Summer',
 	bestGifts: ['Pink Cake', 'Fairy Rose', 'Plum Pudding'],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: false,
 	gender: 'Female',
-	wiki: 'https://stardewcommunitywiki.com/Jas',
+	wiki: 'https://stardewvalleywiki.com/Jas',
 } as SDVCharacterData

@@ -110,8 +110,8 @@ export default {
 		'Void Essence',
 		'Solar Essence',
 	],
-	avatar: '',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 	canMarry: false,
 	gender: 'Male',
-	wiki: 'https://stardewcommunitywiki.com/Wizard',
+	wiki: 'https://stardewvalleywiki.com/Wizard',
 } as SDVCharacterData
