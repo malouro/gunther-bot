@@ -1,10 +1,13 @@
 // ------------------------------------------------------------
 // Characters
 // ------------------------------------------------------------
-export type SDVCharacterData = {
+export interface SDVCharacterData {
 	name: string
 	avatar: string
+	gender: Gender
 	birthday: string
+	birthdaySeason: SDVSeason
+	birthdayDay: SDVDayOfSeason
 	bestGifts: Array<string>
 	gifts: SDVGifts
 	canMarry: boolean
@@ -63,6 +66,7 @@ export const characterDataFields = [
 	'wiki',
 ] as const
 export type SDVCharacterDataField = (typeof characterDataFields)[number]
+export type Gender = 'Male' | 'Female'
 
 // ------------------------------------------------------------
 // Calendar

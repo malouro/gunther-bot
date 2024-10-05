@@ -2,9 +2,13 @@
 import yargs from 'yargs'
 
 import buildCrops from './crops'
+import buildCharacters from './characters'
 
-export type BuildTypes = 'crops' | 'all'
-export const buildTypeChoices: ReadonlyArray<BuildTypes> = ['crops', 'all']
+export const buildTypeChoices: ReadonlyArray<string> = [
+	'crops',
+	'characters',
+	'all',
+]
 
 const scriptName = 'build-sdv-data'
 const yargv = yargs(process.argv.slice(2))
@@ -37,8 +41,12 @@ if (require.main === module) {
 		case 'crops':
 			buildCrops()
 			break
+		case 'characters':
+			buildCharacters()
+			break
 		case 'all':
 		default:
+			buildCharacters()
 			buildCrops()
 			break
 	}

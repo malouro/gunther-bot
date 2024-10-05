@@ -7,9 +7,10 @@ import { camelCase, flow, upperFirst } from 'lodash'
 import CropJson from '@/data/json/Crops.json'
 import ObjectJson from '@/data/json/Objects.json'
 import { SDVCrop } from '@/data/types'
+import { autoGenWarning } from '.'
 
 export default async function (): Promise<void> {
-	let indexContent = ''
+	let indexContent = autoGenWarning + '\n\n'
 
 	for (const key of Object.keys(CropJson)) {
 		// console.info('Generating crop data for #', key)
@@ -40,7 +41,8 @@ export default async function (): Promise<void> {
 		}
 
 		const codeSafeName = flow(camelCase, upperFirst)(name.replace(/\s+/g, ''))
-		const fileContent = `
+		const fileContent = `${autoGenWarning}
+
 import { SDVCrop } from '@/data/types'
 export default ${JSON.stringify(cropData, null, '\t')} as SDVCrop
 `
@@ -54,8 +56,7 @@ export default ${JSON.stringify(cropData, null, '\t')} as SDVCrop
 			})
 		)
 
-		indexContent += `
-import ${codeSafeName} from './${codeSafeName}'
+		indexContent += `import ${codeSafeName} from './${codeSafeName}'
 export { ${codeSafeName} }
 `
 	}
