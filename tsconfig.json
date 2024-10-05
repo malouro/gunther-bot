@@ -8,10 +8,9 @@
 		"target": "ES2022",
 		"moduleResolution": "node",
 		"types": ["node", "jest"],
-		"rootDir": "./",
+		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./src/*"],
-			"@root/*": ["./*"]
+			"@/*": ["./src/*"]
 		}
 	},
 	"ts-node": {

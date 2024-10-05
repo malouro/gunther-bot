@@ -66,7 +66,7 @@ export const characterDataFields = [
 	'wiki',
 ] as const
 export type SDVCharacterDataField = (typeof characterDataFields)[number]
-export type Gender = 'Male' | 'Female'
+export type Gender = 'Male' | 'Female' | 'Undefined'
 
 // ------------------------------------------------------------
 // Calendar

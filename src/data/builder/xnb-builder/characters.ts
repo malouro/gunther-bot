@@ -130,8 +130,6 @@ export default async function (): Promise<void> {
 			birthdayDay: birthdayDay.toString(),
 			birthdaySeason,
 			bestGifts: getGiftArray(lovedGifts),
-			// TODO: Get avatar from data? Or just wiki static list???
-			// e.g.: we can splice the corresponding image from ""./unpacked_data/Portraits/{NAME}"
 			avatar: '',
 			canMarry,
 			gender,
