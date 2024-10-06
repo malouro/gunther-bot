@@ -10,7 +10,8 @@ import CharactersJson from '@/data/json/Characters.json'
 import ObjectJson from '@/data/json/Objects.json'
 import GiftTastes from '@/data/json/NPCGiftTastes.json'
 
-import ObjectL10nJson from '@/data/json/l10n/Objects.json'
+import ObjectL10nJson from '@/utils/l10n/translations/Objects.json'
+import localizer from '@/utils/l10n/localizer'
 
 const L10N_PREFIX = '[LocalizedText Strings\\Objects:'
 const L10N_SUFFIX = ']'
@@ -39,12 +40,11 @@ function getGiftArray(input: string): string[] {
 		}
 
 		if (id in ObjectJson) {
-			const key = ObjectJson[id].DisplayName.replace(L10N_PREFIX, '').replace(
-				L10N_SUFFIX,
-				''
-			)
-			if (ObjectL10nJson[key]) {
-				output.push(ObjectL10nJson[key])
+			const lookup = ObjectJson[id].DisplayName
+			const translatedText = localizer(lookup)
+
+			if (translatedText) {
+				output.push(translatedText)
 			}
 		}
 	}
@@ -145,7 +145,7 @@ import { SDVCharacterData } from '@/data/types'
 export default ${JSON.stringify(characterData, null, '\t')} as SDVCharacterData
 `
 		writeFileSync(
-			path.resolve(__dirname, `../../characters/${codeSafeName}.ts`),
+			path.resolve(__dirname, `../characters/${codeSafeName}.ts`),
 			// prettier it, in case something f***s up
 			await prettier.format(fileContent, {
 				semi: false,
@@ -160,8 +160,5 @@ export { ${codeSafeName} }
 `
 	}
 
-	writeFileSync(
-		path.resolve(__dirname, '../../characters/index.ts'),
-		indexContent
-	)
+	writeFileSync(path.resolve(__dirname, '../characters/index.ts'), indexContent)
 }

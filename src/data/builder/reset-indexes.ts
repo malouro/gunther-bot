@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { writeFileSync } from 'fs'
-import { buildTypeChoices } from './xnb-builder'
+import { buildTypeChoices } from '.'
 import { resolve } from 'path'
 import { rimrafSync } from 'rimraf'
 

@@ -26,6 +26,11 @@ Using tools like `StardewXnbHack` - or other available XNB unpackers - we can ga
     - [] Fish
   - [] Fishing
   - [] Cooking
+- [] Incorporate unpacked sprites for usage throughout the bot
+  - Avatars
+  - Item icons
+  - Animals
+  - Fish
 
 ## 💬 Slash Commands
 
@@ -45,3 +50,10 @@ Incorporate Discord's "slash commands" API, so users can type `/gunther` and nav
 - Does the `sapphire` framework handle this currently?
 - How much different is it from how commands are handled currently?
 - Are there requirements to moving to this methodology?
+
+## 🐛 Known Bugs
+
+> **Universal liked/disliked gifts are overriding NPCs personal preferences.**
+>
+> - e.g.: "Driftwood" appears as a disliked gift for Leah, but she actually likes this as a gift.
+> - This needs to be addressed in the build script, where it constructs the `SDVGifts` object per character.

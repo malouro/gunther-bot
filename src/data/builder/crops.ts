@@ -1,19 +1,16 @@
 import { writeFileSync } from 'node:fs'
 import path from 'node:path'
 import * as prettier from 'prettier'
-
 import { camelCase, flow, upperFirst } from 'lodash'
-
+import { autoGenWarning } from '.'
 import CropJson from '@/data/json/Crops.json'
 import ObjectJson from '@/data/json/Objects.json'
 import { SDVCrop } from '@/data/types'
-import { autoGenWarning } from '.'
 
 export default async function (): Promise<void> {
 	let indexContent = autoGenWarning + '\n\n'
 
 	for (const key of Object.keys(CropJson)) {
-		// console.info('Generating crop data for #', key)
 		const {
 			HarvestItemId: objectId,
 			Seasons: seasons,
@@ -47,7 +44,7 @@ import { SDVCrop } from '@/data/types'
 export default ${JSON.stringify(cropData, null, '\t')} as SDVCrop
 `
 		writeFileSync(
-			path.resolve(__dirname, `../../crops/${codeSafeName}.ts`),
+			path.resolve(__dirname, `../crops/${codeSafeName}.ts`),
 			await prettier.format(fileContent, {
 				semi: false,
 				parser: 'typescript',
@@ -61,5 +58,5 @@ export { ${codeSafeName} }
 `
 	}
 
-	writeFileSync(path.resolve(__dirname, '../../crops/index.ts'), indexContent)
+	writeFileSync(path.resolve(__dirname, '../crops/index.ts'), indexContent)
 }
