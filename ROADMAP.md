@@ -4,7 +4,7 @@
 
 ### Summary
 
-The old dataset was web-scraped from the Wiki. It wasn't fully complete, tightly coupled to the formatting of the content in the Wiki's UI, and difficult to maintian and update.
+The old dataset was web-scraped from the Wiki. It wasn't fully complete, tightly coupled to the formatting of the content in the Wiki's UI, and difficult to maintain and update.
 
 Why not use what Stardew Valley already provides: its own game install content?
 

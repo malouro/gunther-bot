@@ -2,24 +2,19 @@ import { writeFileSync } from 'node:fs'
 import path from 'node:path'
 import * as prettier from 'prettier'
 
-import { SDVCharacterData, SDVCharacterName } from '@/data/types'
+import { SDVCharacterData, SDVCharacterName, SDVGifts } from '@/data/types'
 import { getWikiUrl } from '@/utils'
+import localizer from '@/utils/l10n/localizer'
 import { autoGenWarning } from '.'
 
 import CharactersJson from '@/data/json/Characters.json'
 import ObjectJson from '@/data/json/Objects.json'
 import GiftTastes from '@/data/json/NPCGiftTastes.json'
 
-import ObjectL10nJson from '@/utils/l10n/translations/Objects.json'
-import localizer from '@/utils/l10n/localizer'
-
-const L10N_PREFIX = '[LocalizedText Strings\\Objects:'
-const L10N_SUFFIX = ']'
-
 /**
  * @TODO
  * - Incorporate handling of "trinkets" as gifts
- * - Add localizer method
+ * - Handle item categories
  * - Get avatar data from somewhere.
  * 	- Wiki
  * 	- png from unpacked data + image processing
@@ -28,10 +23,9 @@ const L10N_SUFFIX = ']'
 /**
  * Given a string of space separated item IDs,
  * give an array of item names.
- * @param input
+ * @param ids
  */
-function getGiftArray(input: string): string[] {
-	const ids = input.split(' ')
+function getGiftArray(ids: string[]): string[] {
 	const output = []
 
 	for (const id of ids) {
@@ -49,6 +43,53 @@ function getGiftArray(input: string): string[] {
 		}
 	}
 	return output
+}
+
+/**
+ * @param name Character name
+ * @param personalTastes List of gift IDs for the character's personal tastes
+ * @returns Returns full list of the NPC's gift tastes, with item names
+ */
+function buildGiftTastes(
+	name: SDVCharacterName,
+	personalTastes: SDVGifts
+): SDVGifts {
+	const giftIds: SDVGifts = {
+		love: [],
+		like: [],
+		neutral: [],
+		dislike: [],
+		hate: [],
+	}
+
+	for (const giftType in personalTastes) {
+		giftIds[giftType].push(...personalTastes[giftType])
+	}
+
+	;[
+		GiftTastes.Universal_Love,
+		GiftTastes.Universal_Like,
+		GiftTastes.Universal_Neutral,
+		GiftTastes.Universal_Dislike,
+		GiftTastes.Universal_Hate,
+	].forEach((universalTaste, index) => {
+		const ids = universalTaste.split(' ')
+		for (const id of ids) {
+			if (
+				!Object.keys(giftIds).some(giftType => giftIds[giftType].includes(id))
+			) {
+				giftIds[Object.keys(giftIds)[index]].push(id)
+			}
+		}
+	})
+
+	return {
+		love: [...getGiftArray(giftIds.love)],
+		like: [...getGiftArray(giftIds.like)],
+		neutral: [...getGiftArray(giftIds.neutral)],
+		dislike: [...getGiftArray(giftIds.dislike)],
+		hate: [...getGiftArray(giftIds.hate)],
+	}
 }
 
 // characters to skip; they don't matter for the bot
@@ -102,34 +143,21 @@ export default async function (): Promise<void> {
 			_birthdayMessage,
 		] = (GiftTastes[name] as SDVCharacterName).split('/')
 
+		const gifts = buildGiftTastes(name as SDVCharacterName, {
+			love: lovedGifts.split(' '),
+			like: likedGifts.split(' '),
+			neutral: neutralGifts.split(' '),
+			dislike: dislikedGifts.split(' '),
+			hate: hatedGifts.split(' '),
+		})
+
 		const characterData: SDVCharacterData = {
 			name,
-			gifts: {
-				love: [
-					...getGiftArray(GiftTastes.Universal_Love),
-					...getGiftArray(lovedGifts),
-				],
-				like: [
-					...getGiftArray(GiftTastes.Universal_Like),
-					...getGiftArray(likedGifts),
-				],
-				neutral: [
-					...getGiftArray(GiftTastes.Universal_Neutral),
-					...getGiftArray(neutralGifts),
-				],
-				dislike: [
-					...getGiftArray(GiftTastes.Universal_Dislike),
-					...getGiftArray(dislikedGifts),
-				],
-				hate: [
-					...getGiftArray(GiftTastes.Universal_Hate),
-					...getGiftArray(hatedGifts),
-				],
-			},
+			gifts,
 			birthday: `${birthdaySeason} ${birthdayDay}`,
 			birthdayDay: birthdayDay.toString(),
 			birthdaySeason,
-			bestGifts: getGiftArray(lovedGifts),
+			bestGifts: gifts.love,
 			// temporarily set the avatar so the embeds work
 			avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
 			canMarry,
