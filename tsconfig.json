@@ -17,5 +17,5 @@
 	"ts-node": {
 		"require": ["tsconfig-paths/register"]
 	},
-	"exclude": ["_old_", "examples", "jest.*"]
+	"exclude": ["examples", "jest.*"]
 }
