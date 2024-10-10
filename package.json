@@ -17,6 +17,7 @@
 		"dotenv": "^8.2.0",
 		"lodash": "^4.17.21",
 		"make-fetch-happen": "^8.0.14",
+		"sharp": "^0.33.5",
 		"winston": "^3.3.3"
 	},
 	"scripts": {

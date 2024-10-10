@@ -112,7 +112,8 @@ export default {
 		'Golden Pumpkin',
 		'Magic Rock Candy',
 	],
-	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
+	avatar:
+		'https://github.com/malouro/gunther-bot.git/blob/main/src/data/img/avatars/Demetrius.png',
 	canMarry: false,
 	gender: 'Male',
 	wiki: 'https://stardewvalleywiki.com/Demetrius',

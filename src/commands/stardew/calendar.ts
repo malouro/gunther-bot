@@ -13,7 +13,7 @@ import {
 } from '@/data/types'
 import { getUpcomingDays, getWeekday, makeList, messageEmojis } from '@/utils'
 import type { Args, Command } from '@sapphire/framework'
-import { EmbedBuilder, Message } from 'discord.js'
+import { EmbedBuilder, Message, TextChannel } from 'discord.js'
 
 export const COMMAND_NAME = 'calendar'
 
@@ -130,6 +130,10 @@ export default class CalendarCommand extends GuntherCommand {
 	}
 
 	public async messageRun(message: Message, args: Args): Promise<Message> {
+		if (!message.channel.isTextBased()) {
+			return null
+		}
+
 		type CalendarCommandInquiryTypes = 'SDV_CalendarDate' | 'SDV_Season'
 		let day: SDVDayOfSeason | null
 		let season: SDVSeason | null
@@ -143,7 +147,7 @@ export default class CalendarCommand extends GuntherCommand {
 				season = await args.pick(SeasonArgument)
 				inquiryType = 'SDV_Season'
 			} catch (error) {
-				return message.channel.send(
+				return (message.channel as TextChannel).send(
 					'Please specify a valid calendar date or season.'
 				)
 			}

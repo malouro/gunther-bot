@@ -1,15 +1,20 @@
-import { writeFileSync } from 'node:fs'
+import { existsSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import * as prettier from 'prettier'
+import sharp from 'sharp'
 
 import { SDVCharacterData, SDVCharacterName, SDVGifts } from '@/data/types'
 import { getWikiUrl } from '@/utils'
 import localizer from '@/utils/l10n/localizer'
 import { autoGenWarning } from '.'
+import { repository } from '../../../package.json'
 
 import CharactersJson from '@/data/json/Characters.json'
 import ObjectJson from '@/data/json/Objects.json'
 import GiftTastes from '@/data/json/NPCGiftTastes.json'
+
+const AVATAR_WIDTH = 64
+const AVATAR_HEIGHT = 64
 
 /**
  * @TODO
@@ -151,6 +156,32 @@ export default async function (): Promise<void> {
 			hate: hatedGifts.split(' '),
 		})
 
+		/**
+		 * Avatar setup:
+		 * - Grab portrait tile sheet
+		 * - Crop top left image - this will be the main avatar
+		 *	 - Use `image-js` for this?
+		 * - Save avatar to ./src/data/img/avatars/{character}
+		 * - Use URL to GitHub raw content (if possible?)
+		 */
+
+		// default avatar URL if we can't generate one for some reason
+		let avatar =
+			'https://stardewvalleywiki.com/mediawiki/images/6/68/Main_Logo.png'
+		const rawPortraitFile = `unpacked_data/Content (unpacked)/Portraits/${name}.png`
+
+		if (existsSync(path.resolve(__dirname, `../../../${rawPortraitFile}`))) {
+			await sharp()
+				.extract({
+					left: 0,
+					top: 0,
+					width: AVATAR_WIDTH,
+					height: AVATAR_HEIGHT,
+				})
+				.toFile(`src/data/img/avatars/${name}.png`)
+			avatar = `${repository}/blob/main/src/data/img/avatars/${name}.png`
+		}
+
 		const characterData: SDVCharacterData = {
 			name,
 			gifts,
@@ -158,8 +189,7 @@ export default async function (): Promise<void> {
 			birthdayDay: birthdayDay.toString(),
 			birthdaySeason,
 			bestGifts: gifts.love,
-			// temporarily set the avatar so the embeds work
-			avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
+			avatar,
 			canMarry,
 			gender,
 			wiki: getWikiUrl(name),
