@@ -129,7 +129,7 @@ export default {
 		'Magic Rock Candy',
 	],
 	avatar:
-		'https://github.com/malouro/gunther-bot.git/blob/main/src/data/img/avatars/Dwarf.png',
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/avatars/Dwarf.png',
 	canMarry: false,
 	gender: 'Undefined',
 	wiki: 'https://stardewvalleywiki.com/Dwarf',

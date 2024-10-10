@@ -114,7 +114,7 @@ export default {
 		'Magic Rock Candy',
 	],
 	avatar:
-		'https://github.com/malouro/gunther-bot.git/blob/main/src/data/img/avatars/Kent.png',
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/avatars/Kent.png',
 	canMarry: false,
 	gender: 'Male',
 	wiki: 'https://stardewvalleywiki.com/Kent',

@@ -133,7 +133,7 @@ export default {
 		'Magic Rock Candy',
 	],
 	avatar:
-		'https://github.com/malouro/gunther-bot.git/blob/main/src/data/img/avatars/Pam.png',
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/avatars/Pam.png',
 	canMarry: false,
 	gender: 'Female',
 	wiki: 'https://stardewvalleywiki.com/Pam',

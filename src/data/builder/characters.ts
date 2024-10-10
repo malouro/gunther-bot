@@ -7,7 +7,6 @@ import { SDVCharacterData, SDVCharacterName, SDVGifts } from '@/data/types'
 import { getWikiUrl } from '@/utils'
 import localizer from '@/utils/l10n/localizer'
 import { autoGenWarning } from '.'
-import { repository } from '../../../package.json'
 
 import CharactersJson from '@/data/json/Characters.json'
 import ObjectJson from '@/data/json/Objects.json'
@@ -15,6 +14,8 @@ import GiftTastes from '@/data/json/NPCGiftTastes.json'
 
 const AVATAR_WIDTH = 64
 const AVATAR_HEIGHT = 64
+const AVATAR_BASE_URL =
+	'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/avatars'
 
 /**
  * @TODO
@@ -118,7 +119,7 @@ const excludeCharacters = [
 export default async function (): Promise<void> {
 	let indexContent = autoGenWarning + '\n\n'
 
-	for (const key of Object.keys(CharactersJson)) {
+	for (const key in CharactersJson) {
 		const name = key
 
 		if (excludeCharacters.includes(name)) {
@@ -165,21 +166,27 @@ export default async function (): Promise<void> {
 		 * - Use URL to GitHub raw content (if possible?)
 		 */
 
+		// TODO: Consider moving avatar generator into its own builder
+		// Makes it easier to clean up with reset-indexes and allow separate exec
+
 		// default avatar URL if we can't generate one for some reason
 		let avatar =
 			'https://stardewvalleywiki.com/mediawiki/images/6/68/Main_Logo.png'
 		const rawPortraitFile = `unpacked_data/Content (unpacked)/Portraits/${name}.png`
 
-		if (existsSync(path.resolve(__dirname, `../../../${rawPortraitFile}`))) {
-			await sharp()
-				.extract({
+		if (existsSync(path.resolve(__dirname, '../../../', rawPortraitFile))) {
+			try {
+				const img = sharp(rawPortraitFile).extract({
 					left: 0,
 					top: 0,
 					width: AVATAR_WIDTH,
 					height: AVATAR_HEIGHT,
 				})
-				.toFile(`src/data/img/avatars/${name}.png`)
-			avatar = `${repository}/blob/main/src/data/img/avatars/${name}.png`
+				await img.toFile(`src/data/img/avatars/${name}.png`)
+			} catch (error) {
+				console.error('Error generating avatar:', error)
+			}
+			avatar = `${AVATAR_BASE_URL}/${name}.png`
 		}
 
 		const characterData: SDVCharacterData = {

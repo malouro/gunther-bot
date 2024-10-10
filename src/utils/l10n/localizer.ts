@@ -7,7 +7,6 @@ const Mappings = {
 }
 
 function localizer(input: string): string | undefined {
-	console.info(input)
 	const matches = input.match(L10N_PATTERN)
 
 	if (!matches || matches.length <= 1) {

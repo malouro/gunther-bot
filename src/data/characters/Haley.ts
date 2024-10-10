@@ -117,7 +117,7 @@ export default {
 		'Magic Rock Candy',
 	],
 	avatar:
-		'https://github.com/malouro/gunther-bot.git/blob/main/src/data/img/avatars/Haley.png',
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/avatars/Haley.png',
 	canMarry: true,
 	gender: 'Female',
 	wiki: 'https://stardewvalleywiki.com/Haley',

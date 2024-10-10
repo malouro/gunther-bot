@@ -15,6 +15,8 @@ const dirs = buildTypeChoices.filter(b => b !== 'all')
 // To circumvent, we clean the directories and replace with a dummy "index.ts" file
 // to satisfy the bear minimum to run the build script afterwards.
 
+rimrafSync(resolve(__dirname, '../img/avatars/*'), { glob: true })
+
 for (const dir of dirs) {
 	const pathToDir = resolve(__dirname, '../', dir)
 

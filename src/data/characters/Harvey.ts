@@ -140,7 +140,7 @@ export default {
 		'Magic Rock Candy',
 	],
 	avatar:
-		'https://github.com/malouro/gunther-bot.git/blob/main/src/data/img/avatars/Harvey.png',
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/avatars/Harvey.png',
 	canMarry: true,
 	gender: 'Male',
 	wiki: 'https://stardewvalleywiki.com/Harvey',

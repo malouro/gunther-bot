@@ -125,7 +125,7 @@ export default {
 		'Golden Pumpkin',
 		'Magic Rock Candy',
 	],
-	avatar: 'https://stardewvalleywiki.com/mediawiki/images/3/3d/Gunther.png',
+	avatar: 'https://stardewvalleywiki.com/mediawiki/images/6/68/Main_Logo.png',
 	canMarry: false,
 	gender: 'Male',
 	wiki: 'https://stardewvalleywiki.com/Leo',
