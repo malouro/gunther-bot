@@ -1,21 +1,17 @@
 import GuntherClient from '@/bot/client'
-import commands, { groups } from '@/commands'
-import argTypes from '@/argTypes'
-import * as events from '@/events'
+import { ready } from '@/events'
+import { GatewayIntentBits } from 'discord.js'
 
 const GuntherBot = new GuntherClient({
-	owner: process.env.OWNER?.split(',') || 'NO_OWNER',
-	commandPrefix: process.env.COMMAND_PREFIX || '!',
+	intents: [
+		GatewayIntentBits.MessageContent,
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMessages,
+	],
+	loadMessageCommandListeners: true,
+	defaultPrefix: process.env.COMMAND_PREFIX ?? '!',
 })
 
-GuntherBot.registry
-	.registerDefaultTypes()
-	.registerDefaultGroups()
-	.registerDefaultCommands()
-	.registerTypes(argTypes)
-	.registerGroups(groups)
-	.registerCommands(commands)
-
-GuntherBot.on('ready', () => events.ready(GuntherBot))
+GuntherBot.on('ready', ready)
 
 export default GuntherBot

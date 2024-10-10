@@ -60,3 +60,6 @@ yalc.lock
 # Build output
 cjs
 esm
+
+# SDV data
+# unpacked_data

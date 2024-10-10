@@ -1,8 +1,4 @@
-import { Command } from 'discord.js-commando'
-import GuntherClient from './client'
+import { Command } from '@sapphire/framework'
 
-abstract class GuntherCommand extends Command {
-	declare client: GuntherClient
-}
-
-export default GuntherCommand
+/** Extend the basic Command class here. */
+export default abstract class GuntherCommand extends Command {}

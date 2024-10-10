@@ -1,21 +1,14 @@
 #!/usr/bin/env node
 import yargs from 'yargs'
-import buildCalendar from './buildCalendar'
-import buildCharacters from './buildCharacters'
 
-export type BuildTypes = 'characters' | 'calendar' | 'all'
-export const buildTypeChoices: ReadonlyArray<BuildTypes> = [
+import buildCrops from './crops'
+import buildCharacters from './characters'
+
+export const buildTypeChoices: ReadonlyArray<string> = [
+	'crops',
 	'characters',
-	'calendar',
 	'all',
 ]
-export interface BuildArguments {
-	[x: string]: unknown
-	b: BuildTypes
-	t: boolean
-	_: string[]
-	$0: string
-}
 
 const scriptName = 'build-sdv-data'
 const yargv = yargs(process.argv.slice(2))
@@ -45,18 +38,16 @@ Do not edit manually.\n\
 
 if (require.main === module) {
 	switch (buildType) {
+		case 'crops':
+			buildCrops()
+			break
 		case 'characters':
 			buildCharacters()
 			break
-
-		case 'calendar':
-			buildCalendar()
-			break
-
 		case 'all':
 		default:
 			buildCharacters()
-			buildCalendar()
+			buildCrops()
 			break
 	}
 }

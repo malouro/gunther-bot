@@ -1,7 +1,6 @@
-import { capitalize } from '@/utils/formatters/common'
+import { capitalize } from '@/utils/formatters'
 
 /**
- *
  * @param searchTerm Search term to properly format
  */
 export function formatWikiTerm(searchTerm: string): string {

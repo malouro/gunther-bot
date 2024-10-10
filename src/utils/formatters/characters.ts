@@ -1,5 +1,5 @@
 import { SDVCharacterName } from '@/data/types'
-import { capitalize } from './common'
+import { capitalize } from '@/utils/formatters'
 
 /**
  * Returns a proper capitalized & formatted character name

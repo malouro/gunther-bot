@@ -1,4 +1,4 @@
-import { baseWikiUrl } from '@/utils/constants'
+import { baseWikiUrl } from '@/utils'
 
 /**
  * Get a URL to the Wiki for a given search term
@@ -10,7 +10,7 @@ export function getWikiUrl(term: string): string {
 
 /**
  * Returns a URL to a Wiki image
- * @param imgSrc `src` attribute on the <img>
+ * @param imgSrc `src` attribute on the `<img>`
  */
 export function getImageUrl(imgSrc: string): string {
 	return `${baseWikiUrl}${imgSrc[0] === '/' ? imgSrc : '/' + imgSrc}`

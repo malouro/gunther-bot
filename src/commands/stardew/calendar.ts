@@ -1,175 +1,174 @@
-import { Message, MessageEmbed } from 'discord.js'
-import { Command, CommandInfo, CommandoMessage } from 'discord.js-commando'
+import { DateArgument, SeasonArgument } from '@/args'
+import { GuntherCommand } from '@/bot'
+import { Calendar } from '@/data'
 import {
-	SDVEvent,
+	daysOfSeason,
+	SDVCalendarSeason,
 	SDVCharacterName,
-	SDVCalendarDate,
-	SDVCalendarDay,
-	SDVSeason,
 	SDVDayOfSeason,
+	SDVEvent,
+	SDVSeason,
 	seasons,
 	seasonShorthands,
-	daysOfSeason,
-	daysInAWeek,
-	daysInASeason,
 } from '@/data/types'
-import { Calendar } from '@/data'
-import { messageEmojis, getWeekday, getNextSeason } from '@/utils'
-import { GuntherClient } from '@/bot'
-import { GuntherArgTypeKeys, GuntherArgValue } from '@/argTypes/common'
+import { getUpcomingDays, getWeekday, makeList, messageEmojis } from '@/utils'
+import type { Args, Command } from '@sapphire/framework'
+import { EmbedBuilder, Message, TextChannel } from 'discord.js'
 
-const COMMAND_NAME = 'calendar-info'
+export const COMMAND_NAME = 'calendar'
 
-export const info: CommandInfo = {
-	name: COMMAND_NAME,
-	aliases: ['calendar', 'cal'],
-	group: 'stardew',
-	memberName: 'calendar',
-	description: 'Fetches info from the calendar',
-	details: [
-		'This can return back information related to either a specific day, or a specific season. ',
-		'This includes upcoming birthdays and events.\n\n',
-		`Seasons include: ${seasons.map(season => '`' + season + '`').join(',')}\n`,
-		`And their shorthand aliases: ${seasonShorthands
-			.map(season => '`' + season + '`')
-			.join(',')}`,
-	].join(''),
-	examples: [
-		`\`${COMMAND_NAME} ${seasons[0]} ${daysOfSeason[15]}\``,
-		`\`${COMMAND_NAME} ${seasonShorthands[0]} ${daysOfSeason[15]}\``,
-		`\`${COMMAND_NAME} ${seasons[1]}\``,
-	],
-	args: [
-		{
-			key: 'dateOrSeason',
-			prompt: 'What date or season on the calendar are you curious about?',
-			type: 'sdv-season|sdv-date',
-		},
-	],
-}
-
-function getUpcomingDays(
-	season: SDVSeason,
-	currentDay: SDVDayOfSeason,
-	nextXDays = daysInAWeek
-): Array<SDVCalendarDay> {
-	const calendarSeason = Calendar[season]
-	const upcomingDays = []
-
-	for (let x = 1; x <= nextXDays; x++) {
-		const currentDayNumber = Number(currentDay)
-		let nextDayToPush = currentDayNumber + x
-		let currentSeason = calendarSeason
-
-		if (nextDayToPush > daysInASeason) {
-			nextDayToPush = nextDayToPush % daysInASeason
-			currentSeason = Calendar[getNextSeason(season)]
-		}
-		upcomingDays.push(currentSeason.days[nextDayToPush])
+export default class CalendarCommand extends GuntherCommand {
+	private constructor(
+		context: Command.LoaderContext,
+		options: Command.Options
+	) {
+		super(context, {
+			...options,
+			name: COMMAND_NAME,
+			aliases: ['cal'],
+			description:
+				'Fetches information from the Stardew Valley event calendar.',
+			detailedDescription: [
+				'This can return back information related to either a specific day, or a specific season. ',
+				'This includes upcoming birthdays and events.\n\n',
+				`Seasons include: ${seasons
+					.map(season => '`' + season + '`')
+					.join(',')}\n`,
+				`And their shorthand aliases: ${seasonShorthands
+					.map(season => '`' + season + '`')
+					.join(',')}`,
+			]
+				.join('')
+				.concat(
+					`\`${COMMAND_NAME} ${seasons[0]} ${daysOfSeason[15]}\`\n`,
+					`\`${COMMAND_NAME} ${seasonShorthands[0]} ${daysOfSeason[15]}\`\n`,
+					`\`${COMMAND_NAME} ${seasons[1]}\`\n`
+				),
+		})
 	}
 
-	return upcomingDays
-}
+	private buildEmbedForDate(
+		embed: EmbedBuilder,
+		calendarSeason: SDVCalendarSeason,
+		season: SDVSeason,
+		day: SDVDayOfSeason
+	) {
+		const weekday = getWeekday(day)
+		const events: Array<SDVEvent> = calendarSeason.days[day].events
+		const birthdays: Array<SDVCharacterName> = calendarSeason.days[day]
+			.birthdays as SDVCharacterName[]
+		const upcomingDays = getUpcomingDays(season, day, 7)
+		const upcomingDetails = upcomingDays
+			.map(
+				day =>
+					`${
+						/* If date is in new season, add a title header */
+						day.date.season !== season && day.date.day === '1'
+							? `--- **${day.date.season}** ---\n`
+							: ''
+					}**${day.date.day}**: ${
+						/* Display events */
+						day.events.length > 0
+							? day.events
+									.map(calEvent => `${messageEmojis.event} ${calEvent}`)
+									.join(' ')
+									.concat(' ')
+							: ''
+					}${
+						/* Display birthdays */
+						day.birthdays.length > 0
+							? day.birthdays
+									.map(birthday => `${messageEmojis.birthday} ${birthday}`)
+									.join(' ')
+							: ''
+					}`
+			)
+			.join('\n')
 
-export default class CalendarCommand extends Command {
-	constructor(client: GuntherClient) {
-		super(client, info)
+		embed
+			.setTitle(`${season} ${day}`)
+			.setURL(calendarSeason.wiki)
+			.setDescription(
+				`Overview for **${season} ${day}**. This is a **${weekday}**.`
+			)
+			.addFields(
+				{
+					name: 'Events',
+					value: events.length > 0 ? events.join('\n') : 'No events',
+				},
+				{
+					name: 'Birthdays',
+					value: birthdays.length > 0 ? birthdays.join('\n') : 'No birthdays',
+				},
+				{
+					name: 'Upcoming',
+					value: upcomingDetails,
+				}
+			)
 	}
 
-	async run(
-		message: CommandoMessage,
-		args: { dateOrSeason: GuntherArgValue<SDVCalendarDate | SDVSeason> }
-	): Promise<Message> {
-		const {
-			type,
-		}: {
-			type: GuntherArgTypeKeys
-		} = args.dateOrSeason
+	private buildEmbedForSeason(
+		embed: EmbedBuilder,
+		calendarSeason: SDVCalendarSeason,
+		season: SDVSeason
+	) {
+		embed
+			.setTitle(season)
+			.setURL(calendarSeason.wiki)
+			.setDescription(`Overview for the ${season} season`)
+			.addFields(
+				{
+					name: 'Events this season',
+					value: makeList(calendarSeason.events),
+				},
+				{
+					name: 'Birthdays this season',
+					value: makeList(calendarSeason.birthdays),
+				}
+			)
+			.setImage(calendarSeason.image)
+	}
 
-		let value: SDVCalendarDate | SDVSeason,
-			day: SDVDayOfSeason,
-			season: SDVSeason
-
-		if (type === 'sdv-season') {
-			value = args.dateOrSeason.value as SDVSeason
-			day = null
-			season = value
-		} else if (type === 'sdv-date') {
-			value = args.dateOrSeason.value as SDVCalendarDate
-			day = value.day
-			season = value.season
-		} else {
-			throw new Error(`ArgType of ${type} is not valid for <dateOrSeason>.`)
+	public async messageRun(message: Message, args: Args): Promise<Message> {
+		if (!message.channel.isTextBased()) {
+			return null
 		}
 
-		const embed = new MessageEmbed()
-		const calendarSeason = Calendar[season]
+		type CalendarCommandInquiryTypes = 'SDV_CalendarDate' | 'SDV_Season'
+		let day: SDVDayOfSeason | null
+		let season: SDVSeason | null
+		let inquiryType: CalendarCommandInquiryTypes
 
-		if (day === null) {
-			embed
-				.setTitle(season)
-				.setURL(calendarSeason.wiki)
-				.setDescription(`Overview for the ${season} season`)
-				.addFields(
-					{ name: 'Events this season', value: calendarSeason.events },
-					{ name: 'Birthdays this season', value: calendarSeason.birthdays }
+		try {
+			;({ day, season } = await args.pick(DateArgument))
+			inquiryType = 'SDV_CalendarDate'
+		} catch (error) {
+			try {
+				season = await args.pick(SeasonArgument)
+				inquiryType = 'SDV_Season'
+			} catch (error) {
+				return (message.channel as TextChannel).send(
+					'Please specify a valid calendar date or season.'
 				)
-				.setImage(calendarSeason.image)
-		} else {
-			const weekday = getWeekday(day)
-			const events: Array<SDVEvent> = calendarSeason.days[day].events
-			const birthdays: Array<SDVCharacterName> = calendarSeason.days[day]
-				.birthdays as SDVCharacterName[]
-			const upcomingDays = getUpcomingDays(season, day, 7)
-			const upcomingDetails = upcomingDays
-				.map(
-					day =>
-						`${
-							/* If date is in new season, add a title header */
-							day.date.season !== season && day.date.day === '1'
-								? `--- **${day.date.season}** ---\n`
-								: ''
-						}**${day.date.day}**: ${
-							/* Display events */
-							day.events.length > 0
-								? day.events
-										.map(calEvent => `${messageEmojis.event} ${calEvent}`)
-										.join(' ')
-										.concat(' ')
-								: ''
-						}${
-							/* Display birthdays */
-							day.birthdays.length > 0
-								? day.birthdays
-										.map(birthday => `${messageEmojis.birthday} ${birthday}`)
-										.join(' ')
-								: ''
-						}`
-				)
-				.join('\n')
-
-			embed
-				.setTitle(`${season} ${day}`)
-				.setURL(calendarSeason.wiki)
-				.setDescription(
-					`Overview for **${season} ${day}**. This is a **${weekday}**.`
-				)
-				.addFields(
-					{
-						name: 'Events',
-						value: events.length > 0 ? events.join('\n') : 'No events',
-					},
-					{
-						name: 'Birthdays',
-						value: birthdays.length > 0 ? birthdays.join('\n') : 'No birthdays',
-					},
-					{
-						name: 'Upcoming',
-						value: upcomingDetails,
-					}
-				)
+			}
 		}
 
-		return message.reply(embed)
+		const embed = new EmbedBuilder()
+		const calendarSeason: SDVCalendarSeason = Calendar[
+			season
+		] as SDVCalendarSeason
+
+		// Build the embed with the given builder method.
+		// This will mutate the value of embed
+		switch (inquiryType) {
+			case 'SDV_CalendarDate':
+				this.buildEmbedForDate(embed, calendarSeason, season, day)
+				break
+			case 'SDV_Season':
+				this.buildEmbedForSeason(embed, calendarSeason, season)
+				break
+		}
+
+		return message.reply({ embeds: [embed] })
 	}
 }
