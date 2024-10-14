@@ -55,7 +55,13 @@ export default class CharacterCommand extends GuntherCommand {
 			.addFields(
 				{ name: 'Marriage?', value: `**${canMarry ? 'Yes' : 'No'}**` },
 				{ name: 'Birthday', value: birthday },
-				{ name: 'Best Gifts', value: makeList(bestGifts) }
+				{ name: 'Best Gifts', value: makeList(bestGifts) },
+				{
+					name: 'More info?',
+					value: `For more specific information try using any of the following inquiries:\n${makeList(
+						characterDataFields
+					)}`,
+				}
 			)
 	}
 

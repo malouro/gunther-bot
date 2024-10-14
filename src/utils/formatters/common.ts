@@ -11,9 +11,9 @@ export function capitalize(str: string): string {
 
 /**
  * Format an array into a list (string of bulleted items)
- * @param {string[]} input Array of items to format into list
+ * @param input Array of items to format into list
  * @returns string
  */
-export function makeList(input: string[]): string {
+export function makeList(input: string[] | readonly string[]): string {
 	return input.map(str => `• ${str}`).join('\n')
 }

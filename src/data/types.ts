@@ -1,3 +1,5 @@
+import { Crops } from '@/data'
+
 // ------------------------------------------------------------
 // Characters
 // ------------------------------------------------------------
@@ -64,7 +66,7 @@ export const characterDataFields = [
 	'canMarry',
 	'gifts',
 	'wiki',
-] as const
+] as Readonly<string[]>
 export type SDVCharacterDataField = (typeof characterDataFields)[number]
 export type Gender = 'Male' | 'Female' | 'Undefined'
 
@@ -195,7 +197,7 @@ export type SDVCalendarData = {
 // ------------------------------------------------------------
 // Crops
 // ------------------------------------------------------------
-
+// #region
 export interface SDVCrop {
 	name: string
 	id: number
@@ -208,3 +210,7 @@ export interface SDVCrop {
 	regrowDays: number
 	sellPrice: number
 }
+
+export const SDVCropList = Object.keys(Crops)
+export type SDVCropName = (typeof SDVCropList)[number]
+// #endregion
