@@ -1,8 +1,8 @@
 import { CropArgument } from '@/args/crop'
 import { GuntherCommand } from '@/bot'
 import { Crops } from '@/data'
-import { SDVCropList, SDVCropName } from '@/data/types'
-import { makeList } from '@/utils'
+import { SDVCrop, SDVCropList, SDVCropName } from '@/data/types'
+import { formatPrice, makeList } from '@/utils'
 import { Args, Command } from '@sapphire/framework'
 import { Message } from 'discord.js'
 
@@ -25,9 +25,9 @@ export default class CropCommand extends GuntherCommand {
 	}
 
 	public async messageRun(message: Message, args: Args): Promise<Message> {
-		let crop: null | SDVCropName = null
+		let cropName: null | SDVCropName = null
 		try {
-			crop = await args.pick(CropArgument)
+			cropName = await args.pick(CropArgument)
 		} catch (error) {
 			return message.reply(
 				`Please specify a valid crop name:\n\n${makeList(
@@ -36,8 +36,21 @@ export default class CropCommand extends GuntherCommand {
 			)
 		}
 
-		// TODO: Format this into something nice :)
-		// TODO: Get crop image from data
-		return message.reply(JSON.stringify(Crops[crop], null, 2))
+		const crop: SDVCrop = Crops[cropName]
+
+		return message.reply(
+			[
+				`# ${crop.name}`,
+				`**Seasons**: \n${makeList(crop.seasons)}`,
+				`**Sell Price**: ${formatPrice(crop.sellPrice)}`,
+				`**Growth Time**: ${crop.growth} days`,
+			]
+				.concat(
+					crop.regrow
+						? ['**Regrows**: Yes', `**Regrowth Time**: ${crop.regrowDays} days`]
+						: ['**Regrows**: No']
+				)
+				.join('\n')
+		)
 	}
 }

@@ -19,8 +19,10 @@ export default async function (): Promise<void> {
 			IsRaised: trellisCrop,
 			IsPaddyCrop: paddyCrop,
 			RegrowDays: regrowDays,
+			DaysInPhase: daysInPhase,
 		} = CropJson[key]
 		const { Price: price, Name: name } = ObjectJson[objectId]
+		const growth = (daysInPhase as number[]).reduce((acc, cur) => acc + cur, 0)
 
 		console.info('Generating crop data for ', name)
 
@@ -32,6 +34,7 @@ export default async function (): Promise<void> {
 			harvestMax,
 			trellisCrop,
 			paddyCrop,
+			growth,
 			regrow: regrowDays !== -1,
 			regrowDays: regrowDays === -1 ? 0 : regrowDays,
 			sellPrice: price,

@@ -199,15 +199,27 @@ export type SDVCalendarData = {
 // ------------------------------------------------------------
 // #region
 export interface SDVCrop {
+	/** Name of the crop, and the harvested item. (ie: "Parsnip") */
 	name: string
+	/** ID of the crop. */
 	id: number
+	/** Seasons that you can grow the crop. */
 	seasons: SDVSeason[]
+	/** Min number you can harvest. */
 	harvestMin: number
+	/** Max number you can harvest at a time. */
 	harvestMax: number
+	/** Is it a trellis crop? */
 	trellisCrop: boolean
+	/** Is it a paddy crop? */
 	paddyCrop: boolean
+	/** How many days it takes to grow? */
+	growth: number
+	/** Does the crop regrow for harvest again? */
 	regrow: boolean
+	/** How long does the regrowth take? */
 	regrowDays: number
+	/** How much does the harvested crop sell for? */
 	sellPrice: number
 }
 

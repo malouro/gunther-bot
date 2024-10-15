@@ -12,6 +12,7 @@ export default {
 	harvestMax: 3,
 	trellisCrop: false,
 	paddyCrop: false,
+	growth: 13,
 	regrow: true,
 	regrowDays: 4,
 	sellPrice: 50,

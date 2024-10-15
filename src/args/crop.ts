@@ -9,8 +9,6 @@ export const CropArgument = Args.make<SDVCropName>(
 			parameter
 		) as unknown as SDVCropName
 
-		console.info(SDVCropList)
-		console.info(formattedCropName)
 		if (
 			!isNullishOrEmpty(parameter) &&
 			SDVCropList.includes(formattedCropName)
