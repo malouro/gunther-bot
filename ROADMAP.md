@@ -53,7 +53,4 @@ Incorporate Discord's "slash commands" API, so users can type `/gunther` and nav
 
 ## 🐛 Known Bugs
 
-> **Universal liked/disliked gifts are overriding NPCs personal preferences.**
->
-> - e.g.: "Driftwood" appears as a disliked gift for Leah, but she actually likes this as a gift.
-> - This needs to be addressed in the build script, where it constructs the `SDVGifts` object per character.
+> nothing right now...
