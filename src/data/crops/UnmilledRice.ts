@@ -7,6 +7,8 @@ import { SDVCrop } from '@/data/types'
 export default {
 	name: 'Unmilled Rice',
 	id: 271,
+	image:
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Unmilled Rice.png',
 	seasons: ['Spring'],
 	harvestMin: 1,
 	harvestMax: 1,

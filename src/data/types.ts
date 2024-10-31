@@ -203,6 +203,8 @@ export interface SDVCrop {
 	name: string
 	/** ID of the crop. */
 	id: number
+	/** URL of crop's image */
+	image: string
 	/** Seasons that you can grow the crop. */
 	seasons: SDVSeason[]
 	/** Min number you can harvest. */

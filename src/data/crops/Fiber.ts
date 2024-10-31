@@ -7,6 +7,8 @@ import { SDVCrop } from '@/data/types'
 export default {
 	name: 'Fiber',
 	id: 771,
+	image:
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Fiber.png',
 	seasons: ['Spring', 'Summer', 'Fall', 'Winter'],
 	harvestMin: 4,
 	harvestMax: 7,

@@ -7,6 +7,8 @@ import { SDVCrop } from '@/data/types'
 export default {
 	name: 'Tomato',
 	id: 256,
+	image:
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Tomato.png',
 	seasons: ['Summer'],
 	harvestMin: 1,
 	harvestMax: 1,

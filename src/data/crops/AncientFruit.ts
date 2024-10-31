@@ -7,6 +7,8 @@ import { SDVCrop } from '@/data/types'
 export default {
 	name: 'Ancient Fruit',
 	id: 454,
+	image:
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Ancient Fruit.png',
 	seasons: ['Spring', 'Summer', 'Fall'],
 	harvestMin: 1,
 	harvestMax: 1,

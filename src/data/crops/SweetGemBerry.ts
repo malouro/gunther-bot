@@ -7,6 +7,8 @@ import { SDVCrop } from '@/data/types'
 export default {
 	name: 'Sweet Gem Berry',
 	id: 417,
+	image:
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Sweet Gem Berry.png',
 	seasons: ['Fall'],
 	harvestMin: 1,
 	harvestMax: 1,

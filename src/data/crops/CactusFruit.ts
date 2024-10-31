@@ -7,6 +7,8 @@ import { SDVCrop } from '@/data/types'
 export default {
 	name: 'Cactus Fruit',
 	id: 90,
+	image:
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Cactus Fruit.png',
 	seasons: ['Spring', 'Summer', 'Fall', 'Winter'],
 	harvestMin: 1,
 	harvestMax: 1,

@@ -7,6 +7,8 @@ import { SDVCrop } from '@/data/types'
 export default {
 	name: 'Wild Horseradish',
 	id: 16,
+	image:
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Wild Horseradish.png',
 	seasons: ['Spring'],
 	harvestMin: 1,
 	harvestMax: 1,

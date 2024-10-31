@@ -7,6 +7,8 @@ import { SDVCrop } from '@/data/types'
 export default {
 	name: 'Blueberry',
 	id: 258,
+	image:
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Blueberry.png',
 	seasons: ['Summer'],
 	harvestMin: 3,
 	harvestMax: 3,
