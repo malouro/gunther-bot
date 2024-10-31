@@ -8,7 +8,7 @@ export default {
 	name: 'Ancient Fruit',
 	id: 454,
 	image:
-		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Ancient Fruit.png',
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Ancient%20Fruit.png',
 	seasons: ['Spring', 'Summer', 'Fall'],
 	harvestMin: 1,
 	harvestMax: 1,

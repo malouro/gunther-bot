@@ -8,7 +8,7 @@ export default {
 	name: 'Hot Pepper',
 	id: 260,
 	image:
-		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Hot Pepper.png',
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Hot%20Pepper.png',
 	seasons: ['Summer'],
 	harvestMin: 1,
 	harvestMax: 1,

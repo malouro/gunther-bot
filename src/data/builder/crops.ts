@@ -65,7 +65,7 @@ export default async function (): Promise<void> {
 
 			await img.toFile(`src/data/img/crops/${name}.png`)
 
-			imagePath = `${IMAGE_BASE_URL}/${name}.png`
+			imagePath = encodeURI(`${IMAGE_BASE_URL}/${name}.png`)
 		} catch (error) {
 			console.error(`Error generating image for ${name}:`, error)
 		}

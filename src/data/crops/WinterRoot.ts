@@ -8,7 +8,7 @@ export default {
 	name: 'Winter Root',
 	id: 412,
 	image:
-		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Winter Root.png',
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Winter%20Root.png',
 	seasons: ['Winter'],
 	harvestMin: 1,
 	harvestMax: 1,

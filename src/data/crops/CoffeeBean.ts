@@ -8,7 +8,7 @@ export default {
 	name: 'Coffee Bean',
 	id: 433,
 	image:
-		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Coffee Bean.png',
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Coffee%20Bean.png',
 	seasons: ['Spring', 'Summer'],
 	harvestMin: 4,
 	harvestMax: 1,

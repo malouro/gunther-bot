@@ -8,7 +8,7 @@ export default {
 	name: 'Fairy Rose',
 	id: 595,
 	image:
-		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Fairy Rose.png',
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Fairy%20Rose.png',
 	seasons: ['Fall'],
 	harvestMin: 1,
 	harvestMax: 1,

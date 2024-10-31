@@ -8,7 +8,7 @@ export default {
 	name: 'Summer Spangle',
 	id: 593,
 	image:
-		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Summer Spangle.png',
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Summer%20Spangle.png',
 	seasons: ['Summer'],
 	harvestMin: 1,
 	harvestMax: 1,

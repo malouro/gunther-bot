@@ -8,7 +8,7 @@ export default {
 	name: 'Red Cabbage',
 	id: 266,
 	image:
-		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Red Cabbage.png',
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Red%20Cabbage.png',
 	seasons: ['Summer'],
 	harvestMin: 1,
 	harvestMax: 1,

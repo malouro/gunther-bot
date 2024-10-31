@@ -8,7 +8,7 @@ export default {
 	name: 'Spice Berry',
 	id: 396,
 	image:
-		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Spice Berry.png',
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Spice%20Berry.png',
 	seasons: ['Summer'],
 	harvestMin: 1,
 	harvestMax: 1,

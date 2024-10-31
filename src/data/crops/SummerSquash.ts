@@ -8,7 +8,7 @@ export default {
 	name: 'Summer Squash',
 	id: null,
 	image:
-		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Summer Squash.png',
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Summer%20Squash.png',
 	seasons: ['Summer'],
 	harvestMin: 1,
 	harvestMax: 1,

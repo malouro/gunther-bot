@@ -8,7 +8,7 @@ export default {
 	name: 'Green Bean',
 	id: 188,
 	image:
-		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Green Bean.png',
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Green%20Bean.png',
 	seasons: ['Spring'],
 	harvestMin: 1,
 	harvestMax: 1,

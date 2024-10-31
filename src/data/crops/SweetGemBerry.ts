@@ -8,7 +8,7 @@ export default {
 	name: 'Sweet Gem Berry',
 	id: 417,
 	image:
-		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Sweet Gem Berry.png',
+		'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/crops/Sweet%20Gem%20Berry.png',
 	seasons: ['Fall'],
 	harvestMin: 1,
 	harvestMax: 1,
