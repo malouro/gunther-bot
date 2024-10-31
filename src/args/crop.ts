@@ -5,9 +5,12 @@ import { isNullishOrEmpty } from '@sapphire/utilities'
 
 export const CropArgument = Args.make<SDVCropName>(
 	(parameter: string, { argument }) => {
-		const formattedCropName: SDVCropName = capitalize(
-			parameter
-		) as unknown as SDVCropName
+		const formattedCropName: SDVCropName = parameter
+			.split(/\s+/)
+			.map(w => capitalize(w))
+			.join('') as unknown as SDVCropName
+
+		console.info(formattedCropName)
 
 		if (
 			!isNullishOrEmpty(parameter) &&

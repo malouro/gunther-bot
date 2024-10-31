@@ -4,7 +4,7 @@ import { Crops } from '@/data'
 import { SDVCrop, SDVCropList, SDVCropName } from '@/data/types'
 import { formatPrice, makeList } from '@/utils'
 import { Args, Command } from '@sapphire/framework'
-import { Message } from 'discord.js'
+import { EmbedBuilder, Message } from 'discord.js'
 
 export default class CropCommand extends GuntherCommand {
 	private constructor(
@@ -38,19 +38,26 @@ export default class CropCommand extends GuntherCommand {
 
 		const crop: SDVCrop = Crops[cropName]
 
-		return message.reply(
-			[
-				`# ${crop.name}`,
-				`**Seasons**: \n${makeList(crop.seasons)}`,
-				`**Sell Price**: ${formatPrice(crop.sellPrice)}`,
-				`**Growth Time**: ${crop.growth} days`,
-			]
-				.concat(
-					crop.regrow
-						? ['**Regrows**: Yes', `**Regrowth Time**: ${crop.regrowDays} days`]
-						: ['**Regrows**: No']
-				)
-				.join('\n')
-		)
+		const embed = new EmbedBuilder()
+			.setTitle(crop.name)
+			.setDescription(
+				[
+					`**Seasons**: \n${makeList(crop.seasons)}`,
+					`**Sell Price**: ${formatPrice(crop.sellPrice)}`,
+					`**Growth Time**: ${crop.growth} days`,
+				]
+					.concat(
+						crop.regrow
+							? [
+									'**Regrows**: Yes',
+									`**Regrowth Time**: ${crop.regrowDays} days`,
+							  ]
+							: ['**Regrows**: No']
+					)
+					.join('\n')
+			)
+			.setThumbnail(crop.image)
+
+		return message.reply({ embeds: [embed] })
 	}
 }
