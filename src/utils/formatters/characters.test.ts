@@ -1,14 +1,14 @@
-import { formatCharacterName } from '@/utils/formatters'
-import * as common from '@/utils/formatters/common'
+import { formatCharacterName } from '@/utils/formatters';
+import * as common from '@/utils/formatters/common';
 
 describe('Character Formatters', () => {
 	describe('formatCharacterName', () => {
-		const spy = jest.spyOn(common, 'capitalize')
+		const spy = jest.spyOn(common, 'capitalize');
 
 		test('should call `capitalize` func', () => {
-			formatCharacterName('aBiGaIL')
+			formatCharacterName('aBiGaIL');
 
-			expect(spy).toHaveBeenCalled()
-		})
-	})
-})
+			expect(spy).toHaveBeenCalled();
+		});
+	});
+});

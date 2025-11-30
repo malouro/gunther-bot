@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-import { writeFileSync } from 'fs'
-import { buildTypeChoices } from '.'
-import { resolve } from 'path'
-import { rimrafSync } from 'rimraf'
+import { writeFileSync } from 'fs';
+import { buildTypeChoices } from '.';
+import { resolve } from 'path';
+import { rimrafSync } from 'rimraf';
 
-const dirs = buildTypeChoices.filter(b => b !== 'all')
+const dirs = buildTypeChoices.filter(b => b !== 'all');
 
 // NOTE ABOUT THIS SCRIPT:
 
@@ -15,15 +15,15 @@ const dirs = buildTypeChoices.filter(b => b !== 'all')
 // To circumvent, we clean the directories and replace with a dummy "index.ts" file
 // to satisfy the bear minimum to run the build script afterwards.
 
-rimrafSync(resolve(__dirname, '../img/avatars/*'), { glob: true })
+rimrafSync(resolve(__dirname, '../img/avatars/*'), { glob: true });
 
 for (const dir of dirs) {
-	const pathToDir = resolve(__dirname, '../', dir)
+	const pathToDir = resolve(__dirname, '../', dir);
 
-	rimrafSync(`${pathToDir}/*`, { glob: true })
+	rimrafSync(`${pathToDir}/*`, { glob: true });
 	writeFileSync(
 		resolve(pathToDir, 'index.ts'),
 		`// Data has been purged. Run "yarn build:data"!
 export {}`
-	)
+	);
 }

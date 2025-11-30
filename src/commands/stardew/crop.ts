@@ -1,10 +1,10 @@
-import { CropArgument } from '@/args/crop'
-import { GuntherCommand } from '@/bot'
-import { Crops } from '@/data'
-import { SDVCrop, SDVCropList, SDVCropName } from '@/data/types'
-import { formatPrice, makeList } from '@/utils'
-import { Args, Command } from '@sapphire/framework'
-import { EmbedBuilder, Message } from 'discord.js'
+import { CropArgument } from '@/args/crop';
+import { GuntherCommand } from '@/bot';
+import { Crops } from '@/data';
+import { SDVCrop, SDVCropList, SDVCropName } from '@/data/types';
+import { formatPrice, makeList } from '@/utils';
+import { Args, Command } from '@sapphire/framework';
+import { EmbedBuilder, Message } from 'discord.js';
 
 export default class CropCommand extends GuntherCommand {
 	private constructor(
@@ -21,22 +21,22 @@ export default class CropCommand extends GuntherCommand {
 				'This includes the seasons it grows in, regrowth rate, etc.',
 				// add a list of possible inquiries
 			].join(''),
-		})
+		});
 	}
 
 	public async messageRun(message: Message, args: Args): Promise<Message> {
-		let cropName: null | SDVCropName = null
+		let cropName: null | SDVCropName = null;
 		try {
-			cropName = await args.pick(CropArgument)
-		} catch (error) {
+			cropName = await args.pick(CropArgument);
+		} catch (_error) {
 			return message.reply(
 				`Please specify a valid crop name:\n\n${makeList(
 					SDVCropList as unknown as string[]
 				)}`
-			)
+			);
 		}
 
-		const crop: SDVCrop = Crops[cropName]
+		const crop: SDVCrop = Crops[cropName];
 
 		const embed = new EmbedBuilder()
 			.setTitle(crop.name)
@@ -56,8 +56,8 @@ export default class CropCommand extends GuntherCommand {
 					)
 					.join('\n')
 			)
-			.setThumbnail(crop.image)
+			.setThumbnail(crop.image);
 
-		return message.reply({ embeds: [embed] })
+		return message.reply({ embeds: [embed] });
 	}
 }

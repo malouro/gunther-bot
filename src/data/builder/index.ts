@@ -1,16 +1,16 @@
 #!/usr/bin/env node
-import yargs from 'yargs'
+import yargs from 'yargs';
 
-import buildCrops from './crops'
-import buildCharacters from './characters'
+import buildCrops from './crops';
+import buildCharacters from './characters';
 
 export const buildTypeChoices: ReadonlyArray<string> = [
 	'crops',
 	'characters',
 	'all',
-]
+];
 
-const scriptName = 'build-sdv-data'
+const scriptName = 'build-sdv-data';
 const yargv = yargs(process.argv.slice(2))
 	.usage(`Usage: ${scriptName} <command> [options]`)
 	.option('b', {
@@ -26,28 +26,28 @@ const yargv = yargs(process.argv.slice(2))
 		alias: ['test', 'dry-run'],
 	})
 	.help('h')
-	.alias('h', 'help').argv
+	.alias('h', 'help').argv;
 
-export const { b: buildType, t: inTestMode } = yargv
+export const { b: buildType, t: inTestMode } = yargv;
 
 export const autoGenWarning =
 	'/*\n\
 WARNING: This file and its subsequent imports are auto-generated at build time.\n\
 Do not edit manually.\n\
-*/'
+*/';
 
 if (require.main === module) {
 	switch (buildType) {
 		case 'crops':
-			buildCrops()
-			break
+			buildCrops();
+			break;
 		case 'characters':
-			buildCharacters()
-			break
+			buildCharacters();
+			break;
 		case 'all':
 		default:
-			buildCharacters()
-			buildCrops()
-			break
+			buildCharacters();
+			buildCrops();
+			break;
 	}
 }

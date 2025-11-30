@@ -1,6 +1,6 @@
-import GuntherClient from '@/bot/client'
-import { ready } from '@/events'
-import { GatewayIntentBits } from 'discord.js'
+import GuntherClient from '@/bot/client';
+import { ready } from '@/events';
+import { GatewayIntentBits } from 'discord.js';
 
 const GuntherBot = new GuntherClient({
 	intents: [
@@ -10,8 +10,8 @@ const GuntherBot = new GuntherClient({
 	],
 	loadMessageCommandListeners: true,
 	defaultPrefix: process.env.COMMAND_PREFIX ?? '!',
-})
+});
 
-GuntherBot.on('ready', ready)
+GuntherBot.on('ready', ready);
 
-export default GuntherBot
+export default GuntherBot;

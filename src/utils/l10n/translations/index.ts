@@ -1,3 +1,3 @@
-import Objects from './Objects.json'
+import Objects from './Objects.json';
 
-export { Objects }
+export { Objects };

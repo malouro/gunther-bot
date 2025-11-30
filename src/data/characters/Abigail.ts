@@ -3,7 +3,7 @@ WARNING: This file and its subsequent imports are auto-generated at build time.
 Do not edit manually.
 */
 
-import { SDVCharacterData } from '@/data/types'
+import { SDVCharacterData } from '@/data/types';
 
 export default {
 	name: 'Abigail',
@@ -124,4 +124,4 @@ export default {
 	canMarry: true,
 	gender: 'Female',
 	wiki: 'https://stardewvalleywiki.com/Abigail',
-} as SDVCharacterData
+} as SDVCharacterData;

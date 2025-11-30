@@ -3,7 +3,7 @@ WARNING: This file and its subsequent imports are auto-generated at build time.
 Do not edit manually.
 */
 
-import { SDVCrop } from '@/data/types'
+import { SDVCrop } from '@/data/types';
 export default {
 	name: 'Sweet Gem Berry',
 	id: 417,
@@ -18,4 +18,4 @@ export default {
 	regrow: false,
 	regrowDays: 0,
 	sellPrice: 3000,
-} as SDVCrop
+} as SDVCrop;

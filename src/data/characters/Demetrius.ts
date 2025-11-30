@@ -3,7 +3,7 @@ WARNING: This file and its subsequent imports are auto-generated at build time.
 Do not edit manually.
 */
 
-import { SDVCharacterData } from '@/data/types'
+import { SDVCharacterData } from '@/data/types';
 
 export default {
 	name: 'Demetrius',
@@ -117,4 +117,4 @@ export default {
 	canMarry: false,
 	gender: 'Male',
 	wiki: 'https://stardewvalleywiki.com/Demetrius',
-} as SDVCharacterData
+} as SDVCharacterData;

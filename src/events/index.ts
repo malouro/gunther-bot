@@ -1,3 +1,3 @@
-import ready from './ready'
+import ready from './ready';
 
-export { ready }
+export { ready };

@@ -3,7 +3,7 @@ WARNING: This file and its subsequent imports are auto-generated at build time.
 Do not edit manually.
 */
 
-import { SDVCharacterData } from '@/data/types'
+import { SDVCharacterData } from '@/data/types';
 
 export default {
 	name: 'Jas',
@@ -123,4 +123,4 @@ export default {
 	canMarry: false,
 	gender: 'Female',
 	wiki: 'https://stardewvalleywiki.com/Jas',
-} as SDVCharacterData
+} as SDVCharacterData;

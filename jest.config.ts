@@ -1,4 +1,4 @@
-import type { Config } from '@jest/types'
+import type { Config } from '@jest/types';
 
 const ignoreDirectories = [
 	'node_modules',
@@ -7,7 +7,7 @@ const ignoreDirectories = [
 	'cjs',
 	'esm',
 	'.cache',
-]
+];
 
 const config: Config.InitialOptions = {
 	preset: 'ts-jest',
@@ -28,6 +28,6 @@ const config: Config.InitialOptions = {
 	testPathIgnorePatterns: ignoreDirectories,
 	watchPathIgnorePatterns: ignoreDirectories,
 	modulePathIgnorePatterns: ignoreDirectories.slice(1),
-}
+};
 
-export default config
+export default config;

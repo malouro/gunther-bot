@@ -3,7 +3,7 @@ WARNING: This file and its subsequent imports are auto-generated at build time.
 Do not edit manually.
 */
 
-import { SDVCrop } from '@/data/types'
+import { SDVCrop } from '@/data/types';
 export default {
 	name: 'Tomato',
 	id: 256,
@@ -18,4 +18,4 @@ export default {
 	regrow: true,
 	regrowDays: 4,
 	sellPrice: 60,
-} as SDVCrop
+} as SDVCrop;

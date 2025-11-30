@@ -1,19 +1,19 @@
-import { Crops } from '@/data'
+import { Crops } from '@/data';
 
 // ------------------------------------------------------------
 // Characters
 // ------------------------------------------------------------
 export interface SDVCharacterData {
-	name: string
-	avatar: string
-	gender: Gender
-	birthday: string
-	birthdaySeason: SDVSeason
-	birthdayDay: SDVDayOfSeason
-	bestGifts: Array<string>
-	gifts: SDVGifts
-	canMarry: boolean
-	wiki: string
+	name: string;
+	avatar: string;
+	gender: Gender;
+	birthday: string;
+	birthdaySeason: SDVSeason;
+	birthdayDay: SDVDayOfSeason;
+	bestGifts: Array<string>;
+	gifts: SDVGifts;
+	canMarry: boolean;
+	wiki: string;
 }
 export const SDVCharacterList = [
 	'Alex',
@@ -50,14 +50,14 @@ export const SDVCharacterList = [
 	'Vincent',
 	'Willy',
 	'Wizard',
-] as const
-export type SDVCharacterName = (typeof SDVCharacterList)[number]
+] as const;
+export type SDVCharacterName = (typeof SDVCharacterList)[number];
 export type SDVGifts = {
-	[key in SDVGiftTypes]?: Array<string>
-}
-export type SDVGiftTypes = 'love' | 'like' | 'dislike' | 'neutral' | 'hate'
+	[key in SDVGiftTypes]?: Array<string>;
+};
+export type SDVGiftTypes = 'love' | 'like' | 'dislike' | 'neutral' | 'hate';
 
-export const giftTypes = ['love', 'like', 'dislike', 'neutral', 'hate']
+export const giftTypes = ['love', 'like', 'dislike', 'neutral', 'hate'];
 export const characterDataFields = [
 	'name',
 	'avatar',
@@ -66,15 +66,15 @@ export const characterDataFields = [
 	'canMarry',
 	'gifts',
 	'wiki',
-] as Readonly<string[]>
-export type SDVCharacterDataField = (typeof characterDataFields)[number]
-export type Gender = 'Male' | 'Female' | 'Undefined'
+] as Readonly<string[]>;
+export type SDVCharacterDataField = (typeof characterDataFields)[number];
+export type Gender = 'Male' | 'Female' | 'Undefined';
 
 // ------------------------------------------------------------
 // Calendar
 // ------------------------------------------------------------
 // #region
-export type SDVEvent = string
+export type SDVEvent = string;
 export type SDVDayOfWeek =
 	| 'Monday'
 	| 'Tuesday'
@@ -82,7 +82,7 @@ export type SDVDayOfWeek =
 	| 'Thursday'
 	| 'Friday'
 	| 'Saturday'
-	| 'Sunday'
+	| 'Sunday';
 export type SDVDayOfSeason =
 	| '1'
 	| '2'
@@ -111,9 +111,9 @@ export type SDVDayOfSeason =
 	| '25'
 	| '26'
 	| '27'
-	| '28'
-export type SDVSeason = 'Spring' | 'Summer' | 'Fall' | 'Winter'
-export type SDVSeasonShorthand = 'sp' | 'su' | 'f' | 'fa' | 'w' | 'wi'
+	| '28';
+export type SDVSeason = 'Spring' | 'Summer' | 'Fall' | 'Winter';
+export type SDVSeasonShorthand = 'sp' | 'su' | 'f' | 'fa' | 'w' | 'wi';
 export const daysOfWeek: ReadonlyArray<SDVDayOfWeek> = [
 	'Monday',
 	'Tuesday',
@@ -122,8 +122,8 @@ export const daysOfWeek: ReadonlyArray<SDVDayOfWeek> = [
 	'Friday',
 	'Saturday',
 	'Sunday',
-]
-export const daysInAWeek = daysOfWeek.length
+];
+export const daysInAWeek = daysOfWeek.length;
 export const daysOfSeason: ReadonlyArray<SDVDayOfSeason> = [
 	'1',
 	'2',
@@ -153,14 +153,14 @@ export const daysOfSeason: ReadonlyArray<SDVDayOfSeason> = [
 	'26',
 	'27',
 	'28',
-]
-export const daysInASeason = daysOfSeason.length
+];
+export const daysInASeason = daysOfSeason.length;
 export const seasons: ReadonlyArray<SDVSeason> = [
 	'Spring',
 	'Summer',
 	'Fall',
 	'Winter',
-]
+];
 export const seasonShorthands: ReadonlyArray<SDVSeasonShorthand> = [
 	'sp',
 	'su',
@@ -168,30 +168,30 @@ export const seasonShorthands: ReadonlyArray<SDVSeasonShorthand> = [
 	'f',
 	'wi',
 	'w',
-]
+];
 
 export type SDVCalendarDate = {
-	season: SDVSeason
-	day: SDVDayOfSeason
-	dayOfWeek?: SDVDayOfWeek
-}
+	season: SDVSeason;
+	day: SDVDayOfSeason;
+	dayOfWeek?: SDVDayOfWeek;
+};
 export type SDVCalendarDay = {
-	date: SDVCalendarDate
-	birthdays: Array<SDVCharacterName>
-	events: Array<SDVEvent>
-}
+	date: SDVCalendarDate;
+	birthdays: Array<SDVCharacterName>;
+	events: Array<SDVEvent>;
+};
 export type SDVCalendarSeason = {
 	days: {
-		[key in SDVDayOfSeason]?: SDVCalendarDay
-	}
-	image: string
-	wiki: string
-	events: Array<SDVEvent>
-	birthdays: Array<SDVCharacterName>
-}
+		[key in SDVDayOfSeason]?: SDVCalendarDay;
+	};
+	image: string;
+	wiki: string;
+	events: Array<SDVEvent>;
+	birthdays: Array<SDVCharacterName>;
+};
 export type SDVCalendarData = {
-	[key in SDVSeason]?: SDVCalendarSeason
-}
+	[key in SDVSeason]?: SDVCalendarSeason;
+};
 // #endregion
 
 // ------------------------------------------------------------
@@ -200,31 +200,31 @@ export type SDVCalendarData = {
 // #region
 export interface SDVCrop {
 	/** Name of the crop, and the harvested item. (ie: "Parsnip") */
-	name: string
+	name: string;
 	/** ID of the crop. */
-	id: number
+	id: number;
 	/** URL of crop's image */
-	image: string
+	image: string;
 	/** Seasons that you can grow the crop. */
-	seasons: SDVSeason[]
+	seasons: SDVSeason[];
 	/** Min number you can harvest. */
-	harvestMin: number
+	harvestMin: number;
 	/** Max number you can harvest at a time. */
-	harvestMax: number
+	harvestMax: number;
 	/** Is it a trellis crop? */
-	trellisCrop: boolean
+	trellisCrop: boolean;
 	/** Is it a paddy crop? */
-	paddyCrop: boolean
+	paddyCrop: boolean;
 	/** How many days it takes to grow? */
-	growth: number
+	growth: number;
 	/** Does the crop regrow for harvest again? */
-	regrow: boolean
+	regrow: boolean;
 	/** How long does the regrowth take? */
-	regrowDays: number
+	regrowDays: number;
 	/** How much does the harvested crop sell for? */
-	sellPrice: number
+	sellPrice: number;
 }
 
-export const SDVCropList = Object.keys(Crops)
-export type SDVCropName = (typeof SDVCropList)[number]
+export const SDVCropList = Object.keys(Crops);
+export type SDVCropName = (typeof SDVCropList)[number];
 // #endregion

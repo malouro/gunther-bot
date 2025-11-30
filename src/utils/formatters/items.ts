@@ -3,5 +3,5 @@
  * @param price
  */
 export function formatPrice(price: number): string {
-	return `${price}g`
+	return `${price}g`;
 }

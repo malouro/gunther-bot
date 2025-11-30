@@ -1,8 +1,8 @@
-import GuntherClient from './client'
-import GuntherCommand from './command'
+import GuntherClient from './client';
+import GuntherCommand from './command';
 
 describe('Gunther Command', () => {
-	const mockRunFn = jest.fn()
+	const mockRunFn = jest.fn();
 	class TestCommand extends GuntherCommand {
 		constructor(client: GuntherClient) {
 			super(client, {
@@ -10,28 +10,28 @@ describe('Gunther Command', () => {
 				group: 'test',
 				memberName: 'test-command',
 				description: 'Just for testing ;)',
-			})
+			});
 		}
-		run = mockRunFn
+		run = mockRunFn;
 	}
 
-	const testClient = new GuntherClient()
+	const testClient = new GuntherClient();
 
 	afterAll(() => {
-		testClient.destroy()
-	})
+		testClient.destroy();
+	});
 
 	test('making new Gunther Command works', () => {
-		const DerivedTestCommand = new TestCommand(testClient)
+		const DerivedTestCommand = new TestCommand(testClient);
 
-		expect(DerivedTestCommand).toBeInstanceOf(GuntherCommand)
-	})
+		expect(DerivedTestCommand).toBeInstanceOf(GuntherCommand);
+	});
 
 	test('run method triggers on run', () => {
-		const DerivedTestCommand = new TestCommand(testClient)
+		const DerivedTestCommand = new TestCommand(testClient);
 
-		DerivedTestCommand.run()
+		DerivedTestCommand.run();
 
-		expect(mockRunFn).toHaveBeenCalled()
-	})
-})
+		expect(mockRunFn).toHaveBeenCalled();
+	});
+});

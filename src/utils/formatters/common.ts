@@ -6,7 +6,7 @@
 export function capitalize(str: string): string {
 	return `${str.charAt(0).toLocaleUpperCase()}${str
 		.slice(1)
-		.toLocaleLowerCase()}`
+		.toLocaleLowerCase()}`;
 }
 
 /**
@@ -15,5 +15,5 @@ export function capitalize(str: string): string {
  * @returns string
  */
 export function makeList(input: string[] | readonly string[]): string {
-	return input.map(str => `• ${str}`).join('\n')
+	return input.map(str => `• ${str}`).join('\n');
 }

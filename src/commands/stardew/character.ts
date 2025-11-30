@@ -1,4 +1,4 @@
-import { Message, EmbedBuilder } from 'discord.js'
+import { Message, EmbedBuilder } from 'discord.js';
 import {
 	giftTypes,
 	characterDataFields,
@@ -8,12 +8,12 @@ import {
 	SDVCharacterName,
 	SDVCalendarDate,
 	SDVGiftTypes,
-} from '@/data/types'
-import { Characters } from '@/data'
-import { GuntherCommand } from '@/bot'
-import { Args, Command } from '@sapphire/framework'
-import { capitalize, formatWikiTerm, makeList } from '@/utils'
-import { CharacterArgument, DateArgument } from '@/args'
+} from '@/data/types';
+import { Characters } from '@/data';
+import { GuntherCommand } from '@/bot';
+import { Args, Command } from '@sapphire/framework';
+import { capitalize, formatWikiTerm, makeList } from '@/utils';
+import { CharacterArgument, DateArgument } from '@/args';
 
 export default class CharacterCommand extends GuntherCommand {
 	private constructor(
@@ -35,7 +35,7 @@ export default class CharacterCommand extends GuntherCommand {
 						.concat(characterDataFields.map(dataField => `\`${dataField}\``))
 				)}\n...or a \`calendar date\``,
 			].join(''),
-		})
+		});
 	}
 
 	// !character <character>
@@ -62,7 +62,7 @@ export default class CharacterCommand extends GuntherCommand {
 						characterDataFields
 					)}`,
 				}
-			)
+			);
 	}
 
 	// !character <character> <specific-inquiry>
@@ -70,22 +70,22 @@ export default class CharacterCommand extends GuntherCommand {
 		characterInfo: SDVCharacterData,
 		dataField: SDVCharacterDataField
 	): EmbedBuilder {
-		const specificInfo = characterInfo[dataField]
-		const { name: characterName, avatar, wiki } = characterInfo
+		const specificInfo = characterInfo[dataField];
+		const { name: characterName, avatar, wiki } = characterInfo;
 
 		const embed = new EmbedBuilder()
 			.setTitle(characterName)
 			.setURL(`${wiki}#${formatWikiTerm(dataField)}`)
 			.setThumbnail(avatar)
-			.setDescription(`Specific info on ${characterName}`)
+			.setDescription(`Specific info on ${characterName}`);
 
 		switch (dataField) {
 			case 'bestGifts':
 				embed.addFields({
 					name: 'Best Gifts',
 					value: Array(specificInfo).join('\n'),
-				})
-				break
+				});
+				break;
 			case 'gifts':
 				embed.addFields({
 					name: 'Gifts',
@@ -95,14 +95,14 @@ export default class CharacterCommand extends GuntherCommand {
 								`**${capitalize(key)}**:\n${value.join('\n')}\n`
 						)
 						.join('\n'),
-				})
-				break
+				});
+				break;
 			case 'canMarry':
 				embed.addFields({
 					name: 'Can marry?',
 					value: specificInfo === true ? 'Yes' : 'No',
-				})
-				break
+				});
+				break;
 			case 'avatar':
 			case 'name':
 			case 'wiki':
@@ -111,11 +111,11 @@ export default class CharacterCommand extends GuntherCommand {
 				embed.addFields({
 					name: capitalize(dataField),
 					value: specificInfo.toString(),
-				})
-				break
+				});
+				break;
 		}
 
-		return embed
+		return embed;
 	}
 
 	private getCharacterScheduleInfo(
@@ -140,7 +140,7 @@ export default class CharacterCommand extends GuntherCommand {
 			.addFields({
 				name: `Date of ${date.season} ${date.day}`,
 				value: 'Work in progress. (This is where the schedule info would go)',
-			})
+			});
 	}
 
 	private getGiftInfo(
@@ -161,30 +161,30 @@ export default class CharacterCommand extends GuntherCommand {
 						? `${capitalize(giftType)}d Gifts`
 						: 'Neutral Gifts',
 				value: gifts[giftType].join('\n'),
-			})
+			});
 	}
 
 	public async messageRun(message: Message, args: Args): Promise<Message> {
-		let character: null | SDVCharacterName = null
-		let inquiry: null | string | SDVCalendarDate = null
-		let inquiryType: null | string
+		let character: null | SDVCharacterName = null;
+		let inquiry: null | string | SDVCalendarDate = null;
+		let inquiryType: null | string;
 
 		try {
-			character = await args.pick(CharacterArgument)
-		} catch (error) {
+			character = await args.pick(CharacterArgument);
+		} catch (_error) {
 			return message.reply(
 				`Please specify a character to look up information on:\n\n${makeList(
 					SDVCharacterList as unknown as string[]
 				)}`
-			)
+			);
 		}
 
 		try {
-			inquiry = await args.pick(DateArgument)
-			inquiryType = 'date'
-		} catch (error) {
+			inquiry = await args.pick(DateArgument);
+			inquiryType = 'date';
+		} catch (_error) {
 			try {
-				inquiry = await args.pick('string')
+				inquiry = await args.pick('string');
 
 				if (
 					inquiry &&
@@ -196,35 +196,35 @@ export default class CharacterCommand extends GuntherCommand {
 						`Please specify a category of information to look up for ${character} from the valid list of categories:\n\n${makeList(
 							(characterDataFields as unknown as string[]).map(f => `\`${f}\``)
 						)}`
-					)
+					);
 				} else {
-					inquiryType = 'specific'
+					inquiryType = 'specific';
 				}
-			} catch (error) {
-				inquiryType = 'general'
+			} catch (_error) {
+				inquiryType = 'general';
 			}
 		}
 
-		let embed: null | EmbedBuilder = null
+		let embed: null | EmbedBuilder = null;
 
 		switch (inquiryType) {
 			case 'general':
-				embed = this.getGeneralCharacterInfo(Characters[character])
-				break
+				embed = this.getGeneralCharacterInfo(Characters[character]);
+				break;
 			case 'specific':
 				embed = this.getSpecificCharacterInfo(
 					Characters[character],
 					inquiry as SDVCharacterDataField
-				)
-				break
+				);
+				break;
 			case 'date':
 				embed = this.getCharacterScheduleInfo(
 					Characters[character],
 					inquiry as SDVCalendarDate
-				)
-				break
+				);
+				break;
 		}
 
-		return message.reply({ embeds: [embed] })
+		return message.reply({ embeds: [embed] });
 	}
 }

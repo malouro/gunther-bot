@@ -1,21 +1,21 @@
-import { existsSync, writeFileSync } from 'node:fs'
-import path from 'node:path'
-import * as prettier from 'prettier'
-import sharp from 'sharp'
+import { existsSync, writeFileSync } from 'node:fs';
+import path from 'node:path';
+import * as prettier from 'prettier';
+import sharp from 'sharp';
 
-import { SDVCharacterData, SDVCharacterName, SDVGifts } from '@/data/types'
-import { getWikiUrl } from '@/utils'
-import localizer from '@/utils/l10n/localizer'
-import { autoGenWarning } from '.'
+import { SDVCharacterData, SDVCharacterName, SDVGifts } from '@/data/types';
+import { getWikiUrl } from '@/utils';
+import localizer from '@/utils/l10n/localizer';
+import { autoGenWarning } from '.';
 
-import CharactersJson from '@/data/json/Characters.json'
-import ObjectJson from '@/data/json/Objects.json'
-import GiftTastes from '@/data/json/NPCGiftTastes.json'
+import CharactersJson from '@/data/json/Characters.json';
+import ObjectJson from '@/data/json/Objects.json';
+import GiftTastes from '@/data/json/NPCGiftTastes.json';
 
-const AVATAR_WIDTH = 64
-const AVATAR_HEIGHT = 64
+const AVATAR_WIDTH = 64;
+const AVATAR_HEIGHT = 64;
 const AVATAR_BASE_URL =
-	'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/avatars'
+	'https://raw.githubusercontent.com/malouro/gunther-bot/refs/heads/main/src/data/img/avatars';
 
 /**
  * @TODO
@@ -32,23 +32,23 @@ const AVATAR_BASE_URL =
  * @param ids
  */
 function getGiftArray(ids: string[]): string[] {
-	const output = []
+	const output = [];
 
 	for (const id of ids) {
 		if (Number(id) < 0) {
-			continue
+			continue;
 		}
 
 		if (id in ObjectJson) {
-			const lookup = ObjectJson[id].DisplayName
-			const translatedText = localizer(lookup)
+			const lookup = ObjectJson[id].DisplayName;
+			const translatedText = localizer(lookup);
 
 			if (translatedText) {
-				output.push(translatedText)
+				output.push(translatedText);
 			}
 		}
 	}
-	return output
+	return output;
 }
 
 /**
@@ -66,28 +66,28 @@ function buildGiftTastes(
 		neutral: [],
 		dislike: [],
 		hate: [],
-	}
+	};
 
 	for (const giftType in personalTastes) {
-		giftIds[giftType].push(...personalTastes[giftType])
+		giftIds[giftType].push(...personalTastes[giftType]);
 	}
 
-	;[
+	[
 		GiftTastes.Universal_Love,
 		GiftTastes.Universal_Like,
 		GiftTastes.Universal_Neutral,
 		GiftTastes.Universal_Dislike,
 		GiftTastes.Universal_Hate,
 	].forEach((universalTaste, index) => {
-		const ids = universalTaste.split(' ')
+		const ids = universalTaste.split(' ');
 		for (const id of ids) {
 			if (
 				!Object.keys(giftIds).some(giftType => giftIds[giftType].includes(id))
 			) {
-				giftIds[Object.keys(giftIds)[index]].push(id)
+				giftIds[Object.keys(giftIds)[index]].push(id);
 			}
 		}
-	})
+	});
 
 	return {
 		love: [...getGiftArray(giftIds.love)],
@@ -95,7 +95,7 @@ function buildGiftTastes(
 		neutral: [...getGiftArray(giftIds.neutral)],
 		dislike: [...getGiftArray(giftIds.dislike)],
 		hate: [...getGiftArray(giftIds.hate)],
-	}
+	};
 }
 
 // characters to skip; they don't matter for the bot
@@ -114,26 +114,26 @@ const excludeCharacters = [
 	'Morris',
 	'Old Mariner',
 	'Welwick',
-]
+];
 
 export default async function (): Promise<void> {
-	let indexContent = autoGenWarning + '\n\n'
+	let indexContent = autoGenWarning + '\n\n';
 
 	for (const key in CharactersJson) {
-		const name = key
+		const name = key;
 
 		if (excludeCharacters.includes(name)) {
-			continue
+			continue;
 		}
 
-		console.info('Generating character data for ', name)
+		console.info('Generating character data for ', name);
 
 		const {
 			Gender: gender,
 			BirthSeason: birthdaySeason,
 			BirthDay: birthdayDay,
 			CanBeRomanced: canMarry,
-		} = CharactersJson[key]
+		} = CharactersJson[key];
 
 		const [
 			_loveMessage,
@@ -147,7 +147,7 @@ export default async function (): Promise<void> {
 			_hateMessage,
 			hatedGifts,
 			_birthdayMessage,
-		] = (GiftTastes[name] as SDVCharacterName).split('/')
+		] = (GiftTastes[name] as SDVCharacterName).split('/');
 
 		const gifts = buildGiftTastes(name as SDVCharacterName, {
 			love: lovedGifts.split(' '),
@@ -155,7 +155,7 @@ export default async function (): Promise<void> {
 			neutral: neutralGifts.split(' '),
 			dislike: dislikedGifts.split(' '),
 			hate: hatedGifts.split(' '),
-		})
+		});
 
 		/**
 		 * Avatar setup:
@@ -171,8 +171,8 @@ export default async function (): Promise<void> {
 
 		// default avatar URL if we can't generate one for some reason
 		let avatar =
-			'https://stardewvalleywiki.com/mediawiki/images/6/68/Main_Logo.png'
-		const rawPortraitFile = `unpacked_data/Content (unpacked)/Portraits/${name}.png`
+			'https://stardewvalleywiki.com/mediawiki/images/6/68/Main_Logo.png';
+		const rawPortraitFile = `unpacked_data/Content (unpacked)/Portraits/${name}.png`;
 
 		if (existsSync(path.resolve(__dirname, '../../../', rawPortraitFile))) {
 			try {
@@ -181,12 +181,12 @@ export default async function (): Promise<void> {
 					top: 0,
 					width: AVATAR_WIDTH,
 					height: AVATAR_HEIGHT,
-				})
-				await img.toFile(`src/data/img/avatars/${name}.png`)
+				});
+				await img.toFile(`src/data/img/avatars/${name}.png`);
 			} catch (error) {
-				console.error('Error generating avatar:', error)
+				console.error('Error generating avatar:', error);
 			}
-			avatar = `${AVATAR_BASE_URL}/${name}.png`
+			avatar = `${AVATAR_BASE_URL}/${name}.png`;
 		}
 
 		const characterData: SDVCharacterData = {
@@ -200,15 +200,15 @@ export default async function (): Promise<void> {
 			canMarry,
 			gender,
 			wiki: getWikiUrl(name),
-		}
+		};
 
-		const codeSafeName = name
+		const codeSafeName = name;
 		const fileContent = `${autoGenWarning}
 
 import { SDVCharacterData } from '@/data/types'
 
 export default ${JSON.stringify(characterData, null, '\t')} as SDVCharacterData
-`
+`;
 		writeFileSync(
 			path.resolve(__dirname, `../characters/${codeSafeName}.ts`),
 			// prettier it, in case something f***s up
@@ -218,12 +218,15 @@ export default ${JSON.stringify(characterData, null, '\t')} as SDVCharacterData
 				useTabs: true,
 				singleQuote: true,
 			})
-		)
+		);
 
 		indexContent += `import ${codeSafeName} from './${codeSafeName}'
 export { ${codeSafeName} }
-`
+`;
 	}
 
-	writeFileSync(path.resolve(__dirname, '../characters/index.ts'), indexContent)
+	writeFileSync(
+		path.resolve(__dirname, '../characters/index.ts'),
+		indexContent
+	);
 }

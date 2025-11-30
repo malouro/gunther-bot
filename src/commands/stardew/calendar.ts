@@ -1,6 +1,6 @@
-import { DateArgument, SeasonArgument } from '@/args'
-import { GuntherCommand } from '@/bot'
-import { Calendar } from '@/data'
+import { DateArgument, SeasonArgument } from '@/args';
+import { GuntherCommand } from '@/bot';
+import { Calendar } from '@/data';
 import {
 	daysOfSeason,
 	SDVCalendarSeason,
@@ -10,12 +10,12 @@ import {
 	SDVSeason,
 	seasons,
 	seasonShorthands,
-} from '@/data/types'
-import { getUpcomingDays, getWeekday, makeList, messageEmojis } from '@/utils'
-import type { Args, Command } from '@sapphire/framework'
-import { EmbedBuilder, Message, TextChannel } from 'discord.js'
+} from '@/data/types';
+import { getUpcomingDays, getWeekday, makeList, messageEmojis } from '@/utils';
+import type { Args, Command } from '@sapphire/framework';
+import { EmbedBuilder, Message, TextChannel } from 'discord.js';
 
-export const COMMAND_NAME = 'calendar'
+export const COMMAND_NAME = 'calendar';
 
 export default class CalendarCommand extends GuntherCommand {
 	private constructor(
@@ -44,7 +44,7 @@ export default class CalendarCommand extends GuntherCommand {
 					`\`${COMMAND_NAME} ${seasonShorthands[0]} ${daysOfSeason[15]}\`\n`,
 					`\`${COMMAND_NAME} ${seasons[1]}\`\n`
 				),
-		})
+		});
 	}
 
 	private buildEmbedForDate(
@@ -53,11 +53,11 @@ export default class CalendarCommand extends GuntherCommand {
 		season: SDVSeason,
 		day: SDVDayOfSeason
 	) {
-		const weekday = getWeekday(day)
-		const events: Array<SDVEvent> = calendarSeason.days[day].events
+		const weekday = getWeekday(day);
+		const events: Array<SDVEvent> = calendarSeason.days[day].events;
 		const birthdays: Array<SDVCharacterName> = calendarSeason.days[day]
-			.birthdays as SDVCharacterName[]
-		const upcomingDays = getUpcomingDays(season, day, 7)
+			.birthdays as SDVCharacterName[];
+		const upcomingDays = getUpcomingDays(season, day, 7);
 		const upcomingDetails = upcomingDays
 			.map(
 				day =>
@@ -83,7 +83,7 @@ export default class CalendarCommand extends GuntherCommand {
 							: ''
 					}`
 			)
-			.join('\n')
+			.join('\n');
 
 		embed
 			.setTitle(`${season} ${day}`)
@@ -104,7 +104,7 @@ export default class CalendarCommand extends GuntherCommand {
 					name: 'Upcoming',
 					value: upcomingDetails,
 				}
-			)
+			);
 	}
 
 	private buildEmbedForSeason(
@@ -126,49 +126,49 @@ export default class CalendarCommand extends GuntherCommand {
 					value: makeList(calendarSeason.birthdays),
 				}
 			)
-			.setImage(calendarSeason.image)
+			.setImage(calendarSeason.image);
 	}
 
 	public async messageRun(message: Message, args: Args): Promise<Message> {
 		if (!message.channel.isTextBased()) {
-			return null
+			return null;
 		}
 
-		type CalendarCommandInquiryTypes = 'SDV_CalendarDate' | 'SDV_Season'
-		let day: SDVDayOfSeason | null
-		let season: SDVSeason | null
-		let inquiryType: CalendarCommandInquiryTypes
+		type CalendarCommandInquiryTypes = 'SDV_CalendarDate' | 'SDV_Season';
+		let day: SDVDayOfSeason | null;
+		let season: SDVSeason | null;
+		let inquiryType: CalendarCommandInquiryTypes;
 
 		try {
-			;({ day, season } = await args.pick(DateArgument))
-			inquiryType = 'SDV_CalendarDate'
-		} catch (error) {
+			({ day, season } = await args.pick(DateArgument));
+			inquiryType = 'SDV_CalendarDate';
+		} catch (_seasonError) {
 			try {
-				season = await args.pick(SeasonArgument)
-				inquiryType = 'SDV_Season'
-			} catch (error) {
+				season = await args.pick(SeasonArgument);
+				inquiryType = 'SDV_Season';
+			} catch (_textError) {
 				return (message.channel as TextChannel).send(
 					'Please specify a valid calendar date or season.'
-				)
+				);
 			}
 		}
 
-		const embed = new EmbedBuilder()
+		const embed = new EmbedBuilder();
 		const calendarSeason: SDVCalendarSeason = Calendar[
 			season
-		] as SDVCalendarSeason
+		] as SDVCalendarSeason;
 
 		// Build the embed with the given builder method.
 		// This will mutate the value of embed
 		switch (inquiryType) {
 			case 'SDV_CalendarDate':
-				this.buildEmbedForDate(embed, calendarSeason, season, day)
-				break
+				this.buildEmbedForDate(embed, calendarSeason, season, day);
+				break;
 			case 'SDV_Season':
-				this.buildEmbedForSeason(embed, calendarSeason, season)
-				break
+				this.buildEmbedForSeason(embed, calendarSeason, season);
+				break;
 		}
 
-		return message.reply({ embeds: [embed] })
+		return message.reply({ embeds: [embed] });
 	}
 }
